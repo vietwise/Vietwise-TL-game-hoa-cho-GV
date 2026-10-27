@@ -4,70 +4,600 @@
   "title": "Nội dung game (Claude viết, trình chơi đọc)",
   "description": "Một file JSON mô tả một game. Claude chỉ viết file này; ảnh và trình chơi nằm sẵn trong repo. Trường bắt đầu bằng 'gv_' chỉ hiện ở chế độ giáo viên, không chiếu cho học sinh.",
   "type": "object",
-  "required": ["phien_ban", "loai", "tieu_de", "mon", "lop", "bai", "pham_chat", "loi_ke", "lua_chon"],
+  "required": [
+    "phien_ban",
+    "loai",
+    "tieu_de",
+    "mon",
+    "lop",
+    "bai",
+    "pham_chat",
+    "loi_ke",
+    "lua_chon"
+  ],
   "additionalProperties": false,
   "properties": {
-    "phien_ban": { "const": "1.0" },
+    "phien_ban": {
+      "const": "1.0"
+    },
     "loai": {
-      "enum": ["mo-tiet", "on-bai"],
+      "enum": [
+        "mo-tiet",
+        "on-bai"
+      ],
       "description": "mo-tiet = Game loại 1 (mở tiết, kiến thức chưa học). on-bai = Game loại 2 (ôn bài, cần chứng cứ từ bài đã học)."
     },
-    "tieu_de": { "type": "string", "maxLength": 60, "description": "Tên game ngắn, gợi tò mò." },
-    "mon": { "type": "string" },
-    "lop": { "type": "string", "description": "Ví dụ: 'Mẫu giáo lớn', '5', '10'." },
-    "bai": { "type": "string", "description": "Tên bài (Game 1) hoặc bài/chương được ôn (Game 2)." },
-    "thoi_luong_phut": { "type": "integer", "minimum": 5, "maximum": 45, "description": "Mặc định 10 (mo-tiet) hoặc 15 (on-bai)." },
+    "tieu_de": {
+      "type": "string",
+      "maxLength": 60,
+      "description": "Tên game ngắn, gợi tò mò."
+    },
+    "mon": {
+      "type": "string"
+    },
+    "lop": {
+      "type": "string",
+      "description": "Ví dụ: 'Mẫu giáo lớn', '5', '10'."
+    },
+    "bai": {
+      "type": "string",
+      "description": "Tên bài (Game 1) hoặc bài/chương được ôn (Game 2)."
+    },
+    "thoi_luong_phut": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 45,
+      "description": "Mặc định 10 (mo-tiet) hoặc 15 (on-bai)."
+    },
     "kien_thuc": {
-      "type": "array", "items": { "type": "string" }, "maxItems": 4,
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 4,
       "description": "Mo-tiet: yêu cầu cần đạt game dẫn vào. On-bai: 2–4 ý kiến thức được ôn."
     },
-    "pham_chat": { "type": "string", "description": "Một phẩm chất: yêu nước, nhân ái, chăm chỉ, trung thực, trách nhiệm, hoặc giá trị gần." },
-    "boi_canh": { "type": "string", "description": "id ảnh nền trong assets/manifest.json (nhom = background)." },
+    "pham_chat": {
+      "type": "string",
+      "description": "Một phẩm chất: yêu nước, nhân ái, chăm chỉ, trung thực, trách nhiệm, hoặc giá trị gần."
+    },
+    "boi_canh": {
+      "type": "string",
+      "description": "id ảnh nền trong assets/manifest.json (nhom = background)."
+    },
     "nhan_vat": {
-      "type": "array", "maxItems": 3,
+      "type": "array",
+      "maxItems": 3,
       "items": {
-        "type": "object", "required": ["ten"], "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ten"
+        ],
+        "additionalProperties": false,
         "properties": {
-          "ten": { "type": "string" },
-          "sprite": { "type": "string", "description": "id sprite trong manifest (nhom = sprite)." }
+          "ten": {
+            "type": "string"
+          },
+          "sprite": {
+            "type": "string",
+            "description": "id sprite trong manifest (nhom = sprite)."
+          }
         }
       }
     },
-    "loi_ke": { "type": "string", "maxLength": 900, "description": "Lời kể tình huống, ≤ 120 chữ (mo-tiet) hoặc ≤ 150 chữ (on-bai)." },
-    "du_kien": { "type": "array", "items": { "type": "string" }, "maxItems": 6, "description": "Dữ kiện chính ghi bảng (số liệu, điều kiện)." },
+    "loi_ke": {
+      "type": "string",
+      "maxLength": 900,
+      "description": "Lời kể tình huống, ≤ 120 chữ (mo-tiet) hoặc ≤ 150 chữ (on-bai)."
+    },
+    "du_kien": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 6,
+      "description": "Dữ kiện chính ghi bảng (số liệu, điều kiện)."
+    },
     "lua_chon": {
-      "type": "array", "minItems": 2, "maxItems": 3,
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
       "items": {
-        "type": "object", "required": ["ma", "noi_dung"], "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ma",
+          "noi_dung"
+        ],
+        "additionalProperties": false,
         "properties": {
-          "ma": { "enum": ["A", "B", "C"] },
-          "noi_dung": { "type": "string", "maxLength": 140 },
-          "gv_cai_gia": { "type": "string", "description": "Cái giá của lựa chọn này (chỉ giáo viên xem)." },
-          "gv_kien_thuc": { "type": "string", "description": "On-bai: kiến thức bảo vệ hoặc bác bỏ lựa chọn này (chỉ giáo viên xem)." }
+          "ma": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "noi_dung": {
+            "type": "string",
+            "maxLength": 140
+          },
+          "gv_cai_gia": {
+            "type": "string",
+            "description": "Cái giá của lựa chọn này (chỉ giáo viên xem)."
+          },
+          "gv_kien_thuc": {
+            "type": "string",
+            "description": "On-bai: kiến thức bảo vệ hoặc bác bỏ lựa chọn này (chỉ giáo viên xem)."
+          }
         }
       }
     },
-    "cach_chon": { "type": "string", "description": "Cách cả lớp chọn cùng lúc, ví dụ 'giơ thẻ màu', 'ngón tay 1-2-3'." },
-    "cau_hoi_goi_mo": { "type": "array", "items": { "type": "string" }, "maxItems": 4 },
-    "buoc_ngoat": { "type": "string", "description": "Chi tiết mới làm quyết định khó hơn. Bắt buộc với mo-tiet." },
-    "cau_hoi_treo": { "type": "string", "description": "Câu hỏi của hôm nay, ghi góc bảng. Bắt buộc với mo-tiet." },
-    "cau_mau_phan_bien": { "type": "array", "items": { "type": "string" }, "maxItems": 4, "description": "On-bai: câu mẫu phản biện riêng cho tình huống." },
-    "so_do_chot": {
-      "type": "array", "maxItems": 5,
+    "cach_chon": {
+      "type": "string",
+      "description": "Cách cả lớp chọn cùng lúc, ví dụ 'giơ thẻ màu', 'ngón tay 1-2-3'."
+    },
+    "cau_hoi_goi_mo": {
+      "type": "array",
       "items": {
-        "type": "object", "required": ["kien_thuc", "dung_vao"], "additionalProperties": false,
-        "properties": { "kien_thuc": { "type": "string" }, "dung_vao": { "type": "string" } }
+        "type": "string"
+      },
+      "maxItems": 4
+    },
+    "buoc_ngoat": {
+      "type": "string",
+      "description": "Chi tiết mới làm quyết định khó hơn. Bắt buộc với mo-tiet."
+    },
+    "cau_hoi_treo": {
+      "type": "string",
+      "description": "Câu hỏi của hôm nay, ghi góc bảng. Bắt buộc với mo-tiet."
+    },
+    "cau_mau_phan_bien": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 4,
+      "description": "On-bai: câu mẫu phản biện riêng cho tình huống."
+    },
+    "so_do_chot": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "kien_thuc",
+          "dung_vao"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kien_thuc": {
+            "type": "string"
+          },
+          "dung_vao": {
+            "type": "string"
+          }
+        }
       },
       "description": "On-bai: kiến thức đã dùng → dùng vào lựa chọn nào. Hiện ở bước chốt."
     },
-    "loi_chot": { "type": "string", "description": "Câu hỏi gọi tên phẩm chất, không kết luận." },
-    "quay_lai_cuoi_tiet": { "type": "string", "description": "Mo-tiet: câu hỏi 2 phút cuối tiết." },
-    "gv_goi_y_lua_chon_d": { "type": "string", "description": "On-bai: gợi ý lựa chọn D (chỉ giáo viên xem)." },
-    "gv_hieu_lam": { "type": "array", "items": { "type": "string" }, "description": "On-bai: hiểu lầm phổ biến cần sửa ở bước chốt." },
-    "gv_ghi_chu": { "type": "string", "description": "Ghi chú khác cho giáo viên, ví dụ đáp số đã tính sẵn." }
+    "loi_chot": {
+      "type": "string",
+      "description": "Câu hỏi gọi tên phẩm chất, không kết luận."
+    },
+    "quay_lai_cuoi_tiet": {
+      "type": "string",
+      "description": "Mo-tiet: câu hỏi 2 phút cuối tiết."
+    },
+    "gv_goi_y_lua_chon_d": {
+      "type": "string",
+      "description": "On-bai: gợi ý lựa chọn D (chỉ giáo viên xem)."
+    },
+    "gv_hieu_lam": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "On-bai: hiểu lầm phổ biến cần sửa ở bước chốt."
+    },
+    "gv_ghi_chu": {
+      "type": "string",
+      "description": "Ghi chú khác cho giáo viên, ví dụ đáp số đã tính sẵn."
+    },
+    "tuong_tac": {
+      "type": "array",
+      "maxItems": 2,
+      "description": "Tuỳ chọn: tối đa 2 kiểu tương tác thêm vào nhịp chơi, mượn cơ chế từ thư viện 20 trò Hạt Mầm nhưng không chấm đúng sai, không tính điểm. Mỗi kiểu thêm một bước ở vị trí cố định; tổng thời lượng vẫn giữ theo thoi_luong_phut. Xem docs/game-spec.md mục Kiểu tương tác.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "title": "lat-du-kien",
+            "description": "Lật dần dữ kiện (từ Lật thẻ trí nhớ, Truy tìm hoá thạch). Sau mỗi thẻ hỏi lớp có đổi ý không. Chèn sau bước Kể.",
+            "required": [
+              "kieu",
+              "the"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "lat-du-kien"
+              },
+              "the": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 6,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "nhan",
+                    "noi_dung"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "nhan": {
+                      "type": "string",
+                      "maxLength": 16,
+                      "description": "Chữ ở lưng thẻ, ví dụ 'Manh mối 1'."
+                    },
+                    "noi_dung": {
+                      "type": "string",
+                      "maxLength": 120
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "title": "xep-uu-tien",
+            "description": "Xếp thứ tự ưu tiên (từ Vườn chữ diệu kỳ, Du hành vũ trụ). Không có thứ tự đúng; so sánh thứ tự giữa các nhóm. Chèn sau bước Chọn.",
+            "required": [
+              "kieu",
+              "cau_hoi",
+              "muc"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "xep-uu-tien"
+              },
+              "cau_hoi": {
+                "type": "string",
+                "maxLength": 120
+              },
+              "muc": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "maxLength": 60
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "title": "chia-nguon-luc",
+            "description": "Chia nguồn lực có hạn (từ Thành phố xanh, Bếp bánh phân số). Thấy cái giá của mỗi cách chia, không có điểm thắng. Chèn sau bước Chọn.",
+            "required": [
+              "kieu",
+              "don_vi",
+              "tong",
+              "muc"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "chia-nguon-luc"
+              },
+              "don_vi": {
+                "type": "string",
+                "maxLength": 20,
+                "description": "Ví dụ 'nghìn đồng', 'phút', 'xu'."
+              },
+              "tong": {
+                "type": "integer",
+                "minimum": 2,
+                "maximum": 1000000
+              },
+              "buoc_nhay": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Mỗi lần bấm + − đổi bao nhiêu. Mặc định 1."
+              },
+              "muc": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "ten"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "ten": {
+                      "type": "string",
+                      "maxLength": 40
+                    },
+                    "goi_y": {
+                      "type": "string",
+                      "maxLength": 80,
+                      "description": "Điều đổi lại khi dồn nhiều vào mục này."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "title": "phan-nhom",
+            "description": "Xếp từng mục vào nhóm (từ Biệt đội phân loại, Dọc miền đất Việt, Nông trại tí hon). Trình chơi không chấm; giáo viên hỏi 'vì sao xếp vào đây'. Chèn sau bước Chọn (mo-tiet) hoặc trước Chứng cứ (on-bai).",
+            "required": [
+              "kieu",
+              "nhom",
+              "muc"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "phan-nhom"
+              },
+              "cau_hoi": {
+                "type": "string",
+                "maxLength": 120
+              },
+              "nhom": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "string",
+                  "maxLength": 30
+                }
+              },
+              "muc": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 8,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "noi_dung"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "noi_dung": {
+                      "type": "string",
+                      "maxLength": 90
+                    },
+                    "gv_nhom": {
+                      "type": "string",
+                      "description": "Cách xếp giáo viên nghĩ tới và lý do (chỉ giáo viên xem)."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "title": "con-duong",
+            "description": "Con đường nhiều ngã rẽ (từ Đường về nhà). Mỗi chặng chọn một ngả, xem hệ quả rồi đi tiếp; mọi ngả đều tới đích. Chèn trước Bước ngoặt (mo-tiet) hoặc trước Phản biện (on-bai).",
+            "required": [
+              "kieu",
+              "chang"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "con-duong"
+              },
+              "chang": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "tinh_huong",
+                    "nga"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "tinh_huong": {
+                      "type": "string",
+                      "maxLength": 140
+                    },
+                    "nga": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "noi_dung",
+                          "he_qua"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "noi_dung": {
+                            "type": "string",
+                            "maxLength": 70
+                          },
+                          "he_qua": {
+                            "type": "string",
+                            "maxLength": 140
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "title": "doan-hinh",
+            "description": "Đoán chữ từ manh mối (từ Đuổi hình bắt chữ, Mật mã kho báu). Chỉ dùng cho mo-tiet: lớp đoán từ khoá của bài hôm nay trước khi hiện Câu hỏi của hôm nay.",
+            "required": [
+              "kieu",
+              "manh_moi",
+              "dap_an"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "doan-hinh"
+              },
+              "manh_moi": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "chu"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "chu": {
+                      "type": "string",
+                      "maxLength": 40
+                    },
+                    "anh": {
+                      "type": "string",
+                      "description": "id ảnh trong manifest (tuỳ chọn)."
+                    }
+                  }
+                }
+              },
+              "dap_an": {
+                "type": "string",
+                "maxLength": 40
+              }
+            }
+          },
+          {
+            "type": "object",
+            "title": "pha-tron",
+            "description": "Pha hai mảnh kiến thức thành ý mới (từ Phòng pha màu, Kỹ sư xây cầu). Học sinh chọn hai mảnh, nói ý tưởng sinh ra. Chèn trước bước Sáng tạo (on-bai).",
+            "required": [
+              "kieu",
+              "manh"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kieu": {
+                "const": "pha-tron"
+              },
+              "cau_hoi": {
+                "type": "string",
+                "maxLength": 120
+              },
+              "manh": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "maxLength": 60
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
   },
   "allOf": [
-    { "if": { "properties": { "loai": { "const": "mo-tiet" } } }, "then": { "required": ["buoc_ngoat", "cau_hoi_treo"] } },
-    { "if": { "properties": { "loai": { "const": "on-bai" } } }, "then": { "required": ["kien_thuc", "so_do_chot"] } }
+    {
+      "if": {
+        "properties": {
+          "loai": {
+            "const": "mo-tiet"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "buoc_ngoat",
+          "cau_hoi_treo"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "loai": {
+            "const": "on-bai"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "kien_thuc",
+          "so_do_chot"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "loai": {
+            "const": "on-bai"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "tuong_tac": {
+            "items": {
+              "not": {
+                "properties": {
+                  "kieu": {
+                    "const": "doan-hinh"
+                  }
+                },
+                "required": [
+                  "kieu"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "loai": {
+            "const": "mo-tiet"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "tuong_tac": {
+            "items": {
+              "not": {
+                "properties": {
+                  "kieu": {
+                    "const": "pha-tron"
+                  }
+                },
+                "required": [
+                  "kieu"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
   ]
 }

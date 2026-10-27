@@ -13,27 +13,107 @@
   ],
   "pham_chat": "trách nhiệm",
   "boi_canh": "nen-da-ngoai",
-  "nhan_vat": [{ "ten": "Hà", "sprite": "hs-nu" }],
+  "nhan_vat": [
+    {
+      "ten": "Hà",
+      "sprite": "hs-nu"
+    }
+  ],
   "loi_ke": "Nhóm của Hà đi dã ngoại, cả nhóm 6 bạn đã hết nước uống. Gần đó có một con suối nước rất trong. Hà có một chai nhựa, ít cát, sỏi và bông. Cửa hàng gần nhất cách 2 km đi bộ, trời nắng.",
-  "du_kien": ["6 bạn, hết nước uống", "Suối nước rất trong", "Có chai nhựa, cát, sỏi, bông", "Cửa hàng cách 2 km, trời nắng"],
+  "du_kien": [
+    "6 bạn, hết nước uống",
+    "Suối nước rất trong",
+    "Có chai nhựa, cát, sỏi, bông",
+    "Cửa hàng cách 2 km, trời nắng"
+  ],
   "lua_chon": [
-    { "ma": "A", "noi_dung": "Uống luôn nước suối vì nước rất trong", "gv_kien_thuc": "Bác bỏ: nước trong vẫn có thể có vi khuẩn." },
-    { "ma": "B", "noi_dung": "Lọc nước suối qua cát, sỏi, bông rồi uống", "gv_kien_thuc": "Chưa đủ: lọc chỉ loại chất bẩn không tan, không diệt vi khuẩn." },
-    { "ma": "C", "noi_dung": "Hà đi bộ 2 km mua nước cho cả nhóm", "gv_kien_thuc": "An toàn về nước, nhưng một bạn đi một mình dưới nắng có rủi ro." }
+    {
+      "ma": "A",
+      "noi_dung": "Uống luôn nước suối vì nước rất trong",
+      "gv_kien_thuc": "Bác bỏ: nước trong vẫn có thể có vi khuẩn."
+    },
+    {
+      "ma": "B",
+      "noi_dung": "Lọc nước suối qua cát, sỏi, bông rồi uống",
+      "gv_kien_thuc": "Chưa đủ: lọc chỉ loại chất bẩn không tan, không diệt vi khuẩn."
+    },
+    {
+      "ma": "C",
+      "noi_dung": "Hà đi bộ 2 km mua nước cho cả nhóm",
+      "gv_kien_thuc": "An toàn về nước, nhưng một bạn đi một mình dưới nắng có rủi ro."
+    }
   ],
   "cach_chon": "Giơ thẻ màu A, B hoặc C",
-  "cau_hoi_goi_mo": ["Chứng cứ của em lấy từ bài nào?", "Nước trong và nước sạch khác nhau thế nào?"],
+  "cau_hoi_goi_mo": [
+    "Chứng cứ của em lấy từ bài nào?",
+    "Nước trong và nước sạch khác nhau thế nào?"
+  ],
   "cau_mau_phan_bien": [
     "Lọc xong thì vi khuẩn đi đâu?",
     "Nếu nhóm có nồi và bếp thì lựa chọn của bạn có đổi không?",
     "Bạn đã tính đến chuyện Hà đi một mình dưới nắng chưa?"
   ],
   "so_do_chot": [
-    { "kien_thuc": "Nước trong chưa chắc là nước sạch", "dung_vao": "Bác bỏ lựa chọn A" },
-    { "kien_thuc": "Lọc chỉ loại chất bẩn không tan", "dung_vao": "Lựa chọn B chưa đủ" },
-    { "kien_thuc": "Đun sôi diệt vi khuẩn", "dung_vao": "Lựa chọn D: lọc rồi đun sôi" }
+    {
+      "kien_thuc": "Nước trong chưa chắc là nước sạch",
+      "dung_vao": "Bác bỏ lựa chọn A"
+    },
+    {
+      "kien_thuc": "Lọc chỉ loại chất bẩn không tan",
+      "dung_vao": "Lựa chọn B chưa đủ"
+    },
+    {
+      "kien_thuc": "Đun sôi diệt vi khuẩn",
+      "dung_vao": "Lựa chọn D: lọc rồi đun sôi"
+    }
   ],
   "loi_chot": "Khi quyết định cho cả nhóm cùng uống, thế nào là có trách nhiệm?",
   "gv_goi_y_lua_chon_d": "Lọc rồi đun sôi nếu có bếp và nồi; hoặc hai bạn cùng đi mua với Hà cho an toàn.",
-  "gv_hieu_lam": ["Nước trong là nước sạch", "Lọc xong là uống được"]
+  "gv_hieu_lam": [
+    "Nước trong là nước sạch",
+    "Lọc xong là uống được"
+  ],
+  "tuong_tac": [
+    {
+      "kieu": "phan-nhom",
+      "cau_hoi": "Mỗi việc dưới đây làm được gì cho nước suối?",
+      "nhom": [
+        "Loại chất bẩn không tan",
+        "Diệt vi khuẩn",
+        "Chưa làm nước sạch hơn"
+      ],
+      "muc": [
+        {
+          "noi_dung": "Lọc qua cát, sỏi, bông",
+          "gv_nhom": "Loại chất bẩn không tan."
+        },
+        {
+          "noi_dung": "Đun sôi",
+          "gv_nhom": "Diệt vi khuẩn."
+        },
+        {
+          "noi_dung": "Để lắng một lúc",
+          "gv_nhom": "Loại bớt chất bẩn không tan; chưa diệt vi khuẩn."
+        },
+        {
+          "noi_dung": "Nhìn thấy nước trong",
+          "gv_nhom": "Không làm nước sạch hơn: chỉ là quan sát."
+        },
+        {
+          "noi_dung": "Đổ nước vào chai sạch",
+          "gv_nhom": "Không làm nước sạch hơn."
+        }
+      ]
+    },
+    {
+      "kieu": "pha-tron",
+      "cau_hoi": "Chọn hai mảnh kiến thức. Ghép lại, em nghĩ ra cách nào cho nhóm của Hà?",
+      "manh": [
+        "Lọc qua cát, sỏi, bông",
+        "Đun sôi diệt vi khuẩn",
+        "Nước trong chưa chắc là nước sạch",
+        "Đi theo nhóm an toàn hơn đi một mình"
+      ]
+    }
+  ]
 }
