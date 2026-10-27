@@ -23,9 +23,10 @@
     "loai": {
       "enum": [
         "mo-tiet",
-        "on-bai"
+        "on-bai",
+        "sach-la-thay"
       ],
-      "description": "mo-tiet = Game loại 1 (mở tiết, kiến thức chưa học). on-bai = Game loại 2 (ôn bài, cần chứng cứ từ bài đã học)."
+      "description": "mo-tiet = Game loại 1 (mở tiết, kiến thức chưa học). on-bai = Game loại 2 (ôn bài, cần chứng cứ từ bài đã học). sach-la-thay = Game loại 3 (Sách là Thầy: học sinh phải đọc một cuốn sách mới chơi được, chứng cứ lấy từ sách)."
     },
     "tieu_de": {
       "type": "string",
@@ -41,7 +42,7 @@
     },
     "bai": {
       "type": "string",
-      "description": "Tên bài (Game 1) hoặc bài/chương được ôn (Game 2)."
+      "description": "Tên bài (Game 1), bài/chương được ôn (Game 2), hoặc bài học rút từ sách (Game 3)."
     },
     "thoi_luong_phut": {
       "type": "integer",
@@ -55,11 +56,11 @@
         "type": "string"
       },
       "maxItems": 4,
-      "description": "Mo-tiet: yêu cầu cần đạt game dẫn vào. On-bai: 2–4 ý kiến thức được ôn."
+      "description": "Mo-tiet: yêu cầu cần đạt game dẫn vào. On-bai: 2–4 ý kiến thức được ôn. Sach-la-thay: 2–4 bài học hoặc ý chính của sách."
     },
     "pham_chat": {
       "type": "string",
-      "description": "Một phẩm chất: yêu nước, nhân ái, chăm chỉ, trung thực, trách nhiệm, hoặc giá trị gần."
+      "description": "Một phẩm chất CT GDPT 2018 (yêu nước, nhân ái, chăm chỉ, trung thực, trách nhiệm) hoặc giá trị gần. Viết bằng lời dễ hiểu cho học sinh."
     },
     "boi_canh": {
       "type": "string",
@@ -178,7 +179,7 @@
           }
         }
       },
-      "description": "On-bai: kiến thức đã dùng → dùng vào lựa chọn nào. Hiện ở bước chốt."
+      "description": "On-bai: kiến thức đã dùng → dùng vào lựa chọn nào. Sach-la-thay: chi tiết/bài học trong sách → dùng vào đâu trong đời. Hiện ở bước chốt."
     },
     "loi_chot": {
       "type": "string",
@@ -386,7 +387,7 @@
           {
             "type": "object",
             "title": "con-duong",
-            "description": "Con đường nhiều ngã rẽ (từ Đường về nhà). Mỗi chặng chọn một ngả, xem hệ quả rồi đi tiếp; mọi ngả đều tới đích. Chèn trước Bước ngoặt (mo-tiet) hoặc trước Phản biện (on-bai).",
+            "description": "Con đường nhiều ngã rẽ (từ Đường về nhà). Mỗi chặng chọn một ngả, xem hệ quả rồi đi tiếp; mọi ngả đều tới đích. Chèn trước Bước ngoặt (mo-tiet) hoặc trước Phản biện (on-bai, sach-la-thay).",
             "required": [
               "kieu",
               "chang"
@@ -485,7 +486,7 @@
           {
             "type": "object",
             "title": "pha-tron",
-            "description": "Pha hai mảnh kiến thức thành ý mới (từ Phòng pha màu, Kỹ sư xây cầu). Học sinh chọn hai mảnh, nói ý tưởng sinh ra. Chèn trước bước Sáng tạo (on-bai).",
+            "description": "Pha hai mảnh kiến thức thành ý mới (từ Phòng pha màu, Kỹ sư xây cầu). Học sinh chọn hai mảnh, nói ý tưởng sinh ra. Chèn trước bước Sáng tạo (on-bai) hoặc Viết tiếp (sach-la-thay).",
             "required": [
               "kieu",
               "manh"
@@ -512,6 +513,106 @@
           }
         ]
       }
+    },
+    "chau_ngoc": {
+      "enum": [
+        "hieu-ky",
+        "thich-nghi",
+        "ben-chi",
+        "an-lac"
+      ],
+      "description": "Viên ngọc (phẩm chất thế kỷ 21 của Vietwise) game này nuôi ngầm: Hiếu kỳ, Thích nghi, Bền chí, An lạc. Chỉ giáo viên thấy; không phát huy hiệu, không chấm."
+    },
+    "ba_nhip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "biet_on"
+      ],
+      "description": "Tuỳ chọn: 30 giây mở đầu. Ba nhịp thở chậm, một câu biết ơn, một câu tự nói với mình. Thêm bước 'Lặng' trước bước đầu tiên.",
+      "properties": {
+        "biet_on": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "Câu mời biết ơn gắn với tình huống, ví dụ 'Hôm nay em biết ơn ai đã giữ cho nước mình uống được sạch?'"
+        },
+        "tu_thoai": {
+          "type": "string",
+          "maxLength": 80,
+          "description": "Câu học sinh nói thầm với mình. Mặc định: 'Mình bình tĩnh, mình tò mò, mình sẵn sàng.'"
+        }
+      }
+    },
+    "du_an_that": {
+      "type": "string",
+      "maxLength": 240,
+      "description": "On-bai và sach-la-thay: một việc thật 10–15 phút ngoài giờ, làm ra giá trị cho người khác (gia đình, lớp, cộng đồng). Hiện ở bước chốt."
+    },
+    "sach": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ten",
+        "tac_gia",
+        "phan_doc"
+      ],
+      "description": "Sach-la-thay: cuốn sách học sinh đã đọc trước buổi chơi.",
+      "properties": {
+        "ten": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "tac_gia": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "phan_doc": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "Chương hoặc trang học sinh cần đọc, ví dụ 'Chương 1–3 (trang 5–40)'."
+        },
+        "nguon_noi_dung": {
+          "enum": [
+            "gv-cung-cap",
+            "claude-biet-ro"
+          ],
+          "description": "gv-cung-cap: chi tiết lấy từ đoạn/tóm tắt giáo viên dán vào. claude-biet-ro: sách rất phổ biến và Claude chắc chắn về chi tiết. Không chắc thì phải hỏi giáo viên, không bịa chi tiết hay số trang."
+        }
+      }
+    },
+    "chia_khoa": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "description": "Sach-la-thay: 3–5 câu chỉ người đã đọc mới trả lời được. Mở đầu buổi chơi, không chấm: lớp chưa nhớ thì cùng mở trang sách đọc lại.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cau_hoi",
+          "trang"
+        ],
+        "properties": {
+          "cau_hoi": {
+            "type": "string",
+            "maxLength": 140
+          },
+          "trang": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Vị trí trong sách, ví dụ 'Chương 2, trang 18'."
+          },
+          "gv_goi_y": {
+            "type": "string",
+            "description": "Chi tiết trong sách trả lời câu này (chỉ giáo viên xem)."
+          }
+        }
+      }
+    },
+    "viet_tiep": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Sach-la-thay: lời mời sáng tạo, ví dụ 'Nếu em là tác giả, em viết tiếp chương sau thế nào để nhân vật giữ được lời hứa?'"
     }
   },
   "allOf": [
@@ -588,6 +689,50 @@
                 "properties": {
                   "kieu": {
                     "const": "pha-tron"
+                  }
+                },
+                "required": [
+                  "kieu"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "loai": {
+            "const": "sach-la-thay"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "sach",
+          "chia_khoa",
+          "kien_thuc",
+          "so_do_chot"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "loai": {
+            "const": "sach-la-thay"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "tuong_tac": {
+            "items": {
+              "not": {
+                "properties": {
+                  "kieu": {
+                    "const": "doan-hinh"
                   }
                 },
                 "required": [

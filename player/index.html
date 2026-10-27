@@ -151,6 +151,14 @@
   .pha .ket { border-color: var(--vang); background: rgba(249, 193, 45, .18); }
   .muc-chon button.da-chon { border: 2px solid var(--cam); }
 
+  /* Lặng, gương, chìa khoá sách */
+  .lang { text-align: center; padding-top: 4vh; }
+  .vong-tho { width: 160px; height: 160px; margin: 0 auto 24px; border-radius: 50%; background: rgba(78, 159, 46, .18); border: 3px solid var(--xanh); animation: tho 8s ease-in-out 3; }
+  @keyframes tho { 0%, 100% { transform: scale(.7); } 50% { transform: scale(1.1); } }
+  .guong .ba-cau { display: flex; gap: 12px; flex-wrap: wrap; font-size: clamp(18px, 1.7vw, 22px); }
+  .guong .ba-cau span { background: var(--nhan-nhat); border-radius: 999px; padding: 6px 16px; }
+  .mo-trang { display: block; margin-top: 6px; font-size: .75em; color: var(--xanh); }
+
   /* Chế độ giáo viên */
   #gv { position: fixed; top: 0; right: 0; width: min(420px, 92vw); height: 100vh; overflow: auto; background: var(--kem); border-left: 4px solid var(--xanh); padding: 18px 20px; box-shadow: -8px 0 24px rgba(0,0,0,.12); z-index: 10; }
   #gv h2 { margin: 0 0 4px; font-size: 20px; }
@@ -161,6 +169,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .the .trong, .thanh span, .an-di { transition: none; }
+    .vong-tho { animation: none; }
     #dong-ho.het { animation: none; }
   }
   @media (max-width: 760px) {
@@ -194,6 +203,7 @@
     <button data-mau="../examples/mo-tiet-toan5-ti-so-phan-tram.json">Mẫu Game 1: mở tiết</button>
     <button data-mau="../examples/mo-tiet-khoahoc5-tiet-kiem-dien.json">Mẫu Game 1: tiết kiệm điện</button>
     <button data-mau="../examples/on-bai-khoahoc4-nuoc.json">Mẫu Game 2: ôn bài</button>
+    <button data-mau="../examples/sach-la-thay-van6-de-men.json">Mẫu Game 3: Sách là Thầy</button>
   </div>
   <div id="loi"></div>
 </section>
@@ -258,8 +268,19 @@
       { id: 'phan-bien', ten: 'Phản biện', phut: 4 },
       { id: 'sang-tao', ten: 'Sáng tạo', phut: 2 },
       { id: 'chot', ten: 'Chốt kiến thức', phut: 2 }
+    ],
+    'sach-la-thay': [
+      { id: 'chia-khoa', ten: 'Chìa khoá sách', phut: 3 },
+      { id: 'ke', ten: 'Kể', phut: 1 },
+      { id: 'chon', ten: 'Chọn', phut: 2 },
+      { id: 'trang-sach', ten: 'Sách nói gì', phut: 4 },
+      { id: 'phan-bien', ten: 'Phản biện', phut: 4 },
+      { id: 'viet-tiep', ten: 'Viết tiếp', phut: 3 },
+      { id: 'chot', ten: 'Chốt bài học', phut: 3 }
     ]
   };
+  const TEN_LOAI = { 'mo-tiet': 'Game mở tiết', 'on-bai': 'Game ôn bài', 'sach-la-thay': 'Game Sách là Thầy' };
+  const CHAU_NGOC = { 'hieu-ky': 'Hiếu kỳ', 'thich-nghi': 'Thích nghi', 'ben-chi': 'Bền chí', 'an-lac': 'An lạc' };
 
   // ---------- Kiểu tương tác (mượn cơ chế từ 20 trò Hạt Mầm, không chấm điểm) ----------
   // truoc/sau: chèn trước hoặc sau bước có id đó; bước đầu tiên tìm thấy được dùng.
@@ -269,8 +290,8 @@
     'chia-nguon-luc': { ten: 'Chia nguồn lực', phut: 2, sau: ['chon'] },
     'phan-nhom':      { ten: 'Xếp nhóm', phut: 2.5, sau: ['chon'] },
     'con-duong':      { ten: 'Con đường', phut: 2, truoc: ['buoc-ngoat', 'phan-bien'] },
-    'doan-hinh':      { ten: 'Đoán chữ', phut: 1.5, truoc: ['treo'], chiCho: 'mo-tiet' },
-    'pha-tron':       { ten: 'Pha ý', phut: 2, truoc: ['sang-tao'], chiCho: 'on-bai' }
+    'doan-hinh':      { ten: 'Đoán chữ', phut: 1.5, truoc: ['treo'], chiCho: ['mo-tiet'] },
+    'pha-tron':       { ten: 'Pha ý', phut: 2, truoc: ['sang-tao', 'viet-tiep'], chiCho: ['on-bai', 'sach-la-thay'] }
   };
   const MAU_NHOM = ['var(--cam)', 'var(--xanh)', 'var(--blue)', 'var(--vang)', 'var(--do)'];
 
@@ -281,8 +302,10 @@
     const batBuoc = ['loai', 'tieu_de', 'mon', 'lop', 'bai', 'pham_chat', 'loi_ke', 'lua_chon'];
     if (g.loai === 'mo-tiet') batBuoc.push('buoc_ngoat', 'cau_hoi_treo');
     if (g.loai === 'on-bai') batBuoc.push('kien_thuc', 'so_do_chot');
+    if (g.loai === 'sach-la-thay') batBuoc.push('sach', 'chia_khoa', 'kien_thuc', 'so_do_chot');
     for (const k of batBuoc) if (g[k] == null || g[k] === '') loi.push(`Thiếu trường "${k}".`);
-    if (g.loai && !NHIP[g.loai]) loi.push(`"loai" phải là "mo-tiet" hoặc "on-bai", đang là "${g.loai}".`);
+    if (g.loai && !NHIP[g.loai]) loi.push(`"loai" phải là "mo-tiet", "on-bai" hoặc "sach-la-thay", đang là "${g.loai}".`);
+    if (g.loai === 'sach-la-thay' && Array.isArray(g.chia_khoa) && g.chia_khoa.length < 3) loi.push('"chia_khoa" cần ít nhất 3 câu.');
     if (g.lua_chon && (!Array.isArray(g.lua_chon) || g.lua_chon.length < 2 || g.lua_chon.length > 3)) loi.push('"lua_chon" phải có 2 hoặc 3 lựa chọn.');
     if (Array.isArray(g.lua_chon)) g.lua_chon.forEach((c, i) => { if (!c || !c.ma || !c.noi_dung) loi.push(`Lựa chọn thứ ${i + 1} thiếu "ma" hoặc "noi_dung".`); });
     if (g.tuong_tac != null) {
@@ -290,7 +313,7 @@
       else g.tuong_tac.forEach((x, i) => {
         const k = x && TUONG_TAC[x.kieu];
         if (!k) return loi.push(`Kiểu tương tác thứ ${i + 1} không có trong danh sách: "${x && x.kieu}".`);
-        if (k.chiCho && k.chiCho !== g.loai) loi.push(`Kiểu tương tác "${x.kieu}" chỉ dùng cho ${k.chiCho === 'mo-tiet' ? 'game mở tiết' : 'game ôn bài'}.`);
+        if (k.chiCho && !k.chiCho.includes(g.loai)) loi.push(`Kiểu tương tác "${x.kieu}" chỉ dùng cho ${k.chiCho.map(l => TEN_LOAI[l]).join(' hoặc ')}.`);
         const can = { 'lat-du-kien': ['the'], 'xep-uu-tien': ['muc'], 'chia-nguon-luc': ['tong', 'muc'], 'phan-nhom': ['nhom', 'muc'], 'con-duong': ['chang'], 'doan-hinh': ['manh_moi', 'dap_an'], 'pha-tron': ['manh'] }[x.kieu];
         for (const f of can) if (x[f] == null || (Array.isArray(x[f]) && !x[f].length)) loi.push(`Kiểu tương tác "${x.kieu}" thiếu "${f}".`);
       });
@@ -329,6 +352,7 @@
   function batDau(g) {
     game = g;
     const nhip = NHIP[g.loai].map(b => ({ ...b }));
+    if (g.ba_nhip) nhip.unshift({ id: 'lang', ten: 'Lặng', phut: 0.5 });
     const mucTieu = g.thoi_luong_phut || nhip.reduce((s, b) => s + b.phut, 0);
     (g.tuong_tac || []).forEach((x, i) => {
       const k = TUONG_TAC[x.kieu];
@@ -353,7 +377,7 @@
     $('nap').classList.add('an');
     $('choi').classList.remove('an');
     $('ten-game').textContent = g.tieu_de;
-    $('mo-ta').textContent = `${g.mon} ${g.lop} · ${g.bai} · ${buoc.reduce((s, b) => s + b.phut, 0)} phút · ${g.loai === 'mo-tiet' ? 'Game mở tiết' : 'Game ôn bài'}`;
+    $('mo-ta').textContent = `${g.mon} ${g.lop} · ${g.bai} · ${buoc.reduce((s, b) => s + b.phut, 0)} phút · ${TEN_LOAI[g.loai]}`;
     document.title = g.tieu_de;
     veGiaoVien();
     sangBuoc(0);
@@ -407,7 +431,38 @@
     return h('div', { class: 'bo-the' }, ds);
   }
 
+  const sachTen = () => `${game.sach.ten} · ${game.sach.tac_gia} · ${game.sach.phan_doc}`;
+  const guongThan = () => h('div', { class: 'hop guong', style: 'margin-top:24px' },
+    h('div', { class: 'nhan' }, 'Soi gương trước khi về'),
+    h('div', { class: 'ba-cau' }, ['Một điều vui', 'Một điều khó', 'Hôm nay mình đã giúp được ai?'].map(c => h('span', {}, c))));
+
   const VE = {
+    'lang': () => h('div', { class: 'lang' },
+      h('div', { class: 'vong-tho', 'aria-hidden': 'true' }),
+      h('p', { class: 'chu-lon' }, 'Ba nhịp thở chậm. Hít vào… thở ra…'),
+      h('p', { class: 'chu-lon', style: 'color:var(--cam)' }, game.ba_nhip.biet_on),
+      h('p', { class: 'huong-dan' }, 'Nói thầm với mình: ', h('span', { class: 'to' }, game.ba_nhip.tu_thoai || 'Mình bình tĩnh, mình tò mò, mình sẵn sàng.'))),
+    'chia-khoa': () => {
+      const da = tt['ck'] || (tt['ck'] = new Set());
+      return h('div', {},
+        tieuDe('Chìa khoá sách', 'Ai đã đọc sẽ nhớ. Chưa nhớ thì cả lớp cùng mở sách đọc lại, không sao cả.'),
+        h('p', { class: 'nhan' }, sachTen()),
+        h('div', { class: 'muc-chon' }, game.chia_khoa.map((c, j) => h('button', { class: da.has(j) ? 'co' : '',
+          onclick: () => { da.has(j) ? da.delete(j) : da.add(j); veLai(); } },
+          h('span', { class: 'so-thu-tu' }, j + 1),
+          h('span', {}, c.cau_hoi, da.has(j) ? h('span', { class: 'mo-trang' }, ' Mở sách: ' + c.trang) : null)))));
+    },
+    'trang-sach': () => h('div', {},
+      tieuDe('Sách nói gì?', 'Làm theo cặp. Chứng cứ phải lấy từ sách: chương nào, đoạn nào, nhân vật nói hay làm gì.'),
+      h('div', { class: 'khung' },
+        h('div', { class: 'hop' }, h('h3', {}, 'Chọn'), h('p', {}, 'Em/nhóm chọn A, B hay C?')),
+        h('div', { class: 'hop' }, h('h3', {}, 'Chi tiết trong sách'), h('p', {}, 'Ghi rõ chương, đoạn. Đọc to một câu nếu cần.')),
+        h('div', { class: 'hop' }, h('h3', {}, 'Lập luận'), h('p', {}, 'Chi tiết đó giúp em hiểu tình huống này thế nào?'))),
+      game.cau_hoi_goi_mo && game.cau_hoi_goi_mo.length ? h('div', { class: 'hop', style: 'margin-top:20px' }, h('ol', { class: 'cau-hoi', style: 'font-size:22px' }, game.cau_hoi_goi_mo.map(c => h('li', {}, c)))) : null,
+      h('div', { class: 'hop ds-chon' }, game.lua_chon.map(c => h('div', {}, h('b', {}, c.ma + '.'), ' ', c.noi_dung)))),
+    'viet-tiep': () => h('div', {},
+      tieuDe('Nếu em là tác giả…', game.viet_tiep || 'Em sẽ viết tiếp thế nào? Lựa chọn D của lớp mình là gì?'),
+      boThe({ lat: true, coD: true })),
     'ke': () => {
       const nen = duongAnh(game.boi_canh);
       return h('div', {},
@@ -453,9 +508,11 @@
       tieuDe('Có lựa chọn D nào tốt hơn không?', 'Đề xuất của lớp mình, giải thích bằng kiến thức đã học.'),
       boThe({ lat: true, coD: true })),
     'chot': () => h('div', {},
-      tieuDe('Kiến thức mình đã dùng', 'Ghi sơ đồ vào vở.'),
+      tieuDe(game.loai === 'sach-la-thay' ? 'Sách đã dạy mình điều gì' : 'Kiến thức mình đã dùng', 'Ghi sơ đồ vào vở.'),
       h('div', { class: 'so-do' }, (game.so_do_chot || []).flatMap(s => [h('div', { class: 'kt' }, s.kien_thuc), h('div', { class: 'mui' }, '→'), h('div', { class: 'dv' }, s.dung_vao)])),
-      game.loi_chot ? h('p', { class: 'pham-chat' }, game.loi_chot) : null)
+      game.loi_chot ? h('p', { class: 'pham-chat' }, game.loi_chot) : null,
+      game.du_an_that ? h('div', { class: 'hop', style: 'margin-top:20px' }, h('div', { class: 'nhan' }, 'Việc thật tuần này'), h('div', { style: 'font-size:clamp(18px,1.8vw,24px)' }, game.du_an_that)) : null,
+      guongThan())
   };
 
   // ---------- Vẽ các kiểu tương tác ----------
@@ -566,8 +623,10 @@
   function veGiaoVien() {
     const g = game, phan = [];
     phan.push(h('h2', {}, 'Chế độ giáo viên'), h('p', { class: 'canh-bao' }, 'Đừng chiếu phần này cho học sinh. Bấm G để ẩn.'));
-    if (g.kien_thuc && g.kien_thuc.length) phan.push(h('h3', {}, g.loai === 'mo-tiet' ? 'Kiến thức sẽ mở' : 'Kiến thức được ôn'), h('ul', {}, g.kien_thuc.map(k => h('li', {}, k))));
-    phan.push(h('h3', {}, 'Phẩm chất đi kèm'), h('p', {}, g.pham_chat));
+    if (g.sach) phan.push(h('h3', {}, 'Sách'), h('p', {}, sachTen()), g.sach.nguon_noi_dung === 'claude-biet-ro' ? h('p', { class: 'phu' }, 'Chi tiết do Claude soạn từ hiểu biết chung: đối chiếu với bản sách của lớp.') : null);
+    if (g.kien_thuc && g.kien_thuc.length) phan.push(h('h3', {}, { 'mo-tiet': 'Kiến thức sẽ mở', 'on-bai': 'Kiến thức được ôn', 'sach-la-thay': 'Bài học từ sách' }[g.loai]), h('ul', {}, g.kien_thuc.map(k => h('li', {}, k))));
+    phan.push(h('h3', {}, 'Phẩm chất đi kèm'), h('p', {}, g.pham_chat, g.chau_ngoc ? h('span', { class: 'phu' }, ` · viên ngọc nuôi ngầm: ${CHAU_NGOC[g.chau_ngoc]}`) : null));
+    if (g.chia_khoa) phan.push(h('h3', {}, 'Chìa khoá sách: chi tiết để đối chiếu'), h('ol', {}, g.chia_khoa.map(c => h('li', {}, c.cau_hoi, h('div', { class: 'phu' }, `${c.trang}${c.gv_goi_y ? ' · ' + c.gv_goi_y : ''}`)))));
     phan.push(h('h3', {}, 'Các lựa chọn'), h('ul', {}, g.lua_chon.map(c => h('li', {}, h('b', {}, `${c.ma}. `), c.noi_dung,
       c.gv_cai_gia ? h('div', {}, h('span', { class: 'phu' }, 'Cái giá: '), c.gv_cai_gia) : null,
       c.gv_kien_thuc ? h('div', {}, h('span', { class: 'phu' }, 'Kiến thức: '), c.gv_kien_thuc) : null))));
@@ -575,7 +634,7 @@
       if (x.kieu === 'phan-nhom' && x.muc.some(m => m.gv_nhom)) phan.push(h('h3', {}, 'Xếp nhóm: cách giáo viên nghĩ tới'), h('ul', {}, x.muc.filter(m => m.gv_nhom).map(m => h('li', {}, m.noi_dung, h('div', { class: 'phu' }, m.gv_nhom)))));
       if (x.kieu === 'doan-hinh') phan.push(h('h3', {}, 'Đoán chữ: từ khoá'), h('p', {}, x.dap_an));
     }
-    if (g.buoc_ngoat && g.loai === 'on-bai') phan.push(h('h3', {}, 'Bước ngoặt (bản mở rộng)'), h('p', {}, g.buoc_ngoat));
+    if (g.buoc_ngoat && g.loai !== 'mo-tiet') phan.push(h('h3', {}, 'Bước ngoặt (bản mở rộng)'), h('p', {}, g.buoc_ngoat));
     if (g.gv_goi_y_lua_chon_d) phan.push(h('h3', {}, 'Gợi ý lựa chọn D'), h('p', {}, g.gv_goi_y_lua_chon_d));
     if (g.gv_hieu_lam && g.gv_hieu_lam.length) phan.push(h('h3', {}, 'Hiểu lầm cần sửa khi chốt'), h('ul', {}, g.gv_hieu_lam.map(x => h('li', {}, x))));
     if (g.quay_lai_cuoi_tiet) phan.push(h('h3', {}, 'Quay lại cuối tiết'), h('p', {}, g.quay_lai_cuoi_tiet));

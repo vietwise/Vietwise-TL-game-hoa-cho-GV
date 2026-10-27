@@ -1,0 +1,144 @@
+{
+  "phien_ban": "1.0",
+  "loai": "sach-la-thay",
+  "tieu_de": "Trò đùa sau giờ ra chơi",
+  "mon": "Ngữ văn",
+  "lop": "6",
+  "bai": "Bài học đường đời đầu tiên: nghĩ trước khi đùa, sống có trách nhiệm với người khác",
+  "thoi_luong_phut": 20,
+  "sach": {
+    "ten": "Dế Mèn phiêu lưu ký",
+    "tac_gia": "Tô Hoài",
+    "phan_doc": "Chương 1",
+    "nguon_noi_dung": "claude-biet-ro"
+  },
+  "kien_thuc": [
+    "Thói hung hăng, xốc nổi có thể gây hậu quả cho người khác và cho chính mình",
+    "Biết hối hận và sửa mình là bước đầu của trưởng thành",
+    "Lời khuyên của Dế Choắt: có óc phải biết nghĩ"
+  ],
+  "pham_chat": "trách nhiệm",
+  "chau_ngoc": "thich-nghi",
+  "ba_nhip": {
+    "biet_on": "Em biết ơn một người bạn từng nhắc em dừng lại đúng lúc."
+  },
+  "chia_khoa": [
+    {
+      "cau_hoi": "Khi mới lớn, Dế Mèn tự thấy mình thế nào và hay cư xử ra sao với hàng xóm?",
+      "trang": "Chương 1, đoạn đầu",
+      "gv_goi_y": "Khoẻ, đẹp, càng mẫm bóng, vuốt nhọn; tự cho là giỏi, hay cà khịa với bà con trong xóm."
+    },
+    {
+      "cau_hoi": "Dế Choắt nhờ Dế Mèn việc gì, và Dế Mèn trả lời thế nào?",
+      "trang": "Chương 1, đoạn sang nhà Dế Choắt",
+      "gv_goi_y": "Nhờ đào ngách thông sang nhà Mèn để có lối chạy khi gặp nguy; Mèn từ chối và nói lời coi thường."
+    },
+    {
+      "cau_hoi": "Dế Mèn đã trêu chị Cốc bằng cách nào? Ai phải chịu hậu quả?",
+      "trang": "Chương 1, đoạn trêu chị Cốc",
+      "gv_goi_y": "Hát trêu rồi chui vào hang; chị Cốc tưởng Dế Choắt nên mổ Dế Choắt."
+    },
+    {
+      "cau_hoi": "Trước khi mất, Dế Choắt khuyên Dế Mèn điều gì?",
+      "trang": "Chương 1, đoạn cuối",
+      "gv_goi_y": "Ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình."
+    },
+    {
+      "cau_hoi": "Sau đó Dế Mèn làm gì và cảm thấy thế nào?",
+      "trang": "Chương 1, đoạn cuối",
+      "gv_goi_y": "Chôn Dế Choắt, đắp mộ, đứng lặng hồi lâu, ân hận; nhận ra bài học đường đời đầu tiên."
+    }
+  ],
+  "boi_canh": "nen-lop-hoc",
+  "nhan_vat": [
+    {
+      "ten": "Minh",
+      "sprite": "hs-nam"
+    }
+  ],
+  "loi_ke": "Minh khoẻ nhất lớp 6A và rất thích đùa. Giờ ra chơi, Minh rủ cả nhóm giấu cặp của một anh lớp 8 nổi tiếng nóng tính, \"để xem anh ấy cuống lên thế nào\". Tuấn, bạn nhỏ người nhất nhóm, đang ngồi ngay cạnh chiếc cặp. Chuông sắp reo. Em đang ở trong nhóm.",
+  "du_kien": [
+    "Minh khoẻ, thích đùa",
+    "Anh lớp 8 nóng tính",
+    "Tuấn ngồi cạnh chiếc cặp",
+    "Chuông sắp reo"
+  ],
+  "lua_chon": [
+    {
+      "ma": "A",
+      "noi_dung": "Đi theo cho vui, chỉ là trò đùa thôi",
+      "gv_kien_thuc": "Giống Dế Mèn trêu chị Cốc: người gần nhất (Tuấn) có thể phải chịu hậu quả."
+    },
+    {
+      "ma": "B",
+      "noi_dung": "Can Minh và nói rõ vì sao trò này có thể làm hại Tuấn",
+      "gv_cai_gia": "Có thể bị nhóm chê là nhát."
+    },
+    {
+      "ma": "C",
+      "noi_dung": "Không tham gia, lặng lẽ đi chỗ khác",
+      "gv_cai_gia": "An toàn cho mình, nhưng Tuấn vẫn có thể gặp chuyện."
+    }
+  ],
+  "cach_chon": "Giơ thẻ màu A, B hoặc C",
+  "cau_hoi_goi_mo": [
+    "Chi tiết nào trong Chương 1 giúp em quyết định? Ở đoạn nào?",
+    "Dế Choắt giống ai trong câu chuyện của Minh?"
+  ],
+  "cau_mau_phan_bien": [
+    "Dế Mèn cũng nghĩ đó chỉ là trò đùa. Vậy khác gì?",
+    "Nếu chọn C, Tuấn có an toàn không?",
+    "Can bạn thế nào để Minh nghe mà không mất mặt?"
+  ],
+  "viet_tiep": "Nếu được viết lại đoạn trêu chị Cốc, em sẽ để Dế Mèn làm gì khác? Câu chuyện của Minh sẽ đổi thế nào?",
+  "so_do_chot": [
+    {
+      "kien_thuc": "Dế Mèn trêu chị Cốc, Dế Choắt chịu hậu quả",
+      "dung_vao": "Trò đùa của Minh có thể làm Tuấn bị hại"
+    },
+    {
+      "kien_thuc": "Lời khuyên của Dế Choắt: có óc phải biết nghĩ",
+      "dung_vao": "Nghĩ hậu quả trước khi đùa"
+    },
+    {
+      "kien_thuc": "Dế Mèn hối hận và tự rút bài học",
+      "dung_vao": "Sai rồi thì nhận và sửa, không đổ lỗi"
+    }
+  ],
+  "loi_chot": "Một người bạn có trách nhiệm sẽ nghĩ gì trước khi bày một trò đùa?",
+  "du_an_that": "Viết một tấm thiệp ngắn cảm ơn một người từng nhắc em dừng lại đúng lúc, và trao tận tay trong tuần này.",
+  "tuong_tac": [
+    {
+      "kieu": "con-duong",
+      "chang": [
+        {
+          "tinh_huong": "Em nói với Minh: \"Thôi, đừng.\" Minh cười: \"Nhát thế!\"",
+          "nga": [
+            {
+              "noi_dung": "Im lặng, đứng sang một bên",
+              "he_qua": "Minh vẫn rủ được hai bạn khác. Tuấn vẫn ngồi đó."
+            },
+            {
+              "noi_dung": "Kể cho Minh nghe chuyện Dế Mèn và Dế Choắt",
+              "he_qua": "Minh khựng lại: \"Ừ… anh ấy mà tưởng Tuấn làm thì toi.\""
+            }
+          ]
+        },
+        {
+          "tinh_huong": "Chuông reo. Anh lớp 8 quay lại, nhìn quanh tìm cặp.",
+          "nga": [
+            {
+              "noi_dung": "Cả nhóm im lặng đi về lớp",
+              "he_qua": "Anh ấy hỏi Tuấn, Tuấn sợ hãi không biết trả lời."
+            },
+            {
+              "noi_dung": "Em hoặc Minh đến nói thật và trả lại cặp",
+              "he_qua": "Anh ấy bực, nhưng không ai bị oan. Minh thở phào."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "gv_ghi_chu": "Đối chiếu câu chữ và vị trí chi tiết với bản sách lớp đang dùng. Không chấm phần Chìa khoá sách: em nào chưa nhớ thì cả lớp mở sách đọc lại đoạn đó."
+}

@@ -57,9 +57,30 @@ Tài liệu này dành cho ba nhóm người: **người viết skill/nội dung
 - Mỗi lựa chọn nên có `gv_kien_thuc`, ghi kiến thức nào bảo vệ hoặc bác bỏ lựa chọn đó.
 - Ít nhất một lựa chọn phải dựa trên một hiểu lầm phổ biến, và hiểu lầm đó được ghi trong `gv_hieu_lam`.
 
+## 4A. Game loại 3 — Sách là Thầy (`"loai": "sach-la-thay"`)
+
+**Mục tiêu:** học sinh **phải đọc một cuốn sách** (hoặc một phần sách) trước buổi chơi thì mới chơi được, và **phải hiểu sách** thì mới bảo vệ được lựa chọn. Sách trở thành "người thầy": chứng cứ lấy từ chi tiết trong sách, rồi đem bài học của sách vào một tình huống thật của học sinh. Không thi đua, không chấm điểm, kể cả phần kiểm tra đã đọc.
+
+**Hai lớp hiểu:** (1) *hiểu chuyện*: nhân vật làm gì, vì sao, hệ quả ra sao; (2) *hiểu bài học*: đem điều sách dạy vào đời mình. Phần Chìa khoá sách lo lớp (1), các bước sau lo lớp (2).
+
+| # | Bước | Phút | Màn hình hiển thị | Trường JSON | Giáo viên | Học sinh |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Chìa khoá sách | 3 | Tên sách và 3–5 câu chỉ người đã đọc mới trả lời được. Chạm câu nào thì hiện "Mở sách: chương/đoạn" | `sach`, `chia_khoa` | Hỏi từng câu, mời nhiều em nhớ lại. Chưa ai nhớ thì cả lớp mở sách đọc đoạn đó | Nhớ lại, kể bằng lời mình |
+| 2 | Kể | 1 | Tình huống thật của học sinh, giống tình huống trong sách | `loi_ke`, `du_kien`, `boi_canh`, `nhan_vat` | Đọc | Nghe |
+| 3 | Chọn | 2 | Thẻ úp A/B/C | `lua_chon`, `cach_chon` | Lật thẻ | Chọn cá nhân |
+| 4 | Sách nói gì | 4 | Khung Chọn – Chi tiết trong sách – Lập luận | `cau_hoi_goi_mo` | Đi quanh lớp, hỏi "ở đoạn nào?" | Theo cặp, mở sách tìm chi tiết |
+| 5 | Phản biện | 4 | Câu mẫu phản biện | `cau_mau_phan_bien` | Mời 2–3 cặp | Chất vấn lập luận bằng chi tiết sách |
+| 6 | Viết tiếp | 3 | Lời mời "Nếu em là tác giả…" và thẻ D | `viet_tiep`, `gv_goi_y_lua_chon_d` | Mời ý sáng tạo | Đề xuất kết thúc khác hoặc lựa chọn D |
+| 7 | Chốt bài học | 3 | Sơ đồ chi tiết sách → dùng vào đời, câu phẩm chất, việc thật tuần này, soi gương | `so_do_chot`, `loi_chot`, `du_an_that` | Sửa chỗ hiểu sai về sách | Ghi sơ đồ, nhận việc thật |
+
+- Tổng mặc định **20 phút**. Hợp với tiết Đọc mở rộng, tiết Ngữ văn, sinh hoạt lớp, hoặc câu lạc bộ đọc sách.
+- **Thật thà về nội dung sách:** Claude chỉ dùng chi tiết khi chắc chắn (sách rất phổ biến, ghi `nguon_noi_dung: "claude-biet-ro"`) hoặc khi giáo viên dán đoạn/tóm tắt (`"gv-cung-cap"`). Không bịa chi tiết, không bịa số trang: nếu không chắc thì ghi vị trí theo chương hoặc đoạn, và ghi chú giáo viên đối chiếu. Trích dẫn tối đa một hai câu ngắn, không chép dài nội dung sách.
+- **Đã đọc chưa?** Không dùng điểm để ép đọc. Game tự đòi đọc vì chứng cứ phải lấy từ sách. Em chưa đọc vẫn ngồi cùng cặp và được mở sách trong lớp.
+- Giao sách trước ít nhất một tuần, chia phần đọc vừa sức (tiểu học: 1 truyện ngắn hoặc 1–2 chương; THCS: 2–4 chương).
+
 ## 5. Thời lượng
 
-Nhịp mặc định: Game 1 tổng **10 phút**, Game 2 tổng **15 phút**. Khi có `thoi_luong_phut`, trình chơi chia lại thời gian theo tỉ lệ, làm tròn đến 0,5 phút, mỗi bước tối thiểu 0,5 phút. Đồng hồ chỉ đếm ngược và nhấp nháy khi hết giờ, không có âm thanh và không tự sang bước.
+Nhịp mặc định: Game 1 tổng **10 phút**, Game 2 tổng **15 phút**, Game 3 tổng **20 phút**. Nếu có `ba_nhip`, thêm bước Lặng 30 giây ở đầu, nằm trong tổng thời lượng. Khi có `thoi_luong_phut`, trình chơi chia lại thời gian theo tỉ lệ, làm tròn đến 0,5 phút, mỗi bước tối thiểu 0,5 phút. Đồng hồ chỉ đếm ngược và nhấp nháy khi hết giờ, không có âm thanh và không tự sang bước.
 
 ---
 
@@ -70,7 +91,7 @@ Bản chuẩn nằm ở `schema/game-spec.schema.json`. Cột "Ai thấy" cho bi
 | Trường | Kiểu | Bắt buộc | Giới hạn | Ai thấy | Ghi chú |
 | --- | --- | --- | --- | --- | --- |
 | `phien_ban` | chuỗi | cả hai | `"1.0"` | — | Tăng khi khung đổi kiểu không tương thích |
-| `loai` | chuỗi | cả hai | `mo-tiet` \| `on-bai` | HS | |
+| `loai` | chuỗi | mọi loại | `mo-tiet` \| `on-bai` \| `sach-la-thay` | HS | |
 | `tieu_de` | chuỗi | cả hai | ≤ 60 ký tự | HS | Tên ngắn, gợi tò mò |
 | `mon`, `lop`, `bai` | chuỗi | cả hai | | HS | Hiện ở đầu màn hình |
 | `thoi_luong_phut` | số nguyên | không | 5–45 | HS | |
@@ -92,6 +113,13 @@ Bản chuẩn nằm ở `schema/game-spec.schema.json`. Cột "Ai thấy" cho bi
 | `gv_goi_y_lua_chon_d` | chuỗi | không | | GV | Game 2 |
 | `gv_hieu_lam` | mảng chuỗi | không | | GV | Game 2 |
 | `gv_ghi_chu` | chuỗi | không | | GV | Ví dụ: đáp số đã tính sẵn |
+| `sach` | `{ten, tac_gia, phan_doc, nguon_noi_dung?}` | Game 3 | | HS | `nguon_noi_dung`: `gv-cung-cap` \| `claude-biet-ro` |
+| `chia_khoa[]` | `{cau_hoi, trang, gv_goi_y?}` | Game 3 | 3–5 | HS (trừ `gv_`) | Chỉ người đã đọc mới trả lời được |
+| `viet_tiep` | chuỗi | không | ≤ 200 ký tự | HS | Game 3 |
+| `chau_ngoc` | chuỗi | không | `hieu-ky` \| `thich-nghi` \| `ben-chi` \| `an-lac` | GV | Viên ngọc game nuôi ngầm (mục 14) |
+| `ba_nhip` | `{biet_on, tu_thoai?}` | không | | HS | 30 giây: ba nhịp thở, một câu biết ơn, một câu tự nói |
+| `du_an_that` | chuỗi | không | ≤ 240 ký tự | HS | Game 2, 3: việc thật 10–15 phút ngoài giờ |
+| `tuong_tac[]` | xem mục 12 | không | ≤ 2 | HS | |
 
 Quy tắc khác:
 
@@ -175,7 +203,7 @@ Mặt trước thẻ do trình chơi tự vẽ bằng màu thương hiệu (mụ
 
 - Thêm trường tuỳ chọn hoặc thêm ảnh: không đổi `phien_ban`.
 - Đổi tên trường, bỏ trường, hoặc đổi trường tuỳ chọn thành bắt buộc: tăng `phien_ban` (ví dụ `"2.0"`). Trình chơi phải đọc được mọi phiên bản còn hỗ trợ.
-- Thêm loại game mới (loại 3, 4…): thêm giá trị vào `loai`, thêm nhịp bước ở mục 3–4 và trong trình chơi, cùng ít nhất một ví dụ trong `examples/`.
+- Thêm loại game mới (loại 4 trở đi): thêm giá trị vào `loai`, thêm nhịp bước ở mục 3–4 và trong trình chơi, cùng ít nhất một ví dụ trong `examples/`.
 
 ## 11. Kiểm tra chất lượng nội dung (trước khi đăng)
 
@@ -237,3 +265,41 @@ Theo wiki "Bộ Màu Vườn Game-Học Vietwise". Chỉ dùng **6 màu** và tr
 - **Bo góc** (theo Hạt Mầm): thẻ 12 px, khung kể chuyện 17 px, nút 8 px.
 - **Tương phản:** chữ trên thẻ màu từ 24 px trở lên. Chữ trên Vàng dùng Blue, không dùng trắng.
 - **Ảnh vẽ** nên dùng cùng 6 màu này làm màu chủ đạo để khớp với trình chơi.
+
+## 14. Nền Vietwise cài ngầm trong mọi game
+
+Bộ game giáo viên mang triết lý của Vườn Game-học Vietwise (founder Lê Nhất Phương Hồng), nhưng **cài ngầm**: học sinh không nghe giảng về triết lý, các em gặp nó qua cách game vận hành. Nguồn: wiki game-học (Chuẩn Game-Học Tác Tạo, SPARK, Tâm Lý Học Theo Độ Tuổi) và vietwise.edu.vn.
+
+| Nền | Ý chính | Hiện trong game giáo viên ở đâu |
+| --- | --- | --- |
+| Quặng mỏ châu ngọc | Mỗi học sinh là một mỏ ngọc, giáo dục để lộ ra, không phải để chấm | Không có đáp án đúng cho quyết định. Mọi lý do đều được nghe |
+| Giáo dục Tác Tạo, We Are One | Hợp nhất không phải đồng nhất. Học bằng việc thật, đối thoại cởi mở, không chứng minh người khác sai | Bước Phản biện: "hỏi vào lập luận, không hỏi vào người". Việc thật tuần này |
+| Ba luật tác tạo | Toàn đồ (không xếp hạng, phần chung lớn lên), Phân đồ (đổi theo người học), Phản hồi (có bài học, ôn lại sau) | Không đội, không điểm. Ba mức gợi ý theo lớp. Câu "quay lại cuối tiết" và ôn ở buổi sau |
+| SPARK | S kết nối tâm linh, P dự án có ý nghĩa và cùng vui, A thể hiện bản thân, R quan hệ (bắt đầu từ làm bạn với chính mình), K hiếu kỳ khám phá | S: bước Lặng. P: việc thật. A: lựa chọn D, viết tiếp. R: làm theo cặp, soi gương. K: câu hỏi treo, chìa khoá sách. Mỗi game chạm ít nhất 3 chữ, Game 3 chạm đủ 5 |
+| 5P | Mục đích → Nguồn lực → Nguyên tắc → Hiện thực → Nhân bản | Kể (mục đích) → dữ kiện, kiến thức, sách (nguồn lực) → phẩm chất (nguyên tắc) → chọn và làm (hiện thực) → việc thật, kể lại cho người thân (nhân bản) |
+| Bốn viên ngọc | Hiếu kỳ, Thích nghi, Bền chí, An lạc | Trường `chau_ngoc`, chỉ giáo viên thấy. Đi cùng 5 phẩm chất CT GDPT 2018 ở `pham_chat` |
+| Gương Thần nhí | Tự soi: điều vui, điều khó, đã giúp được ai | Ba câu "Soi gương trước khi về" ở bước chốt (Game 2, 3) |
+| Nghi thức ba nhịp | Ba nhịp thở, một câu biết ơn, một câu tự thoại | Trường `ba_nhip`, bước Lặng 30 giây |
+| Thật thà, không làm hộ | Không đưa đáp án, gợi ý bằng ý nghĩa | Chìa khoá sách chỉ chỉ chỗ mở sách, không hiện đáp án cho học sinh. Học sinh tự nghĩ trước, rồi mới hỏi AI |
+
+**Khoa học tâm lý được dùng (ghi rõ mức chắc chắn):**
+
+- Khen nỗ lực và cách nghĩ, không khen "thông minh", "giỏi nhất" (Mueller và Dweck, 1998).
+- Không phần thưởng vật chất hay báo trước, vì làm giảm hứng thú tự thân (Deci, Koestner và Ryan, 1999). Vì vậy không có điểm, quà, huy hiệu phát tay.
+- Tự chủ, năng lực, gắn kết là ba nhu cầu gốc (thuyết tự quyết, Deci và Ryan). Học sinh luôn được chọn và được đổi ý.
+- Gợi ý từng bậc trong vùng phát triển gần (Vygotsky). Game 2 nhắm khoảng 85% học sinh tìm được chứng cứ ở lần đầu (Wilson và cộng sự, 2019, bằng chứng từ mô hình, dùng làm điểm xuất phát).
+- Trẻ nhạy với tuổi nhắm tới, chê nội dung "cho em bé" (Nielsen Norman Group). Lệch thì lệch nửa bước về phía lớn hơn.
+- Niềm vui khi học đi cùng kết quả tốt hơn (Camacho-Morles và cộng sự, 2021). Đây là mối liên hệ, chưa phải quan hệ nhân quả.
+- Khoảng 5 khoảnh khắc tích cực cho mỗi khoảnh khắc tiêu cực (Gottman): lời của giáo viên trong game giữ tỉ lệ này.
+
+**Nên và không nên (vạch đỏ):**
+
+| Nên | Không nên |
+| --- | --- |
+| Cả lớp cùng nghĩ, cùng nghe | Bảng xếp hạng, chia đội thắng thua, đua nhau |
+| Sai thì nói "chưa đúng, mình thử lại", kèm gợi ý bằng ý nghĩa | "Sai rồi!", trừ điểm, phê bình trước lớp |
+| Đồng hồ chỉ để giáo viên giữ nhịp, im lặng | Đếm ngược hù doạ, âm báo hết giờ |
+| Khen "em đã nghĩ rất kỹ", "em dùng chứng cứ rõ" | "Giỏi nhất", "nhanh nhất", "thủ lĩnh" |
+| Điều phổ quát: thở, biết ơn, tĩnh lặng, tử tế | Áp một niềm tin tôn giáo cụ thể |
+| Nhân vật tự dựng, tên Việt thông dụng | Nhân vật có bản quyền của bên khác, tên học sinh thật |
+| Học sinh tự nghĩ trước, rồi mới hỏi AI, và tự kiểm lại | Để AI làm hộ bài |

@@ -8,6 +8,7 @@ Hiện có hai loại game, cả hai **không thi đua, không chấm điểm**:
 | --- | --- | --- | --- |
 | Game 1 – Mở tiết | `mo-tiet` | Khơi tò mò cho bài sắp học (10 phút) | Kể → Chọn → Nói lý do → Bước ngoặt → Câu hỏi của hôm nay |
 | Game 2 – Ôn bài | `on-bai` | Vận dụng kiến thức đã học, có chứng cứ, phản biện, sáng tạo (15 phút) | Kể → Chọn → Chứng cứ → Phản biện → Sáng tạo → Chốt kiến thức |
+| Game 3 – Sách là Thầy | `sach-la-thay` | Phải đọc và hiểu một cuốn sách mới chơi được; chứng cứ lấy từ sách (20 phút) | Chìa khoá sách → Kể → Chọn → Sách nói gì → Phản biện → Viết tiếp → Chốt bài học |
 
 ## Cấu trúc
 
@@ -55,5 +56,7 @@ Xem `schema/game-spec.schema.json`. Tóm tắt:
 - Bắt buộc với cả hai loại: `phien_ban` ("1.0"), `loai`, `tieu_de`, `mon`, `lop`, `bai`, `pham_chat`, `loi_ke`, `lua_chon` (2–3 lựa chọn A/B/C).
 - `mo-tiet` cần thêm `buoc_ngoat` và `cau_hoi_treo`.
 - `on-bai` cần thêm `kien_thuc` và `so_do_chot`.
+- `sach-la-thay` cần thêm `sach`, `chia_khoa`, `kien_thuc` và `so_do_chot`.
+- Mọi loại có thể thêm `tuong_tac` (7 kiểu tương tác), `ba_nhip`, `chau_ngoc`, `du_an_that`. Chi tiết ở [docs/game-spec.md](docs/game-spec.md).
 - Ảnh khai báo bằng `id` trong manifest: `boi_canh`, `nhan_vat[].sprite`.
 - Trường bắt đầu bằng `gv_` chỉ hiện ở chế độ giáo viên.
