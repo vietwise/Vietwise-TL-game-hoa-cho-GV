@@ -1,0 +1,12 @@
+{
+  "phien_ban": "1.0",
+  "ghi_chu": "Danh sách ảnh để Claude chọn theo mô tả. Chỉ dùng id có trong danh sách này. Ảnh có tam = true là ảnh tạm, sẽ được thay bằng ảnh thật nhưng giữ nguyên id.",
+  "anh": [
+    { "id": "lung-the", "nhom": "card", "tep": "cards/lung-the-tam.svg", "mo_ta": "Lưng thẻ lựa chọn, dùng cho mọi game", "lua_tuoi": ["tat-ca"], "chu_de": ["chung"], "tam": true },
+    { "id": "hs-nam", "nhom": "sprite", "tep": "sprites/hs-nam.svg", "mo_ta": "Học sinh nam tiểu học, đứng", "lua_tuoi": ["tieu-hoc"], "chu_de": ["truong-hoc", "doi-song"], "tam": true },
+    { "id": "hs-nu", "nhom": "sprite", "tep": "sprites/hs-nu.svg", "mo_ta": "Học sinh nữ tiểu học, đứng", "lua_tuoi": ["tieu-hoc"], "chu_de": ["truong-hoc", "doi-song"], "tam": true },
+    { "id": "nen-lop-hoc", "nhom": "background", "tep": "backgrounds/nen-lop-hoc.svg", "mo_ta": "Nền lớp học", "lua_tuoi": ["tat-ca"], "chu_de": ["truong-hoc"], "tam": true },
+    { "id": "nen-cua-hang", "nhom": "background", "tep": "backgrounds/nen-cua-hang.svg", "mo_ta": "Nền cửa hàng, chợ, mua bán", "lua_tuoi": ["tat-ca"], "chu_de": ["mua-ban", "tien"], "tam": true },
+    { "id": "nen-da-ngoai", "nhom": "background", "tep": "backgrounds/nen-da-ngoai.svg", "mo_ta": "Nền ngoài trời: dã ngoại, suối, công viên", "lua_tuoi": ["tat-ca"], "chu_de": ["thien-nhien", "moi-truong"], "tam": true }
+  ]
+}
