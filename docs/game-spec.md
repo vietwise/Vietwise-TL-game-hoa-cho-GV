@@ -138,7 +138,7 @@ Quy tắc khác:
 | Nhóm (`nhom`) | Thư mục | Định dạng | Kích thước khuyến nghị | Cách trình chơi dùng |
 | --- | --- | --- | --- | --- |
 | `background` | `assets/backgrounds/` | JPG/WebP hoặc SVG | 1920 × 1080 (16:9), ≤ 400 KB | Phủ kín khung kể chuyện. Nửa phải bị phủ tối và che bởi ô lời kể, nên chi tiết quan trọng đặt ở **nửa trái** |
-| `sprite` | `assets/sprites/` | PNG nền trong hoặc SVG | Cao 1200 px, chân chạm mép dưới, cắt sát, ≤ 300 KB | Đứng ở góc trái dưới, cao khoảng 42% màn hình, tên nhân vật ghi dưới chân |
+| `sprite` | `assets/sprites/` | WebP hoặc PNG nền trong, hoặc SVG | Cao 900–1200 px, chân chạm mép dưới, cắt sát, ≤ 300 KB | Đứng ở góc trái dưới, cao khoảng 42% màn hình, tên nhân vật ghi dưới chân |
 | `card` | `assets/cards/` | PNG/WebP hoặc SVG | 1200 × 900 (4:3), ≤ 200 KB | Mặt sau của thẻ lựa chọn, căn giữa và phủ kín. Họa tiết chính nằm trong **vùng an toàn 70% ở giữa**, vì mép có thể bị cắt khi thẻ đổi kích thước |
 
 Mặt trước thẻ do trình chơi tự vẽ bằng màu thương hiệu (mục 13), gồm A Cam, B Xanh Vườn, C Blue và D Vàng, nên không cần vẽ.
@@ -165,6 +165,19 @@ Mặt trước thẻ do trình chơi tự vẽ bằng màu thương hiệu (mụ
 | `lua_tuoi` | Một hoặc nhiều giá trị: `mam-non`, `tieu-hoc`, `thcs`, `thpt`, `tat-ca` |
 | `chu_de` | Thẻ chủ đề, ví dụ `truong-hoc`, `mua-ban`, `thien-nhien`, `gia-dinh` |
 | `tam` | `true` nếu là ảnh tạm, sẽ được thay |
+
+### 7.3A Bộ linh vật Bé Não (`assets/sprites/nao/`)
+
+16 sprite Bé Não do Vietwise cung cấp (27/10/2026), WebP nền trong, cao 900 px. Dùng làm nhân vật dẫn chuyện hoặc nhân vật đi kèm phẩm chất. Không dùng như huy hiệu phát cho học sinh.
+
+| id | Huy chương | Gợi ý dùng |
+| --- | --- | --- |
+| `nao-vay-tay` | không có | Dẫn chuyện, chào lớp |
+| `nao-hieu-ky`, `nao-thich-nghi`, `nao-ben-chi`, `nao-an-lac` | Bốn viên ngọc | Khớp với `chau_ngoc` của game |
+| `nao-iq`, `nao-eq`, `nao-sq`, `nao-pq` | Bốn trí thông minh | Game chạm logic, cảm xúc, tâm linh, thể chất |
+| `nao-toan-do`, `nao-phan-do`, `nao-phan-hoi` | Ba luật tác tạo | Bước làm chung cả lớp, làm cặp, phản biện |
+| `nao-guong-than` | Gương thần | Bước soi gương cuối buổi |
+| `nao-dua-than`, `nao-quat-than`, `nao-tham-than` | Đồ phép | Sáng tạo, viết tiếp, con đường |
 
 ### 7.4 Bộ ảnh tối thiểu cho ngày ra mắt 20.11
 

@@ -2,11 +2,311 @@
   "phien_ban": "1.0",
   "ghi_chu": "Danh sách ảnh để Claude chọn theo mô tả. Chỉ dùng id có trong danh sách này. Ảnh có tam = true là ảnh tạm, sẽ được thay bằng ảnh thật nhưng giữ nguyên id.",
   "anh": [
-    { "id": "lung-the", "nhom": "card", "tep": "cards/lung-the-tam.svg", "mo_ta": "Lưng thẻ lựa chọn, dùng cho mọi game", "lua_tuoi": ["tat-ca"], "chu_de": ["chung"], "tam": true },
-    { "id": "hs-nam", "nhom": "sprite", "tep": "sprites/hs-nam.svg", "mo_ta": "Học sinh nam tiểu học, đứng", "lua_tuoi": ["tieu-hoc"], "chu_de": ["truong-hoc", "doi-song"], "tam": true },
-    { "id": "hs-nu", "nhom": "sprite", "tep": "sprites/hs-nu.svg", "mo_ta": "Học sinh nữ tiểu học, đứng", "lua_tuoi": ["tieu-hoc"], "chu_de": ["truong-hoc", "doi-song"], "tam": true },
-    { "id": "nen-lop-hoc", "nhom": "background", "tep": "backgrounds/nen-lop-hoc.svg", "mo_ta": "Nền lớp học", "lua_tuoi": ["tat-ca"], "chu_de": ["truong-hoc"], "tam": true },
-    { "id": "nen-cua-hang", "nhom": "background", "tep": "backgrounds/nen-cua-hang.svg", "mo_ta": "Nền cửa hàng, chợ, mua bán", "lua_tuoi": ["tat-ca"], "chu_de": ["mua-ban", "tien"], "tam": true },
-    { "id": "nen-da-ngoai", "nhom": "background", "tep": "backgrounds/nen-da-ngoai.svg", "mo_ta": "Nền ngoài trời: dã ngoại, suối, công viên", "lua_tuoi": ["tat-ca"], "chu_de": ["thien-nhien", "moi-truong"], "tam": true }
+    {
+      "id": "lung-the",
+      "nhom": "card",
+      "tep": "cards/lung-the-tam.svg",
+      "mo_ta": "Lưng thẻ lựa chọn, dùng cho mọi game",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "chung"
+      ],
+      "tam": true
+    },
+    {
+      "id": "hs-nam",
+      "nhom": "sprite",
+      "tep": "sprites/hs-nam.svg",
+      "mo_ta": "Học sinh nam tiểu học, đứng",
+      "lua_tuoi": [
+        "tieu-hoc"
+      ],
+      "chu_de": [
+        "truong-hoc",
+        "doi-song"
+      ],
+      "tam": true
+    },
+    {
+      "id": "hs-nu",
+      "nhom": "sprite",
+      "tep": "sprites/hs-nu.svg",
+      "mo_ta": "Học sinh nữ tiểu học, đứng",
+      "lua_tuoi": [
+        "tieu-hoc"
+      ],
+      "chu_de": [
+        "truong-hoc",
+        "doi-song"
+      ],
+      "tam": true
+    },
+    {
+      "id": "nen-lop-hoc",
+      "nhom": "background",
+      "tep": "backgrounds/nen-lop-hoc.svg",
+      "mo_ta": "Nền lớp học",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "truong-hoc"
+      ],
+      "tam": true
+    },
+    {
+      "id": "nen-cua-hang",
+      "nhom": "background",
+      "tep": "backgrounds/nen-cua-hang.svg",
+      "mo_ta": "Nền cửa hàng, chợ, mua bán",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "mua-ban",
+        "tien"
+      ],
+      "tam": true
+    },
+    {
+      "id": "nen-da-ngoai",
+      "nhom": "background",
+      "tep": "backgrounds/nen-da-ngoai.svg",
+      "mo_ta": "Nền ngoài trời: dã ngoại, suối, công viên",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "thien-nhien",
+        "moi-truong"
+      ],
+      "tam": true
+    },
+    {
+      "id": "nao-vay-tay",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-vay-tay.webp",
+      "mo_ta": "Bé Não vẫy tay chào, không đeo huy chương. Dùng làm nhân vật dẫn chuyện, chào lớp, mở đầu game",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-hieu-ky",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-hieu-ky.webp",
+      "mo_ta": "Bé Não cầm kính lúp, huy chương Hiếu kỳ. Viên ngọc Hiếu kỳ: tò mò, đặt câu hỏi",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-thich-nghi",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-thich-nghi.webp",
+      "mo_ta": "Bé Não vẫy tay vui vẻ, huy chương Thích nghi. Viên ngọc Thích nghi: thử lại, đổi cách",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-ben-chi",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-ben-chi.webp",
+      "mo_ta": "Bé Não nắm tay quyết tâm, huy chương ngọn núi Bền chí. Viên ngọc Bền chí: làm đến cùng",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-pq",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-pq.webp",
+      "mo_ta": "Bé Não giơ tay khoẻ khoắn, huy chương PQ. Trí thông minh thể chất: vận động, nghỉ mắt",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-an-lac",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-an-lac.webp",
+      "mo_ta": "Bé Não ngồi thiền tay bắt ấn, huy chương hoa sen An lạc. Viên ngọc An lạc: thở chậm, bình tĩnh",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-iq",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-iq.webp",
+      "mo_ta": "Bé Não gãi đầu suy nghĩ, huy chương bóng đèn IQ. Trí thông minh logic: suy luận",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-sq",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-sq.webp",
+      "mo_ta": "Bé Não dang tay mỉm cười, huy chương ngôi sao SQ. Trí thông minh tâm linh: biết ơn, tĩnh lặng",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-eq",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-eq.webp",
+      "mo_ta": "Bé Não tay hình trái tim, huy chương EQ. Trí thông minh cảm xúc: thấu cảm",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-guong-than",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-guong-than.webp",
+      "mo_ta": "Bé Não cầm gương, huy chương Gương thần. Dùng ở bước soi gương cuối buổi",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-quat-than",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-quat-than.webp",
+      "mo_ta": "Bé Não cầm quạt, huy chương Quạt thần",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-dua-than",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-dua-than.webp",
+      "mo_ta": "Bé Não cầm đũa phép, huy chương Đũa thần. Hợp bước sáng tạo, lựa chọn D, viết tiếp",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-tham-than",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-tham-than.webp",
+      "mo_ta": "Bé Não đứng trên thảm bay, huy chương Thảm thần. Hợp kiểu tương tác con đường, hành trình",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-toan-do",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-toan-do.webp",
+      "mo_ta": "Bé Não cầm bản đồ thế giới, huy chương Toàn đồ. Luật tác tạo Toàn đồ: cả lớp cùng lớn lên, không xếp hạng",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-phan-do",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-phan-do.webp",
+      "mo_ta": "Bé Não cầm bản đồ ghép hình, huy chương Phân đồ. Luật tác tạo Phân đồ: mỗi người một mảnh riêng",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    },
+    {
+      "id": "nao-phan-hoi",
+      "nhom": "sprite",
+      "tep": "sprites/nao/nao-phan-hoi.webp",
+      "mo_ta": "Bé Não khum tay lắng nghe, huy chương Phản hồi. Luật tác tạo Phản hồi: nghe và rút bài học",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "linh-vat",
+        "bo-nao"
+      ],
+      "tam": false
+    }
   ]
 }
