@@ -308,5 +308,38 @@
       ],
       "tam": false
     }
-  ]
+  ],
+  "am_thanh": [
+    {
+      "id": "cham",
+      "tep": "sounds/cham.mp3",
+      "mo_ta": "Chạm, chọn thẻ hoặc nút",
+      "am_luong": 0.55
+    },
+    {
+      "id": "sang-buoc",
+      "tep": "sounds/sang-buoc.mp3",
+      "mo_ta": "Sang bước mới",
+      "am_luong": 0.5
+    },
+    {
+      "id": "nhe",
+      "tep": "sounds/nhe.mp3",
+      "mo_ta": "Chưa khớp, nhẹ nhàng, không có thua",
+      "am_luong": 0.35
+    },
+    {
+      "id": "lat-the",
+      "tep": "sounds/lat-the.mp3",
+      "mo_ta": "Lật thẻ, mở khoá",
+      "am_luong": 0.5
+    },
+    {
+      "id": "ket-thuc",
+      "tep": "sounds/ket-thuc.mp3",
+      "mo_ta": "Kết thúc game (6 giây, mờ dần)",
+      "am_luong": 0.5
+    }
+  ],
+  "ghi_chu_am_thanh": "Âm Mixkit chị Hồng gửi 10/10/2026, bản nhẹ từ repo game-hoc-vietwise/tools/am-thanh-game. Kiểm tra giấy phép Mixkit trước khi phát hành thu phí."
 }

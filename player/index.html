@@ -219,6 +219,7 @@
       <div id="dong-ho">0:00</div>
       <button id="nut-gio" title="Bắt đầu hoặc dừng đồng hồ (phím cách)">▶</button>
       <button id="nut-dat-lai" title="Đặt lại đồng hồ">↺</button>
+      <button id="nut-tieng" title="Bật hoặc tắt âm thanh" aria-pressed="true">🔔</button>
     </div>
   </header>
   <main id="san"></main>
@@ -333,6 +334,7 @@
       if (!r.ok) throw new Error(r.status);
       const m = await r.json();
       for (const a of m.anh || []) anh[a.id] = new URL(a.tep, goc).href;
+      for (const a of m.am_thanh || []) { const au = new Audio(new URL(a.tep, goc).href); au.preload = 'auto'; au.volume = a.am_luong ?? 0.5; amThanh[a.id] = au; }
     } catch (e) {
       console.warn('Không tải được manifest ảnh, game chạy không có ảnh.', e);
     }
@@ -399,8 +401,18 @@
   }
   function dungGio() { chay = false; clearInterval(hen); veGio(); }
 
+  // ---------- Âm thanh ----------
+  // Chỉ phát sau thao tác của người dùng; thiếu file hoặc trình duyệt chặn thì im lặng.
+  const amThanh = {};
+  let bat = true, daVao = false;
+  try { bat = localStorage.getItem('gv-tieng') !== '0'; } catch (e) {}
+  const keu = id => { const a = amThanh[id]; if (!bat || !a) return; try { a.currentTime = 0; const p = a.play(); if (p && p.catch) p.catch(() => {}); } catch (e) {} };
+  const veNutTieng = () => { const n = $('nut-tieng'); n.textContent = bat ? '🔔' : '🔕'; n.setAttribute('aria-pressed', String(bat)); };
+
   // ---------- Chuyển bước ----------
   function sangBuoc(i) {
+    if (so !== i && daVao) keu('sang-buoc');
+    daVao = true;
     so = Math.max(0, Math.min(buoc.length - 1, i));
     const nav = $('cac-buoc');
     nav.replaceChildren(...buoc.map((b, j) => h('button', { class: j === so ? 'dang' : j < so ? 'xong' : '', onclick: () => sangBuoc(j) }, `${j + 1}. ${b.ten}`)));
@@ -674,10 +686,13 @@
   $('nut-mo').addEventListener('click', () => moTuChuoi($('o-dan').value));
   document.querySelectorAll('[data-mau]').forEach(b => b.addEventListener('click', () => moTuUrl(b.dataset.mau)));
   $('nut-truoc').addEventListener('click', () => sangBuoc(so - 1));
-  $('nut-tiep').addEventListener('click', () => { if (so < buoc.length - 1) sangBuoc(so + 1); else { dungGio(); hienNap(); } });
+  $('nut-tiep').addEventListener('click', () => { if (so < buoc.length - 1) sangBuoc(so + 1); else { keu('ket-thuc'); dungGio(); hienNap(); } });
   $('nut-gio').addEventListener('click', () => chay ? dungGio() : chayGio());
   $('nut-dat-lai').addEventListener('click', datGio);
   $('nut-gv').addEventListener('click', batTatGV);
+  $('nut-tieng').addEventListener('click', () => { bat = !bat; try { localStorage.setItem('gv-tieng', bat ? '1' : '0'); } catch (e) {} veNutTieng(); keu('cham'); });
+  $('san').addEventListener('click', e => { if (e.target.closest('button, .the, .lat-the, [data-the]')) keu('cham'); });
+  veNutTieng();
   document.addEventListener('keydown', e => {
     if (!game || $('choi').classList.contains('an') || e.target.tagName === 'TEXTAREA') return;
     if (e.key === 'ArrowRight') sangBuoc(so + 1);
