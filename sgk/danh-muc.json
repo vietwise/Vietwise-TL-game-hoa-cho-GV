@@ -1,5 +1,19 @@
 {
   "phien_ban": "1.0",
   "nguon": "NXB Giáo dục Việt Nam, taphuan.nxbgd.vn",
+  "trang_theo_lop": {
+    "1": "https://taphuan.nxbgd.vn/tap-huan?grade=1",
+    "2": "https://taphuan.nxbgd.vn/tap-huan?grade=2",
+    "3": "https://taphuan.nxbgd.vn/tap-huan?grade=3",
+    "4": "https://taphuan.nxbgd.vn/tap-huan?grade=4",
+    "5": "https://taphuan.nxbgd.vn/tap-huan?grade=5",
+    "6": "https://taphuan.nxbgd.vn/tap-huan?grade=6",
+    "7": "https://taphuan.nxbgd.vn/tap-huan?grade=7",
+    "8": "https://taphuan.nxbgd.vn/tap-huan?grade=8",
+    "9": "https://taphuan.nxbgd.vn/tap-huan?grade=9",
+    "10": "https://taphuan.nxbgd.vn/tap-huan?grade=10",
+    "11": "https://taphuan.nxbgd.vn/tap-huan?grade=11",
+    "12": "https://taphuan.nxbgd.vn/tap-huan?grade=12"
+  },
   "sach": []
 }

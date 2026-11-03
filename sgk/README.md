@@ -14,4 +14,6 @@ Mỗi dòng trong `danh-muc.json`:
 | `tap` | Số tập, nếu có |
 | `link` | Trang của sách trên taphuan.nxbgd.vn hoặc hanhtrangso.nxbgd.vn |
 
+Ngoài danh sách `sach`, tệp có `trang_theo_lop`: link trang NXBGD của từng lớp, dạng `https://taphuan.nxbgd.vn/tap-huan?grade=N` với N từ 1 đến 12. Skill dùng link này khi chưa có sách cụ thể trong danh mục. Trang chặn truy cập tự động nên skill chỉ đưa link cho Thầy Cô mở, không tự tra.
+
 Skill game dùng danh mục này để gọi đúng tên sách và bài. Khi soạn game cho một bài cụ thể, giáo viên vẫn chụp hoặc dán trang SGK cho Claude.
