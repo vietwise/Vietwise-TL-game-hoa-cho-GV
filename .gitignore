@@ -1,0 +1,3 @@
+dist/*
+!dist/Tro-ly-Game-hoa-Vietwise.zip
+__pycache__/
