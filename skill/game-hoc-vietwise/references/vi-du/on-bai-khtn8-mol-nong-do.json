@@ -1,0 +1,78 @@
+{
+ "phien_ban": "1.0",
+ "loai": "on-bai",
+ "tieu_de": "Dung dịch 10 M có thật không?",
+ "mon": "Khoa học tự nhiên",
+ "lop": "8",
+ "bai": "Mol, khối lượng mol, thể tích mol ở đkc, nồng độ phần trăm và nồng độ mol",
+ "thoi_luong_phut": 15,
+ "kien_thuc": [
+  "n = m / M; V (đkc) = n × 24,79 lít",
+  "C% = m chất tan / m dung dịch × 100%",
+  "CM = n / V (V đổi ra lít)"
+ ],
+ "pham_chat": "trung thực",
+ "nhan_vat": [
+  {
+   "ten": "Lan"
+  }
+ ],
+ "loi_ke": "Trong giờ thực hành, Lan tính nồng độ mol của 150 ml dung dịch NaCl có 1,5 mol NaCl và ghi vào báo cáo: CM = 10 M. Phép tính trông rất gọn. Cô giáo chưa nói đúng hay sai, chỉ hỏi cả lớp: báo cáo này có đáng tin để nộp không?",
+ "du_kien": [
+  "V dung dịch = 150 ml",
+  "n NaCl = 1,5 mol",
+  "M NaCl = 58,5 g/mol",
+  "Lan ghi: CM = 10 M"
+ ],
+ "lua_chon": [
+  {
+   "ma": "A",
+   "noi_dung": "Nộp luôn, vì phép chia 1,5 : 0,15 = 10 là đúng",
+   "gv_kien_thuc": "Phép tính đúng và đã đổi 150 ml = 0,15 lít. Nhưng chưa kiểm tra kết quả có hợp lý ngoài thực tế không."
+  },
+  {
+   "ma": "B",
+   "noi_dung": "Tính lại: 1,5 mol NaCl nặng bao nhiêu gam, rồi xem có tan hết trong 150 ml nước không",
+   "gv_kien_thuc": "m = 1,5 × 58,5 = 87,75 g. Độ tan của NaCl khoảng 36 g/100 g nước, 150 ml nước hoà tan tối đa khoảng 54 g. Không thể có dung dịch 10 M."
+  },
+  {
+   "ma": "C",
+   "noi_dung": "Đổi số liệu cho đẹp: chỉ ghi 0,15 mol NaCl để ra 1 M",
+   "gv_kien_thuc": "Sửa số liệu cho kết quả đẹp là không trung thực."
+  }
+ ],
+ "cach_chon": "Giơ thẻ màu A, B hoặc C",
+ "cau_hoi_goi_mo": [
+  "Em dùng công thức nào, số liệu nào để biết?",
+  "Đổi ml ra lít ở bước nào?",
+  "Một con số đúng phép tính có đủ để tin không?"
+ ],
+ "cau_mau_phan_bien": [
+  "Bạn đã kiểm tra khối lượng NaCl cần dùng chưa?",
+  "Nếu đề cho 1,5 mol trong 1,5 lít thì kết quả đổi thế nào?",
+  "Chứng cứ của bạn lấy từ công thức nào?"
+ ],
+ "so_do_chot": [
+  {
+   "kien_thuc": "n = m / M",
+   "dung_vao": "Đổi 1,5 mol NaCl ra 87,75 g"
+  },
+  {
+   "kien_thuc": "CM = n / V (lít)",
+   "dung_vao": "Tính được 10 M, đúng về phép tính"
+  },
+  {
+   "kien_thuc": "Độ tan giới hạn lượng chất tan",
+   "dung_vao": "Kết quả 10 M không thể có thật"
+  }
+ ],
+ "loi_chot": "Khi em ghi một số vào báo cáo, thế nào là trung thực với số đó?",
+ "gv_hieu_lam": [
+  "Tính đúng công thức là kết quả đáng tin",
+  "Quên đổi ml ra lít (ra 0,01 M)"
+ ],
+ "gv_ghi_chu": "Số liệu lấy từ Bài 4h trong trang học sinh gửi. Đáp số phép tính là 10 M. Lưu ý với Thầy Cô: 87,75 g NaCl không tan hết trong 150 ml nước, nên đề này nên dùng như cơ hội phản biện. Các câu còn lại của trang (a–g): a 3 mol; c 37,185 lít; d 1,25 mol; e 55,5 g; f 106,5 g; g 22%, dùng thể tích mol 24,79 lít ở đkc.",
+ "chau_ngoc": "ben-chi",
+ "du_an_that": "Về nhà, đọc nhãn một chai nước muối hoặc dung dịch bất kỳ, tính nồng độ phần trăm trên nhãn rồi kể lại cho lớp.",
+ "gv_goi_y_lua_chon_d": "Tính lại với số liệu hợp lý, ví dụ 150 ml dung dịch có 0,15 mol NaCl (CM = 1 M), rồi ghi rõ nguồn số liệu trong báo cáo."
+}
