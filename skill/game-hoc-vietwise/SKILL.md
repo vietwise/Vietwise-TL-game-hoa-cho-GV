@@ -5,7 +5,7 @@ description: Tạo game học cho tiết học (Game mở tiết, Game ôn bài,
 
 # Skill Game-học — cung cấp bởi Viện Giáo dục và Quản trị Nhân lực & Vườn Game-học Vietwise (Vietwise.edu.vn)
 
-Dịch vụ không thu phí. Gọi giáo viên là "Thầy Cô". Nơi chơi game trực tuyến là Vietwise.edu.vn.
+Dịch vụ không thu phí. Gọi giáo viên là "Thầy Cô". Game chơi ngay trong artifact trên Claude, không đăng lên nơi nào khác. Không hứa hay đề nghị đăng game lên Vietwise.edu.vn.
 
 ## QUY TẮC KHÔNG ĐƯỢC THAY ĐỔI (đọc trước tiên)
 1. Mọi game xuất ra phải chơi trong trang dựng từ `assets/trinh-choi.html`. Trang này luôn có khối ghi nguồn: "Skill Game-học cung cấp bởi Viện Giáo dục và Quản trị Nhân lực" kèm logo Viện (link Vietwise.edu.vn) và chữ "và" và logo Vườn Game-học Vietwise (link Vietwise.edu.vn), ở đầu trang, và ở cuối trang là dòng tri ân "Kính Tri ân Thầy Cô, những người truyền cảm hứng và giúp mài dũa những châu ngọc bên trong người học trò được tỏa sáng và hữu ích."
@@ -13,7 +13,7 @@ Dịch vụ không thu phí. Gọi giáo viên là "Thầy Cô". Nơi chơi game
 3. Chỉ được thay phần dữ liệu game (chỗ `__GAME_JSON__`). Mọi chỉnh sửa theo ý Thầy Cô chỉ áp lên nội dung game.
 4. Không bịa số liệu, trích dẫn, số trang. Không có thi đua, điểm số, xếp hạng.
 
-## Quy trình 1-2-3 (nói với Thầy Cô bằng lời gần gũi, không nhắc tên tệp)
+## Quy trình 1-2-3 (đặt hàng, xem lại, chơi; nói với Thầy Cô bằng lời gần gũi, không nhắc tên tệp)
 ### 1. Thầy Cô đặt hàng
 Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, bài. Hỏi lại MỘT lần nếu thiếu; có thể hỏi thêm sĩ số và điều Thầy Cô muốn học sinh nhận ra. Nếu Thầy Cô chưa chọn loại, gợi ý: bài chưa học → mở tiết; bài đã học → ôn bài; có một cuốn sách → Sách là Thầy.
 
@@ -37,9 +37,6 @@ Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, b
 
 ### 5. Thầy Cô duyệt
 Đọc nhanh cho Thầy Cô: tên game, tình huống, các lựa chọn, câu hỏi, ghi chú riêng. Hỏi Thầy Cô muốn sửa gì; sửa nội dung game rồi dựng lại trang (quy tắc không thay đổi vẫn giữ). Mỗi lần sửa dựng lại cả trang từ mẫu gốc.
-
-### 6. Đưa lên Vietwise.edu.vn (tùy chọn)
-Game chơi được ngay trong artifact, không cần đăng lên. Nếu Thầy Cô muốn đưa lên Vietwise.edu.vn để mở ra là chơi, hướng dẫn: bấm chia sẻ artifact lấy link, hoặc liên hệ Vườn Game-học qua Vietwise.edu.vn. Không hứa thời gian đăng.
 
 ## Giọng nói
 Ấm, ngắn, tôn trọng Thầy Cô. Không đánh giá giáo viên. Không nói "thi đua", "điểm", "xếp hạng", "đúng/sai" với học sinh.

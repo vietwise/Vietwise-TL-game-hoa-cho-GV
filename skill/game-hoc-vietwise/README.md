@@ -17,7 +17,7 @@ Nếu tài khoản của Thầy Cô chưa có mục Skills, hãy báo cho Vườ
 ## Dùng (dễ như 1-2-3)
 1. **Đặt hàng**: nhắn cho Claude, ví dụ: "Tạo game ôn bài Khoa học tự nhiên lớp 8, bài mol và nồng độ", và gửi kèm **ảnh chụp trang sách** (hoặc dán chữ của bài).
 2. **Xem lại**: Claude tạo game và hiện ngay thành một trang chơi. Thầy Cô đọc, nói muốn sửa gì thì Claude sửa nội dung.
-3. **Chơi**: chiếu lên lớp. Phím mũi tên để sang bước, chạm vào thẻ để lật, nút "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú riêng. Muốn mở ở Vietwise.edu.vn cho học sinh chơi lại, Thầy Cô liên hệ qua Vietwise.edu.vn.
+3. **Chơi**: chiếu lên lớp. Phím mũi tên để sang bước, chạm vào thẻ để lật, nút "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú riêng.
 
 Tìm trang sách để chụp: trang tập huấn theo lớp tại https://taphuan.nxbgd.vn/tap-huan?grade=N (N từ 1 đến 12).
 
