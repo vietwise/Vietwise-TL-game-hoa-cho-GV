@@ -6,7 +6,8 @@
 3. Bốn trụ cột: một tình huống thật, một quyết định cần chọn, một phẩm chất đi kèm, một kết nối với bài học.
 4. Tách nội dung học sinh và nội dung Thầy Cô: trường bắt đầu bằng `gv_` chỉ hiện ở chế độ Thầy Cô. Đáp số, lời giải, hiểu lầm hay gặp luôn để trong `gv_`.
 5. Không bịa số liệu, trích dẫn, số trang. Chỉ dùng kiến thức có trong nội dung bài Thầy Cô gửi hoặc kiến thức phổ thông chắc chắn.
-6. Gọi giáo viên là "Thầy Cô". Nơi chơi game là Vietwise.edu.vn.
+6. Dẫn truyện từ thử thách đời thật mà kiến thức giúp giải, rồi mở ra sự hiếu kỳ về kiến thức hữu ích; không dẫn bằng cảnh làm bài tập trong lớp.
+7. Gọi giáo viên là "Thầy Cô". Nơi chơi game là Vietwise.edu.vn.
 
 ## Ba loại game
 | Loại | `loai` | Phút | Mục tiêu | Các bước trong trình chơi |

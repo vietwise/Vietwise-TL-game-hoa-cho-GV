@@ -1,78 +1,80 @@
 {
  "phien_ban": "1.0",
  "loai": "on-bai",
- "tieu_de": "Dung dịch 10 M có thật không?",
+ "tieu_de": "Con số trên chai nước muối",
  "mon": "Khoa học tự nhiên",
  "lop": "8",
- "bai": "Mol, khối lượng mol, thể tích mol ở đkc, nồng độ phần trăm và nồng độ mol",
+ "bai": "Mol, khối lượng mol, nồng độ phần trăm và nồng độ mol",
  "thoi_luong_phut": 15,
  "kien_thuc": [
-  "n = m / M; V (đkc) = n × 24,79 lít",
-  "C% = m chất tan / m dung dịch × 100%",
-  "CM = n / V (V đổi ra lít)"
+  "n = m / M",
+  "CM = n / V (V đổi ra lít)",
+  "C% = m chất tan / m dung dịch × 100%"
  ],
- "pham_chat": "trung thực",
+ "pham_chat": "trách nhiệm",
  "nhan_vat": [
   {
    "ten": "Lan"
   }
  ],
- "loi_ke": "Trong giờ thực hành, Lan tính nồng độ mol của 150 ml dung dịch NaCl có 1,5 mol NaCl và ghi vào báo cáo: CM = 10 M. Phép tính trông rất gọn. Cô giáo chưa nói đúng hay sai, chỉ hỏi cả lớp: báo cáo này có đáng tin để nộp không?",
+ "loi_ke": "Em trai Lan hai tuổi bị nghẹt mũi. Mẹ đang bận nên nhờ Lan pha một lít nước muối rửa mũi giống loại bán ở hiệu thuốc. Trên chai ở hiệu thuốc ghi đúng một con số: NaCl 0,9%. Nhà Lan chỉ có muối ăn, một chiếc cân bếp và nước đun sôi để nguội. Lan đứng nhìn lọ muối và nghĩ: mặn hơn chắc sẽ sạch hơn, nhạt hơn thì chắc an toàn hơn. Nhưng vì sao nhà sản xuất lại không viết \"một nhúm muối\", mà phải viết một con số?",
  "du_kien": [
-  "V dung dịch = 150 ml",
-  "n NaCl = 1,5 mol",
-  "M NaCl = 58,5 g/mol",
-  "Lan ghi: CM = 10 M"
+  "Pha 1 lít nước muối",
+  "Nhãn: NaCl 0,9%",
+  "Có cân bếp, muối ăn",
+  "Người dùng: em bé 2 tuổi",
+  "M của NaCl: 58,5 g/mol"
  ],
  "lua_chon": [
   {
    "ma": "A",
-   "noi_dung": "Nộp luôn, vì phép chia 1,5 : 0,15 = 10 là đúng",
-   "gv_kien_thuc": "Phép tính đúng và đã đổi 150 ml = 0,15 lít. Nhưng chưa kiểm tra kết quả có hợp lý ngoài thực tế không."
+   "noi_dung": "Cho thật nhiều muối, khoảng 30 g, vì mặn hơn thì sạch hơn",
+   "gv_kien_thuc": "30 g NaCl = 0,51 mol trong 1 lít, gấp hơn 3 lần nồng độ trên nhãn (0,154 mol/L). Chưa có chứng cứ nào cho thấy mặn hơn thì sạch hơn."
   },
   {
    "ma": "B",
-   "noi_dung": "Tính lại: 1,5 mol NaCl nặng bao nhiêu gam, rồi xem có tan hết trong 150 ml nước không",
-   "gv_kien_thuc": "m = 1,5 × 58,5 = 87,75 g. Độ tan của NaCl khoảng 36 g/100 g nước, 150 ml nước hoà tan tối đa khoảng 54 g. Không thể có dung dịch 10 M."
+   "noi_dung": "Đổi con số 0,9% trên nhãn ra số gam muối cần cân, rồi mới pha",
+   "gv_kien_thuc": "0,9% nghĩa là 0,9 g trong 100 ml, tức 9 g trong 1 lít; n = 9 : 58,5 ≈ 0,154 mol, CM ≈ 0,154 M. Dùng được kiến thức mol và nồng độ để pha đúng."
   },
   {
    "ma": "C",
-   "noi_dung": "Đổi số liệu cho đẹp: chỉ ghi 0,15 mol NaCl để ra 1 M",
-   "gv_kien_thuc": "Sửa số liệu cho kết quả đẹp là không trung thực."
+   "noi_dung": "Cho vài hạt muối thôi, khoảng 1 g, cho chắc là an toàn",
+   "gv_kien_thuc": "1 g NaCl = 0,017 mol trong 1 lít, nhạt hơn nhãn khoảng 9 lần. Nhạt quá thì không còn là loại dung dịch như trên nhãn."
   }
  ],
  "cach_chon": "Giơ thẻ màu A, B hoặc C",
  "cau_hoi_goi_mo": [
-  "Em dùng công thức nào, số liệu nào để biết?",
-  "Đổi ml ra lít ở bước nào?",
-  "Một con số đúng phép tính có đủ để tin không?"
+  "Lan cần biết những số liệu nào để biết phải cân bao nhiêu gam muối?",
+  "Vì sao chai thuốc ghi một con số mà không ghi \"một nhúm\"?",
+  "Cùng một chai, ghi 0,9% và ghi 0,154 mol/L có nói về cùng một dung dịch không?"
  ],
  "cau_mau_phan_bien": [
-  "Bạn đã kiểm tra khối lượng NaCl cần dùng chưa?",
-  "Nếu đề cho 1,5 mol trong 1,5 lít thì kết quả đổi thế nào?",
-  "Chứng cứ của bạn lấy từ công thức nào?"
+  "Nếu Lan pha 2 lít thì số mol muối và số gam muối đổi thế nào?",
+  "Nếu nhà không có cân mà chỉ có cốc đong, em dựa vào đâu để pha?",
+  "Bạn đã kiểm tra lại phép tính bằng cách khác chưa?"
  ],
  "so_do_chot": [
   {
    "kien_thuc": "n = m / M",
-   "dung_vao": "Đổi 1,5 mol NaCl ra 87,75 g"
+   "dung_vao": "Đổi 9 g NaCl ra khoảng 0,154 mol"
   },
   {
-   "kien_thuc": "CM = n / V (lít)",
-   "dung_vao": "Tính được 10 M, đúng về phép tính"
+   "kien_thuc": "CM = n / V",
+   "dung_vao": "1 lít dung dịch có CM khoảng 0,154 M"
   },
   {
-   "kien_thuc": "Độ tan giới hạn lượng chất tan",
-   "dung_vao": "Kết quả 10 M không thể có thật"
+   "kien_thuc": "C% = m chất tan / m dung dịch × 100%",
+   "dung_vao": "Đọc hiểu con số 0,9% trên nhãn"
   }
  ],
- "loi_chot": "Khi em ghi một số vào báo cáo, thế nào là trung thực với số đó?",
+ "loi_chot": "Khi tự pha thứ gì đó cho người thân dùng, tin vào con số hay tin vào cảm giác \"mặn vừa\"? Thế nào là có trách nhiệm với con số?",
+ "gv_goi_y_lua_chon_d": "Dùng nước muối sinh lý đóng sẵn hoặc hỏi mẹ, dược sĩ trước; Lan có thể giải thích cho mẹ vì sao con số 0,9% quan trọng.",
  "gv_hieu_lam": [
-  "Tính đúng công thức là kết quả đáng tin",
-  "Quên đổi ml ra lít (ra 0,01 M)"
+  "Mặn hơn thì sạch hơn",
+  "Mol chỉ là con số trên giấy, không dùng được ngoài đời",
+  "Quên đổi ml ra lít khi tính CM"
  ],
- "gv_ghi_chu": "Số liệu lấy từ Bài 4h trong trang học sinh gửi. Đáp số phép tính là 10 M. Lưu ý với Thầy Cô: 87,75 g NaCl không tan hết trong 150 ml nước, nên đề này nên dùng như cơ hội phản biện. Các câu còn lại của trang (a–g): a 3 mol; c 37,185 lít; d 1,25 mol; e 55,5 g; f 106,5 g; g 22%, dùng thể tích mol 24,79 lít ở đkc.",
- "chau_ngoc": "ben-chi",
- "du_an_that": "Về nhà, đọc nhãn một chai nước muối hoặc dung dịch bất kỳ, tính nồng độ phần trăm trên nhãn rồi kể lại cho lớp.",
- "gv_goi_y_lua_chon_d": "Tính lại với số liệu hợp lý, ví dụ 150 ml dung dịch có 0,15 mol NaCl (CM = 1 M), rồi ghi rõ nguồn số liệu trong báo cáo."
+ "gv_ghi_chu": "Đáp số: 0,9% tương đương 9 g NaCl trong 1 lít dung dịch, khoảng 0,154 mol/L. 30 g ≈ 0,51 mol/L; 1 g ≈ 0,017 mol/L. Đây là phép tính xấp xỉ cho tình huống học tập, không thay lời khuyên của bác sĩ hoặc dược sĩ về việc dùng nước muối cho trẻ. Ý nghĩa của mol để gợi hiếu kỳ: mol cho biết số hạt, nên cân bằng gam mà vẫn biết số hạt trong dung dịch. Số liệu các câu a–h trong trang học sinh: a 3 mol; c 37,185 lít; d 1,25 mol; e 55,5 g; f 106,5 g; g 22%; thể tích mol ở đkc 24,79 lít.",
+ "chau_ngoc": "hieu-ky",
+ "du_an_that": "Về nhà, tìm một nhãn có ghi nồng độ (gói oresol, chai nước muối, nước rửa tay), đọc con số và kể cho lớp nghe con số ấy giúp người dùng điều gì."
 }
