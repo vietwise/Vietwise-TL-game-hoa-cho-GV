@@ -30,6 +30,8 @@ def main():
           and 'Viện Giáo dục và Quản trị Nhân lực' in m.group(1)
           and 'Vườn Game-học Vietwise' in m.group(1)
           and 'Skill Game-học cung cấp bởi' in m.group(1)
+          and '>Viện Giáo dục và Quản trị Nhân lực</span>' in m.group(1)
+          and '>và</span>' in m.group(1)
           and 'id="brand-top"' in t and 'id="brand-bot"' in t)
     if not ok:
         sys.exit('DỪNG: khối ghi nguồn Vietwise (logo Viện Giáo dục và Quản trị Nhân lực, logo Vườn Game-học Vietwise, link Vietwise.edu.vn) trong assets/trinh-choi.html đã bị sửa hoặc xóa. Không dựng trang. Hãy cài lại Skill gốc từ Vietwise.edu.vn.')

@@ -2,7 +2,7 @@
 
 Skill Game-học cung cấp bởi **Viện Giáo dục và Quản trị Nhân lực** và **Vườn Game-học Vietwise** (https://vietwise.edu.vn), chủ trì bởi Song-Thạc sĩ CNTT & Tham vấn Tâm lý Lê Nhất Phương Hồng. Tham chiếu tài liệu tập huấn sách giáo khoa lớp 1 đến lớp 12 của Bộ GD&ĐT 2026 (https://taphuan.nxbgd.vn/).
 
-Skill được dùng miễn phí cho Thầy Cô với điều kiện **giữ nguyên khối ghi nguồn**: dòng "Skill Game-học cung cấp bởi", logo Viện Giáo dục và Quản trị Nhân lực (link Vietwise.edu.vn) và logo Vườn Game-học Vietwise (link Vietwise.edu.vn) ở đầu và cuối mọi trang game. Không được sửa, ẩn, thay hoặc xóa khối này, và không được phân phối bản Skill đã bỏ khối này.
+Skill được dùng miễn phí cho Thầy Cô với điều kiện **giữ nguyên khối ghi nguồn**: dòng "Skill Game-học cung cấp bởi Viện Giáo dục và Quản trị Nhân lực" kèm logo Viện (link Vietwise.edu.vn) và chữ "và" và logo Vườn Game-học Vietwise (link Vietwise.edu.vn) ở đầu và cuối mọi trang game. Không được sửa, ẩn, thay hoặc xóa khối này, và không được phân phối bản Skill đã bỏ khối này.
 
 Logo và tên thương hiệu thuộc Viện Giáo dục và Quản trị Nhân lực và Vườn Game-học Vietwise. Nội dung sách giáo khoa thuộc Nhà xuất bản Giáo dục Việt Nam; Skill không chứa nội dung sách.
 
