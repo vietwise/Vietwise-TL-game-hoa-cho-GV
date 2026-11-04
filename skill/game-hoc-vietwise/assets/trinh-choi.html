@@ -85,17 +85,19 @@ if(MAL[ma]&&/^(en|fr|de|es|it)$/.test(ma)){var q=/"([^"]{2,90})"/g;while((m=q.ex
 o.sort(function(a,b){return a.s-b.s});return o}
 function tach(x){var seen={},o=[];rng(x).forEach(function(r){if(!seen[r.t]){seen[r.t]=1;o.push({t:r.t,l:r.l})}});return o.slice(0,6)}
 function chia(x){var o=[],p=0,s0=x||'';rng(s0).forEach(function(r){if(r.s<p)return;var v=s0.slice(p,r.s);if(/[A-Za-zÀ-ỹ0-9]/.test(v))o.push({t:v.replace(/"/g,' '),l:'vi-VN'});o.push({t:r.t,l:r.l});p=r.e});var v=s0.slice(p);if(/[A-Za-zÀ-ỹ0-9]/.test(v))o.push({t:v.replace(/"/g,' '),l:'vi-VN'});return o}
-function noiHet(txt,note){var d=chia(txt);if(!d.length)return;if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(note)note.textContent='Trình duyệt này chưa hỗ trợ đọc thành tiếng. Thầy Cô đọc mẫu giúp em nhé.';return}
-speechSynthesis.cancel();var thieu=false,khongHM=false;d.forEach(function(x){var u=new SpeechSynthesisUtterance(x.t),v=giong(x.l);u.lang=x.l;if(v)u.voice=v;else if(x.l!=='vi-VN')thieu=true;if(x.l==='vi-VN'&&v&&!/HoaiMy/i.test(v.name))khongHM=true;u.rate=x.l==='vi-VN'?0.8:0.7;speechSynthesis.speak(u)});
-if(note)note.textContent=thieu?'Máy này chưa có giọng đọc thứ tiếng nước ngoài. Thầy Cô thử Edge hoặc Chrome, hoặc đọc mẫu giúp em.':(khongHM?'Giọng tiếng Việt hay hơn (HoaiMy): mở trang này bằng Microsoft Edge.':'')}
+function cho(f){var s=window.speechSynthesis;if(s.getVoices().length){f();return}var d=0;function g(){if(d)return;d=1;f()}s.onvoiceschanged=g;setTimeout(g,900)}
+var TEN={'vi-VN':'tiếng Việt','en-US':'tiếng Anh','zh-CN':'tiếng Trung','ja-JP':'tiếng Nhật','ko-KR':'tiếng Hàn','ru-RU':'tiếng Nga','fr-FR':'tiếng Pháp','de-DE':'tiếng Đức','es-ES':'tiếng Tây Ban Nha','it-IT':'tiếng Ý'};
+function noiMang(d,note){if(!d.length)return;if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(note)note.textContent='Trình duyệt này chưa hỗ trợ đọc thành tiếng. Thầy Cô đọc mẫu giúp em nhé.';return}
+cho(function(){var ds=d.map(function(x){return{t:x.t,l:x.l,r:x.r,v:giong(x.l)}}),mat=[];ds.forEach(function(x){if(!x.v&&mat.indexOf(x.l)<0)mat.push(x.l)});
+if(mat.length){speechSynthesis.cancel();if(note)note.textContent='Máy này chưa có giọng '+mat.map(function(l){return TEN[l]||l}).join(', ')+', nên em không đọc để tránh đọc sai. Thầy Cô mở bằng Microsoft Edge (có giọng HoaiMy và nhiều thứ tiếng) hoặc Chrome, hoặc đọc mẫu giúp em.';return}
+speechSynthesis.cancel();var kh=false;ds.forEach(function(x){var u=new SpeechSynthesisUtterance(x.t);u.lang=x.l;u.voice=x.v;u.rate=x.r;if(x.l==='vi-VN'&&!/HoaiMy/i.test(x.v.name))kh=true;speechSynthesis.speak(u)});
+if(note)note.textContent=kh?'Giọng tiếng Việt hay hơn (HoaiMy): mở trang này bằng Microsoft Edge.':''})}
+function noiHet(txt,note){noiMang(chia(txt).map(function(x){return{t:x.t,l:x.l,r:x.l==='vi-VN'?0.8:0.7}}),note)}
+function noi(txt,l,rate,note){noiMang([{t:txt,l:l,r:rate}],note)}
 var VIR=[/HoaiMy/i,/NamMinh/i,/Google.*(Vi|Việt)/i,/Linh/i,/Natural|Online|Neural/i];
 function giong(l){if(l.slice(0,2)==='vi'){var vs=window.speechSynthesis?speechSynthesis.getVoices().filter(function(x){return String(x.lang).replace('_','-').toLowerCase().indexOf('vi')===0}):[];for(var i=0;i<VIR.length;i++){for(var j=0;j<vs.length;j++)if(VIR[i].test(vs[j].name))return vs[j]}if(vs.length)return vs.filter(function(x){return !/\bAn\b/.test(x.name)})[0]||vs[0];return null}
 var v=window.speechSynthesis?speechSynthesis.getVoices():[],p=l.slice(0,2).toLowerCase(),best=null,sc=-1;
 v.forEach(function(x){var xl=String(x.lang).replace('_','-').toLowerCase();if(xl.indexOf(p)!==0)return;var s=(xl===l.toLowerCase()?3:0)+(/Natural|Online|Neural|Google|Premium|Enhanced/i.test(x.name)?2:0)+(x.localService?0:1);if(s>sc){sc=s;best=x}});return best}
-function noi(txt,l,rate,note){if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(note)note.textContent='Trình duyệt này chưa hỗ trợ đọc thành tiếng. Thầy Cô đọc mẫu giúp em nhé.';return}
-speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(txt),v=giong(l);u.lang=l;if(v)u.voice=v;u.rate=rate;
-if(note)note.textContent=(v&&!(l.slice(0,2)==='vi'&&!/HoaiMy/i.test(v.name)))?'':(v?'Giọng hay hơn (HoaiMy): mở trang này bằng Microsoft Edge.':'Máy này chưa có giọng đọc ngôn ngữ này. Thầy Cô thử đổi sang Edge hoặc Chrome, hoặc đọc mẫu giúp em.');speechSynthesis.speak(u)}
-if(window.speechSynthesis)speechSynthesis.onvoiceschanged=function(){};
 function nghe(P,txt,vi){var seg=tach(txt);if(!seg.length&&!vi)return;var d=el('div','say'),note=el('small');
 if(vi){var b=el('button',null,'🔊 Đọc to');b.onclick=function(){noiHet(txt,note)};d.appendChild(b)}
 seg.forEach(function(s){var b=el('button',null,'🔊 '+s.t);b.setAttribute('aria-label','Nghe đọc '+s.t);b.onclick=function(){noi(s.t,s.l,0.7,note)};d.appendChild(b)});d.appendChild(note);P.appendChild(d)}
