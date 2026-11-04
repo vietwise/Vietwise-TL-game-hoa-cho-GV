@@ -13,8 +13,8 @@ Dịch vụ không thu phí. Gọi giáo viên là "Thầy Cô". Game chơi ngay
 3. Chỉ được thay phần dữ liệu game (chỗ `__GAME_JSON__`). Mọi chỉnh sửa theo ý Thầy Cô chỉ áp lên nội dung game.
 4. Không bịa số liệu, trích dẫn, số trang. Không có thi đua, điểm số, xếp hạng.
 
-## Quy trình 1-2-3 (đặt hàng, xem lại, chơi; nói với Thầy Cô bằng lời gần gũi, không nhắc tên tệp)
-### 1. Thầy Cô đặt hàng
+## Quy trình 1-2-3 (giao việc, trả kết quả, chơi; nói với Thầy Cô bằng lời gần gũi, không nhắc tên tệp)
+### 1. Thầy Cô giao việc
 Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, bài. Hỏi lại MỘT lần nếu thiếu; có thể hỏi thêm sĩ số và điều Thầy Cô muốn học sinh nhận ra. Nếu Thầy Cô chưa chọn loại, gợi ý: bài chưa học → mở tiết; bài đã học → ôn bài; có một cuốn sách → Sách là Thầy.
 
 ### 2. Tham chiếu sách giáo khoa
@@ -30,12 +30,12 @@ Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, b
 - Vẽ một hình minh họa cho cảnh trong lời kể: trường `hinh_minh_hoa` là một chuỗi SVG phẳng, nhiều màu, không quá 3000 ký tự, viewBox "0 0 600 240", có sẵn vật thể thật của tình huống (xem ví dụ trong `references/vi-du/on-bai-khtn8-mol-nong-do.json`). Không chứa script, không link, không ảnh nhúng. Không viết đáp án lên hình (dùng dấu ? nếu cần). Luôn đặt `chau_ngoc`: trình chơi sẽ hiện nhân vật Bé Não tương ứng (cần chạy script ở bước dựng trang).
 - Viết JSON theo khung. Không dùng `tuong_tac`, `boi_canh`, `sprite`.
 
-### 4. Dựng trang chơi (artifact) và chơi ngay
+### 4. Dựng trang chơi (artifact) để trả kết quả
 - Nếu chạy được mã: lưu JSON ra `game.json`, chạy `python3 scripts/dung_trang.py game.json game.html`. Script kiểm tra khối ghi nguồn; nếu in "DỪNG" thì không được tiếp tục, báo Thầy Cô cài lại Skill gốc. Rồi hiển thị `game.html` thành artifact.
 - Nếu không chạy được mã: sao chép NGUYÊN VĂN toàn bộ `assets/trinh-choi.html` vào artifact HTML, chỉ thay đúng chữ `__GAME_JSON__` bằng JSON game (đổi mọi `</` trong dữ liệu thành `<\/`). Không sửa một ký tự nào khác. Nếu trang hiện thông báo "Trang này đã bị gỡ hoặc sửa phần ghi nguồn", nghĩa là chép sai; làm lại cẩn thận.
 - Hướng dẫn Thầy Cô: bấm "Tiếp" hoặc phím mũi tên để sang bước; chạm thẻ để lật; "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú; chiếu lên màn hình lớp.
 
-### 5. Thầy Cô duyệt
+### 5. Trả kết quả và Thầy Cô duyệt
 Đọc nhanh cho Thầy Cô: tên game, tình huống, các lựa chọn, câu hỏi, ghi chú riêng. Hỏi Thầy Cô muốn sửa gì; sửa nội dung game rồi dựng lại trang (quy tắc không thay đổi vẫn giữ). Mỗi lần sửa dựng lại cả trang từ mẫu gốc.
 
 ## Giọng nói
