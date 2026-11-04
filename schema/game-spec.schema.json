@@ -613,6 +613,64 @@
       "type": "string",
       "maxLength": 200,
       "description": "Sach-la-thay: lời mời sáng tạo, ví dụ 'Nếu em là tác giả, em viết tiếp chương sau thế nào để nhân vật giữ được lời hứa?'"
+    },
+    "nhom_lop": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "description": "Nhóm tuổi: A lớp 1-3, B lớp 4-5, C lớp 6-7, D lớp 8-10, E lớp 11-12 (D, E là phần mở rộng). Quyết định giọng, lượng chữ, số lựa chọn."
+    },
+    "nhom_mon": {
+      "enum": [
+        "toan",
+        "khoa-hoc",
+        "ngu-van",
+        "xa-hoi",
+        "ngoai-ngu",
+        "nghe-thuat-the-chat",
+        "tin-hoc"
+      ],
+      "description": "Nhóm môn: quyết định kiểu chứng cứ và hiểu lầm hay gặp."
+    },
+    "ngoai_ngu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ngon_ngu",
+        "ma"
+      ],
+      "properties": {
+        "ngon_ngu": {
+          "type": "string"
+        },
+        "ma": {
+          "type": "string",
+          "description": "en, ko, ja, zh, fr, de, ru..."
+        },
+        "chu_viet": {
+          "enum": [
+            "latin",
+            "hangul",
+            "kana-kanji",
+            "han",
+            "cyrillic",
+            "khac"
+          ]
+        },
+        "muc_do": {
+          "type": "string"
+        }
+      },
+      "description": "Chỉ có khi bài đọc ngoại ngữ."
+    },
+    "hinh_minh_hoa": {
+      "type": "string",
+      "maxLength": 3000,
+      "description": "Chuỗi SVG minh họa cảnh của lời kể (viewBox 0 0 600 240), không script."
     }
   },
   "allOf": [

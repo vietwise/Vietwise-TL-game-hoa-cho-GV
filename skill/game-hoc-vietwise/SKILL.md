@@ -24,7 +24,11 @@ Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, b
 - Ghi rõ trong `gv_ghi_chu` bài, các trang đã dùng, và những số liệu lấy từ ảnh Thầy Cô gửi.
 
 ### 3. Tạo game
-- Đọc `references/khung-game.md` và một ví dụ cùng loại trong `references/vi-du/`.
+- Đọc `references/khung-game.md`, `references/quy-tac-vietwise.md` (vạch đỏ, nội dung đúng, đối chiếu trước khi trả) và một ví dụ cùng loại trong `references/vi-du/`.
+- **Chọn nhóm lớp** (A lớp 1 đến 3, B 4 đến 5, C 6 đến 7, D 8 đến 10, E 11 đến 12) và đọc `references/nhom-lop.md`: giọng, lượng chữ, số lựa chọn và ba mức theo nhóm. Điền `nhom_lop`.
+- **Chọn nhóm môn** (`toan`, `khoa-hoc`, `ngu-van`, `xa-hoi`, `ngoai-ngu`, `nghe-thuat-the-chat`, `tin-hoc`) và đọc `references/nhom-mon.md`: chứng cứ, hiểu lầm hay gặp, quy tắc riêng. Điền `nhom_mon`.
+- **Bài đọc ngoại ngữ** (Anh, Hàn, Nhật, Trung, Pháp, Đức, Nga...): đọc thêm `references/doc-ngoai-ngu.md` và điền `ngoai_ngu`. Lời kể bằng tiếng Việt, văn bản ngoại ngữ là chứng cứ, giữ nguyên chữ viết và dấu.
+- Trong `gv_ghi_chu` ghi: các trang đã dùng, mức Khởi động/Vững vàng/Thử thách, cách nâng hạ mức, một dòng chẩn đoán (quá trẻ con, quá nghiêm túc, quá dễ, quá khó), và nội dung nào chưa có người am hiểu đọc lại.
 - Dẫn truyện từ một THỬ THÁCH ĐỜI THẬT mà kiến thức giúp giải được (nấu ăn, pha chế, chăm người thân, mua sắm, an toàn, môi trường...), không dẫn bằng cảnh làm bài tập hay báo cáo trong lớp. Câu hỏi cuối của lời kể làm học sinh tò mò: kiến thức này có ý nghĩa gì ở ngoài đời. Chỉ dùng thông tin đời thật chắc chắn đúng.
 - Tình huống thật, gần học sinh, có một quyết định với 2 đến 3 lựa chọn mỗi lựa chọn có lý do hợp lý. Kiến thức bám nội dung Thầy Cô gửi. Câu chốt hỏi về phẩm chất, không hỏi đúng sai.
 - Số liệu đã tính sẵn để trong `gv_`. Nếu thấy chỗ lạ trong đề (ví dụ số liệu không thực tế), dùng làm tình huống phản biện và ghi rõ cho Thầy Cô.

@@ -1,0 +1,83 @@
+{
+ "phien_ban": "1.0",
+ "loai": "on-bai",
+ "tieu_de": "Hộp sữa nói gì?",
+ "mon": "Tiếng Anh",
+ "lop": "7",
+ "nhom_lop": "C",
+ "nhom_mon": "ngoai-ngu",
+ "ngoai_ngu": {
+  "ngon_ngu": "Tiếng Anh",
+  "ma": "en",
+  "chu_viet": "latin",
+  "muc_do": "A2"
+ },
+ "bai": "Đọc hiểu nhãn thực phẩm (từ chỉ thời gian, hướng dẫn bảo quản)",
+ "thoi_luong_phut": 15,
+ "kien_thuc": [
+  "Hiểu \"Best before\" và \"within 3 days of opening\"",
+  "Đọc ngày tháng và hướng dẫn bảo quản trên nhãn tiếng Anh"
+ ],
+ "pham_chat": "cẩn thận",
+ "nhan_vat": [
+  {
+   "ten": "Linh"
+  }
+ ],
+ "chau_ngoc": "ben-chi",
+ "loi_ke": "Bác của Linh ở nước ngoài gửi về một hộp sữa tươi có nhãn tiếng Anh. Linh mở hộp vào ngày 5 tháng 11 và rót cho cả nhà. Trên nhãn có ba dòng chữ: \"Best before: 12 Dec 2026.\" \"Keep refrigerated after opening.\" \"Use within 3 days of opening.\" Linh phải quyết định bảo quản sữa còn lại.",
+ "du_kien": [
+  "Mở hộp: ngày 5 tháng 11",
+  "Nhãn: ba dòng tiếng Anh",
+  "Còn nửa hộp"
+ ],
+ "lua_chon": [
+  {
+   "ma": "A",
+   "noi_dung": "Để vào tủ lạnh và dùng hết trước ngày 8 tháng 11",
+   "gv_kien_thuc": "Đọc đủ hai dòng: refrigerated và within 3 days of opening."
+  },
+  {
+   "ma": "B",
+   "noi_dung": "Để trong tủ bếp, dùng đến ngày 12 tháng 12",
+   "gv_cai_gia": "Nhầm Best before (hộp chưa mở) với hạn dùng sau khi mở; bỏ qua Keep refrigerated."
+  },
+  {
+   "ma": "C",
+   "noi_dung": "Để vào tủ lạnh và dùng đến ngày 12 tháng 12",
+   "gv_cai_gia": "Nhìn thấy refrigerated nhưng bỏ qua within 3 days of opening."
+  }
+ ],
+ "cach_chon": "Giơ 1, 2 hoặc 3 ngón tay",
+ "cau_hoi_goi_mo": [
+  "Chữ nào trên nhãn làm em chọn như vậy?",
+  "Nếu chỉ dịch từng từ thì dễ hiểu sai ở đâu?",
+  "Em từng đọc nhãn nước ngoài chưa?"
+ ],
+ "cau_mau_phan_bien": [
+  "Câu nào trên nhãn nói về hộp chưa mở, câu nào về hộp đã mở?",
+  "Em có đồng ý rằng đọc kỹ cả ba dòng mới an toàn không? Vì sao?"
+ ],
+ "so_do_chot": [
+  {
+   "kien_thuc": "Keep refrigerated after opening: sau khi mở phải giữ lạnh",
+   "dung_vao": "Bác bỏ lựa chọn B"
+  },
+  {
+   "kien_thuc": "Use within 3 days of opening: dùng trong 3 ngày từ lúc mở",
+   "dung_vao": "Bác bỏ lựa chọn C"
+  },
+  {
+   "kien_thuc": "Best before: chất lượng tốt nhất đến ngày đó, nếu chưa mở",
+   "dung_vao": "Ngày 12 tháng 12 không phải hạn của hộp đã mở"
+  }
+ ],
+ "gv_goi_y_lua_chon_d": "Học sinh có thể viết lại ba dòng nhãn bằng tiếng Việt để dán lên hộp, hoặc viết một nhãn tiếng Anh cho sản phẩm khác.",
+ "gv_hieu_lam": [
+  "Dịch từng từ rồi bỏ qua ý cả câu",
+  "Cho rằng ngày trên nhãn luôn là hạn dùng sau khi mở"
+ ],
+ "loi_chot": "Đọc kỹ và cẩn thận giúp cả nhà an toàn.",
+ "du_an_that": "Tìm một nhãn tiếng Anh ở nhà và đọc hiểu một dòng hướng dẫn cho người nhà.",
+ "gv_ghi_chu": "Nhãn là văn bản mô phỏng điển hình do Trợ lý viết, không phải nhãn của một sản phẩm cụ thể. Nếu Thầy Cô có ảnh nhãn thật hoặc đoạn đọc trong sách, nên thay vào. Nghĩa: Best before = tốt nhất trước ngày (hộp chưa mở). Keep refrigerated after opening = giữ lạnh sau khi mở. Use within 3 days of opening = dùng trong 3 ngày kể từ khi mở. Đáp số A: mở ngày 5, hết hạn ngày 8. Phiên âm: không cần."
+}

@@ -7,7 +7,7 @@
 4. Tách nội dung học sinh và nội dung Thầy Cô: trường bắt đầu bằng `gv_` chỉ hiện ở chế độ Thầy Cô. Đáp số, lời giải, hiểu lầm hay gặp luôn để trong `gv_`.
 5. Không bịa số liệu, trích dẫn, số trang. Chỉ dùng kiến thức có trong nội dung bài Thầy Cô gửi hoặc kiến thức phổ thông chắc chắn.
 6. Dẫn truyện từ thử thách đời thật mà kiến thức giúp giải, rồi mở ra sự hiếu kỳ về kiến thức hữu ích; không dẫn bằng cảnh làm bài tập trong lớp.
-7. Gọi giáo viên là "Thầy Cô". Nơi chơi game là Vietwise.edu.vn.
+7. Gọi giáo viên là "Thầy Cô". Game chơi ngay trong artifact.
 
 ## Ba loại game
 | Loại | `loai` | Phút | Mục tiêu | Các bước trong trình chơi |
@@ -19,7 +19,7 @@
 Mở tiết không bao giờ hiện đáp án đúng. Ôn bài: ít nhất một lựa chọn dựa trên hiểu lầm phổ biến, ghi trong `gv_hieu_lam`. Sách là Thầy: chỉ dùng chi tiết sách khi Thầy Cô cung cấp hoặc sách rất phổ biến và Claude chắc chắn; không chắc thì ghi vị trí theo chương hoặc đoạn và dặn Thầy Cô đối chiếu.
 
 ## Trường JSON
-Bắt buộc mọi loại: `phien_ban` ("1.0"), `loai`, `tieu_de`, `mon`, `lop` (chuỗi), `bai`, `pham_chat`, `loi_ke`, `lua_chon`.
+Bắt buộc mọi loại: `phien_ban` ("1.0"), `loai`, `tieu_de`, `mon`, `lop` (chuỗi), `nhom_lop` (A đến E), `nhom_mon`, `bai`, `pham_chat`, `loi_ke`, `lua_chon`. Bài ngoại ngữ thêm `ngoai_ngu`. Xem `nhom-lop.md`, `nhom-mon.md`, `doc-ngoai-ngu.md`, `quy-tac-vietwise.md`.
 Nên có: `thoi_luong_phut`, `kien_thuc` (mảng), `nhan_vat` ([{"ten"}]), `du_kien` (mảng nhãn ngắn), `cach_chon`, `cau_hoi_goi_mo` (mảng), `loi_chot`, `du_an_that`, `gv_ghi_chu`, `chau_ngoc` (hieu-ky, thich-nghi, ben-chi, an-lac).
 
 | Trường | Kiểu | Ghi chú |

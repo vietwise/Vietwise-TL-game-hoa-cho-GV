@@ -4,6 +4,8 @@
  "tieu_de": "Hoá đơn tiền điện nhà Lan",
  "mon": "Khoa học",
  "lop": "5",
+ "nhom_lop": "B",
+ "nhom_mon": "khoa-hoc",
  "bai": "Sử dụng năng lượng điện an toàn, tiết kiệm",
  "thoi_luong_phut": 10,
  "kien_thuc": [

@@ -4,6 +4,8 @@
  "tieu_de": "Con số trên chai nước muối",
  "mon": "Khoa học tự nhiên",
  "lop": "8",
+ "nhom_lop": "D",
+ "nhom_mon": "khoa-hoc",
  "bai": "Mol, khối lượng mol, nồng độ phần trăm và nồng độ mol",
  "thoi_luong_phut": 15,
  "kien_thuc": [

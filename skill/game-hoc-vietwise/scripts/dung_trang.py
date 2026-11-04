@@ -43,6 +43,12 @@ def main():
         loi.append('loai phải là mo-tiet, on-bai hoặc sach-la-thay')
     if loi:
         sys.exit('Game thiếu trường: ' + ', '.join(loi))
+    if g.get('nhom_lop') not in ('A', 'B', 'C', 'D', 'E'):
+        sys.exit('Thiếu hoặc sai nhom_lop (A, B, C, D hoặc E). Xem references/nhom-lop.md')
+    if g.get('nhom_mon') not in ('toan', 'khoa-hoc', 'ngu-van', 'xa-hoi', 'ngoai-ngu', 'nghe-thuat-the-chat', 'tin-hoc'):
+        sys.exit('Thiếu hoặc sai nhom_mon. Xem references/nhom-mon.md')
+    if g.get('nhom_mon') == 'ngoai-ngu' and not g.get('ngoai_ngu'):
+        sys.exit('Bài ngoại ngữ cần trường ngoai_ngu. Xem references/doc-ngoai-ngu.md')
     if not (2 <= len(g['lua_chon']) <= 4):
         sys.exit('lua_chon cần 2 đến 4 mục')
     import base64

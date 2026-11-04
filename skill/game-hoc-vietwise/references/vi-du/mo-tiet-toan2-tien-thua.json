@@ -1,0 +1,50 @@
+{
+ "phien_ban": "1.0",
+ "loai": "mo-tiet",
+ "tieu_de": "Cô bán hàng trả lại bao nhiêu?",
+ "mon": "Toán",
+ "lop": "2",
+ "nhom_lop": "A",
+ "nhom_mon": "toan",
+ "bai": "Cộng trừ các số tròn nghìn (tiền Việt Nam)",
+ "thoi_luong_phut": 10,
+ "kien_thuc": [
+  "Cộng và trừ số tiền trong phạm vi 20 000 đồng"
+ ],
+ "pham_chat": "trung thực",
+ "nhan_vat": [
+  {
+   "ten": "Nam"
+  }
+ ],
+ "chau_ngoc": "hieu-ky",
+ "loi_ke": "Mẹ nhờ Nam ra quán đầu ngõ mua một cái bánh 8 000 đồng và một chai nước 7 000 đồng. Mẹ đưa Nam một tờ 20 000 đồng. Cô bán hàng đang bận, đưa vội mấy tờ tiền lại cho Nam.",
+ "du_kien": [
+  "Bánh: 8 000 đồng",
+  "Nước: 7 000 đồng",
+  "Mẹ đưa: 20 000 đồng"
+ ],
+ "lua_chon": [
+  {
+   "ma": "A",
+   "noi_dung": "Em tính nhẩm trước, rồi đếm lại tiền cô đưa",
+   "gv_cai_gia": "Mất thêm một chút thời gian khi quán đông."
+  },
+  {
+   "ma": "B",
+   "noi_dung": "Em cất tiền vào túi, chạy về cho kịp bữa ăn",
+   "gv_cai_gia": "Nhanh, nhưng không biết tiền có đúng hay không."
+  }
+ ],
+ "cach_chon": "Giơ 1 hoặc 2 ngón tay",
+ "cau_hoi_goi_mo": [
+  "Em đã từng đi mua đồ giúp người lớn chưa?",
+  "Em nhẩm như thế nào?"
+ ],
+ "buoc_ngoat": "Nam đếm thấy cô trả lại 6 000 đồng.",
+ "cau_hoi_treo": "Cô trả lại đủ chưa? Số tiền đúng phải là bao nhiêu?",
+ "loi_chot": "Đếm lại tiền thừa là cẩn thận và trung thực với chính mình và với người bán.",
+ "quay_lai_cuoi_tiet": "Bây giờ em biết cách tìm số tiền thừa chưa? Em sẽ kể cho người nhà nghe cách làm.",
+ "du_an_that": "Về nhà, hỏi người nhà một món đồ giá bao nhiêu rồi cùng tính tiền thừa khi đưa tờ 10 000 hoặc 20 000 đồng.",
+ "gv_ghi_chu": "Đáp số (không công bố): 8 000 + 7 000 = 15 000; 20 000 − 15 000 = 5 000, nên cô trả thiếu hoặc nhầm 1 000 đồng. Nhóm A: 2 lựa chọn, ít chữ, Thầy Cô đọc to. Mức Khởi động: cho học sinh dùng tiền giấy giả. Mức Thử thách: thêm món thứ ba. Nội dung dựa trên kiến thức phổ thông, chưa gắn với một trang sách; Thầy Cô đối chiếu với bài trong sách. Ghi chú: học sinh quá dễ nếu cả lớp chọn A ngay; thêm tình huống mới."
+}
