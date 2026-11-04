@@ -45,6 +45,12 @@ def main():
         sys.exit('Game thiếu trường: ' + ', '.join(loi))
     if not (2 <= len(g['lua_chon']) <= 4):
         sys.exit('lua_chon cần 2 đến 4 mục')
+    import base64
+    nao = ''
+    f = os.path.join(os.path.dirname(GOC), 'nao', str(g.get('chau_ngoc', '')) + '.webp')
+    if g.get('chau_ngoc') in ('hieu-ky', 'thich-nghi', 'ben-chi', 'an-lac') and os.path.exists(f):
+        nao = 'data:image/webp;base64,' + base64.b64encode(open(f, 'rb').read()).decode()
+    t = t.replace("var NAO='__NAO__';", "var NAO='" + nao + "';")
     s = json.dumps(g, ensure_ascii=False).replace('</', '<\\/')
     open(sys.argv[2], 'w', encoding='utf-8').write(t.replace('__GAME_JSON__', s))
     print('Đã dựng', sys.argv[2], len(s), 'ký tự dữ liệu game')

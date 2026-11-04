@@ -31,6 +31,7 @@ Nên có: `thoi_luong_phut`, `kien_thuc` (mảng), `nhan_vat` ([{"ten"}]), `du_k
 | `gv_goi_y_lua_chon_d`, `gv_hieu_lam` | chuỗi, mảng | Chỉ Thầy Cô thấy |
 | `sach` | `{ten, tac_gia, phan_doc, nguon_noi_dung}` | `sach-la-thay`. `nguon_noi_dung`: "gv-cung-cap" hoặc "claude-biet-ro" |
 | `chia_khoa` | mảng 3 đến 5 `{cau_hoi, trang, gv_goi_y}` | Câu chỉ người đã đọc mới trả lời được; không chấm |
+| `hinh_minh_hoa` | chuỗi SVG ≤ 3000 ký tự | Hình minh họa cảnh của lời kể, hiện ở bước Kể |
 | `viet_tiep` | chuỗi | Lời mời "Nếu em là tác giả..." |
 
 Không dùng `tuong_tac`, `boi_canh`, `sprite` (trình chơi nhẹ bỏ qua). Xem ví dụ trong `vi-du/` và bắt chước đúng cấu trúc.

@@ -27,6 +27,7 @@ Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, b
 - Dẫn truyện từ một THỬ THÁCH ĐỜI THẬT mà kiến thức giúp giải được (nấu ăn, pha chế, chăm người thân, mua sắm, an toàn, môi trường...), không dẫn bằng cảnh làm bài tập hay báo cáo trong lớp. Câu hỏi cuối của lời kể làm học sinh tò mò: kiến thức này có ý nghĩa gì ở ngoài đời. Chỉ dùng thông tin đời thật chắc chắn đúng.
 - Tình huống thật, gần học sinh, có một quyết định với 2 đến 3 lựa chọn mỗi lựa chọn có lý do hợp lý. Kiến thức bám nội dung Thầy Cô gửi. Câu chốt hỏi về phẩm chất, không hỏi đúng sai.
 - Số liệu đã tính sẵn để trong `gv_`. Nếu thấy chỗ lạ trong đề (ví dụ số liệu không thực tế), dùng làm tình huống phản biện và ghi rõ cho Thầy Cô.
+- Vẽ một hình minh họa cho cảnh trong lời kể: trường `hinh_minh_hoa` là một chuỗi SVG phẳng, nhiều màu, không quá 3000 ký tự, viewBox "0 0 600 240", có sẵn vật thể thật của tình huống (xem ví dụ trong `references/vi-du/on-bai-khtn8-mol-nong-do.json`). Không chứa script, không link, không ảnh nhúng. Không viết đáp án lên hình (dùng dấu ? nếu cần). Luôn đặt `chau_ngoc`: trình chơi sẽ hiện nhân vật Bé Não tương ứng (cần chạy script ở bước dựng trang).
 - Viết JSON theo khung. Không dùng `tuong_tac`, `boi_canh`, `sprite`.
 
 ### 4. Dựng trang chơi (artifact) và chơi ngay
