@@ -15,7 +15,7 @@ Bộ này có 3 loại game, không thi đua, không chấm điểm:
 Nếu tài khoản của Thầy Cô chưa có mục Skills, hãy báo cho Vườn Game-học qua Vietwise.edu.vn để được hướng dẫn cách khác.
 
 ## Dùng (dễ như 1-2-3)
-1. **Giao việc cho Trợ lý Game-hóa**: nhắn cho Claude, ví dụ: "Tạo game ôn bài Khoa học tự nhiên lớp 8, bài mol và nồng độ", và gửi kèm **ảnh chụp trang sách** (hoặc dán chữ của bài).
+1. **Giao việc cho Trợ lý Game-hóa**: nhắn cho Claude, ví dụ: "Tạo game ôn bài Khoa học tự nhiên lớp 8, bài mol và nồng độ", và gửi kèm **ảnh chụp trang sách** (bắt buộc, từ 1 đến 12 trang cho mỗi lần giao việc).
 2. **Trả kết quả**: Trợ lý Game-hóa tạo game và trả về ngay thành một trang chơi. Thầy Cô xem lại, nói muốn sửa gì thì Trợ lý sửa nội dung.
 3. **Chơi**: chiếu lên lớp. Phím mũi tên để sang bước, chạm vào thẻ để lật, nút "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú riêng.
 
@@ -27,7 +27,7 @@ Tìm trang sách để chụp: trang tập huấn theo lớp tại https://taphu
 
 Ô vàng là việc của Thầy Cô, ô xanh là việc của Claude.
 
-**Dạng chữ (nếu máy không hiện được ảnh):** Thầy Cô giao việc, rồi gửi ảnh trang sách hoặc dán chữ. Trợ lý đọc bài, soạn game, trả kết quả là một trang chơi trên artifact. Thầy Cô xem lại; muốn sửa thì nhờ Claude sửa rồi dựng lại. Hài lòng thì chiếu lên lớp và chơi.
+**Dạng chữ (nếu máy không hiện được ảnh):** Thầy Cô giao việc, rồi gửi ảnh trang sách (1 đến 12 trang). Trợ lý đọc bài, soạn game, trả kết quả là một trang chơi trên artifact. Thầy Cô xem lại; muốn sửa thì nhờ Claude sửa rồi dựng lại. Hài lòng thì chiếu lên lớp và chơi.
 
 ### Trong một lượt chơi, cả lớp đi qua các bước
 
