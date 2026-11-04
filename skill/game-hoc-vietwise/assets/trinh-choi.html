@@ -83,11 +83,13 @@ while((m=re.exec(x||''))){var s=m[0].replace(/\s+$/,''),l;if(seen[s])continue;se
 if(/[가-힯]/.test(s))l='ko-KR';else if(/[぀-ヿ]/.test(s))l='ja-JP';else if(/[Ѐ-ӿ]/.test(s))l='ru-RU';else l=ma==='ja'?'ja-JP':'zh-CN';o.push({t:s,l:l})}
 if(MAL[ma]&&/^(en|fr|de|es|it)$/.test(ma)){var q=/"([^"]{2,90})"/g;while((m=q.exec(x||''))){if(seen[m[1]])continue;seen[m[1]]=1;o.push({t:m[1],l:MAL[ma]})}}
 return o.slice(0,6)}
-function giong(l){var v=window.speechSynthesis?speechSynthesis.getVoices():[],p=l.slice(0,2).toLowerCase(),best=null,sc=-1;
+var VIR=[/HoaiMy/i,/NamMinh/i,/Google.*(Vi|Việt)/i,/Linh/i,/Natural|Online|Neural/i];
+function giong(l){if(l.slice(0,2)==='vi'){var vs=window.speechSynthesis?speechSynthesis.getVoices().filter(function(x){return String(x.lang).replace('_','-').toLowerCase().indexOf('vi')===0}):[];for(var i=0;i<VIR.length;i++){for(var j=0;j<vs.length;j++)if(VIR[i].test(vs[j].name))return vs[j]}if(vs.length)return vs.filter(function(x){return !/\bAn\b/.test(x.name)})[0]||vs[0];return null}
+var v=window.speechSynthesis?speechSynthesis.getVoices():[],p=l.slice(0,2).toLowerCase(),best=null,sc=-1;
 v.forEach(function(x){var xl=String(x.lang).replace('_','-').toLowerCase();if(xl.indexOf(p)!==0)return;var s=(xl===l.toLowerCase()?3:0)+(/Natural|Online|Neural|Google|Premium|Enhanced/i.test(x.name)?2:0)+(x.localService?0:1);if(s>sc){sc=s;best=x}});return best}
 function noi(txt,l,rate,note){if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(note)note.textContent='Trình duyệt này chưa hỗ trợ đọc thành tiếng. Thầy Cô đọc mẫu giúp em nhé.';return}
 speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(txt),v=giong(l);u.lang=l;if(v)u.voice=v;u.rate=rate;
-if(note)note.textContent=v?'':'Máy này chưa có giọng đọc ngôn ngữ này. Thầy Cô thử đổi sang Edge hoặc Chrome, hoặc đọc mẫu giúp em.';speechSynthesis.speak(u)}
+if(note)note.textContent=(v&&!(l.slice(0,2)==='vi'&&!/HoaiMy/i.test(v.name)))?'':(v?'Giọng hay hơn (HoaiMy): mở trang này bằng Microsoft Edge.':'Máy này chưa có giọng đọc ngôn ngữ này. Thầy Cô thử đổi sang Edge hoặc Chrome, hoặc đọc mẫu giúp em.');speechSynthesis.speak(u)}
 if(window.speechSynthesis)speechSynthesis.onvoiceschanged=function(){};
 function nghe(P,txt,vi){var seg=tach(txt);if(!seg.length&&!vi)return;var d=el('div','say'),note=el('small');
 if(vi){var b=el('button',null,'🔊 Đọc to');b.onclick=function(){noi(txt,'vi-VN',0.8,note)};d.appendChild(b)}

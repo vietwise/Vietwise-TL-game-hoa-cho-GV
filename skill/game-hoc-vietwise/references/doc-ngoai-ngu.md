@@ -40,6 +40,7 @@ Trình chơi tự tìm đoạn ngoại ngữ trong lời kể, bước ngoặt v
 - Chữ Hán, kana, Hangul, Kirin: nhận tự động theo bảng mã. Chữ Hán đi cùng kana hoặc `ngoai_ngu.ma` là `ja` thì đọc giọng Nhật, còn lại giọng Trung.
 - Anh, Pháp, Đức, Tây Ban Nha, Ý: đoạn đặt trong dấu ngoặc kép thẳng "..." và `ngoai_ngu.ma` phải khai báo. Vì vậy văn bản ngoại ngữ chữ La-tinh luôn đặt trong ngoặc kép thẳng, và dấu ngoặc kép thẳng không dùng vào việc khác trong các trường đó.
 - Trình chơi tự chọn giọng tốt nhất máy có cho từng thứ tiếng (ưu tiên giọng Natural, Online, Neural, Google; ưu tiên giọng đúng vùng). Tốc độ chậm (tiếng Việt 0,8; ngoại ngữ 0,7).
+- Tiếng Việt: ưu tiên HoaiMy, rồi NamMinh, Google Tiếng Việt, Linh, giọng Natural/Online khác; giọng Microsoft An xếp cuối. HoaiMy và NamMinh là giọng của Microsoft Edge (Windows), nên máy dùng Edge thường có sẵn; nếu máy chỉ có giọng thường thì game gợi ý mở bằng Edge. Game không nhúng sẵn tệp âm thanh HoaiMy.
 - Giọng đọc là của trình duyệt trên máy chơi. Máy chưa có giọng ngôn ngữ đó thì nút báo "Máy này chưa có giọng", gợi ý Edge hoặc Chrome; Thầy Cô đọc mẫu. Game vẫn chơi bình thường khi không có giọng.
 Trong `gv_ghi_chu` vẫn ghi cách đọc (phiên âm) của các từ quan trọng để Thầy Cô đọc mẫu khi cần.
 
