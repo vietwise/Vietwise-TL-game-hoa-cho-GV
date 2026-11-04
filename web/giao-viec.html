@@ -11,8 +11,8 @@ body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Nunito,system-ui,sa
 h1,h2,h3,.qt{font-family:Quicksand,Nunito,sans-serif;font-weight:700;margin:0}
 .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 16px;background:#fff;color:#444;font-size:14px;border-bottom:3px solid var(--cam)}
 .brand.bot{border-bottom:0;border-top:3px solid var(--cam);margin-top:auto;justify-content:center;text-align:center;font:700 15px/1.5 Quicksand,sans-serif;color:#0018F9;padding:12px 16px}
-.brand a{display:inline-flex;align-items:center}.brand img{height:44px;width:auto;display:block}
-.brand .t{font-family:Quicksand,sans-serif;font-weight:700;color:#0018F9}
+.brand a{display:inline-flex;align-items:center}.brand img{height:var(--lh,44px);width:auto;display:block}
+.brand .t{font-family:Quicksand,sans-serif;font-weight:700;color:#0018F9}@media(max-width:560px){.brand{--lh:30px;gap:4px 8px;padding:6px 12px;font-size:12px}.brand .t{font-size:12.5px}.brand .t:first-child{flex:0 0 100%}.brand.bot{font-size:13px}}
 #lock{position:fixed;inset:0;background:#fff;color:#222;z-index:99;display:none;place-items:center;text-align:center;padding:24px;font-size:20px}
 
 main{width:100%;max-width:900px;margin:0 auto;padding:18px 16px 30px;flex:1}
@@ -118,8 +118,8 @@ body{background:var(--bg);color:var(--ink);font:400 18px/1.6 Nunito,system-ui,sa
 h1,h2,h3,.q{font-family:Quicksand,Nunito,sans-serif;font-weight:700}
 .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 16px;background:#fff;color:#444;font-size:14px;border-bottom:3px solid var(--cam)}
 .brand.bot{border-bottom:0;border-top:3px solid var(--cam);margin-top:auto;justify-content:center;text-align:center;font:700 15px/1.5 Quicksand,sans-serif;color:#0018F9;padding:12px 16px}
-.brand a{display:inline-flex;align-items:center}.brand img{height:44px;width:auto;display:block}
-.brand .t{font-family:Quicksand,sans-serif;font-weight:700;color:#0018F9}
+.brand a{display:inline-flex;align-items:center}.brand img{height:var(--lh,44px);width:auto;display:block}
+.brand .t{font-family:Quicksand,sans-serif;font-weight:700;color:#0018F9}@media(max-width:560px){.brand{--lh:30px;gap:4px 8px;padding:6px 12px;font-size:12px}.brand .t{font-size:12.5px}.brand .t:first-child{flex:0 0 100%}.brand.bot{font-size:13px}}
 main{width:100%;max-width:980px;margin:0 auto;padding:18px 16px 28px;flex:1}
 .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 .pill{background:var(--soft);border-radius:999px;padding:3px 14px;font:700 14px Quicksand;color:var(--mut)}
@@ -170,7 +170,7 @@ function watch(){['brand-top','brand-bot'].forEach(function(id){var e=document.g
 function brand(){OB.disconnect();var a=document.getElementById('brand-top'),b=document.getElementById('brand-bot');
  if(!a||!b||!ok){document.getElementById('lock').style.display='grid';return}
  [[a,BRAND],[b,FOOT]].forEach(function(p){var e=p[0];if(e.innerHTML!==p[1])e.innerHTML=p[1];e.style.cssText='display:flex!important;visibility:visible!important;opacity:1!important;height:auto!important;position:static!important'});
- document.querySelectorAll('.brand img').forEach(function(i){i.style.cssText='display:block!important;visibility:visible!important;opacity:1!important;height:44px!important;width:auto!important'});watch()}
+ document.querySelectorAll('.brand img').forEach(function(i){i.style.cssText='display:block!important;visibility:visible!important;opacity:1!important;height:var(--lh,44px)!important;width:auto!important'});watch()}
 brand();setInterval(brand,1500);
 // ===== HẾT KHỐI KHÓA =====
 var $=function(i){return document.getElementById(i)};
@@ -234,7 +234,7 @@ function watch(){['brand-top','brand-bot'].forEach(function(id){var e=document.g
 function brand(){OB.disconnect();var a=document.getElementById('brand-top'),b=document.getElementById('brand-bot');
  if(!a||!b||!ok){document.getElementById('lock').style.display='grid';return}
  [[a,BRAND],[b,FOOT]].forEach(function(p){var e=p[0];if(e.innerHTML!==p[1])e.innerHTML=p[1];e.style.cssText='display:flex!important;visibility:visible!important;opacity:1!important;height:auto!important;position:static!important'});
- document.querySelectorAll('.brand img').forEach(function(i){i.style.cssText='display:block!important;visibility:visible!important;opacity:1!important;height:44px!important;width:auto!important'});watch()}
+ document.querySelectorAll('.brand img').forEach(function(i){i.style.cssText='display:block!important;visibility:visible!important;opacity:1!important;height:var(--lh,44px)!important;width:auto!important'});watch()}
 brand();setInterval(brand,1500);
 // ===== HẾT KHỐI KHÓA =====
 
