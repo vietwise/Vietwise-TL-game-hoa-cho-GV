@@ -94,9 +94,20 @@ function fm(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
 function dung(){clearInterval(hen);hen=null;bt.textContent='Bấm giờ'}
 function reset(){dung();con=Math.round(S[so][1]*60);tm.textContent=fm(con)}
 bt.onclick=function(){if(hen){dung();return}bt.textContent='Dừng';hen=setInterval(function(){con=Math.max(0,con-1);tm.textContent=fm(con);if(!con)dung()},1000)};
-function ve(){stage.textContent='';var P=el('div','panel');S[so][2](P);stage.appendChild(P);Array.prototype.forEach.call(bar.children,function(b,i){b.className=i<so?'done':i===so?'on':''});bp.disabled=so===0;bn.disabled=false;bn.textContent=so===S.length-1?(L==='mo-tiet'?'Vào bài':'Kết thúc'):'Tiếp →';reset()}
-bp.onclick=function(){if(so>0){so--;ve()}};
-bn.onclick=function(){if(so<S.length-1){so++;ve()}else{bn.disabled=true;dung()}};
+function ve(){stage.textContent='';var P=el('div','panel');S[so][2](P);stage.appendChild(P);Array.prototype.forEach.call(bar.children,function(b,i){b.className=i<so?'done':i===so?'on':''});bp.disabled=so===0;bn.disabled=false;bn.textContent=so===S.length-1?'Kết thúc':'Tiếp →';reset()}
+var GEM={'hieu-ky':'Hiếu kỳ','thich-nghi':'Thích nghi','ben-chi':'Bền chí','an-lac':'An lạc'},fin=false,AC=null;
+function clap(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var c=AC,n=Math.floor(c.sampleRate*0.06),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);for(var k=0;k<90;k++){var s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2);s.buffer=b;f.type='bandpass';f.frequency.value=1200+Math.random()*1800;g.gain.value=0.25+Math.random()*0.35;s.connect(f);f.connect(g);g.connect(c.destination);s.start(c.currentTime+Math.random()*3.2)}}catch(e){}}
+function phao(){var cv=document.createElement('canvas');cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40';cv.width=innerWidth;cv.height=innerHeight;document.body.appendChild(cv);var x=cv.getContext('2d'),col=['#F96726','#F9C12D','#0018F9','#4E9F2E','#DF0000','#ff7eb6'],P=[],T=Date.now();for(var i=0;i<160;i++)P.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*0.6,vx:(Math.random()-.5)*3,vy:2+Math.random()*4,r:4+Math.random()*6,c:col[i%col.length],a:Math.random()*6,va:(Math.random()-.5)*.3});
+(function f(){var el_=Date.now()-T;x.clearRect(0,0,cv.width,cv.height);P.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.a+=p.va;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()});if(el_<6500)requestAnimationFrame(f);else cv.remove()})()}
+function ketThuc(){fin=true;dung();stage.textContent='';var P=el('div','panel');P.style.textAlign='center';var gem=GEM[G.chau_ngoc]||'Hiếu kỳ';
+ if(NAO.indexOf('data:image')===0){var i=el('img');i.src=NAO;i.alt='Bé Não';i.style.cssText='width:170px;height:auto;margin:0 auto;display:block';P.appendChild(i)}else{P.appendChild(el('div',null,'🏅')).style.fontSize='72px'}
+ P.appendChild(el('h2',null,'Huy hiệu '+gem));P.lastChild.style.fontSize='30px';
+ var b=el('div','pill','+5 Châu Lộc 💎');b.style.cssText='display:inline-block;font-size:22px;background:#F9C12D;color:#222;padding:6px 22px';P.appendChild(b);
+ var m=el('p','q','Xin một tràn pháo tay tặng cả lớp. Chúc các bạn học vui!');m.style.fontSize='26px';m.style.color='var(--blue)';P.appendChild(m);
+ var n=el('p',null,'Châu Lộc trong game là quà chung của cả lớp, không dùng để xếp hạng.');n.style.cssText='color:var(--mut);font-size:15px';P.appendChild(n);
+ stage.appendChild(P);Array.prototype.forEach.call(bar.children,function(b2){b2.className='done'});bn.textContent='Chơi lại';bn.disabled=false;tm.textContent='';phao();clap()}
+bn.onclick=function(){if(fin){fin=false;so=0;ve();return}if(so<S.length-1){so++;ve()}else{ketThuc()}};
+bp.onclick=function(){if(fin){fin=false;ve();return}if(so>0){so--;ve()}};
 bg.onclick=function(){gvm=!gvm;document.body.classList.toggle('gv',gvm);bg.textContent=gvm?'Tắt chế độ Thầy Cô':'Chế độ Thầy Cô'};
 document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')bn.click();else if(e.key==='ArrowLeft')bp.click();else if((e.key==='g'||e.key==='G')&&!/INPUT|TEXTAREA/.test((e.target||{}).tagName))bg.click()});
 ve();
