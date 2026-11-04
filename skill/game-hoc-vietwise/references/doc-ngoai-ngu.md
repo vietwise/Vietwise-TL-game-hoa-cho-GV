@@ -36,7 +36,7 @@ Từ chung: **giữ nguyên chữ viết, dấu, thanh điệu**; không thay b�
 - Khi hỏi ý kiến học sinh, không hỏi "đúng hay sai"; hỏi "em đọc được điều gì? chữ nào cho em biết?"
 
 ## Nghe đọc tự động trong trình chơi
-Trình chơi tự tìm đoạn ngoại ngữ trong lời kể, bước ngoặt và câu hỏi treo, rồi hiện nút 🔊 cho từng đoạn (tối đa 6) và nút "🔊 Đọc to" cho lời kể tiếng Việt. Cách nhận biết:
+Trình chơi tự tìm đoạn ngoại ngữ trong lời kể, bước ngoặt và câu hỏi treo, rồi hiện nút 🔊 cho từng đoạn (tối đa 6) và nút "🔊 Đọc to" đọc cả lời kể: phần tiếng Việt bằng giọng Việt, phần ngoại ngữ bằng giọng của chính thứ tiếng đó (không bao giờ đọc chữ ngoại ngữ bằng giọng Việt). Cách nhận biết:
 - Chữ Hán, kana, Hangul, Kirin: nhận tự động theo bảng mã. Chữ Hán đi cùng kana hoặc `ngoai_ngu.ma` là `ja` thì đọc giọng Nhật, còn lại giọng Trung.
 - Anh, Pháp, Đức, Tây Ban Nha, Ý: đoạn đặt trong dấu ngoặc kép thẳng "..." và `ngoai_ngu.ma` phải khai báo. Vì vậy văn bản ngoại ngữ chữ La-tinh luôn đặt trong ngoặc kép thẳng, và dấu ngoặc kép thẳng không dùng vào việc khác trong các trường đó.
 - Trình chơi tự chọn giọng tốt nhất máy có cho từng thứ tiếng (ưu tiên giọng Natural, Online, Neural, Google; ưu tiên giọng đúng vùng). Tốc độ chậm (tiếng Việt 0,8; ngoại ngữ 0,7).
