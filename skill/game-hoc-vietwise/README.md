@@ -23,6 +23,6 @@ Tìm trang sách để chụp: trang tập huấn theo lớp tại https://taphu
 
 ## Lưu ý
 - Skill chỉ dùng nội dung Thầy Cô gửi, không tự bịa nội dung sách. Thầy Cô nên đọc lại game trước khi chiếu, nhất là số liệu trong phần ghi chú.
-- Mỗi trang game luôn có phần ghi nguồn Vietwise ở đầu và cuối trang (logo Viện Giáo dục và Quản trị Nhân lực và logo Vườn Game-học Vietwise, bấm vào mở Vietwise.edu.vn). Đây là điều kiện dùng miễn phí và Skill không cho phép sửa hoặc xóa phần này. Xem NOTICE.md.
+- Mỗi trang game luôn có phần ghi nguồn Vietwise ở đầu trang (logo Viện Giáo dục và Quản trị Nhân lực và logo Vườn Game-học Vietwise, bấm vào mở Vietwise.edu.vn) và dòng tri ân Thầy Cô ở cuối trang. Đây là điều kiện dùng miễn phí và Skill không cho phép sửa hoặc xóa phần này. Xem NOTICE.md.
 
 Cung cấp bởi Viện Giáo dục và Quản trị Nhân lực & Vườn Game-học Vietwise, https://vietwise.edu.vn

@@ -24,8 +24,10 @@ def main():
         sys.exit('Dùng: python3 dung_trang.py game.json game.html')
     t = open(GOC, encoding='utf-8').read()
     m = re.search(r"var BRAND='(.*?)';", t)
+    f = re.search(r"var FOOT='(.*?)';", t)
     k = re.search(r"var BH=(-?\d+);", t)
-    ok = (m and k and h(m.group(1)) == int(k.group(1))
+    ok = (m and f and k and h(m.group(1) + f.group(1)) == int(k.group(1))
+          and 'Kính Tri ân Thầy Cô, những người truyền cảm hứng' in f.group(1)
           and m.group(1).count('https://vietwise.edu.vn') == 2
           and 'Viện Giáo dục và Quản trị Nhân lực' in m.group(1)
           and 'Vườn Game-học Vietwise' in m.group(1)
