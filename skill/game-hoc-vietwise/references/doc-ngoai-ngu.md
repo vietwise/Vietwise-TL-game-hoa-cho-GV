@@ -35,8 +35,13 @@ Từ chung: **giữ nguyên chữ viết, dấu, thanh điệu**; không thay b�
 - **Tiếng Việt là từ hai tiếng:** từ một tiếng đứng cuối câu hoặc chỗ nhấn nghe cụt; thêm tiếng cùng gốc cùng nghĩa (xa → xa lạ, rõ → rõ ràng). Tên riêng, thuật ngữ quen giữ nguyên. Đọc to từng câu để kiểm tra.
 - Khi hỏi ý kiến học sinh, không hỏi "đúng hay sai"; hỏi "em đọc được điều gì? chữ nào cho em biết?"
 
-## Chạy trong trình chơi
-Trình chơi nhẹ hiển thị chữ Unicode (Hán, Hangul, kana, Kirin, chữ có dấu) bình thường, không có âm thanh và không có giọng đọc. Nếu Thầy Cô cần nghe đọc, Thầy Cô tự đọc mẫu hoặc mở bản ghi âm của sách. Trong `gv_ghi_chu` ghi cách đọc (phiên âm) của các từ quan trọng. Không hứa game đọc được tiếng nước ngoài.
+## Nghe đọc tự động trong trình chơi
+Trình chơi tự tìm đoạn ngoại ngữ trong lời kể, bước ngoặt và câu hỏi treo, rồi hiện nút 🔊 cho từng đoạn (tối đa 6) và nút "🔊 Đọc to" cho lời kể tiếng Việt. Cách nhận biết:
+- Chữ Hán, kana, Hangul, Kirin: nhận tự động theo bảng mã. Chữ Hán đi cùng kana hoặc `ngoai_ngu.ma` là `ja` thì đọc giọng Nhật, còn lại giọng Trung.
+- Anh, Pháp, Đức, Tây Ban Nha, Ý: đoạn đặt trong dấu ngoặc kép thẳng "..." và `ngoai_ngu.ma` phải khai báo. Vì vậy văn bản ngoại ngữ chữ La-tinh luôn đặt trong ngoặc kép thẳng, và dấu ngoặc kép thẳng không dùng vào việc khác trong các trường đó.
+- Trình chơi tự chọn giọng tốt nhất máy có cho từng thứ tiếng (ưu tiên giọng Natural, Online, Neural, Google; ưu tiên giọng đúng vùng). Tốc độ chậm (tiếng Việt 0,8; ngoại ngữ 0,7).
+- Giọng đọc là của trình duyệt trên máy chơi. Máy chưa có giọng ngôn ngữ đó thì nút báo "Máy này chưa có giọng", gợi ý Edge hoặc Chrome; Thầy Cô đọc mẫu. Game vẫn chơi bình thường khi không có giọng.
+Trong `gv_ghi_chu` vẫn ghi cách đọc (phiên âm) của các từ quan trọng để Thầy Cô đọc mẫu khi cần.
 
 ## Nội dung nên cẩn trọng
 Lịch sử, văn hóa, tôn giáo, nhân vật có bản quyền của nước khác: chỉ dùng thông tin chắc chắn, tôn trọng, không so sánh hơn kém giữa các nước. Không dùng nhãn hiệu thật làm nhân vật; không quảng cáo.

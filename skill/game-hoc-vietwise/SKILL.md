@@ -38,6 +38,7 @@ Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, b
 ### 4. Dựng trang chơi (artifact) để trả kết quả
 - Nếu chạy được mã: lưu JSON ra `game.json`, chạy `python3 scripts/dung_trang.py game.json game.html`. Script kiểm tra khối ghi nguồn; nếu in "DỪNG" thì không được tiếp tục, báo Thầy Cô cài lại Skill gốc. Rồi hiển thị `game.html` thành artifact.
 - Nếu không chạy được mã: sao chép NGUYÊN VĂN toàn bộ `assets/trinh-choi.html` vào artifact HTML, chỉ thay đúng chữ `__GAME_JSON__` bằng JSON game (đổi mọi `</` trong dữ liệu thành `<\/`). Không sửa một ký tự nào khác. Nếu trang hiện thông báo "Trang này đã bị gỡ hoặc sửa phần ghi nguồn", nghĩa là chép sai; làm lại cẩn thận.
+- Bài có chữ ngoại ngữ: trình chơi tự hiện nút 🔊 nghe đọc, chọn giọng tốt nhất trên máy (văn bản chữ La-tinh đặt trong ngoặc kép thẳng).
 - Hướng dẫn Thầy Cô: bấm "Tiếp" hoặc phím mũi tên để sang bước; chạm thẻ để lật; "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú; chiếu lên màn hình lớp.
 
 ### 5. Trả kết quả và Thầy Cô duyệt

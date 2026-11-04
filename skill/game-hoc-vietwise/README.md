@@ -18,7 +18,7 @@ Nếu tài khoản của Thầy Cô chưa có mục Skills, hãy báo cho Vườ
 Trợ lý tự chọn cách viết theo lớp Thầy Cô nêu:
 - **Nhóm lớp:** A (lớp 1 đến 3), B (4 đến 5), C (6 đến 7), D (8 đến 10), E (11 đến 12). Đổi giọng, lượng chữ, số lựa chọn. Lớp 8 đến 12 là phần mở rộng so với phạm vi gốc 3 đến 12 tuổi của Vườn Game-học.
 - **Nhóm môn:** Toán, Khoa học, Ngữ văn, Xã hội, Ngoại ngữ, Nghệ thuật và Thể chất, Tin học. Đổi kiểu chứng cứ và hiểu lầm hay gặp.
-- **Đọc ngoại ngữ:** Anh, Hàn, Nhật, Trung, Pháp, Đức, Nga và các thứ tiếng khác. Lời kể tiếng Việt, văn bản ngoại ngữ là chứng cứ, giữ nguyên chữ viết và dấu. Game không đọc thành tiếng, Thầy Cô đọc mẫu.
+- **Đọc ngoại ngữ:** Anh, Hàn, Nhật, Trung, Pháp, Đức, Nga và các thứ tiếng khác. Lời kể tiếng Việt, văn bản ngoại ngữ là chứng cứ, giữ nguyên chữ viết và dấu. Game có nút 🔊 tự tìm giọng đọc tốt nhất trên máy cho từng thứ tiếng (máy chưa có giọng thì Thầy Cô đọc mẫu).
 Mỗi game có ba mức (Khởi động, Vững vàng, Thử thách) ghi trong ghi chú Thầy Cô. Quy tắc gốc nằm trong `references/` (nhom-lop, nhom-mon, doc-ngoai-ngu, quy-tac-vietwise); có 9 game mẫu trong `references/vi-du/`.
 
 ## Dùng (dễ như 1-2-3)
