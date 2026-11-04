@@ -21,6 +21,18 @@ Nếu tài khoản của Thầy Cô chưa có mục Skills, hãy báo cho Vườ
 
 Tìm trang sách để chụp: trang tập huấn theo lớp tại https://taphuan.nxbgd.vn/tap-huan?grade=N (N từ 1 đến 12).
 
+## Skill làm việc thế nào (sơ đồ)
+
+![Sơ đồ quy trình: Thầy Cô đặt hàng, Claude đọc bài và soạn game, dựng trang chơi, Thầy Cô xem lại rồi chơi](flowchart-quy-trinh.png)
+
+Ô vàng là việc của Thầy Cô, ô xanh là việc của Claude.
+
+**Dạng chữ (nếu máy không hiện được ảnh):** Thầy Cô đặt hàng, rồi gửi ảnh trang sách hoặc dán chữ. Claude đọc bài, soạn game, dựng trang chơi trên artifact. Thầy Cô xem lại; muốn sửa thì nhờ Claude sửa rồi dựng lại. Hài lòng thì chiếu lên lớp và chơi.
+
+### Trong một lượt chơi, cả lớp đi qua các bước
+
+![Các bước của ba loại game và màn kết huy hiệu](flowchart-cac-buoc.png)
+
 ## Lưu ý
 - Skill chỉ dùng nội dung Thầy Cô gửi, không tự bịa nội dung sách. Thầy Cô nên đọc lại game trước khi chiếu, nhất là số liệu trong phần ghi chú.
 - Mỗi trang game luôn có phần ghi nguồn Vietwise ở đầu trang (logo Viện Giáo dục và Quản trị Nhân lực và logo Vườn Game-học Vietwise, bấm vào mở Vietwise.edu.vn) và dòng tri ân Thầy Cô ở cuối trang. Đây là điều kiện dùng miễn phí và Skill không cho phép sửa hoặc xóa phần này. Xem NOTICE.md.
