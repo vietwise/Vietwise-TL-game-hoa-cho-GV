@@ -184,20 +184,36 @@ function ill(P){var s=G.hinh_minh_hoa;if(typeof s!=='string'||s.indexOf('<svg')<
 function ul(a){var u=el('ul');(a||[]).forEach(function(x){u.appendChild(el('li',null,x))});return u}
 function gv(t,label){if(!t)return null;var d=el('div','g');var b=el('strong',null,(label||'Dành cho Thầy Cô')+': ');d.appendChild(b);d.appendChild(document.createTextNode(Array.isArray(t)?t.join(' · '):t));return d}
 var MAL={en:'en-US',zh:'zh-CN',ja:'ja-JP',ko:'ko-KR',fr:'fr-FR',de:'de-DE',ru:'ru-RU',es:'es-ES',it:'it-IT',th:'th-TH'};
-function tach(x){var o=[],seen={},m,ma=(G.ngoai_ngu&&G.ngoai_ngu.ma)||'';
+function rng(x){var o=[],m,ma=(G.ngoai_ngu&&G.ngoai_ngu.ma)||'',s0=x||'';
 var re=/[぀-ヿ㐀-鿿가-힯Ѐ-ӿ][぀-ヿ㐀-鿿가-힯Ѐ-ӿ　-〿＀-￯\s]*/g;
-while((m=re.exec(x||''))){var s=m[0].replace(/\s+$/,''),l;if(seen[s])continue;seen[s]=1;
-if(/[가-힯]/.test(s))l='ko-KR';else if(/[぀-ヿ]/.test(s))l='ja-JP';else if(/[Ѐ-ӿ]/.test(s))l='ru-RU';else l=ma==='ja'?'ja-JP':'zh-CN';o.push({t:s,l:l})}
-if(MAL[ma]&&/^(en|fr|de|es|it)$/.test(ma)){var q=/"([^"]{2,90})"/g;while((m=q.exec(x||''))){if(seen[m[1]])continue;seen[m[1]]=1;o.push({t:m[1],l:MAL[ma]})}}
-return o.slice(0,6)}
-function giong(l){var v=window.speechSynthesis?speechSynthesis.getVoices():[],p=l.slice(0,2).toLowerCase(),best=null,sc=-1;
+while((m=re.exec(s0))){var s=m[0].replace(/\s+$/,''),l;
+if(/[가-힯]/.test(s))l='ko-KR';else if(/[぀-ヿ]/.test(s))l='ja-JP';else if(/[Ѐ-ӿ]/.test(s))l='ru-RU';else l=ma==='ja'?'ja-JP':'zh-CN';o.push({s:m.index,e:m.index+s.length,t:s,l:l,q:0})}
+if(MAL[ma]&&/^(en|fr|de|es|it)$/.test(ma)){var q=/"([^"]{2,90})"/g;while((m=q.exec(s0))){o.push({s:m.index,e:m.index+m[0].length,t:m[1],l:MAL[ma],q:1})}}
+o.sort(function(a,b){return a.s-b.s});return o}
+function tach(x){var seen={},o=[];rng(x).forEach(function(r){if(!seen[r.t]){seen[r.t]=1;o.push({t:r.t,l:r.l})}});return o.slice(0,6)}
+function chia(x){var o=[],p=0,s0=x||'';rng(s0).forEach(function(r){if(r.s<p)return;var v=s0.slice(p,r.s);if(/[A-Za-zÀ-ỹ0-9]/.test(v))o.push({t:v.replace(/"/g,' '),l:'vi-VN'});o.push({t:r.t,l:r.l});p=r.e});var v=s0.slice(p);if(/[A-Za-zÀ-ỹ0-9]/.test(v))o.push({t:v.replace(/"/g,' '),l:'vi-VN'});return o}
+function cho(f){var s=window.speechSynthesis;if(!s||s.getVoices().length){f();return}var d=0;function g(){if(d)return;d=1;f()}s.onvoiceschanged=g;setTimeout(g,900)}
+var TEN={'vi-VN':'tiếng Việt','en-US':'tiếng Anh','zh-CN':'tiếng Trung','ja-JP':'tiếng Nhật','ko-KR':'tiếng Hàn','ru-RU':'tiếng Nga','fr-FR':'tiếng Pháp','de-DE':'tiếng Đức','es-ES':'tiếng Tây Ban Nha','it-IT':'tiếng Ý'};
+function hk(l,t){var s=l+'|'+t,x=5381;for(var i=0;i<s.length;i++)x=((x<<5)+x+s.charCodeAt(i))|0;return String(x>>>0)}
+var RUN=0,CUR=null;
+function dungNoi(){RUN++;if(CUR){try{CUR.pause()}catch(e){}CUR=null}if(window.speechSynthesis)speechSynthesis.cancel()}
+function noiMang(d,note){if(!d.length)return;var A=(G&&G.giong)||{};
+cho(function(){var ds=d.map(function(x){var a=A[hk(x.l,x.t)];return{t:x.t,l:x.l,r:x.r,a:a||null,v:a||!window.speechSynthesis?null:giong(x.l)}}),mat=[];
+ds.forEach(function(x){if(!x.a&&!x.v&&mat.indexOf(x.l)<0)mat.push(x.l)});
+if(mat.length){dungNoi();if(note)note.textContent=(!window.speechSynthesis||!window.SpeechSynthesisUtterance)?'Trình duyệt này chưa hỗ trợ đọc thành tiếng. Thầy Cô đọc mẫu giúp em nhé.':'Máy này chưa có giọng '+mat.map(function(l){return TEN[l]||l}).join(', ')+', nên em không đọc để tránh đọc sai. Thầy Cô mở bằng Microsoft Edge (có giọng HoaiMy và nhiều thứ tiếng) hoặc Chrome, hoặc đọc mẫu giúp em.';return}
+dungNoi();var id=RUN,kh=false;ds.forEach(function(x){if(!x.a&&x.l==='vi-VN'&&!/HoaiMy/i.test(x.v.name))kh=true});
+if(note)note.textContent=kh?'Giọng tiếng Việt hay hơn (HoaiMy): mở trang này bằng Microsoft Edge.':'';
+(function run(i){if(id!==RUN||i>=ds.length)return;var x=ds[i];function nx(){run(i+1)}
+if(x.a){var au=new Audio(x.a);CUR=au;au.onended=nx;au.onerror=nx;var pr=au.play();if(pr&&pr.catch)pr.catch(nx)}
+else{var u=new SpeechSynthesisUtterance(x.t);u.lang=x.l;u.voice=x.v;u.rate=x.r;u.onend=nx;u.onerror=nx;speechSynthesis.speak(u)}})(0)})}
+function noiHet(txt,note){noiMang(chia(txt).map(function(x){return{t:x.t,l:x.l,r:x.l==='vi-VN'?0.8:0.7}}),note)}
+function noi(txt,l,rate,note){noiMang([{t:txt,l:l,r:rate}],note)}
+var VIR=[/HoaiMy/i,/NamMinh/i,/Google.*(Vi|Việt)/i,/Linh/i,/Natural|Online|Neural/i];
+function giong(l){if(l.slice(0,2)==='vi'){var vs=window.speechSynthesis?speechSynthesis.getVoices().filter(function(x){return String(x.lang).replace('_','-').toLowerCase().indexOf('vi')===0}):[];for(var i=0;i<VIR.length;i++){for(var j=0;j<vs.length;j++)if(VIR[i].test(vs[j].name))return vs[j]}if(vs.length)return vs.filter(function(x){return !/\bAn\b/.test(x.name)})[0]||vs[0];return null}
+var v=window.speechSynthesis?speechSynthesis.getVoices():[],p=l.slice(0,2).toLowerCase(),best=null,sc=-1;
 v.forEach(function(x){var xl=String(x.lang).replace('_','-').toLowerCase();if(xl.indexOf(p)!==0)return;var s=(xl===l.toLowerCase()?3:0)+(/Natural|Online|Neural|Google|Premium|Enhanced/i.test(x.name)?2:0)+(x.localService?0:1);if(s>sc){sc=s;best=x}});return best}
-function noi(txt,l,rate,note){if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(note)note.textContent='Trình duyệt này chưa hỗ trợ đọc thành tiếng. Thầy Cô đọc mẫu giúp em nhé.';return}
-speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(txt),v=giong(l);u.lang=l;if(v)u.voice=v;u.rate=rate;
-if(note)note.textContent=v?'':'Máy này chưa có giọng đọc ngôn ngữ này. Thầy Cô thử đổi sang Edge hoặc Chrome, hoặc đọc mẫu giúp em.';speechSynthesis.speak(u)}
-if(window.speechSynthesis)speechSynthesis.onvoiceschanged=function(){};
 function nghe(P,txt,vi){var seg=tach(txt);if(!seg.length&&!vi)return;var d=el('div','say'),note=el('small');
-if(vi){var b=el('button',null,'🔊 Đọc to');b.onclick=function(){noi(txt,'vi-VN',0.8,note)};d.appendChild(b)}
+if(vi){var b=el('button',null,'🔊 Đọc to');b.onclick=function(){noiHet(txt,note)};d.appendChild(b)}
 seg.forEach(function(s){var b=el('button',null,'🔊 '+s.t);b.setAttribute('aria-label','Nghe đọc '+s.t);b.onclick=function(){noi(s.t,s.l,0.7,note)};d.appendChild(b)});d.appendChild(note);P.appendChild(d)}
 function ke(){return function(P){P.appendChild(el('h2',null,'Kể'));mascot(P);ill(P);var w=el('div','who');var n=(G.nhan_vat&&G.nhan_vat[0]&&G.nhan_vat[0].ten)||'';if(n){w.appendChild(el('div','av',n.charAt(0)));w.appendChild(el('b',null,n))}P.appendChild(w);P.appendChild(el('p',null,G.loi_ke||''));nghe(P,G.loi_ke,true);if(G.du_kien&&G.du_kien.length){var t=el('div','tags');G.du_kien.forEach(function(x){t.appendChild(el('span',null,x))});P.appendChild(t)}}}
 function chon(){return function(P){P.appendChild(el('h2',null,'Chọn'));P.appendChild(el('p',null,(G.cach_chon||'Chọn cùng lúc, im lặng')+'. Chạm vào thẻ để lật.'));var c=el('div','cards');(G.lua_chon||[]).forEach(function(l){var d=el('div','cd',l.ma);d.tabIndex=0;function m(){if(d.classList.contains('open'))return;d.className='cd open';d.textContent='';d.appendChild(el('b',null,l.ma));d.appendChild(document.createTextNode(l.noi_dung));var g=gv(l.gv_cai_gia||l.gv_kien_thuc,'Cái giá / kiến thức');if(g)d.appendChild(g)}d.onclick=m;d.onkeydown=function(e){if(e.key==='Enter'||e.key===' ')m()};c.appendChild(d)});P.appendChild(c)}}
