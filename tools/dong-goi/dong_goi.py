@@ -22,7 +22,9 @@ games = [
     ('3-Ngu-van-6-Sach-la-Thay.html', 'sach-la-thay-van6-de-men.json'),
 ]
 for out, js in games:
-    subprocess.check_call(['python3', SK + '/scripts/dung_trang.py', SK + '/references/vi-du/' + js, OUT + '/3-Game-mau/' + out])
+    co_giong = H + '/giong/' + js
+    nguon = co_giong if os.path.exists(co_giong) else SK + '/references/vi-du/' + js
+    subprocess.check_call(['python3', SK + '/scripts/dung_trang.py', nguon, OUT + '/3-Game-mau/' + out])
 
 # 2: giao diện giao việc
 subprocess.check_call(['python3', H + '/dung_giao_viec.py', SP + '/giaoviec.html'])

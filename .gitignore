@@ -1,3 +1,4 @@
 dist/*
 !dist/Tro-ly-Game-hoa-Vietwise.zip
 __pycache__/
+tools/dong-goi/giong/cache/

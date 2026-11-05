@@ -671,6 +671,13 @@
       "type": "string",
       "maxLength": 3000,
       "description": "Chuỗi SVG minh họa cảnh của lời kể (viewBox 0 0 600 240), không script."
+    },
+    "giong": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Âm thanh thu sẵn (data URI mp3) theo khóa băm của đoạn đọc. Do tools/dong-goi/thu_giong.py tạo, chỉ cho game mẫu."
     }
   },
   "allOf": [
