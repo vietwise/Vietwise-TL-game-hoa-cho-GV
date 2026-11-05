@@ -69,9 +69,13 @@ def doan_can_thu(g):
     return out
 
 async def thu(t, l, ra):
-    import edge_tts
+    import edge_tts, ssl
+    import edge_tts.communicate as ec
+    ca = os.environ.get('SSL_CERT_FILE') or os.environ.get('REQUESTS_CA_BUNDLE')
+    if ca: ec._SSL_CTX = ssl.create_default_context(cafile=ca)  # máy sau proxy có CA riêng
+    proxy = os.environ.get('HTTPS_PROXY') or os.environ.get('https_proxy')
     rate = RATE.get(l, '-15%')
-    await edge_tts.Communicate(t, VOICE[l], rate=rate).save(ra)
+    await edge_tts.Communicate(t, VOICE[l], rate=rate, proxy=proxy).save(ra)
 
 def nen(src, dst):
     subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', src, '-ac', '1', '-ar', '24000', '-b:a', '24k', dst])
