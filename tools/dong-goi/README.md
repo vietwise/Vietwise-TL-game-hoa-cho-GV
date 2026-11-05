@@ -17,6 +17,7 @@ Chỉ game mẫu mới thu sẵn được (game Thầy Cô tạo mới có chữ
 python3 tools/dong-goi/thu_giong.py          # thu HoaiMy (Việt) và giọng từng thứ tiếng, ra tools/dong-goi/giong/*.json
 python3 tools/dong-goi/dong_goi.py           # tự dùng bản có giọng nếu có thư mục giong/
 ```
+Máy chạy sau proxy (như phiên Claude trên mây): script tự dùng `HTTPS_PROXY`; đặt thêm `SSL_CERT_FILE=<CA của proxy>`. Đã thu 05/11/2026: 7 đoạn, gói tăng khoảng 225 KB.
 `--gia` tạo âm thử bằng ffmpeg để kiểm tra đường ống; KHÔNG commit kết quả của `--gia`. Cách chia đoạn và khóa băm trong script phải khớp hàm `rng/chia/tach/hk` của `trinh-choi.html` (đã kiểm: 8/8 đoạn khớp). Trình chơi dùng âm thu sẵn nếu có, đoạn nào thiếu thì dùng giọng trên máy, thiếu cả hai thì báo.
 
 ## Khi sửa Skill, làm theo thứ tự
