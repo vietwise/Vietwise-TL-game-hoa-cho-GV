@@ -1,10 +1,10 @@
-"""Dựng biểu tượng màn hình chính (icon-192/512, apple-touch-icon, favicon-64) từ ảnh Não vẫy tay.
+"""Dựng biểu tượng màn hình chính (icon-192/512, apple-touch-icon, favicon-64) từ ảnh Não đeo huy chương Bền chí.
 Chạy: python3 tools/dong-goi/dung_bieu_tuong.py   (ra ở thư mục gốc repo)"""
 import os
 from PIL import Image, ImageDraw
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-SPRITE = os.path.join(REPO, 'assets/sprites/nao/nao-vay-tay.webp')
+SPRITE = os.path.join(REPO, 'assets/sprites/nao/nao-ben-chi.webp')
 TIM, HONG, KEM, VANG = (138, 69, 154), (202, 65, 188), (245, 241, 232), (236, 196, 89)
 N = 1024  # vẽ to rồi thu nhỏ cho mịn
 
@@ -22,10 +22,10 @@ def nen():
     d.ellipse((c - r - 14, c - r - 14, c + r + 14, c + r + 14), fill=VANG)
     d.ellipse((c - r, c - r, c + r, c + r), fill=KEM)
     s = Image.open(SPRITE).convert('RGBA')
-    w = int(N * 0.66)
-    h = round(s.height * w / s.width)
+    h = int(N * 0.70)
+    w = round(s.width * h / s.height)
     s = s.resize((w, h), Image.LANCZOS)
-    im.paste(s, ((N - w) // 2, (N - h) // 2 + int(N * 0.02)), s)
+    im.paste(s, ((N - w) // 2, (N - h) // 2 + int(N * 0.01)), s)
     return im
 
 
