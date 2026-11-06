@@ -34,6 +34,9 @@ shutil.copy(SP + '/giaoviec.html', OUT + '/2-Giao-viec-mo-trong-Claude.html')
 # 1: Đọc trước + phiếu giao việc (trang tĩnh trong mau/)
 shutil.copy(H + '/mau/doc-truoc.html', OUT + '/1-DOC-TRUOC-README-VA-PHIEU-GIAO-VIEC.html')
 
+# Trang đầu trên web (GitHub Pages): index.html, choi-thu/, tai-ve/ ở gốc repo
+subprocess.check_call(['python3', H + '/dung_trang_dau.py', OUT])
+
 # zip theo thứ tự
 final = sys.argv[1] if len(sys.argv) > 1 else REPO + '/dist/Tro-ly-Game-hoa-Vietwise.zip'
 os.makedirs(os.path.dirname(final), exist_ok=True)
