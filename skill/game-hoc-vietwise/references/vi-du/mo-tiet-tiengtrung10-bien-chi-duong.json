@@ -1,0 +1,63 @@
+{
+ "phien_ban": "1.0",
+ "loai": "mo-tiet",
+ "tieu_de": "Hai biển báo ở nhà ga",
+ "mon": "Tiếng Trung",
+ "lop": "10",
+ "nhom_lop": "D",
+ "nhom_mon": "ngoai-ngu",
+ "ngoai_ngu": {
+  "ngon_ngu": "Tiếng Trung",
+  "ma": "zh",
+  "chu_viet": "han",
+  "muc_do": "A1"
+ },
+ "bai": "Chữ Hán trong biển chỉ đường (入口, 出口)",
+ "thoi_luong_phut": 10,
+ "kien_thuc": [
+  "Đoán nghĩa chữ Hán qua ngữ cảnh",
+  "Phân biệt 入口 và 出口"
+ ],
+ "pham_chat": "hiếu kỳ",
+ "nhan_vat": [
+  {
+   "ten": "Hà"
+  }
+ ],
+ "chau_ngoc": "hieu-ky",
+ "loi_ke": "Hà đi cùng gia đình đến một nhà ga ở nước dùng chữ Hán. Ra khỏi tàu, Hà thấy hai biển chỉ đường có chữ 入口 và 出口. Cả nhà đang mang nhiều hành lý và chưa ai đọc được. Mọi người nhìn Hà chờ quyết định.",
+ "du_kien": [
+  "Hai biển: 入口 và 出口",
+  "Chưa ai biết nghĩa",
+  "Cả nhà đang mang hành lý"
+ ],
+ "lua_chon": [
+  {
+   "ma": "A",
+   "noi_dung": "Đi theo biển 入口",
+   "gv_cai_gia": "入口 (rùkǒu) là lối vào; có thể đưa cả nhà quay lại sân ga."
+  },
+  {
+   "ma": "B",
+   "noi_dung": "Đi theo biển 出口",
+   "gv_kien_thuc": "出口 (chūkǒu) là lối ra."
+  },
+  {
+   "ma": "C",
+   "noi_dung": "Hỏi một người qua đường và chỉ vào hai biển",
+   "gv_kien_thuc": "Cách an toàn; học thêm từ người bản xứ, nhưng mất thời gian."
+  }
+ ],
+ "cach_chon": "Giơ 1, 2 hoặc 3 ngón tay",
+ "cau_hoi_goi_mo": [
+  "Chữ nào trong hai chữ này em đã thấy ở đâu?",
+  "Hai chữ có điểm chung nào?",
+  "Nếu không có ai để hỏi thì em đoán thế nào?"
+ ],
+ "buoc_ngoat": "Hà thấy một biển màu xanh lá có chữ 紧急出口 ở cuối hành lang.",
+ "cau_hoi_treo": "Hai chữ cuối lặp lại 出口. Vậy hai chữ đầu có thể có nghĩa gì? Chữ 口 ở cả hai biển nghĩa là gì?",
+ "loi_chot": "Biết đoán nghĩa từ chữ đã quen là hiếu kỳ và là cách tự học khi đi xa.",
+ "quay_lai_cuoi_tiet": "Bây giờ em nhìn lại hai chữ 入 và 出; mỗi chữ giống hình gì?",
+ "du_an_that": "Tìm một biển chỉ đường hoặc nhãn có chữ Hán (hoặc chữ khác) ở quanh em và đoán nghĩa trước khi tra.",
+ "gv_ghi_chu": "Đáp án (không công bố): 入口 rùkǒu = lối vào; 出口 chūkǒu = lối ra; 紧急出口 jǐnjí chūkǒu = lối thoát hiểm; 口 kǒu = miệng, cửa. 出 (ra) và 入 (vào) là hai chữ khác nhau. Chữ giản thể. Tiếng Nhật cũng dùng 出口 (deguchi) và 入口 (iriguchi). Thầy Cô đọc mẫu cách phát âm. Nội dung chưa có người am hiểu tiếng Trung đọc lại; nên đối chiếu với giáo trình."
+}

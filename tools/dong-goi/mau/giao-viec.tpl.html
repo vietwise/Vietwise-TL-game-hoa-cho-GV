@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Giao việc cho Trợ lý Game-hóa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap">
+<style>
+:root{--blue:#0018F9;--cam:#F96726;--vang:#F9C12D;--bg:#FFFEF3;--card:#fff;--ink:#1b1b2b;--mut:#5b5b70;--line:#e6e2c8;--ok:#4E9F2E;--err:#DF0000;--soft:#f4f1da;--q:#FFF6D8}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue:#8a95ff;--bg:#14141f;--card:#1e1e2d;--ink:#f2f1e6;--mut:#b0b0c4;--line:#35354a;--soft:#272738;--q:#2a2733}}
+:root[data-theme="dark"]{--blue:#8a95ff;--bg:#14141f;--card:#1e1e2d;--ink:#f2f1e6;--mut:#b0b0c4;--line:#35354a;--soft:#272738;--q:#2a2733}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Nunito,system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,.qt{font-family:Quicksand,Nunito,sans-serif;font-weight:700;margin:0}
+__CSSBRAND__
+main{width:100%;max-width:900px;margin:0 auto;padding:18px 16px 30px;flex:1}
+.hero{display:flex;gap:16px;align-items:center;margin-bottom:12px}
+.hero img{width:120px;height:auto;flex:none}
+.hero h1{font-size:28px;color:var(--blue);line-height:1.2}
+.hero p{margin:6px 0 0;color:var(--mut)}
+.stepper{display:flex;gap:8px;margin:6px 0 16px}
+.stepper div{flex:1;border-radius:14px;padding:8px 12px;background:var(--soft);color:var(--mut);font:700 15px Quicksand;border:2px solid transparent;display:flex;gap:8px;align-items:center}
+.stepper b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--line);color:var(--ink);font-size:14px;flex:none}
+.stepper .on{background:var(--cam);color:#fff}.stepper .on b{background:#fff;color:var(--cam)}
+.stepper .done{background:var(--ok);color:#fff}.stepper .done b{background:#fff;color:var(--ok)}
+@media(max-width:640px){.stepper span{display:none}.stepper .on span{display:inline}}
+.quote{display:flex;gap:14px;align-items:center;background:var(--q);border-left:6px solid var(--vang);border-radius:16px;padding:12px 16px;margin:14px 0}
+.quote img{width:76px;height:auto;flex:none}
+.qt{font-size:19px;color:var(--ink);line-height:1.45}.qs{font-size:14px;color:var(--mut);margin-top:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.card h2{font-size:21px;margin-bottom:10px}
+label.f{display:block;font-weight:700;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:84px;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:620px){.row,.types{grid-template-columns:1fr!important}}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.type{display:flex;gap:10px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:8px 12px;cursor:pointer;background:var(--bg)}
+.type input{display:none}.type img{width:56px;height:auto;flex:none}.type.on{border-color:var(--cam);background:var(--soft)}
+.type b{font-family:Quicksand;display:block}.type small{color:var(--mut)}
+.drop{border:2px dashed var(--blue);border-radius:14px;padding:18px;text-align:center;cursor:pointer;background:var(--bg)}
+.drop:hover{background:var(--soft)}.cnt{font:700 15px Quicksand;color:var(--cam)}
+.thumbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.th{position:relative;width:88px;height:112px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.th img{width:100%;height:100%;object-fit:cover}.th i{position:absolute;left:4px;bottom:4px;background:#000a;color:#fff;border-radius:8px;padding:0 7px;font:700 12px Quicksand;font-style:normal}
+.th button{position:absolute;top:3px;right:3px;width:24px;height:24px;border-radius:50%;border:0;background:#000a;color:#fff;cursor:pointer;padding:0;font-size:15px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{font:700 16px Quicksand;border-radius:999px;padding:11px 22px;cursor:pointer;border:2px solid var(--cam);background:var(--cam);color:#fff}
+.btn.s{background:transparent;color:var(--ink);border-color:var(--blue)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.bubble{display:flex;gap:12px;align-items:center;background:var(--soft);border-radius:16px;padding:10px 14px;margin-top:12px}
+.bubble img{width:64px;flex:none}.bubble.err{border:2px solid var(--err)}
+.bubble p{margin:0}
+.ph{display:grid;gap:10px;margin:14px 0}
+.ph div{display:flex;gap:12px;align-items:center;padding:10px 14px;border-radius:14px;background:var(--soft);color:var(--mut);font:700 16px Quicksand}
+.ph b{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);flex:none}
+.ph .on{background:var(--q);color:var(--ink);outline:2px solid var(--vang)}.ph .on b{background:var(--vang)}
+.ph .ok{color:var(--ink)}.ph .ok b{background:var(--ok);color:#fff}
+.k{display:grid;gap:10px}.k div{background:var(--soft);border-radius:12px;padding:10px 14px}.k b{color:var(--blue);font-family:Quicksand}
+.tag{display:inline-block;background:var(--vang);color:#222;border-radius:999px;padding:2px 12px;font:700 13px Quicksand;margin-bottom:8px}
+iframe{width:100%;height:820px;border:2px solid var(--line);border-radius:16px;background:#fff}
+pre{background:var(--soft);border-radius:10px;padding:12px;overflow:auto;max-height:320px;font-size:13px;white-space:pre-wrap;word-break:break-word}
+[hidden]{display:none!important}
+</style></head><body>
+__LOCKDIV__
+<div id="brand-top" class="brand"></div>
+<main>
+<div class="hero"><img id="heroImg" alt="Bé Não vẫy tay chào"><div><h1>Giao việc cho Trợ lý Game-hóa</h1><p>Thầy Cô giao việc, Trợ lý lo phần còn lại. Dịch vụ không thu phí.</p></div></div>
+<div class="stepper" id="stepper"><div><b>1</b><span>Giao việc</span></div><div><b>2</b><span>Trả kết quả</span></div><div><b>3</b><span>Chơi</span></div></div>
+<div class="quote" id="quote"><img id="qImg" alt=""><div><div class="qt" id="qText"></div><div class="qs" id="qSub"></div></div></div>
+
+<section id="s1">
+<div class="card"><span class="tag">Muốn xem trước?</span><p style="margin:0 0 10px">Bấm để xem một game ví dụ từ trang Khoa học tự nhiên 8, mở đầu bằng thử thách đời thật.</p><button class="btn s" id="btnEx" type="button">Xem game ví dụ (KHTN 8)</button></div>
+<div class="card"><h2>1. Thầy Cô dạy gì?</h2>
+<label class="f">Loại game</label><div class="types" id="types">
+<label class="type on"><input type="radio" name="loai" value="mo-tiet" checked><img data-spr="hk" alt=""><span><b>Game mở tiết</b><small>10 phút, bài chưa học</small></span></label>
+<label class="type"><input type="radio" name="loai" value="on-bai"><img data-spr="gt" alt=""><span><b>Game ôn bài</b><small>15 phút, dùng chứng cứ từ bài</small></span></label>
+<label class="type"><input type="radio" name="loai" value="sach-la-thay"><img data-spr="tn" alt=""><span><b>Sách là Thầy</b><small>20 phút, học sinh đọc sách</small></span></label></div>
+<div class="row"><div><label class="f" for="mon">Môn</label><input id="mon" placeholder="Ví dụ: Khoa học tự nhiên"></div><div><label class="f" for="lop">Lớp</label><select id="lop"></select></div><div><label class="f" for="bai">Bài</label><input id="bai" placeholder="Tên bài hoặc chủ đề"></div></div>
+<label class="f" for="ghichu">Điều Thầy Cô muốn thêm (không bắt buộc)</label>
+<textarea id="ghichu" placeholder="Ví dụ: lớp 38 em, các em hay quên đổi đơn vị, muốn có một phẩm chất như trung thực."></textarea></div>
+<div class="card"><h2>2. Ảnh chụp trang sách (bắt buộc)</h2>
+<div class="drop" id="drop"><b>Chạm để chọn ảnh chụp trang sách</b><br><span style="color:var(--mut)">Từ 1 đến <span id="maxn">12</span> trang cho mỗi việc giao. Có thể chụp ngay bằng điện thoại.</span><br><span class="cnt" id="cnt">Chưa có trang nào</span></div>
+<input id="file" type="file" accept="image/*" multiple hidden><div class="thumbs" id="thumbs"></div>
+<div class="bubble" style="background:transparent;padding:0;margin-top:10px;color:var(--mut);font-size:14px">Trợ lý chỉ dùng trang sách Thầy Cô gửi để tạo đúng bài. Ảnh không được lưu lại.</div></div>
+<div class="btns"><button class="btn" id="btnMake" type="button">Giao việc cho Trợ lý</button><button class="btn s" id="btnCopy" type="button">Sao chép phiếu giao việc</button></div>
+<div id="msg1"></div>
+</section>
+
+<section id="sw" hidden>
+<div class="card"><h2>Trợ lý đang làm việc</h2><div class="ph" id="ph">
+<div><b>1</b>Đọc nội dung các trang sách</div><div><b>2</b>Soạn game: thử thách đời thật, lựa chọn, câu hỏi</div><div><b>3</b>Dựng trang chơi</div></div>
+<p style="color:var(--mut);margin:0">Thường mất khoảng một phút. Thầy Cô nghỉ một chút nhé.</p>
+<div class="btns"><button class="btn s" id="btnStop" type="button">Dừng</button></div></div>
+</section>
+
+<section id="s2" hidden><div class="card" id="result"></div>
+<div class="card"><h2>Thầy Cô muốn sửa gì không?</h2>
+<textarea id="edit" placeholder="Ví dụ: đổi tình huống sang chuyện nấu ăn; thêm một lựa chọn; câu hỏi dễ hơn cho lớp 8A."></textarea>
+<div class="btns"><button class="btn s" id="btnEdit" type="button">Nhờ Trợ lý sửa</button><button class="btn" id="btnPlay" type="button">Không cần sửa, chơi thôi</button></div><div id="msg2"></div></div></section>
+
+<section id="s3" hidden><div class="card"><iframe id="frame" title="Trang chơi" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe>
+<div class="btns"><button class="btn s" id="btnBack" type="button">Quay lại sửa</button><button class="btn s" id="btnDl" type="button" hidden>Tải trang chơi (.html)</button><button class="btn" id="btnNew" type="button">Giao việc khác</button></div></div></section>
+</main>
+<div id="brand-bot" class="brand bot"></div>
+<script type="text/plain" id="playerTpl">__PLAYER__</script>
+<script>
+(function(){
+__BLK__
+})();
+</script>
+<script>
+const SPR={vay:"__SPR_vay-tay__",hk:"__SPR_hieu-ky__",tn:"__SPR_thich-nghi__",bc:"__SPR_ben-chi__",al:"__SPR_an-lac__",gt:"__SPR_guong-than__",td:"__SPR_toan-do__"};
+const GEMSPR={'hieu-ky':'hk','thich-nghi':'tn','ben-chi':'bc','an-lac':'al'};
+const EXAMPLE=__EXAMPLE__;
+const FEWSHOT=__FEWSHOT__;
+const QUOTES=[
+ ["Mỗi tiết học là một cánh cửa Thầy Cô mở ra cho một em nhỏ.","vay"],
+ ["Nghề giáo là nghề gieo hạt: hôm nay gieo, nhiều năm sau mới thấy hoa nở.","hk"],
+ ["Điều các em nhớ lâu nhất thường không phải bài giảng, mà là ánh mắt tin tưởng của Thầy Cô.","gt"],
+ ["Có những điều chỉ Thầy Cô làm được: nhìn thấy một viên ngọc trong một em chưa ai để ý.","bc"],
+ ["Việc nặng, Trợ lý san sẻ cùng Thầy Cô. Thầy Cô cứ giữ lấy phần quý nhất của nghề: trái tim.","al"],
+ ["Một tiết học vui hôm nay có thể là kỷ niệm đẹp của em đến cuối đời.","tn"],
+ ["Cảm ơn Thầy Cô đã kiên nhẫn mài dũa từng viên ngọc bên trong mỗi người học trò.","td"]];
+const STAGEQ={s1:[0,1],w:[4,5],s2:[3,2],s3:[6,5]};
+const LOAI={"mo-tiet":"Game mở tiết (10 phút, kiến thức chưa học)","on-bai":"Game ôn bài (15 phút, dùng chứng cứ từ bài đã học)","sach-la-thay":"Sách là Thầy (20 phút, học sinh phải đọc sách mới chơi được)"};
+const $=id=>document.getElementById(id);
+document.querySelectorAll('[data-spr]').forEach(i=>i.src=SPR[i.dataset.spr]);
+$('heroImg').src=SPR.vay;
+$('lop').innerHTML=Array.from({length:12},(_,i)=>`<option>${i+1}</option>`).join('');$('lop').value='8';
+let imgs=[],maxImg=12,ctl=null,sample=null,downloads=null,G=null,qi=0,rot=null;
+const loai=()=>document.querySelector('input[name=loai]:checked').value;
+document.querySelectorAll('input[name=loai]').forEach(r=>r.addEventListener('change',()=>document.querySelectorAll('.type').forEach(t=>t.classList.toggle('on',t.querySelector('input').checked))));
+function showQ(i){const q=QUOTES[i%QUOTES.length];$('qText').textContent=q[0];$('qSub').textContent='Trợ lý Game-hóa gửi Thầy Cô';$('qImg').src=SPR[q[1]]}
+function stage(s){['s1','sw','s2','s3'].forEach(x=>$(x).hidden=x!==(s==='w'?'sw':s));
+ const n={s1:0,w:0,s2:1,s3:2}[s];document.querySelectorAll('#stepper div').forEach((d,i)=>d.className=i<n?'done':i===n?'on':'');
+ clearInterval(rot);const l=STAGEQ[s];showQ(l[0]);if(s==='w'){let k=0;rot=setInterval(()=>{k++;showQ(l[k%l.length])},7000)}
+ window.scrollTo({top:0,behavior:'smooth'})}
+stage('s1');
+function bubble(id,text,err){const d=$(id);d.innerHTML='';if(!text)return;const b=document.createElement('div');b.className='bubble'+(err?' err':'');const i=document.createElement('img');i.src=SPR.vay;i.alt='';const p=document.createElement('p');p.textContent=text;b.append(i,p);d.append(b)}
+$('drop').onclick=()=>$('file').click();
+function shrink(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const m=1400,k=Math.min(1,m/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(u);b?res(b):rej()},'image/jpeg',.82)};im.onerror=()=>{URL.revokeObjectURL(u);rej()};im.src=u})}
+$('file').onchange=async e=>{for(const f of e.target.files){if(imgs.length>=maxImg){bubble('msg1','Mỗi việc giao tối đa '+maxImg+' trang. Thầy Cô chọn những trang cần dùng nhất, hoặc chia thành việc giao khác nhé.',1);break}try{const b=await shrink(f);imgs.push({blob:b,url:URL.createObjectURL(b)})}catch(_){bubble('msg1','Trợ lý chưa đọc được một ảnh. Thầy Cô thử ảnh khác nhé.',1)}}e.target.value='';draw()};
+function draw(){$('thumbs').innerHTML='';imgs.forEach((o,i)=>{const d=document.createElement('div');d.className='th';const im=document.createElement('img');im.src=o.url;im.alt='Trang '+(i+1);const n=document.createElement('i');n.textContent='Trang '+(i+1);const b=document.createElement('button');b.textContent='×';b.setAttribute('aria-label','Bỏ ảnh');b.onclick=()=>{URL.revokeObjectURL(o.url);imgs.splice(i,1);draw()};d.append(im,n,b);$('thumbs').append(d)});$('cnt').textContent=imgs.length?imgs.length+' / '+maxImg+' trang':'Chưa có trang nào'}
+function order(){return `PHIẾU GIAO VIỆC CHO TRỢ LÝ GAME-HÓA\nLoại game: ${LOAI[loai()]}\nMôn: ${$('mon').value||'(chưa ghi)'}\nLớp: ${$('lop').value}\nBài: ${$('bai').value||'(chưa ghi)'}\nGhi chú của Thầy Cô: ${$('ghichu').value||'(không)'}\nẢnh trang sách: ${imgs.length} ảnh (Thầy Cô gửi kèm khi dán phiếu này)\n`}
+async function copy(t,btn){try{await navigator.clipboard.writeText(t);const o=btn.textContent;btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=o,1600)}catch(_){bubble('msg1','Trình duyệt chặn sao chép. Thầy Cô bôi đen và chép tay giúp em nhé.',1)}}
+$('btnCopy').onclick=e=>{if(!imgs.length){bubble('msg1','Trợ lý xin Thầy Cô gửi ảnh chụp trang sách (từ 1 đến '+maxImg+' trang) rồi mình bắt đầu nhé.',1);return}copy(order(),e.target)};
+function prompt_(edit){return `Bạn là Trợ lý Game-hóa của Vietwise cho giáo viên Việt Nam. Hãy tạo MỘT game từ việc giáo viên giao và các trang sách trong ảnh. Chỉ trả về một đối tượng JSON, không thêm chữ nào khác.
+Quy tắc: không thi đua, không điểm số; có một quyết định cần chọn (2 đến 3 lựa chọn, mỗi lựa chọn có lý do hợp lý), một phẩm chất, kết nối với bài học; học sinh phải dùng chứng cứ từ bài; có câu hỏi phản biện. Mọi trường bắt đầu bằng gv_ chỉ dành cho giáo viên. Chỉ dùng kiến thức có trong các trang sách giáo viên gửi, không bịa số liệu; số liệu tính sẵn để trong gv_ghi_chu. Gọi giáo viên là "Thầy Cô". Dẫn truyện (loi_ke) từ một thử thách đời thật mà kiến thức giúp giải được, không dẫn bằng cảnh làm bài tập hay báo cáo trong lớp; kết lời kể bằng câu làm học sinh tò mò kiến thức này có ý nghĩa gì ngoài đời. Chỉ dùng thông tin đời thật chắc chắn đúng.
+Điều chỉnh theo nhóm lớp: A lớp 1-3 (câu rất ngắn, 2 lựa chọn, giọng ấm), B lớp 4-5 (3 lựa chọn, giọng đồng đội, không nựng), C lớp 6-7 (ngang hàng, có tranh luận), D lớp 8-10 (việc thật, số liệu, giọng thẳng), E lớp 11-12 (gắn học tập và nghề). Chữ học sinh thấy ngay tối đa 2 câu ngắn. Nếu môn là ngoại ngữ: lời kể bằng tiếng Việt, văn bản ngoại ngữ nguyên văn là chứng cứ, giữ nguyên chữ viết và dấu, chỉ dùng văn bản trong ảnh hoặc rất ngắn và chắc chắn đúng.
+Các trường: phien_ban ("1.0"), loai, tieu_de, mon, lop (chuỗi), nhom_lop (A, B, C, D hoặc E), nhom_mon (toan, khoa-hoc, ngu-van, xa-hoi, ngoai-ngu, nghe-thuat-the-chat hoặc tin-hoc), ngoai_ngu{ngon_ngu,ma,chu_viet,muc_do} (chỉ khi bài ngoại ngữ), bai, thoi_luong_phut, kien_thuc[], pham_chat, nhan_vat[{ten}], loi_ke, du_kien[], lua_chon[{ma,noi_dung,gv_kien_thuc}], cach_chon, cau_hoi_goi_mo[], cau_mau_phan_bien[], so_do_chot[{kien_thuc,dung_vao}], loi_chot, gv_goi_y_lua_chon_d, gv_hieu_lam[], gv_ghi_chu, chau_ngoc (hieu-ky, thich-nghi, ben-chi hoặc an-lac), du_an_that, hinh_minh_hoa (một chuỗi SVG phẳng nhiều màu, viewBox "0 0 600 240", không quá 3000 ký tự, không script, không link, không viết đáp án lên hình). Với Game mở tiết thêm buoc_ngoat, cau_hoi_treo, quay_lai_cuoi_tiet. Với Sách là Thầy thêm sach{ten,tac_gia,phan_doc}, chia_khoa[{cau_hoi,trang,gv_goi_y}], viet_tiep.
+Ví dụ một game ôn bài đúng định dạng:
+${JSON.stringify(FEWSHOT)}
+VIỆC GIÁO VIÊN GIAO
+${order()}Các ảnh đính kèm là các trang sách giáo khoa (có ${imgs.length} ảnh); hãy đọc theo thứ tự trang và chỉ dùng nội dung trong đó.`+(edit?`\nĐÂY LÀ GAME HIỆN TẠI:\n${JSON.stringify(G)}\nGiáo viên muốn sửa: ${edit}\nHãy sửa theo ý giáo viên, giữ nguyên mọi phần không được nhắc tới, và trả về JSON đầy đủ của game.`:'')}
+function phase(n){[...$('ph').children].forEach((d,i)=>d.className=i<n?'ok':i===n?'on':'')}
+const NEED=['phien_ban','loai','tieu_de','mon','lop','bai','pham_chat','loi_ke','lua_chon'];
+async function run(edit){
+ if(!imgs.length){bubble('msg1','Trợ lý xin Thầy Cô gửi ảnh chụp trang sách (từ 1 đến '+maxImg+' trang) rồi mình bắt đầu nhé.',1);stage('s1');return}
+ if(!sample){bubble('msg1','Trang này chưa nhờ được Trợ lý trực tiếp. Thầy Cô bấm "Sao chép phiếu giao việc" rồi dán vào Claude cùng ảnh trang sách nhé.',1);stage('s1');return}
+ ctl=new AbortController();stage('w');phase(0);let got=false;
+ try{const g=await sample.json(prompt_(edit),{signal:ctl.signal,modelTier:'complex',cache:false,images:imgs.map(o=>o.blob),onText:()=>{if(!got){got=true;phase(1)}}});
+  const miss=NEED.filter(k=>!g||!(k in g));if(miss.length||!Array.isArray(g.lua_chon))throw{code:'bad'};
+  phase(2);await new Promise(r=>setTimeout(r,700));G=g;result(g);stage('s2');bubble('msg2','')}
+ catch(e){const c=e&&e.code;stage(G?'s2':'s1');const m=c==='not_granted'?'Thầy Cô chưa cho phép trang nhờ Trợ lý. Thầy Cô vẫn có thể bấm "Sao chép phiếu giao việc".':c==='rate_limited'?'Trợ lý đang bận, Thầy Cô thử lại sau ít phút nhé.':(c==='aborted'||(e&&e.name==='AbortError'))?'Đã dừng.':'Trợ lý chưa trả được kết quả lần này. Thầy Cô thử giao việc lại hoặc bấm "Sao chép phiếu giao việc" nhé.';bubble(G?'msg2':'msg1',m,1)}
+ finally{ctl=null}}
+$('btnMake').onclick=()=>{G=null;run('')};
+$('btnEdit').onclick=()=>{const v=$('edit').value.trim();if(!v){bubble('msg2','Thầy Cô cho Trợ lý biết muốn sửa gì nhé.',1);return}run(v).then(()=>{$('edit').value=''})};
+$('btnStop').onclick=()=>ctl&&ctl.abort();
+function esc(s){return String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function result(g){const ch=(g.lua_chon||[]).map(x=>`<li><b>${esc(x.ma)}.</b> ${esc(x.noi_dung)}</li>`).join('');const nd=(g.cau_hoi_goi_mo||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+ const gem=SPR[GEMSPR[g.chau_ngoc]||'hk'];
+ $('result').innerHTML=`<span class="tag">Trợ lý trả kết quả</span><div style="display:flex;gap:14px;align-items:center"><img src="${gem}" alt="" style="width:84px"><div><h2 style="margin:0">${esc(g.tieu_de)}</h2><div style="color:var(--mut)">${esc(LOAI[g.loai]||g.loai)} · ${esc(g.mon)} ${esc(g.lop)} · ${esc(g.bai)}</div></div></div>
+ <div class="k" style="margin-top:12px"><div><b>Lời kể</b><br>${esc(g.loi_ke)}</div><div><b>Các lựa chọn</b><ul style="margin:6px 0 0;padding-left:20px">${ch}</ul></div>${nd?`<div><b>Câu hỏi gợi mở</b><ul style="margin:6px 0 0;padding-left:20px">${nd}</ul></div>`:''}${g.loi_chot?`<div><b>Câu chốt</b><br>${esc(g.loi_chot)}</div>`:''}${g.gv_ghi_chu?`<div><b>Ghi chú riêng cho Thầy Cô</b><br>${esc(g.gv_ghi_chu)}</div>`:''}</div>
+ <div class="btns"><button class="btn s" id="cJ" type="button">Sao chép dữ liệu game</button></div>`;
+ $('cJ').onclick=e=>copy(JSON.stringify(g,null,2),e.target)}
+function playerHtml(g){let t=$('playerTpl').textContent.replace(/<\\\/script>/g,'<'+'/script>');const nao=SPR[GEMSPR[g.chau_ngoc]||'hk'];
+ t=t.split("var NAO='__NAO__';").join("var NAO='"+nao+"';");t=t.split('__GAME_JSON__').join(JSON.stringify(g).replace(/</g,'\\u003c'));return t}
+function play(){$('frame').srcdoc=playerHtml(G);stage('s3')}
+$('btnPlay').onclick=play;
+$('btnBack').onclick=()=>stage('s2');
+$('btnNew').onclick=()=>{G=null;imgs.forEach(o=>URL.revokeObjectURL(o.url));imgs=[];draw();$('edit').value='';bubble('msg1','');stage('s1')};
+$('btnEx').onclick=()=>{G=EXAMPLE;$('mon').value='Khoa học tự nhiên';$('lop').value='8';$('bai').value=EXAMPLE.bai;result(EXAMPLE);stage('s2')};
+$('btnDl').onclick=async()=>{try{await downloads.save({filename:'game-hoc-vietwise.html',data:new Blob([playerHtml(G)],{type:'text/html'})})}catch(_){}};
+draw();
+(async()=>{try{sample=await claude.use('sample');if(sample){const l=await sample.limits();if(l&&l.images){maxImg=Math.min(12,l.images.maxCount||12)}$('maxn').textContent=maxImg;draw()}}catch(_){sample=null}
+ try{downloads=await claude.use('downloads');if(downloads)$('btnDl').hidden=false}catch(_){}})();
+</script></body></html>

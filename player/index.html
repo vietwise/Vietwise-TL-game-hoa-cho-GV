@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trình chơi game lớp học</title>
+<style>
+  /* Bộ màu Vườn Game-học Vietwise: chỉ 6 màu + trắng; đậm nhạt dùng rgba của 6 màu này. */
+  :root {
+    --blue: #0018F9; --cam: #F96726; --vang: #F9C12D; --kem: #FFFEF3; --do: #DF0000; --xanh: #4E9F2E; --trang: #FFFFFF;
+    --nen: var(--kem); --mat: var(--trang);
+    --chu: rgba(0, 24, 249, .72); --chu-nhat: rgba(0, 24, 249, .55); --vien: rgba(0, 24, 249, .16);
+    --nhan: var(--blue); --nhan-nhat: rgba(0, 24, 249, .07); --to-vang: rgba(249, 193, 45, .45);
+    --the-a: var(--cam); --the-b: var(--xanh); --the-c: var(--blue); --the-d: var(--vang);
+    --tieu-de: "Quicksand", "Nunito", system-ui, sans-serif;
+    --than: "Nunito", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--nen); color: var(--chu); font: 400 16px/1.5 var(--than); }
+  h1, h2, h3, button, .ten-buoc, .nhan, #ten-game, #dong-ho, .ma { font-family: var(--tieu-de); font-weight: 500; color: var(--blue); }
+  button { font-size: inherit; cursor: pointer; border: 1px solid var(--vien); background: var(--mat); color: var(--blue); border-radius: 8px; padding: 8px 14px; }
+  button:hover:not(:disabled) { background: var(--vang); border-color: var(--vang); color: var(--blue); }
+  button:disabled { opacity: .45; cursor: default; }
+  button.chinh { background: var(--vang); border-color: var(--vang); color: var(--blue); }
+  button.chinh:hover { background: rgba(249, 193, 45, .8); }
+  :focus-visible { outline: 3px solid var(--xanh); outline-offset: 2px; }
+  .an { display: none !important; }
+  .nhan { font-size: 15px; color: var(--xanh); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+  .to { background: linear-gradient(transparent 55%, var(--to-vang) 55%); }
+
+  /* Màn hình nạp game */
+  #nap { max-width: 760px; margin: 0 auto; padding: 40px 16px; }
+  #nap h1 { font-size: 30px; margin: 0 0 8px; }
+  #nap textarea { width: 100%; min-height: 260px; font: 14px/1.4 ui-monospace, Consolas, monospace; padding: 12px; border: 1px solid var(--vien); border-radius: 12px; background: var(--mat); color: var(--chu); }
+  #nap .hang { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  #loi { color: var(--do); white-space: pre-line; margin-top: 12px; }
+
+  /* Màn hình chơi */
+  #choi { display: grid; grid-template-rows: auto 1fr auto; height: 100vh; }
+  #dau { display: flex; align-items: center; gap: 16px; padding: 10px 20px; background: var(--mat); border-bottom: 1px solid var(--vien); }
+  #ten-game { font-size: 21px; }
+  #mo-ta { color: var(--chu-nhat); font-size: 15px; }
+  #dau > div:first-child { flex: 1 1 240px; min-width: 0; }
+  #mo-ta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #cac-buoc { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; flex: 0 1 auto; }
+  #cac-buoc button { padding: 6px 10px; font-size: 14px; border-radius: 999px; }
+  #cac-buoc button.dang { background: var(--blue); color: var(--kem); border-color: var(--blue); }
+  #cac-buoc button.xong { background: var(--nhan-nhat); }
+  .gio { display: flex; align-items: center; gap: 8px; }
+  #dong-ho { font-variant-numeric: tabular-nums; font-size: 28px; min-width: 92px; text-align: right; }
+  #dong-ho.het { color: var(--cam); animation: nhay 1s steps(2) infinite; }
+  @keyframes nhay { 50% { opacity: .35; } }
+
+  #san { position: relative; overflow: auto; padding: 28px 40px; }
+  #cuoi { display: flex; align-items: center; gap: 10px; padding: 10px 20px; background: var(--mat); border-top: 1px solid var(--vien); }
+  #cuoi .giua { flex: 1; color: var(--chu-nhat); font-size: 14px; text-align: center; }
+
+  .ten-buoc { font-size: clamp(26px, 3vw, 40px); margin: 0 0 6px; }
+  .huong-dan { font-size: clamp(18px, 1.8vw, 24px); color: var(--chu-nhat); margin: 0 0 24px; }
+  .chu-lon { font-size: clamp(24px, 2.8vw, 40px); line-height: 1.45; }
+  .hop { background: var(--mat); border: 1px solid var(--vien); border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 10px rgba(0, 24, 249, .06); }
+
+  /* Bước kể */
+  .canh { position: relative; min-height: 64vh; border-radius: 17px; overflow: hidden; background: var(--blue) center / cover no-repeat; display: flex; align-items: flex-end; }
+  .canh::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.45) 55%); }
+  .nhan-vat { position: relative; z-index: 1; display: flex; gap: 12px; padding: 0 24px; align-self: flex-end; }
+  .nhan-vat figure { margin: 0; text-align: center; color: var(--kem); font: 500 20px var(--tieu-de); }
+  .nhan-vat img { height: 42vh; max-height: 420px; display: block; }
+  .loi-ke { position: relative; z-index: 1; margin: 24px 24px 24px auto; max-width: 60%; background: rgba(255,254,243,.96); color: var(--chu); border-radius: 17px; padding: 24px 28px; }
+  .du-kien { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .du-kien span { background: var(--nhan-nhat); color: var(--blue); border-radius: 999px; padding: 6px 14px; font: 500 clamp(16px, 1.5vw, 22px) var(--tieu-de); }
+  .ten-rieng { color: var(--cam); }
+
+  /* Thẻ lựa chọn */
+  .bo-the { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .the { perspective: 1200px; min-height: 340px; border: 0; padding: 0; background: none !important; }
+  .the .trong { position: relative; width: 100%; height: 100%; min-height: 340px; transition: transform .6s; transform-style: preserve-3d; }
+  .the.lat .trong { transform: rotateY(180deg); }
+  .mat-sau, .mat-truoc { position: absolute; inset: 0; border-radius: 12px; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-shadow: 0 4px 14px rgba(0, 24, 249, .12); }
+  .mat-sau { background: var(--blue) center / cover no-repeat; color: var(--kem); font: 500 72px var(--tieu-de); }
+  .mat-truoc { transform: rotateY(180deg); color: var(--kem); text-align: center; }
+  .mat-truoc .ma { font-size: 64px; line-height: 1; margin-bottom: 14px; color: inherit; }
+  .mat-truoc .nd { font: 500 clamp(24px, 2.2vw, 30px)/1.3 var(--tieu-de); }
+  .the[data-ma="A"] .mat-truoc { background: var(--the-a); }
+  .the[data-ma="B"] .mat-truoc { background: var(--the-b); }
+  .the[data-ma="C"] .mat-truoc { background: var(--the-c); }
+  .the[data-ma="D"] .mat-truoc { background: var(--the-d); color: var(--blue); }
+
+  .ds-chon { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; font-size: clamp(18px, 1.8vw, 24px); }
+  .ds-chon b { display: inline-block; min-width: 1.6em; font: 500 1em var(--tieu-de); color: var(--blue); }
+  ol.cau-hoi { margin: 0; padding-left: 1.2em; }
+  ol.cau-hoi li { margin: 0 0 14px; }
+  .khung { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .khung .hop h3 { margin: 0 0 8px; font-size: 24px; }
+  .khung .hop p { margin: 0; font-size: 20px; color: var(--chu-nhat); }
+  .bang-goc { border: 4px dashed var(--blue); border-radius: 17px; padding: 32px; background: var(--mat); }
+  .bang-goc .chu-lon { font-family: var(--tieu-de); font-weight: 500; color: var(--blue); }
+  .so-do { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px 16px; align-items: center; font-size: clamp(18px, 1.8vw, 24px); }
+  .so-do .kt { background: var(--nhan-nhat); color: var(--blue); border-radius: 12px; padding: 12px 16px; font-family: var(--tieu-de); font-weight: 500; }
+  .so-do .mui { color: var(--chu-nhat); font-size: 28px; }
+  .so-do .dv { border: 1px solid var(--vien); border-radius: 12px; padding: 12px 16px; background: var(--mat); }
+  .pham-chat { margin-top: 28px; font-size: clamp(20px, 2vw, 28px); color: var(--cam); }
+  .an-di { filter: blur(14px); cursor: pointer; transition: filter .3s; }
+
+  /* Kiểu tương tác */
+  .hang-nut { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .the-nho { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .the-nho .the, .the-nho .the .trong { min-height: 180px; }
+  .the-nho .mat-sau { font-size: 26px; }
+  .the-nho .mat-truoc { background: var(--blue); }
+  .nhan-lung { position: absolute; left: 12px; bottom: 12px; font-size: 18px; background: var(--kem); color: var(--blue); border-radius: 999px; padding: 2px 12px; }
+  .the-nho .mat-truoc .nd { font-size: clamp(20px, 1.8vw, 26px); }
+  .muc-chon { display: flex; flex-direction: column; gap: 12px; }
+  .muc-chon button { display: flex; align-items: center; gap: 16px; text-align: left; font-size: clamp(20px, 2vw, 28px); padding: 14px 18px; border-radius: 12px; }
+  .so-thu-tu { flex: none; width: 1.8em; height: 1.8em; border-radius: 50%; display: grid; place-items: center; border: 2px dashed var(--vien); }
+  .muc-chon .co .so-thu-tu { background: var(--blue); color: var(--kem); border: 0; }
+  .muc-chon button.co { border-color: var(--blue); }
+  .chia { display: grid; gap: 14px; }
+  .chia .dong { display: grid; grid-template-columns: minmax(140px, 1fr) auto 7em auto minmax(0, 1.4fr); gap: 12px; align-items: center; font-size: clamp(18px, 1.8vw, 24px); }
+  .chia .dong .ten { font-family: var(--tieu-de); font-weight: 500; color: var(--blue); }
+  .chia .dong .gt { text-align: center; font: 500 1.1em var(--tieu-de); color: var(--blue); font-variant-numeric: tabular-nums; }
+  .chia .dong .gy { color: var(--chu-nhat); font-size: .8em; }
+  .chia .dong button { width: 2.2em; height: 2.2em; padding: 0; font-size: 1em; border-radius: 50%; }
+  .thanh { display: flex; height: 28px; border-radius: 8px; overflow: hidden; background: var(--nhan-nhat); margin: 8px 0 18px; }
+  .thanh span { transition: width .3s; }
+  .con-lai { font: 500 clamp(20px, 2vw, 28px) var(--tieu-de); color: var(--blue); }
+  .cot-nhom { display: grid; grid-template-columns: repeat(var(--so-cot), minmax(0, 1fr)); gap: 14px; }
+  .cot-nhom > div { background: var(--mat); border: 2px solid var(--vien); border-radius: 12px; padding: 12px; min-height: 160px; display: flex; flex-direction: column; gap: 8px; }
+  .cot-nhom > div.khay { background: transparent; border-style: dashed; }
+  .cot-nhom h3 { margin: 0 0 4px; font-size: 20px; padding: 4px 10px; border-radius: 8px; color: var(--kem); background: var(--mau); }
+  .cot-nhom .khay h3 { background: none; color: var(--chu-nhat); padding: 4px 0; }
+  .cot-nhom button { text-align: left; font: 400 clamp(17px, 1.6vw, 22px)/1.35 var(--than); color: var(--chu); border-left: 6px solid var(--mau, var(--vien)); }
+  .duong { display: grid; gap: 16px; }
+  .chang { display: grid; grid-template-columns: 3em 1fr; gap: 16px; align-items: start; }
+  .chang .moc { width: 2.4em; height: 2.4em; border-radius: 50%; background: var(--blue); color: var(--kem); display: grid; place-items: center; font: 500 22px var(--tieu-de); position: relative; }
+  .chang:not(:last-child) .moc::after { content: ""; position: absolute; top: 100%; left: 50%; width: 3px; height: 200px; background: repeating-linear-gradient(var(--vien) 0 8px, transparent 8px 14px); }
+  .chang .nga { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .chang .nga button { font: 400 clamp(18px, 1.7vw, 24px)/1.35 var(--than); color: var(--chu); text-align: left; padding: 14px 16px; border-radius: 12px; }
+  .chang .nga button.chon { border: 2px solid var(--cam); background: rgba(249, 103, 38, .08); }
+  .he-qua { margin-top: 10px; padding: 12px 16px; border-left: 6px solid var(--cam); background: var(--mat); border-radius: 8px; font-size: clamp(18px, 1.7vw, 24px); }
+  .dich { font: 500 24px var(--tieu-de); color: var(--xanh); }
+  .manh-moi { display: flex; gap: 18px; align-items: stretch; }
+  .manh-moi .hop { flex: 1 1 0; min-width: 0; }
+  .manh-moi .hop { text-align: center; font: 500 clamp(22px, 2.2vw, 32px)/1.3 var(--tieu-de); color: var(--blue); }
+  .manh-moi img { max-width: 100%; max-height: 220px; display: block; margin: 0 auto 10px; border-radius: 12px; }
+  .cong { font: 500 48px var(--tieu-de); color: var(--cam); align-self: center; text-align: center; }
+  .pha { display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 22px; font: 500 clamp(22px, 2.2vw, 32px) var(--tieu-de); color: var(--blue); }
+  .pha .o { min-width: 220px; min-height: 2.4em; padding: 12px 18px; border-radius: 12px; border: 3px dashed var(--vien); display: grid; place-items: center; text-align: center; background: var(--mat); }
+  .pha .o.day { border: 3px solid var(--cam); }
+  .pha .ket { border-color: var(--vang); background: rgba(249, 193, 45, .18); }
+  .muc-chon button.da-chon { border: 2px solid var(--cam); }
+
+  /* Lặng, gương, chìa khoá sách */
+  .lang { text-align: center; padding-top: 4vh; }
+  .vong-tho { width: 160px; height: 160px; margin: 0 auto 24px; border-radius: 50%; background: rgba(78, 159, 46, .18); border: 3px solid var(--xanh); animation: tho 8s ease-in-out 3; }
+  @keyframes tho { 0%, 100% { transform: scale(.7); } 50% { transform: scale(1.1); } }
+  .guong .ba-cau { display: flex; gap: 12px; flex-wrap: wrap; font-size: clamp(18px, 1.7vw, 22px); }
+  .guong .ba-cau span { background: var(--nhan-nhat); border-radius: 999px; padding: 6px 16px; }
+  .mo-trang { display: block; margin-top: 6px; font-size: .75em; color: var(--xanh); }
+
+  /* Chế độ giáo viên */
+  #gv { position: fixed; top: 0; right: 0; width: min(420px, 92vw); height: 100vh; overflow: auto; background: var(--kem); border-left: 4px solid var(--xanh); padding: 18px 20px; box-shadow: -8px 0 24px rgba(0,0,0,.12); z-index: 10; }
+  #gv h2 { margin: 0 0 4px; font-size: 20px; }
+  #gv .canh-bao { color: var(--xanh); font-size: 13px; margin: 0 0 14px; }
+  #gv h3 { font-size: 13px; margin: 16px 0 6px; color: var(--xanh); text-transform: uppercase; letter-spacing: .08em; }
+  #gv p, #gv li { font-size: 15px; line-height: 1.45; margin: 0 0 6px; }
+  #gv .phu { color: var(--chu-nhat); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .the .trong, .thanh span, .an-di { transition: none; }
+    .vong-tho { animation: none; }
+    #dong-ho.het { animation: none; }
+  }
+  @media (max-width: 760px) {
+    #dau { flex-wrap: wrap; }
+    #mo-ta { white-space: normal; }
+    #san { padding: 16px; }
+    .loi-ke { max-width: none; margin: 16px; }
+    .nhan-vat { display: none; }
+    .khung { grid-template-columns: 1fr; }
+    .so-do { grid-template-columns: 1fr; }
+    .so-do .mui { display: none; }
+    #cuoi .giua { visibility: hidden; font-size: 0; }
+    .the, .the .trong { min-height: 200px; }
+    .the-nho .the, .the-nho .the .trong { min-height: 140px; }
+    .chia .dong { grid-template-columns: 1fr auto 5em auto; }
+    .chia .dong .gy { grid-column: 1 / -1; }
+    .cot-nhom { grid-template-columns: 1fr; }
+    .manh-moi { flex-direction: column; }
+    .chang .nga { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section id="nap" class="an">
+  <h1>Mở game lớp học</h1>
+  <p>Dán đoạn JSON Claude đã tạo vào ô dưới đây rồi bấm <b>Mở game</b>. Hoặc mở thử một game mẫu.</p>
+  <textarea id="o-dan" spellcheck="false" placeholder='{ "phien_ban": "1.0", "loai": "mo-tiet", ... }'></textarea>
+  <div class="hang">
+    <button class="chinh" id="nut-mo">Mở game</button>
+    <button data-mau="../examples/mo-tiet-toan5-ti-so-phan-tram.json">Mẫu Game 1: mở tiết</button>
+    <button data-mau="../examples/mo-tiet-khoahoc5-tiet-kiem-dien.json">Mẫu Game 1: tiết kiệm điện</button>
+    <button data-mau="../examples/on-bai-khoahoc4-nuoc.json">Mẫu Game 2: ôn bài</button>
+    <button data-mau="../examples/sach-la-thay-van6-de-men.json">Mẫu Game 3: Sách là Thầy</button>
+  </div>
+  <div id="loi"></div>
+</section>
+
+<section id="choi" class="an">
+  <header id="dau">
+    <div>
+      <div id="ten-game"></div>
+      <div id="mo-ta"></div>
+    </div>
+    <nav id="cac-buoc"></nav>
+    <div class="gio">
+      <div id="dong-ho">0:00</div>
+      <button id="nut-gio" title="Bắt đầu hoặc dừng đồng hồ (phím cách)">▶</button>
+      <button id="nut-dat-lai" title="Đặt lại đồng hồ">↺</button>
+      <button id="nut-tieng" title="Bật hoặc tắt âm thanh" aria-pressed="true">🔔</button>
+    </div>
+  </header>
+  <main id="san"></main>
+  <footer id="cuoi">
+    <button id="nut-truoc">‹ Trước</button>
+    <div class="giua">← → chuyển bước · Cách: đồng hồ · G: chế độ giáo viên · F: toàn màn hình</div>
+    <button id="nut-gv">Giáo viên</button>
+    <button class="chinh" id="nut-tiep">Tiếp ›</button>
+  </footer>
+</section>
+
+<aside id="gv" class="an"></aside>
+
+<script>
+(() => {
+  'use strict';
+
+  // ---------- Tiện ích ----------
+  const $ = id => document.getElementById(id);
+  const h = (tag, attrs, ...con) => {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v == null || v === false) continue;
+      if (k === 'class') el.className = v;
+      else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+      else if (k === 'style') el.style.cssText = v;
+      else el.setAttribute(k, v);
+    }
+    for (const c of con.flat()) if (c != null && c !== false) el.append(c.nodeType ? c : String(c));
+    return el;
+  };
+  const thamSo = new URLSearchParams(location.search);
+
+  // ---------- Nhịp các bước (phút) ----------
+  const NHIP = {
+    'mo-tiet': [
+      { id: 'ke', ten: 'Kể', phut: 1 },
+      { id: 'chon', ten: 'Chọn', phut: 2 },
+      { id: 'ly-do', ten: 'Nói lý do', phut: 3 },
+      { id: 'buoc-ngoat', ten: 'Bước ngoặt', phut: 2 },
+      { id: 'treo', ten: 'Câu hỏi của hôm nay', phut: 2 }
+    ],
+    'on-bai': [
+      { id: 'ke', ten: 'Kể', phut: 1 },
+      { id: 'chon', ten: 'Chọn', phut: 2 },
+      { id: 'chung-cu', ten: 'Chứng cứ', phut: 4 },
+      { id: 'phan-bien', ten: 'Phản biện', phut: 4 },
+      { id: 'sang-tao', ten: 'Sáng tạo', phut: 2 },
+      { id: 'chot', ten: 'Chốt kiến thức', phut: 2 }
+    ],
+    'sach-la-thay': [
+      { id: 'chia-khoa', ten: 'Chìa khoá sách', phut: 3 },
+      { id: 'ke', ten: 'Kể', phut: 1 },
+      { id: 'chon', ten: 'Chọn', phut: 2 },
+      { id: 'trang-sach', ten: 'Sách nói gì', phut: 4 },
+      { id: 'phan-bien', ten: 'Phản biện', phut: 4 },
+      { id: 'viet-tiep', ten: 'Viết tiếp', phut: 3 },
+      { id: 'chot', ten: 'Chốt bài học', phut: 3 }
+    ]
+  };
+  const TEN_LOAI = { 'mo-tiet': 'Game mở tiết', 'on-bai': 'Game ôn bài', 'sach-la-thay': 'Game Sách là Thầy' };
+  const CHAU_NGOC = { 'hieu-ky': 'Hiếu kỳ', 'thich-nghi': 'Thích nghi', 'ben-chi': 'Bền chí', 'an-lac': 'An lạc' };
+
+  // ---------- Kiểu tương tác (mượn cơ chế từ 20 trò Hạt Mầm, không chấm điểm) ----------
+  // truoc/sau: chèn trước hoặc sau bước có id đó; bước đầu tiên tìm thấy được dùng.
+  const TUONG_TAC = {
+    'lat-du-kien':    { ten: 'Lật dữ kiện', phut: 1.5, sau: ['ke'] },
+    'xep-uu-tien':    { ten: 'Xếp ưu tiên', phut: 2, sau: ['chon'] },
+    'chia-nguon-luc': { ten: 'Chia nguồn lực', phut: 2, sau: ['chon'] },
+    'phan-nhom':      { ten: 'Xếp nhóm', phut: 2.5, sau: ['chon'] },
+    'con-duong':      { ten: 'Con đường', phut: 2, truoc: ['buoc-ngoat', 'phan-bien'] },
+    'doan-hinh':      { ten: 'Đoán chữ', phut: 1.5, truoc: ['treo'], chiCho: ['mo-tiet'] },
+    'pha-tron':       { ten: 'Pha ý', phut: 2, truoc: ['sang-tao', 'viet-tiep'], chiCho: ['on-bai', 'sach-la-thay'] }
+  };
+  const MAU_NHOM = ['var(--cam)', 'var(--xanh)', 'var(--blue)', 'var(--vang)', 'var(--do)'];
+
+  // ---------- Kiểm tra nội dung ----------
+  function kiemTra(g) {
+    const loi = [];
+    if (!g || typeof g !== 'object' || Array.isArray(g)) return ['Nội dung không phải một đối tượng JSON.'];
+    const batBuoc = ['loai', 'tieu_de', 'mon', 'lop', 'bai', 'pham_chat', 'loi_ke', 'lua_chon'];
+    if (g.loai === 'mo-tiet') batBuoc.push('buoc_ngoat', 'cau_hoi_treo');
+    if (g.loai === 'on-bai') batBuoc.push('kien_thuc', 'so_do_chot');
+    if (g.loai === 'sach-la-thay') batBuoc.push('sach', 'chia_khoa', 'kien_thuc', 'so_do_chot');
+    for (const k of batBuoc) if (g[k] == null || g[k] === '') loi.push(`Thiếu trường "${k}".`);
+    if (g.loai && !NHIP[g.loai]) loi.push(`"loai" phải là "mo-tiet", "on-bai" hoặc "sach-la-thay", đang là "${g.loai}".`);
+    if (g.loai === 'sach-la-thay' && Array.isArray(g.chia_khoa) && g.chia_khoa.length < 3) loi.push('"chia_khoa" cần ít nhất 3 câu.');
+    if (g.lua_chon && (!Array.isArray(g.lua_chon) || g.lua_chon.length < 2 || g.lua_chon.length > 3)) loi.push('"lua_chon" phải có 2 hoặc 3 lựa chọn.');
+    if (Array.isArray(g.lua_chon)) g.lua_chon.forEach((c, i) => { if (!c || !c.ma || !c.noi_dung) loi.push(`Lựa chọn thứ ${i + 1} thiếu "ma" hoặc "noi_dung".`); });
+    if (g.tuong_tac != null) {
+      if (!Array.isArray(g.tuong_tac) || g.tuong_tac.length > 2) loi.push('"tuong_tac" phải là danh sách tối đa 2 kiểu tương tác.');
+      else g.tuong_tac.forEach((x, i) => {
+        const k = x && TUONG_TAC[x.kieu];
+        if (!k) return loi.push(`Kiểu tương tác thứ ${i + 1} không có trong danh sách: "${x && x.kieu}".`);
+        if (k.chiCho && !k.chiCho.includes(g.loai)) loi.push(`Kiểu tương tác "${x.kieu}" chỉ dùng cho ${k.chiCho.map(l => TEN_LOAI[l]).join(' hoặc ')}.`);
+        const can = { 'lat-du-kien': ['the'], 'xep-uu-tien': ['muc'], 'chia-nguon-luc': ['tong', 'muc'], 'phan-nhom': ['nhom', 'muc'], 'con-duong': ['chang'], 'doan-hinh': ['manh_moi', 'dap_an'], 'pha-tron': ['manh'] }[x.kieu];
+        for (const f of can) if (x[f] == null || (Array.isArray(x[f]) && !x[f].length)) loi.push(`Kiểu tương tác "${x.kieu}" thiếu "${f}".`);
+      });
+    }
+    return loi;
+  }
+
+  // ---------- Ảnh từ manifest ----------
+  const goc = new URL(thamSo.get('assets') || '../assets/', location.href);
+  // Font đóng gói sẵn trong assets/fonts, không phụ thuộc Google Fonts khi lớp mất mạng ngoài.
+  document.head.append(h('link', { rel: 'stylesheet', href: new URL('fonts/fonts.css', goc).href }));
+  let anh = {};
+  const thieuAnh = new Set();
+  async function napManifest() {
+    try {
+      const r = await fetch(new URL('manifest.json', goc));
+      if (!r.ok) throw new Error(r.status);
+      const m = await r.json();
+      for (const a of m.anh || []) anh[a.id] = new URL(a.tep, goc).href;
+      for (const a of m.am_thanh || []) { const au = new Audio(new URL(a.tep, goc).href); au.preload = 'auto'; au.volume = a.am_luong ?? 0.5; amThanh[a.id] = au; }
+    } catch (e) {
+      console.warn('Không tải được manifest ảnh, game chạy không có ảnh.', e);
+    }
+  }
+  const duongAnh = id => {
+    if (!id) return null;
+    if (anh[id]) return anh[id];
+    thieuAnh.add(id);
+    return null;
+  };
+
+  // ---------- Trạng thái ----------
+  let game = null, buoc = [], so = 0, conLai = 0, chay = false, hen = null;
+  const daLat = new Set();
+  let tt = {}; // trạng thái từng tương tác, giữ khi chuyển qua lại giữa các bước
+
+  function batDau(g) {
+    game = g;
+    const nhip = NHIP[g.loai].map(b => ({ ...b }));
+    if (g.ba_nhip) nhip.unshift({ id: 'lang', ten: 'Lặng', phut: 0.5 });
+    const mucTieu = g.thoi_luong_phut || nhip.reduce((s, b) => s + b.phut, 0);
+    (g.tuong_tac || []).forEach((x, i) => {
+      const k = TUONG_TAC[x.kieu];
+      const buocMoi = { id: 'tt', ten: k.ten, phut: k.phut, tt: x, i };
+      const neo = (k.sau || k.truoc).map(id => nhip.findIndex(b => b.id === id)).find(j => j >= 0);
+      if (neo == null) nhip.push(buocMoi);
+      else nhip.splice(k.sau ? neo + 1 : neo, 0, buocMoi);
+    });
+    const tong = nhip.reduce((s, b) => s + b.phut, 0);
+    if (mucTieu !== tong) {
+      const k = mucTieu / tong;
+      nhip.forEach(b => { b.phut = Math.max(0.5, Math.round(b.phut * k * 2) / 2); });
+      // Bù phần lệch do làm tròn vào bước dài nhất để tổng đúng bằng thời lượng đã hẹn.
+      const lech = mucTieu - nhip.reduce((s, b) => s + b.phut, 0);
+      const dai = nhip.reduce((a, b) => b.phut > a.phut ? b : a);
+      dai.phut = Math.max(0.5, dai.phut + lech);
+    }
+    buoc = nhip;
+    so = 0;
+    daLat.clear();
+    tt = {};
+    $('nap').classList.add('an');
+    $('choi').classList.remove('an');
+    $('ten-game').textContent = g.tieu_de;
+    $('mo-ta').textContent = `${g.mon} ${g.lop} · ${g.bai} · ${buoc.reduce((s, b) => s + b.phut, 0)} phút · ${TEN_LOAI[g.loai]}`;
+    document.title = g.tieu_de;
+    veGiaoVien();
+    sangBuoc(0);
+  }
+
+  // ---------- Đồng hồ ----------
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.max(0, s) % 60).padStart(2, '0')}`;
+  function veGio() {
+    $('dong-ho').textContent = fmt(conLai);
+    $('dong-ho').classList.toggle('het', conLai <= 0);
+    $('nut-gio').textContent = chay ? '⏸' : '▶';
+  }
+  function datGio() { dungGio(); conLai = Math.round(buoc[so].phut * 60); veGio(); }
+  function chayGio() {
+    if (chay) return;
+    chay = true;
+    hen = setInterval(() => { conLai -= 1; if (conLai <= 0) { conLai = 0; dungGio(); } veGio(); }, 1000);
+    veGio();
+  }
+  function dungGio() { chay = false; clearInterval(hen); veGio(); }
+
+  // ---------- Âm thanh ----------
+  // Chỉ phát sau thao tác của người dùng; thiếu file hoặc trình duyệt chặn thì im lặng.
+  const amThanh = {};
+  let bat = true, daVao = false;
+  try { bat = localStorage.getItem('gv-tieng') !== '0'; } catch (e) {}
+  const keu = id => { const a = amThanh[id]; if (!bat || !a) return; try { a.currentTime = 0; const p = a.play(); if (p && p.catch) p.catch(() => {}); } catch (e) {} };
+  const veNutTieng = () => { const n = $('nut-tieng'); n.textContent = bat ? '🔔' : '🔕'; n.setAttribute('aria-pressed', String(bat)); };
+
+  // ---------- Chuyển bước ----------
+  function sangBuoc(i) {
+    if (so !== i && daVao) keu('sang-buoc');
+    daVao = true;
+    so = Math.max(0, Math.min(buoc.length - 1, i));
+    const nav = $('cac-buoc');
+    nav.replaceChildren(...buoc.map((b, j) => h('button', { class: j === so ? 'dang' : j < so ? 'xong' : '', onclick: () => sangBuoc(j) }, `${j + 1}. ${b.ten}`)));
+    $('nut-truoc').disabled = so === 0;
+    $('nut-tiep').textContent = so < buoc.length - 1 ? 'Tiếp ›' : game.loai === 'mo-tiet' ? 'Vào bài ›' : 'Kết thúc ›';
+    datGio();
+    const san = $('san');
+    const b = buoc[so];
+    san.replaceChildren(b.tt ? VE_TT[b.tt.kieu](b.tt, b.i) : VE[b.id]());
+    san.scrollTop = 0;
+  }
+
+  // ---------- Vẽ từng bước ----------
+  const tieuDe = (ten, hd) => [h('h2', { class: 'ten-buoc' }, ten), hd ? h('p', { class: 'huong-dan' }, hd) : null];
+
+  function boThe({ lat = false, coD = false } = {}) {
+    const lung = duongAnh('lung-the');
+    const the = (ma, noiDung) => {
+      const el = h('button', { class: 'the' + (lat || daLat.has(ma) ? ' lat' : ''), 'data-ma': ma, 'aria-label': `Thẻ ${ma}` },
+        h('div', { class: 'trong' },
+          h('div', { class: 'mat-sau', style: lung ? `background-image:url("${lung}")` : '' }, lung ? '' : '?'),
+          h('div', { class: 'mat-truoc' }, h('div', { class: 'ma' }, ma), h('div', { class: 'nd' }, noiDung))));
+      el.addEventListener('click', () => { el.classList.toggle('lat'); el.classList.contains('lat') ? daLat.add(ma) : daLat.delete(ma); });
+      return el;
+    };
+    const ds = game.lua_chon.map(c => the(c.ma, c.noi_dung));
+    if (coD) ds.push(the('D', 'Lựa chọn của lớp mình'));
+    return h('div', { class: 'bo-the' }, ds);
+  }
+
+  const sachTen = () => `${game.sach.ten} · ${game.sach.tac_gia} · ${game.sach.phan_doc}`;
+  const guongThan = () => h('div', { class: 'hop guong', style: 'margin-top:24px' },
+    h('div', { class: 'nhan' }, 'Soi gương trước khi về'),
+    h('div', { class: 'ba-cau' }, ['Một điều vui', 'Một điều khó', 'Hôm nay mình đã giúp được ai?'].map(c => h('span', {}, c))));
+
+  const VE = {
+    'lang': () => h('div', { class: 'lang' },
+      h('div', { class: 'vong-tho', 'aria-hidden': 'true' }),
+      h('p', { class: 'chu-lon' }, 'Ba nhịp thở chậm. Hít vào… thở ra…'),
+      h('p', { class: 'chu-lon', style: 'color:var(--cam)' }, game.ba_nhip.biet_on),
+      h('p', { class: 'huong-dan' }, 'Nói thầm với mình: ', h('span', { class: 'to' }, game.ba_nhip.tu_thoai || 'Mình bình tĩnh, mình tò mò, mình sẵn sàng.'))),
+    'chia-khoa': () => {
+      const da = tt['ck'] || (tt['ck'] = new Set());
+      return h('div', {},
+        tieuDe('Chìa khoá sách', 'Ai đã đọc sẽ nhớ. Chưa nhớ thì cả lớp cùng mở sách đọc lại, không sao cả.'),
+        h('p', { class: 'nhan' }, sachTen()),
+        h('div', { class: 'muc-chon' }, game.chia_khoa.map((c, j) => h('button', { class: da.has(j) ? 'co' : '',
+          onclick: () => { da.has(j) ? da.delete(j) : da.add(j); veLai(); } },
+          h('span', { class: 'so-thu-tu' }, j + 1),
+          h('span', {}, c.cau_hoi, da.has(j) ? h('span', { class: 'mo-trang' }, ' Mở sách: ' + c.trang) : null)))));
+    },
+    'trang-sach': () => h('div', {},
+      tieuDe('Sách nói gì?', 'Làm theo cặp. Chứng cứ phải lấy từ sách: chương nào, đoạn nào, nhân vật nói hay làm gì.'),
+      h('div', { class: 'khung' },
+        h('div', { class: 'hop' }, h('h3', {}, 'Chọn'), h('p', {}, 'Em/nhóm chọn A, B hay C?')),
+        h('div', { class: 'hop' }, h('h3', {}, 'Chi tiết trong sách'), h('p', {}, 'Ghi rõ chương, đoạn. Đọc to một câu nếu cần.')),
+        h('div', { class: 'hop' }, h('h3', {}, 'Lập luận'), h('p', {}, 'Chi tiết đó giúp em hiểu tình huống này thế nào?'))),
+      game.cau_hoi_goi_mo && game.cau_hoi_goi_mo.length ? h('div', { class: 'hop', style: 'margin-top:20px' }, h('ol', { class: 'cau-hoi', style: 'font-size:22px' }, game.cau_hoi_goi_mo.map(c => h('li', {}, c)))) : null,
+      h('div', { class: 'hop ds-chon' }, game.lua_chon.map(c => h('div', {}, h('b', {}, c.ma + '.'), ' ', c.noi_dung)))),
+    'viet-tiep': () => h('div', {},
+      tieuDe('Nếu em là tác giả…', game.viet_tiep || 'Em sẽ viết tiếp thế nào? Lựa chọn D của lớp mình là gì?'),
+      boThe({ lat: true, coD: true })),
+    'ke': () => {
+      const nen = duongAnh(game.boi_canh);
+      return h('div', {},
+        h('div', { class: 'canh', style: nen ? `background-image:url("${nen}")` : '' },
+          h('div', { class: 'nhan-vat' }, (game.nhan_vat || []).map(n => {
+            const s = duongAnh(n.sprite);
+            return h('figure', {}, s ? h('img', { src: s, alt: n.ten }) : null, h('figcaption', {}, n.ten));
+          })),
+          h('div', { class: 'loi-ke' },
+            h('div', { class: 'chu-lon' }, game.loi_ke),
+            game.du_kien && game.du_kien.length ? h('div', { class: 'du-kien' }, game.du_kien.map(d => h('span', {}, d))) : null)));
+    },
+    'chon': () => h('div', {},
+      tieuDe('Em sẽ chọn gì?', `${game.cach_chon || 'Mọi em chọn cùng lúc'}. Im lặng, chọn một mình, chưa bàn với bạn. Bấm vào thẻ để lật.`),
+      boThe()),
+    'ly-do': () => h('div', {},
+      tieuDe('Vì sao em chọn vậy?', 'Không có đúng hay sai. Được đổi ý bất cứ lúc nào.'),
+      h('div', { class: 'hop' }, h('ol', { class: 'cau-hoi chu-lon' },
+        (game.cau_hoi_goi_mo && game.cau_hoi_goi_mo.length ? game.cau_hoi_goi_mo : ['Vì sao em nghĩ vậy?', 'Ai có lý do khác?', 'Nếu là em, điều gì làm em lo nhất?']).map(c => h('li', {}, c))))),
+    'buoc-ngoat': () => {
+      const an = h('div', { class: 'hop chu-lon an-di', title: 'Bấm để hiện' }, game.buoc_ngoat);
+      an.addEventListener('click', () => an.classList.remove('an-di'));
+      return h('div', {}, tieuDe('Nhưng nếu…', 'Có thêm một chi tiết mới. Em có muốn chọn lại không?'), an, h('div', { style: 'margin-top:24px' }, boThe({ lat: true })));
+    },
+    'treo': () => h('div', {},
+      tieuDe('Câu hỏi của hôm nay', 'Ghi vào vở. Cuối giờ mình quay lại.'),
+      h('div', { class: 'bang-goc' }, h('div', { class: 'nhan' }, 'Câu hỏi của hôm nay'), h('div', { class: 'chu-lon' }, game.cau_hoi_treo)),
+      game.loi_chot ? h('p', { class: 'pham-chat' }, game.loi_chot) : null),
+    'chung-cu': () => h('div', {},
+      tieuDe('Chứng cứ của em là gì?', 'Làm theo cặp, điền thẻ lập luận. Được mở vở và SGK.'),
+      h('div', { class: 'khung' },
+        h('div', { class: 'hop' }, h('h3', {}, 'Chọn'), h('p', {}, 'Em/nhóm chọn A, B hay C?')),
+        h('div', { class: 'hop' }, h('h3', {}, 'Chứng cứ'), h('p', {}, 'Kiến thức nào trong bài? Ghi rõ bài nào, ý nào.')),
+        h('div', { class: 'hop' }, h('h3', {}, 'Lập luận'), h('p', {}, 'Vì sao chứng cứ đó dẫn tới lựa chọn của em?'))),
+      game.cau_hoi_goi_mo && game.cau_hoi_goi_mo.length ? h('div', { class: 'hop', style: 'margin-top:20px' }, h('ol', { class: 'cau-hoi', style: 'font-size:22px' }, game.cau_hoi_goi_mo.map(c => h('li', {}, c)))) : null,
+      h('div', { class: 'hop ds-chon' }, game.lua_chon.map(c => h('div', {}, h('b', {}, c.ma + '.'), ' ', c.noi_dung)))),
+    'phan-bien': () => h('div', {},
+      tieuDe('Phản biện', 'Hỏi vào lập luận, không hỏi vào người.'),
+      h('div', { class: 'hop' }, h('ol', { class: 'cau-hoi chu-lon' },
+        [...(game.cau_mau_phan_bien || []), 'Chứng cứ của bạn lấy từ đâu trong bài?', 'Mình đồng ý phần…, nhưng chưa đồng ý phần… vì…']
+          .slice(0, 5).map(c => h('li', {}, c))))),
+    'sang-tao': () => h('div', {},
+      tieuDe('Có lựa chọn D nào tốt hơn không?', 'Đề xuất của lớp mình, giải thích bằng kiến thức đã học.'),
+      boThe({ lat: true, coD: true })),
+    'chot': () => h('div', {},
+      tieuDe(game.loai === 'sach-la-thay' ? 'Sách đã dạy mình điều gì' : 'Kiến thức mình đã dùng', 'Ghi sơ đồ vào vở.'),
+      h('div', { class: 'so-do' }, (game.so_do_chot || []).flatMap(s => [h('div', { class: 'kt' }, s.kien_thuc), h('div', { class: 'mui' }, '→'), h('div', { class: 'dv' }, s.dung_vao)])),
+      game.loi_chot ? h('p', { class: 'pham-chat' }, game.loi_chot) : null,
+      game.du_an_that ? h('div', { class: 'hop', style: 'margin-top:20px' }, h('div', { class: 'nhan' }, 'Việc thật tuần này'), h('div', { style: 'font-size:clamp(18px,1.8vw,24px)' }, game.du_an_that)) : null,
+      guongThan())
+  };
+
+  // ---------- Vẽ các kiểu tương tác ----------
+  // Không có đúng sai: trình chơi chỉ hiện lựa chọn của lớp để giáo viên hỏi "vì sao".
+  const nutXepLai = i => h('button', { onclick: () => { delete tt[i]; sangBuocGiuGio(); } }, '↺ Làm lại');
+  function sangBuocGiuGio() { const b = buoc[so]; $('san').replaceChildren(b.tt ? VE_TT[b.tt.kieu](b.tt, b.i) : VE[b.id]()); }
+  const veLai = () => sangBuocGiuGio();
+
+  const VE_TT = {
+    'lat-du-kien': (x, i) => {
+      const da = tt[i] || (tt[i] = new Set());
+      const lung = duongAnh('lung-the');
+      return h('div', {},
+        tieuDe('Lật từng dữ kiện', 'Lật một thẻ, rồi hỏi: có ai muốn đổi lựa chọn không? Vì sao?'),
+        h('div', { class: 'the-nho' }, x.the.map((t, j) => {
+          const el = h('button', { class: 'the' + (da.has(j) ? ' lat' : ''), 'aria-label': t.nhan },
+            h('div', { class: 'trong' },
+              h('div', { class: 'mat-sau', style: lung ? `background-image:url("${lung}")` : '' }, h('span', { class: lung ? 'nhan-lung' : '' }, t.nhan)),
+              h('div', { class: 'mat-truoc' }, h('div', { class: 'nd' }, t.noi_dung))));
+          el.addEventListener('click', () => { el.classList.toggle('lat'); el.classList.contains('lat') ? da.add(j) : da.delete(j); });
+          return el;
+        })),
+        h('div', { class: 'hop ds-chon' }, game.lua_chon.map(c => h('div', {}, h('b', {}, c.ma + '.'), ' ', c.noi_dung))));
+    },
+    'xep-uu-tien': (x, i) => {
+      const thuTu = tt[i] || (tt[i] = []);
+      return h('div', {},
+        tieuDe(x.cau_hoi, 'Chạm lần lượt từ việc quan trọng nhất. Không có thứ tự đúng: so thứ tự của các nhóm và hỏi vì sao.'),
+        h('div', { class: 'muc-chon' }, x.muc.map((m, j) => {
+          const vt = thuTu.indexOf(j);
+          return h('button', { class: vt >= 0 ? 'co' : '', onclick: () => { vt >= 0 ? thuTu.splice(vt, 1) : thuTu.push(j); veLai(); } },
+            h('span', { class: 'so-thu-tu' }, vt >= 0 ? vt + 1 : ''), m);
+        })),
+        h('div', { class: 'hang-nut' }, nutXepLai(i)));
+    },
+    'chia-nguon-luc': (x, i) => {
+      const nhay = x.buoc_nhay || 1;
+      const gt = tt[i] || (tt[i] = x.muc.map(() => 0));
+      const daDung = gt.reduce((s, v) => s + v, 0), conLaiNL = x.tong - daDung;
+      const so = v => v.toLocaleString('vi-VN');
+      return h('div', {},
+        tieuDe(`Em chia ${so(x.tong)} ${x.don_vi || ''} thế nào?`, 'Dồn vào mục này thì mục khác phải bớt. Không có cách chia đúng: nói điều em được và điều em chấp nhận mất.'),
+        h('div', { class: 'con-lai' }, `Còn lại: ${so(conLaiNL)} ${x.don_vi || ''}`),
+        h('div', { class: 'thanh', 'aria-hidden': 'true' }, x.muc.map((m, j) => h('span', { style: `width:${gt[j] / x.tong * 100}%;background:${MAU_NHOM[j]}` }))),
+        h('div', { class: 'chia' }, x.muc.map((m, j) => h('div', { class: 'dong' },
+          h('span', { class: 'ten', style: `border-left:8px solid ${MAU_NHOM[j]};padding-left:10px` }, m.ten),
+          h('button', { 'aria-label': `Bớt ${m.ten}`, disabled: gt[j] < nhay, onclick: () => { gt[j] -= nhay; veLai(); } }, '−'),
+          h('span', { class: 'gt' }, so(gt[j])),
+          h('button', { 'aria-label': `Thêm ${m.ten}`, disabled: conLaiNL < nhay, onclick: () => { gt[j] += nhay; veLai(); } }, '+'),
+          h('span', { class: 'gy' }, m.goi_y || '')))),
+        h('div', { class: 'hang-nut' }, nutXepLai(i)));
+    },
+    'phan-nhom': (x, i) => {
+      const o = tt[i] || (tt[i] = x.muc.map(() => -1));
+      const cot = (k, ten) => h('div', { class: k < 0 ? 'khay' : '', style: k >= 0 ? `--mau:${MAU_NHOM[k]}` : '' },
+        h('h3', {}, ten),
+        x.muc.map((m, j) => o[j] === k ? h('button', { style: k >= 0 ? `--mau:${MAU_NHOM[k]}` : '', title: 'Chạm để chuyển sang nhóm kế tiếp',
+          onclick: () => { o[j] = o[j] + 1 >= x.nhom.length ? -1 : o[j] + 1; veLai(); } }, m.noi_dung) : null));
+      return h('div', {},
+        tieuDe(x.cau_hoi || 'Xếp mỗi mục vào một nhóm', 'Chạm một mục để chuyển nó sang nhóm kế tiếp. Trình chơi không chấm: hỏi lớp vì sao xếp vào đây.'),
+        h('div', { class: 'cot-nhom', style: `--so-cot:${x.nhom.length + 1}` }, cot(-1, 'Chưa xếp'), x.nhom.map((n, k) => cot(k, n))),
+        h('div', { class: 'hang-nut' }, nutXepLai(i)));
+    },
+    'con-duong': (x, i) => {
+      const da = tt[i] || (tt[i] = []);
+      const hien = Math.min(da.length + 1, x.chang.length);
+      return h('div', {},
+        tieuDe('Đi tiếp con đường', 'Cả lớp chọn một ngả, xem chuyện gì xảy ra rồi đi tiếp. Ngả nào cũng tới đích, chỉ khác điều gặp trên đường.'),
+        h('div', { class: 'duong' }, x.chang.slice(0, hien).map((c, j) => h('div', { class: 'chang' },
+          h('div', { class: 'moc' }, j + 1),
+          h('div', {},
+            h('div', { class: 'chu-lon', style: 'font-size:clamp(20px,2vw,28px)' }, c.tinh_huong),
+            h('div', { class: 'nga' }, c.nga.map((n, k) => h('button', { class: da[j] === k ? 'chon' : '', disabled: da[j] != null && da[j] !== k,
+              onclick: () => { if (da[j] == null) { da[j] = k; veLai(); } } }, n.noi_dung))),
+            da[j] != null ? h('div', { class: 'he-qua' }, c.nga[da[j]].he_qua) : null)))),
+        da.length >= x.chang.length ? h('p', { class: 'dich' }, 'Tới đích. Nếu đi ngả kia, chuyện gì sẽ khác?') : null,
+        h('div', { class: 'hang-nut' }, nutXepLai(i)));
+    },
+    'doan-hinh': (x, i) => {
+      const mo = !!tt[i];
+      const the = x.manh_moi.map(m => { const a = duongAnh(m.anh); return h('div', { class: 'hop' }, a ? h('img', { src: a, alt: '' }) : null, m.chu); });
+      return h('div', {},
+        tieuDe('Đoán xem hôm nay mình học gì?', 'Những manh mối này có gì chung? Nói từ khoá em đoán.'),
+        h('div', { class: 'manh-moi' }, the.flatMap((t, j) => j ? [h('div', { class: 'cong' }, '+'), t] : [t])),
+        h('div', { class: 'bang-goc', style: 'margin-top:24px;text-align:center' },
+          h('div', { class: 'nhan' }, 'Từ khoá'),
+          mo ? h('div', { class: 'chu-lon' }, h('span', { class: 'to' }, x.dap_an))
+             : h('button', { class: 'chinh', onclick: () => { tt[i] = true; veLai(); } }, 'Hiện từ khoá')));
+    },
+    'pha-tron': (x, i) => {
+      const chon = tt[i] || (tt[i] = []);
+      return h('div', {},
+        tieuDe(x.cau_hoi || 'Pha hai mảnh kiến thức thành một ý mới', 'Chọn hai mảnh. Nói rõ ý mới dùng kiến thức nào trong bài.'),
+        h('div', { class: 'muc-chon' }, x.manh.map((m, j) => {
+          const co = chon.includes(j);
+          return h('button', { class: co ? 'da-chon' : '', disabled: !co && chon.length >= 2,
+            onclick: () => { co ? chon.splice(chon.indexOf(j), 1) : chon.push(j); veLai(); } }, m);
+        })),
+        h('div', { class: 'pha' },
+          h('div', { class: 'o' + (chon[0] != null ? ' day' : '') }, chon[0] != null ? x.manh[chon[0]] : '?'), '+',
+          h('div', { class: 'o' + (chon[1] != null ? ' day' : '') }, chon[1] != null ? x.manh[chon[1]] : '?'), '→',
+          h('div', { class: 'o ket' }, chon.length === 2 ? 'Ý tưởng của nhóm em?' : '…')),
+        h('div', { class: 'hang-nut' }, nutXepLai(i)));
+    }
+  };
+
+  // ---------- Chế độ giáo viên ----------
+  function veGiaoVien() {
+    const g = game, phan = [];
+    phan.push(h('h2', {}, 'Chế độ giáo viên'), h('p', { class: 'canh-bao' }, 'Đừng chiếu phần này cho học sinh. Bấm G để ẩn.'));
+    if (g.sach) phan.push(h('h3', {}, 'Sách'), h('p', {}, sachTen()), g.sach.nguon_noi_dung === 'claude-biet-ro' ? h('p', { class: 'phu' }, 'Chi tiết do Claude soạn từ hiểu biết chung: đối chiếu với bản sách của lớp.') : null);
+    if (g.kien_thuc && g.kien_thuc.length) phan.push(h('h3', {}, { 'mo-tiet': 'Kiến thức sẽ mở', 'on-bai': 'Kiến thức được ôn', 'sach-la-thay': 'Bài học từ sách' }[g.loai]), h('ul', {}, g.kien_thuc.map(k => h('li', {}, k))));
+    phan.push(h('h3', {}, 'Phẩm chất đi kèm'), h('p', {}, g.pham_chat, g.chau_ngoc ? h('span', { class: 'phu' }, ` · viên ngọc nuôi ngầm: ${CHAU_NGOC[g.chau_ngoc]}`) : null));
+    if (g.chia_khoa) phan.push(h('h3', {}, 'Chìa khoá sách: chi tiết để đối chiếu'), h('ol', {}, g.chia_khoa.map(c => h('li', {}, c.cau_hoi, h('div', { class: 'phu' }, `${c.trang}${c.gv_goi_y ? ' · ' + c.gv_goi_y : ''}`)))));
+    phan.push(h('h3', {}, 'Các lựa chọn'), h('ul', {}, g.lua_chon.map(c => h('li', {}, h('b', {}, `${c.ma}. `), c.noi_dung,
+      c.gv_cai_gia ? h('div', {}, h('span', { class: 'phu' }, 'Cái giá: '), c.gv_cai_gia) : null,
+      c.gv_kien_thuc ? h('div', {}, h('span', { class: 'phu' }, 'Kiến thức: '), c.gv_kien_thuc) : null))));
+    for (const x of g.tuong_tac || []) {
+      if (x.kieu === 'phan-nhom' && x.muc.some(m => m.gv_nhom)) phan.push(h('h3', {}, 'Xếp nhóm: cách giáo viên nghĩ tới'), h('ul', {}, x.muc.filter(m => m.gv_nhom).map(m => h('li', {}, m.noi_dung, h('div', { class: 'phu' }, m.gv_nhom)))));
+      if (x.kieu === 'doan-hinh') phan.push(h('h3', {}, 'Đoán chữ: từ khoá'), h('p', {}, x.dap_an));
+    }
+    if (g.buoc_ngoat && g.loai !== 'mo-tiet') phan.push(h('h3', {}, 'Bước ngoặt (bản mở rộng)'), h('p', {}, g.buoc_ngoat));
+    if (g.gv_goi_y_lua_chon_d) phan.push(h('h3', {}, 'Gợi ý lựa chọn D'), h('p', {}, g.gv_goi_y_lua_chon_d));
+    if (g.gv_hieu_lam && g.gv_hieu_lam.length) phan.push(h('h3', {}, 'Hiểu lầm cần sửa khi chốt'), h('ul', {}, g.gv_hieu_lam.map(x => h('li', {}, x))));
+    if (g.quay_lai_cuoi_tiet) phan.push(h('h3', {}, 'Quay lại cuối tiết'), h('p', {}, g.quay_lai_cuoi_tiet));
+    if (g.gv_ghi_chu) phan.push(h('h3', {}, 'Ghi chú'), h('p', {}, g.gv_ghi_chu));
+    if (thieuAnh.size) phan.push(h('h3', {}, 'Ảnh không tìm thấy trong manifest'), h('p', {}, [...thieuAnh].join(', ')));
+    $('gv').replaceChildren(...phan);
+  }
+  const batTatGV = () => { veGiaoVien(); $('gv').classList.toggle('an'); };
+
+  // ---------- Nạp game ----------
+  function moTuChuoi(s) {
+    let g;
+    try { g = JSON.parse(s.trim().replace(/^```(?:json)?\s*|\s*```$/g, '')); }
+    catch (e) { hienNap(); $('loi').textContent = 'Không đọc được JSON: ' + e.message + '\nHãy sao chép lại nguyên khối JSON từ Claude.'; return; }
+    const loi = kiemTra(g);
+    if (loi.length) { hienNap(); $('loi').textContent = 'Nội dung game còn thiếu:\n• ' + loi.join('\n• ') + '\nHãy nhờ Claude sửa lại theo đúng khung.'; return; }
+    try { localStorage.setItem('game-gan-nhat', JSON.stringify(g)); } catch (e) {}
+    batDau(g);
+  }
+  async function moTuUrl(u) {
+    try {
+      const r = await fetch(new URL(u, location.href));
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      moTuChuoi(await r.text());
+    } catch (e) {
+      hienNap();
+      $('loi').textContent = 'Không tải được game từ ' + u + ': ' + e.message;
+    }
+  }
+  function hienNap() {
+    $('choi').classList.add('an');
+    $('nap').classList.remove('an');
+    try { const cu = localStorage.getItem('game-gan-nhat'); if (cu && !$('o-dan').value) $('o-dan').value = JSON.stringify(JSON.parse(cu), null, 2); } catch (e) {}
+  }
+
+  // ---------- Sự kiện ----------
+  $('nut-mo').addEventListener('click', () => moTuChuoi($('o-dan').value));
+  document.querySelectorAll('[data-mau]').forEach(b => b.addEventListener('click', () => moTuUrl(b.dataset.mau)));
+  $('nut-truoc').addEventListener('click', () => sangBuoc(so - 1));
+  $('nut-tiep').addEventListener('click', () => { if (so < buoc.length - 1) sangBuoc(so + 1); else { keu('ket-thuc'); dungGio(); hienNap(); } });
+  $('nut-gio').addEventListener('click', () => chay ? dungGio() : chayGio());
+  $('nut-dat-lai').addEventListener('click', datGio);
+  $('nut-gv').addEventListener('click', batTatGV);
+  $('nut-tieng').addEventListener('click', () => { bat = !bat; try { localStorage.setItem('gv-tieng', bat ? '1' : '0'); } catch (e) {} veNutTieng(); keu('cham'); });
+  $('san').addEventListener('click', e => { if (e.target.closest('button, .the, .lat-the, [data-the]')) keu('cham'); });
+  veNutTieng();
+  document.addEventListener('keydown', e => {
+    if (!game || $('choi').classList.contains('an') || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight') sangBuoc(so + 1);
+    else if (e.key === 'ArrowLeft') sangBuoc(so - 1);
+    else if (e.key === ' ') { e.preventDefault(); chay ? dungGio() : chayGio(); }
+    else if (e.key === 'g' || e.key === 'G') batTatGV();
+    else if (e.key === 'f' || e.key === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}); }
+  });
+
+  // ---------- Khởi động ----------
+  napManifest().then(() => {
+    const spec = thamSo.get('spec');
+    if (spec) moTuUrl(spec); else hienNap();
+  });
+})();
+</script>
+</body>
+</html>

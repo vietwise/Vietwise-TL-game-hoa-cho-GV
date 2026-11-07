@@ -1,0 +1,95 @@
+{
+  "phien_ban": "1.0",
+  "loai": "mo-tiet",
+  "tieu_de": "Bó hoa 300 nghìn",
+  "mon": "Toán",
+  "lop": "5",
+  "bai": "Tỉ số phần trăm",
+  "thoi_luong_phut": 10,
+  "kien_thuc": [
+    "Tìm giá trị phần trăm của một số và so sánh giá sau giảm"
+  ],
+  "pham_chat": "trách nhiệm",
+  "boi_canh": "nen-cua-hang",
+  "nhan_vat": [
+    {
+      "ten": "Minh",
+      "sprite": "hs-nam"
+    }
+  ],
+  "loi_ke": "Lớp 5A góp được 300 000 đồng mua hoa 20/11 tặng cô. Tiệm A giảm 20% cho bó hoa 350 000 đồng. Tiệm B có bó hoa 300 000 đồng, thiệp 20 000 đồng, mua cả hai thì giảm 10%. Minh, lớp trưởng, phải quyết trong 5 phút trước khi tiệm đóng cửa.",
+  "du_kien": [
+    "Quỹ lớp: 300 000 đồng",
+    "Tiệm A: 350 000 đồng, giảm 20%",
+    "Tiệm B: 300 000 + 20 000 đồng, giảm 10%"
+  ],
+  "lua_chon": [
+    {
+      "ma": "A",
+      "noi_dung": "Mua bó hoa ở tiệm A",
+      "gv_cai_gia": "Không có thiệp; phải tin lời tiệm về giá sau giảm."
+    },
+    {
+      "ma": "B",
+      "noi_dung": "Mua hoa kèm thiệp ở tiệm B",
+      "gv_cai_gia": "Bó hoa nhỏ hơn."
+    },
+    {
+      "ma": "C",
+      "noi_dung": "Không mua, mỗi bạn tự viết thiệp tay",
+      "gv_cai_gia": "Không có hoa; cần cả lớp đồng ý dùng quỹ việc khác."
+    }
+  ],
+  "cach_chon": "Giơ 1, 2 hoặc 3 ngón tay cùng lúc",
+  "cau_hoi_goi_mo": [
+    "Vì sao em chọn như vậy?",
+    "Điều gì làm em lo nhất khi chọn?",
+    "Ai có lý do khác?"
+  ],
+  "buoc_ngoat": "Tiệm A nói: cộng 10% phí gói trước, rồi mới giảm 20%.",
+  "cau_hoi_treo": "Cộng 10% rồi giảm 20% thì có còn đủ 300 000 đồng không?",
+  "loi_chot": "Minh đang giữ tiền của cả lớp. Chọn thế nào mới là có trách nhiệm với các bạn?",
+  "quay_lai_cuoi_tiet": "Bây giờ em sẽ chọn tiệm nào? Bài hôm nay giúp em tính điều gì?",
+  "gv_ghi_chu": "Đáp số (không công bố): A ban đầu 280 000 đồng; sau bước ngoặt 350 000 × 1,1 × 0,8 = 308 000 đồng (vượt quỹ). B: 320 000 × 0,9 = 288 000 đồng.",
+  "tuong_tac": [
+    {
+      "kieu": "chia-nguon-luc",
+      "don_vi": "nghìn đồng",
+      "tong": 300,
+      "buoc_nhay": 10,
+      "muc": [
+        {
+          "ten": "Hoa",
+          "goi_y": "Bó to đẹp hơn nhưng hết tiền cho thiệp"
+        },
+        {
+          "ten": "Thiệp",
+          "goi_y": "Có lời chúc của cả lớp"
+        },
+        {
+          "ten": "Giấy gói, ruy băng",
+          "goi_y": "Đẹp hơn khi tặng"
+        },
+        {
+          "ten": "Để lại quỹ lớp",
+          "goi_y": "Dành cho việc chung sau này"
+        }
+      ]
+    },
+    {
+      "kieu": "doan-hinh",
+      "manh_moi": [
+        {
+          "chu": "Biển GIẢM 20%"
+        },
+        {
+          "chu": "Pin điện thoại còn 75%"
+        },
+        {
+          "chu": "Tỉ lệ đi học đầy đủ 100%"
+        }
+      ],
+      "dap_an": "Tỉ số phần trăm"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "phien_ban": "1.0",
+  "loai": "mo-tiet",
+  "tieu_de": "Hoá đơn tiền điện nhà Lan",
+  "mon": "Khoa học",
+  "lop": "5",
+  "bai": "Sử dụng năng lượng điện an toàn, tiết kiệm",
+  "thoi_luong_phut": 10,
+  "kien_thuc": [
+    "Nêu được cách sử dụng điện an toàn, tiết kiệm trong gia đình"
+  ],
+  "pham_chat": "trách nhiệm",
+  "boi_canh": "nen-lop-hoc",
+  "nhan_vat": [
+    {
+      "ten": "Lan",
+      "sprite": "hs-nu"
+    }
+  ],
+  "loi_ke": "Tháng này hoá đơn tiền điện nhà Lan tăng gấp đôi. Mẹ nói: cả nhà phải bớt dùng điện. Lan thích bật quạt cả đêm, anh trai chơi máy tính đến khuya, bố quên tắt bình nóng lạnh. Tối nay cả nhà họp, Lan được nói trước.",
+  "du_kien": [
+    "Hoá đơn tăng gấp đôi",
+    "Quạt bật cả đêm",
+    "Máy tính dùng đến khuya",
+    "Bình nóng lạnh hay quên tắt"
+  ],
+  "lua_chon": [
+    {
+      "ma": "A",
+      "noi_dung": "Lan đề nghị mỗi người tự bớt việc của mình",
+      "gv_cai_gia": "Lan cũng phải bớt quạt."
+    },
+    {
+      "ma": "B",
+      "noi_dung": "Lan đề nghị tắt bình nóng lạnh trước, vì có thể tốn điện nhất",
+      "gv_cai_gia": "Có thể nghe như đổ lỗi cho bố."
+    },
+    {
+      "ma": "C",
+      "noi_dung": "Lan đề nghị cả nhà ghi lại giờ dùng từng thiết bị trong một tuần rồi mới quyết",
+      "gv_cai_gia": "Chậm, tháng sau hoá đơn vẫn cao."
+    }
+  ],
+  "cach_chon": "Giơ thẻ màu A, B hoặc C",
+  "cau_hoi_goi_mo": [
+    "Vì sao em chọn như vậy?",
+    "Thiết bị nào em đoán tốn điện nhất? Dựa vào đâu?"
+  ],
+  "buoc_ngoat": "Bố nói: bình nóng lạnh nhà mình đã cũ, dây điện chỗ đó hơi nóng khi chạm vào.",
+  "cau_hoi_treo": "Dùng điện thế nào vừa tiết kiệm vừa an toàn?",
+  "loi_chot": "Khi góp ý cho cả nhà, Lan cần làm gì trước tiên để là người có trách nhiệm?",
+  "quay_lai_cuoi_tiet": "Sau bài học, em sẽ góp ý thêm cho nhà Lan điều gì?",
+  "tuong_tac": [
+    {
+      "kieu": "xep-uu-tien",
+      "cau_hoi": "Nếu được bớt một việc, nhà Lan nên bớt việc nào trước?",
+      "muc": [
+        "Quạt bật cả đêm",
+        "Máy tính dùng đến khuya",
+        "Bình nóng lạnh quên tắt",
+        "Đèn hành lang sáng suốt đêm"
+      ]
+    },
+    {
+      "kieu": "con-duong",
+      "chang": [
+        {
+          "tinh_huong": "Lan nói trước trong buổi họp. Anh trai cau mày.",
+          "nga": [
+            {
+              "noi_dung": "Lan nói về việc của anh trước",
+              "he_qua": "Anh trai phật ý: 'Thế còn quạt của em?'"
+            },
+            {
+              "noi_dung": "Lan nhận bớt quạt của mình trước",
+              "he_qua": "Anh trai im lặng, rồi nói: 'Anh sẽ tắt máy lúc 10 giờ.'"
+            }
+          ]
+        },
+        {
+          "tinh_huong": "Cả nhà đồng ý thử một tuần. Ai sẽ nhắc mọi người?",
+          "nga": [
+            {
+              "noi_dung": "Mẹ nhắc mỗi tối",
+              "he_qua": "Mẹ mệt, có hôm quên."
+            },
+            {
+              "noi_dung": "Dán tờ nhắc cạnh công tắc",
+              "he_qua": "Ai đi qua cũng thấy, nhưng vài hôm là quen mắt."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "gv_ghi_chu": "Không công bố thiết bị nào tốn điện nhất: để học sinh tìm trong bài. Chi tiết dây điện nóng ở bước ngoặt mở sang ý an toàn điện."
+}

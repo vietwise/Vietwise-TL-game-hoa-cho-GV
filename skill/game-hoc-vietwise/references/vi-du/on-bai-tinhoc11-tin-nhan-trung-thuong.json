@@ -1,0 +1,78 @@
+{
+ "phien_ban": "1.0",
+ "loai": "on-bai",
+ "tieu_de": "Tin nhắn báo trúng thưởng",
+ "mon": "Tin học",
+ "lop": "11",
+ "nhom_lop": "E",
+ "nhom_mon": "tin-hoc",
+ "bai": "An toàn thông tin cá nhân, nhận biết tin nhắn lừa đảo",
+ "thoi_luong_phut": 15,
+ "kien_thuc": [
+  "Mã OTP là bí mật, không chia sẻ cho ai",
+  "Kiểm tra thông tin bằng kênh chính thức, không bấm đường dẫn lạ",
+  "Tin nhắn lừa đảo thường tạo cảm giác gấp gáp hoặc hấp dẫn"
+ ],
+ "pham_chat": "trách nhiệm",
+ "nhan_vat": [
+  {
+   "ten": "Khang"
+  }
+ ],
+ "chau_ngoc": "thich-nghi",
+ "loi_ke": "Mẹ Khang nhận tin nhắn từ một số lạ: \"Chúc mừng bạn trúng thưởng một chiếc điện thoại. Bấm vào đường dẫn và nhập mã xác thực gửi về máy để nhận quà trong hôm nay.\" Mẹ đang vui và đưa điện thoại cho Khang bấm giúp.",
+ "du_kien": [
+  "Số lạ, chưa từng gặp",
+  "Có đường dẫn và yêu cầu nhập mã",
+  "Hạn nhận quà: trong hôm nay"
+ ],
+ "lua_chon": [
+  {
+   "ma": "A",
+   "noi_dung": "Bấm vào đường dẫn xem thử, chưa nhập mã",
+   "gv_kien_thuc": "Đường dẫn lạ có thể mở trang giả mạo hoặc cài phần mềm độc hại."
+  },
+  {
+   "ma": "B",
+   "noi_dung": "Không bấm; kiểm tra bằng kênh chính thức của đơn vị được nhắc tên, hoặc hỏi người đáng tin",
+   "gv_kien_thuc": "Thông tin do mình chủ động tìm từ kênh chính thức đáng tin hơn tin nhắn gửi tới."
+  },
+  {
+   "ma": "C",
+   "noi_dung": "Chặn số và xóa tin nhắn, không nói với ai",
+   "gv_cai_gia": "An toàn cho mình nhưng người khác trong nhà có thể bị lừa tiếp."
+  }
+ ],
+ "cach_chon": "Giơ 1, 2 hoặc 3 ngón tay",
+ "cau_hoi_goi_mo": [
+  "Điều gì trong tin nhắn khiến em nghi ngờ?",
+  "Vì sao họ muốn mình làm ngay hôm nay?",
+  "Em sẽ nói thế nào để mẹ hiểu mà không thấy bị chê?"
+ ],
+ "cau_mau_phan_bien": [
+  "Em dựa vào chi tiết nào trong tin nhắn?",
+  "Nếu số gửi đến lại trùng khớp với một nhãn hàng có thật thì em kiểm tra thế nào?"
+ ],
+ "so_do_chot": [
+  {
+   "kien_thuc": "Đường dẫn lạ có thể giả mạo",
+   "dung_vao": "Bác bỏ lựa chọn A"
+  },
+  {
+   "kien_thuc": "Mã xác thực là bí mật của riêng mình",
+   "dung_vao": "Không nhập mã vào trang lạ"
+  },
+  {
+   "kien_thuc": "Kiểm tra bằng kênh chính thức",
+   "dung_vao": "Lựa chọn B"
+  }
+ ],
+ "gv_goi_y_lua_chon_d": "Học sinh có thể đề xuất làm một tấm thẻ nhắc cho người nhà hoặc hướng dẫn cho ông bà cách kiểm tra tin nhắn lạ.",
+ "gv_hieu_lam": [
+  "Chỉ khi nhập mã mới nguy hiểm, bấm xem thì không sao",
+  "Số điện thoại trông giống thật thì tin được"
+ ],
+ "loi_chot": "Giúp người thân hiểu và tự bảo vệ mình là trách nhiệm của người biết nhiều hơn.",
+ "du_an_that": "Làm một tờ nhắc 3 dòng về cách nhận biết tin nhắn lừa đảo, dán nơi người nhà hay dùng điện thoại.",
+ "gv_ghi_chu": "Tình huống mô tả chung, không dùng tên thương hiệu thật. Nhóm E: phong cách tham khảo (ngoài phạm vi gốc 3 đến 12 tuổi của Vườn Game-học). Mức Thử thách: thêm tin nhắn thật mà khó phân biệt. Nội dung chưa có người am hiểu an toàn thông tin đọc lại."
+}
