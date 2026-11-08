@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Giao việc cho Trợ lý Game-hóa</title>
+<title>Giao việc cho Trợ lý Game-học</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap">
 <style>
-:root{--blue:#0018F9;--cam:#F96726;--vang:#F9C12D;--bg:#FFFEF3;--card:#fff;--ink:#1b1b2b;--mut:#5b5b70;--line:#e6e2c8;--ok:#4E9F2E;--err:#DF0000;--soft:#f4f1da;--q:#FFF6D8}
+:root{--blue:#1530D0;--cam:#F26419;--vang:#F7C52A;--bg:#F9FAF7;--card:#fff;--ink:#1b1b2b;--mut:#5b5b70;--line:#e6e2c8;--ok:#4CA51E;--err:#DF0000;--soft:#f4f1da;--q:#FFF6D8}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue:#8a95ff;--bg:#14141f;--card:#1e1e2d;--ink:#f2f1e6;--mut:#b0b0c4;--line:#35354a;--soft:#272738;--q:#2a2733}}
 :root[data-theme="dark"]{--blue:#8a95ff;--bg:#14141f;--card:#1e1e2d;--ink:#f2f1e6;--mut:#b0b0c4;--line:#35354a;--soft:#272738;--q:#2a2733}
 *{box-sizing:border-box}html,body{margin:0}
@@ -61,7 +61,7 @@ pre{background:var(--soft);border-radius:10px;padding:12px;overflow:auto;max-hei
 __LOCKDIV__
 <div id="brand-top" class="brand"></div>
 <main>
-<div class="hero"><img id="heroImg" alt="Bé Não vẫy tay chào"><div><h1>Giao việc cho Trợ lý Game-hóa</h1><p>Thầy Cô giao việc, Trợ lý lo phần còn lại. Dịch vụ không thu phí.</p></div></div>
+<div class="hero"><img id="heroImg" alt="Bé Não vẫy tay chào"><div><h1>Giao việc cho Trợ lý Game-học</h1><p>Thầy Cô giao việc, Trợ lý lo phần còn lại. Dịch vụ không thu phí.</p></div></div>
 <div class="stepper" id="stepper"><div><b>1</b><span>Giao việc</span></div><div><b>2</b><span>Trả kết quả</span></div><div><b>3</b><span>Chơi</span></div></div>
 <div class="quote" id="quote"><img id="qImg" alt=""><div><div class="qt" id="qText"></div><div class="qs" id="qSub"></div></div></div>
 
@@ -127,7 +127,7 @@ $('lop').innerHTML=Array.from({length:12},(_,i)=>`<option>${i+1}</option>`).join
 let imgs=[],maxImg=12,ctl=null,sample=null,downloads=null,G=null,qi=0,rot=null;
 const loai=()=>document.querySelector('input[name=loai]:checked').value;
 document.querySelectorAll('input[name=loai]').forEach(r=>r.addEventListener('change',()=>document.querySelectorAll('.type').forEach(t=>t.classList.toggle('on',t.querySelector('input').checked))));
-function showQ(i){const q=QUOTES[i%QUOTES.length];$('qText').textContent=q[0];$('qSub').textContent='Trợ lý Game-hóa gửi Thầy Cô';$('qImg').src=SPR[q[1]]}
+function showQ(i){const q=QUOTES[i%QUOTES.length];$('qText').textContent=q[0];$('qSub').textContent='Trợ lý Game-học gửi Thầy Cô';$('qImg').src=SPR[q[1]]}
 function stage(s){['s1','sw','s2','s3'].forEach(x=>$(x).hidden=x!==(s==='w'?'sw':s));
  const n={s1:0,w:0,s2:1,s3:2}[s];document.querySelectorAll('#stepper div').forEach((d,i)=>d.className=i<n?'done':i===n?'on':'');
  clearInterval(rot);const l=STAGEQ[s];showQ(l[0]);if(s==='w'){let k=0;rot=setInterval(()=>{k++;showQ(l[k%l.length])},7000)}
@@ -138,10 +138,10 @@ $('drop').onclick=()=>$('file').click();
 function shrink(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const m=1400,k=Math.min(1,m/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(u);b?res(b):rej()},'image/jpeg',.82)};im.onerror=()=>{URL.revokeObjectURL(u);rej()};im.src=u})}
 $('file').onchange=async e=>{for(const f of e.target.files){if(imgs.length>=maxImg){bubble('msg1','Mỗi việc giao tối đa '+maxImg+' trang. Thầy Cô chọn những trang cần dùng nhất, hoặc chia thành việc giao khác nhé.',1);break}try{const b=await shrink(f);imgs.push({blob:b,url:URL.createObjectURL(b)})}catch(_){bubble('msg1','Trợ lý chưa đọc được một ảnh. Thầy Cô thử ảnh khác nhé.',1)}}e.target.value='';draw()};
 function draw(){$('thumbs').innerHTML='';imgs.forEach((o,i)=>{const d=document.createElement('div');d.className='th';const im=document.createElement('img');im.src=o.url;im.alt='Trang '+(i+1);const n=document.createElement('i');n.textContent='Trang '+(i+1);const b=document.createElement('button');b.textContent='×';b.setAttribute('aria-label','Bỏ ảnh');b.onclick=()=>{URL.revokeObjectURL(o.url);imgs.splice(i,1);draw()};d.append(im,n,b);$('thumbs').append(d)});$('cnt').textContent=imgs.length?imgs.length+' / '+maxImg+' trang':'Chưa có trang nào'}
-function order(){return `PHIẾU GIAO VIỆC CHO TRỢ LÝ GAME-HÓA\nLoại game: ${LOAI[loai()]}\nMôn: ${$('mon').value||'(chưa ghi)'}\nLớp: ${$('lop').value}\nBài: ${$('bai').value||'(chưa ghi)'}\nGhi chú của Thầy Cô: ${$('ghichu').value||'(không)'}\nẢnh trang sách: ${imgs.length} ảnh (Thầy Cô gửi kèm khi dán phiếu này)\n`}
+function order(){return `PHIẾU GIAO VIỆC CHO TRỢ LÝ GAME-HỌC\nLoại game: ${LOAI[loai()]}\nMôn: ${$('mon').value||'(chưa ghi)'}\nLớp: ${$('lop').value}\nBài: ${$('bai').value||'(chưa ghi)'}\nGhi chú của Thầy Cô: ${$('ghichu').value||'(không)'}\nẢnh trang sách: ${imgs.length} ảnh (Thầy Cô gửi kèm khi dán phiếu này)\n`}
 async function copy(t,btn){try{await navigator.clipboard.writeText(t);const o=btn.textContent;btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=o,1600)}catch(_){bubble('msg1','Trình duyệt chặn sao chép. Thầy Cô bôi đen và chép tay giúp em nhé.',1)}}
 $('btnCopy').onclick=e=>{if(!imgs.length){bubble('msg1','Trợ lý xin Thầy Cô gửi ảnh chụp trang sách (từ 1 đến '+maxImg+' trang) rồi mình bắt đầu nhé.',1);return}copy(order(),e.target)};
-function prompt_(edit){return `Bạn là Trợ lý Game-hóa của Vietwise cho giáo viên Việt Nam. Hãy tạo MỘT game từ việc giáo viên giao và các trang sách trong ảnh. Chỉ trả về một đối tượng JSON, không thêm chữ nào khác.
+function prompt_(edit){return `Bạn là Trợ lý Game-học của Vietwise cho giáo viên Việt Nam. Hãy tạo MỘT game từ việc giáo viên giao và các trang sách trong ảnh. Chỉ trả về một đối tượng JSON, không thêm chữ nào khác.
 Quy tắc: không thi đua, không điểm số; có một quyết định cần chọn (2 đến 3 lựa chọn, mỗi lựa chọn có lý do hợp lý), một phẩm chất, kết nối với bài học; học sinh phải dùng chứng cứ từ bài; có câu hỏi phản biện. Mọi trường bắt đầu bằng gv_ chỉ dành cho giáo viên. Chỉ dùng kiến thức có trong các trang sách giáo viên gửi, không bịa số liệu; số liệu tính sẵn để trong gv_ghi_chu. Gọi giáo viên là "Thầy Cô". Dẫn truyện (loi_ke) từ một thử thách đời thật mà kiến thức giúp giải được, không dẫn bằng cảnh làm bài tập hay báo cáo trong lớp; kết lời kể bằng câu làm học sinh tò mò kiến thức này có ý nghĩa gì ngoài đời. Chỉ dùng thông tin đời thật chắc chắn đúng.
 Điều chỉnh theo nhóm lớp: A lớp 1-3 (câu rất ngắn, 2 lựa chọn, giọng ấm), B lớp 4-5 (3 lựa chọn, giọng đồng đội, không nựng), C lớp 6-7 (ngang hàng, có tranh luận), D lớp 8-10 (việc thật, số liệu, giọng thẳng), E lớp 11-12 (gắn học tập và nghề). Chữ học sinh thấy ngay tối đa 2 câu ngắn. Nếu môn là ngoại ngữ: lời kể bằng tiếng Việt, văn bản ngoại ngữ nguyên văn là chứng cứ, giữ nguyên chữ viết và dấu, chỉ dùng văn bản trong ảnh hoặc rất ngắn và chắc chắn đúng.
 Các trường: phien_ban ("1.0"), loai, tieu_de, mon, lop (chuỗi), nhom_lop (A, B, C, D hoặc E), nhom_mon (toan, khoa-hoc, ngu-van, xa-hoi, ngoai-ngu, nghe-thuat-the-chat hoặc tin-hoc), ngoai_ngu{ngon_ngu,ma,chu_viet,muc_do} (chỉ khi bài ngoại ngữ), bai, thoi_luong_phut, kien_thuc[], pham_chat, nhan_vat[{ten}], loi_ke, du_kien[], lua_chon[{ma,noi_dung,gv_kien_thuc}], cach_chon, cau_hoi_goi_mo[], cau_mau_phan_bien[], so_do_chot[{kien_thuc,dung_vao}], loi_chot, gv_goi_y_lua_chon_d, gv_hieu_lam[], gv_ghi_chu, chau_ngoc (hieu-ky, thich-nghi, ben-chi hoặc an-lac), du_an_that, hinh_minh_hoa (một chuỗi SVG phẳng nhiều màu, viewBox "0 0 600 240", không quá 3000 ký tự, không script, không link, không viết đáp án lên hình). Với Game mở tiết thêm buoc_ngoat, cau_hoi_treo, quay_lai_cuoi_tiet. Với Sách là Thầy thêm sach{ten,tac_gia,phan_doc}, chia_khoa[{cau_hoi,trang,gv_goi_y}], viet_tiep.

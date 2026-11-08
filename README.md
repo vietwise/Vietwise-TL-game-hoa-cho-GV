@@ -1,6 +1,6 @@
-# Vietwise – Trợ lý game hóa cho giáo viên
+# Vietwise – Trợ lý game-học cho giáo viên
 
-Kho tài nguyên chung cho bộ skill game hóa dành cho giáo viên. Claude chỉ viết **nội dung game** (một file JSON). Ảnh, trình chơi và khung nội dung nằm sẵn ở đây, nên giáo viên dùng Claude bản miễn phí vẫn ra được game chạy tốt.
+Kho tài nguyên chung cho bộ skill game-học dành cho giáo viên. Claude chỉ viết **nội dung game** (một file JSON). Ảnh, trình chơi và khung nội dung nằm sẵn ở đây, nên giáo viên dùng Claude bản miễn phí vẫn ra được game chạy tốt.
 
 Hiện có hai loại game, cả hai **không thi đua, không chấm điểm**:
 

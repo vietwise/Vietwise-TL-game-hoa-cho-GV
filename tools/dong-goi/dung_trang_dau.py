@@ -25,9 +25,9 @@ def thay(s, cu, moi, so=1):
 
 
 HEAD = '''<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Trợ lý Game-hóa cho Thầy Cô: điền phiếu giao việc, gửi cho Claude kèm ảnh trang sách, nhận về trò chơi chiếu lên lớp. Không thu phí.">
-<meta name="theme-color" content="#8a459a">
-<meta property="og:title" content="Trợ lý Game-hóa cho Thầy Cô">
+<meta name="description" content="Trợ lý Game-học cho Thầy Cô: điền phiếu giao việc, gửi cho Claude kèm ảnh trang sách, nhận về trò chơi chiếu lên lớp. Không thu phí.">
+<meta name="theme-color" content="#1530D0">
+<meta property="og:title" content="Trợ lý Game-học cho Thầy Cô">
 <meta property="og:description" content="Skill Game-học của Viện Giáo dục và Quản trị Nhân lực và Vườn Game-học Vietwise. Không thu phí, không thi đua, không chấm điểm.">
 <meta property="og:image" content="''' + URL + '''icon-512.png">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
@@ -44,7 +44,7 @@ CSS = '''
 /* Trang đầu trên web: lưu ra màn hình chính */
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 [hidden]{display:none!important}
-.mhc-bar{display:none;align-items:center;justify-content:space-between;gap:10px;background:#fbeef9;border-bottom:1px solid #e9c9e4;padding:10px 16px;font-weight:700;color:var(--tim);font-size:14.5px}
+.mhc-bar{display:none;align-items:center;justify-content:space-between;gap:10px;background:#FFEFE5;border-bottom:1px solid #F8C4A6;padding:10px 16px;font-weight:700;color:var(--blue);font-size:14.5px}
 .mhc-bar img{width:34px;height:34px;border-radius:9px;flex:0 0 auto}
 .mhc-bar span{flex:1;min-width:0}
 .mhc-bar .btn{padding:8px 16px;font-size:14px;white-space:nowrap}
@@ -53,9 +53,9 @@ CSS = '''
 .mhc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
 .mhc .card{margin:0;padding:16px}
 .mhc ol{margin:0;padding-left:20px}
-.mhc .k{font-weight:800;color:var(--hong)}
+.mhc .k{font-weight:800;color:var(--cam)}
 .mhc-head{display:flex;gap:14px;align-items:center}
-.mhc-head img{width:72px;height:72px;border-radius:18px;box-shadow:0 0 0 3px #ecc459,0 6px 16px rgba(0,0,0,.18);flex:0 0 auto}
+.mhc-head img{width:72px;height:72px;border-radius:18px;box-shadow:0 0 0 3px #F7C52A,0 6px 16px rgba(0,0,0,.18);flex:0 0 auto}
 .mhc-ok{display:none}
 @media(display-mode:standalone){.mhc-ok{display:block}.mhc-huongdan{display:none}}
 /* Flow hướng dẫn */
@@ -63,19 +63,19 @@ CSS = '''
 .flow li{position:relative;border-radius:14px;padding:12px 12px 12px 12px;font-size:14.5px;line-height:1.45;border:1.5px solid;min-width:0}
 .flow li b{display:block;font-size:15px;margin-bottom:2px}
 .flow li .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;font-weight:800;font-size:14px;margin-bottom:6px;color:#fff}
-.flow .gv{background:#fbf3d6;border-color:#ecc459}.flow .gv .n{background:#c89a12}
-.flow .cl{background:#e6efee;border-color:#9cc0c1}.flow .cl .n{background:var(--reu)}
-.flow .lop{background:#fbeef9;border-color:#e9b8e2}.flow .lop .n{background:var(--hong)}
-.flow li:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--tim);font-size:18px}
+.flow .gv{background:#FEF6D9;border-color:#F7C52A}.flow .gv .n{background:#B8860B}
+.flow .cl{background:#EAF5E2;border-color:#A9D68C}.flow .cl .n{background:var(--xanh)}
+.flow .lop{background:#FFEFE5;border-color:#F8C4A6}.flow .lop .n{background:var(--cam)}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--blue);font-size:18px}
 .flow li:nth-child(3n)::after{content:none}
 @media(max-width:620px){.flow{grid-template-columns:1fr;gap:26px}.flow li:not(:last-child)::after,.flow li:nth-child(3n):not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-25px;transform:translateX(-50%)}}
 .flow-chu{display:flex;gap:14px;flex-wrap:wrap;font-size:13.5px;color:var(--mut);margin:8px 0 0}
 .flow-chu span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px;border:1.5px solid}
-.flow-chu .gv::before{background:#fbf3d6;border-color:#ecc459}.flow-chu .cl::before{background:#e6efee;border-color:#9cc0c1}.flow-chu .lop::before{background:#fbeef9;border-color:#e9b8e2}
+.flow-chu .gv::before{background:#FEF6D9;border-color:#F7C52A}.flow-chu .cl::before{background:#EAF5E2;border-color:#A9D68C}.flow-chu .lop::before{background:#FFEFE5;border-color:#F8C4A6}
 /* Trả kết quả */
 .kq-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
 .kq-list li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px}
-.kq-list .ten{flex:1 1 180px;min-width:0;font-weight:700;color:var(--tim);overflow-wrap:anywhere}
+.kq-list .ten{flex:1 1 180px;min-width:0;font-weight:700;color:var(--blue);overflow-wrap:anywhere}
 .kq-list .ten small{display:block;font-weight:400;color:var(--mut);font-size:12.5px}
 .kq-list .btn{padding:8px 16px;font-size:14px;text-decoration:none}
 .kq-rong{color:var(--mut);font-style:italic;margin:12px 0 0}
@@ -130,7 +130,7 @@ THE = '''
     <p class="lead" style="margin:12px 0 0;font-size:14.5px">Địa chỉ trang: <a href="''' + URL + '''">''' + URL.replace('https://', '') + '''</a>. Gửi địa chỉ này cho đồng nghiệp để cùng dùng.</p>
   </div>
   <div class="btns">
-    <a class="btn ghost" href="dist/Tro-ly-Game-hoa-Vietwise.zip" download>Tải cả gói về máy tính (.zip)</a>
+    <a class="btn ghost" href="dist/Tro-ly-Game-hoc-Vietwise.zip" download>Tải cả gói về máy tính (.zip)</a>
   </div>
 </section>
 '''
@@ -210,7 +210,7 @@ JS = r'''
 def dung(goi):
     s = open(H + '/mau/doc-truoc.html', encoding='utf-8').read()
     s = thay(s, '<meta name="viewport" content="width=device-width, initial-scale=1">', HEAD)
-    s = thay(s, '<title>Trợ lý Game-hoá: Phiếu giao việc cho Thầy Cô</title>', '<title>Trợ lý Game-hóa cho Thầy Cô</title>')
+    s = thay(s, '<title>Trợ lý Game-học: Phiếu giao việc cho Thầy Cô</title>', '<title>Trợ lý Game-học cho Thầy Cô</title>')
     s = thay(s, '</style>\n</head>', CSS + '</style>\n</head>')
     s = thay(s, '\n<header>', '\n' + BAR + '<header>')
     s = thay(s, '<span class="nobreak"><b>4-Cai-Skill/game-hoc-vietwise.zip</b></span> trong gói này.',

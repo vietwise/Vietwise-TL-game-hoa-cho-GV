@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Trợ lý Game-hóa cho Thầy Cô: điền phiếu giao việc, gửi cho Claude kèm ảnh trang sách, nhận về trò chơi chiếu lên lớp. Không thu phí.">
-<meta name="theme-color" content="#8a459a">
-<meta property="og:title" content="Trợ lý Game-hóa cho Thầy Cô">
+<meta name="description" content="Trợ lý Game-học cho Thầy Cô: điền phiếu giao việc, gửi cho Claude kèm ảnh trang sách, nhận về trò chơi chiếu lên lớp. Không thu phí.">
+<meta name="theme-color" content="#1530D0">
+<meta property="og:title" content="Trợ lý Game-học cho Thầy Cô">
 <meta property="og:description" content="Skill Game-học của Viện Giáo dục và Quản trị Nhân lực và Vườn Game-học Vietwise. Không thu phí, không thi đua, không chấm điểm.">
 <meta property="og:image" content="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/icon-512.png">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
@@ -17,76 +17,76 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>Trợ lý Game-hóa cho Thầy Cô</title>
+<title>Trợ lý Game-học cho Thầy Cô</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--kem:#f5f1e8;--hong:#ca41bc;--tim:#8a459a;--reu:#476e70;--vang:#ecc459;--ink:#2a2230;--mut:#6b6272;--line:#e3dccb;--card:#fffdf8}
+:root{--kem:#F9FAF7;--cam:#E85A12;--blue:#1530D0;--xanh:#3E8E16;--vang:#F7C52A;--xam:#8A8A8A;--ink:#1E2235;--mut:#5A5D66;--line:#E0E3DA;--card:#FFFFFF}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--kem);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.6;font-size:16px}
-a{color:var(--tim)}
+a{color:var(--blue)}
 .wrap{max-width:920px;margin:0 auto;padding:0 18px}
-header{background:linear-gradient(180deg,var(--kem) 0%,#efe3ee 100%);padding:28px 0 0;border-bottom:1px solid var(--line)}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--reu)}
-h1{margin:4px 0 6px;font-size:clamp(26px,5vw,38px);line-height:1.2;color:var(--tim);font-weight:800}
+header{background:linear-gradient(180deg,var(--kem) 0%,#E6EAFB 100%);padding:28px 0 0;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--xanh)}
+h1{margin:4px 0 6px;font-size:clamp(26px,5vw,38px);line-height:1.2;color:var(--blue);font-weight:800}
 .sub{margin:0 0 18px;color:var(--mut);max-width:640px}
 nav{display:flex;gap:6px;flex-wrap:wrap}
 nav button{font:inherit;font-weight:700;border:0;background:transparent;color:var(--mut);padding:11px 18px;border-radius:12px 12px 0 0;cursor:pointer;border-bottom:3px solid transparent}
-nav button:hover{color:var(--tim)}
-nav button[aria-selected=true]{background:var(--card);color:var(--tim);border-bottom-color:var(--hong)}
+nav button:hover{color:var(--blue)}
+nav button[aria-selected=true]{background:var(--card);color:var(--blue);border-bottom-color:var(--cam)}
 main{padding:26px 0 50px}
 section.panel{display:none}
 section.panel.on{display:block}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
-h2{margin:0 0 4px;font-size:24px;color:var(--tim)}
-h3{margin:0 0 6px;font-size:18px;color:var(--reu)}
+h2{margin:0 0 4px;font-size:24px;color:var(--blue)}
+h3{margin:0 0 6px;font-size:18px;color:var(--xanh)}
 .lead{color:var(--mut);margin:0 0 18px}
 label{display:block;font-weight:700;margin:14px 0 6px}
 label small{font-weight:400;color:var(--mut)}
 input[type=text],input[type=number],select,textarea{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
 textarea{min-height:76px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:3px solid #ca41bc33;border-color:var(--hong)}
+input:focus,select:focus,textarea:focus{outline:3px solid #1530D033;border-color:var(--cam)}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:620px){.row{grid-template-columns:1fr}}
 .loai{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
 .loai input{position:absolute;opacity:0}
 .loai label{margin:0;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;font-weight:600}
-.loai label b{display:block;color:var(--tim)}
+.loai label b{display:block;color:var(--blue)}
 .loai label span{font-size:13.5px;color:var(--mut);font-weight:400}
-.loai input:checked+label{border-color:var(--hong);background:#fbeef9;box-shadow:0 0 0 3px #ca41bc22}
+.loai input:checked+label{border-color:var(--cam);background:#FFEFE5;box-shadow:0 0 0 3px #E85A1222}
 .loai input:focus-visible+label{outline:3px solid #ca41bc55}
-.hint{background:#fbf3d6;border:1px solid #ecc459;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:14px}
-.warn{background:#f3e9f6;border:1px solid #d9b8e2;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:14px}
-.warn b,.hint b{color:var(--tim)}
-.out{white-space:pre-wrap;background:#fff;border:1.5px dashed var(--hong);border-radius:12px;padding:14px;font-size:15.5px;min-height:90px}
+.hint{background:#FEF6D9;border:1px solid #F7C52A;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:14px}
+.warn{background:#EEF1FD;border:1px solid #C3CCF5;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:14px}
+.warn b,.hint b{color:var(--blue)}
+.out{white-space:pre-wrap;background:#fff;border:1.5px dashed var(--cam);border-radius:12px;padding:14px;font-size:15.5px;min-height:90px}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
-.btn{font:inherit;font-weight:800;border:0;border-radius:999px;padding:12px 22px;cursor:pointer;background:var(--hong);color:#fff}
-.btn:hover{background:var(--tim)}
-.btn.ghost{background:transparent;color:var(--tim);border:1.5px solid var(--tim)}
-.btn.ghost:hover{background:#f3e9f6}
-.ok{color:var(--reu);font-weight:700}
+.btn{font:inherit;font-weight:800;border:0;border-radius:999px;padding:12px 22px;cursor:pointer;background:var(--cam);color:#fff}
+.btn:hover{background:var(--blue)}
+.btn.ghost{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+.btn.ghost:hover{background:#EEF1FD}
+.ok{color:var(--xanh);font-weight:700}
 .err{color:#b3261e;font-weight:700;font-size:14px;margin-top:6px}
 .cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 .pill{display:inline-block;font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 10px;color:#fff}
-.p1{background:#e8672d}.p2{background:#1a2cf0}.p3{background:#4f9a2a}
+.p1{background:#F26419}.p2{background:#1530D0}.p3{background:#4CA51E}
 .steps{counter-reset:s;list-style:none;padding:0;margin:0}
 .steps li{counter-increment:s;position:relative;padding:6px 0 6px 46px;margin-bottom:6px}
 .steps li::before{content:counter(s);position:absolute;left:0;top:4px;width:32px;height:32px;border-radius:50%;background:var(--vang);color:var(--ink);font-weight:800;display:grid;place-items:center}
-img.fc{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#fffff4;display:block;margin:10px 0}
+img.fc{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#FFFFFF;display:block;margin:10px 0}
 table{border-collapse:collapse;width:100%;font-size:14.5px}
 th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:#f3e9f6;color:var(--tim)}
+th{background:#EEF1FD;color:var(--blue)}
 .scroll{overflow-x:auto}
 .game{display:flex;flex-direction:column;gap:8px}
 .game a.btn{text-decoration:none;text-align:center;margin-top:auto}
 details{border-top:1px solid var(--line);padding:10px 0}
-details summary{cursor:pointer;font-weight:700;color:var(--tim)}
+details summary{cursor:pointer;font-weight:700;color:var(--blue)}
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--mut);font-size:14px;text-align:center}
-footer em{display:block;margin-top:8px;color:var(--tim);font-style:italic}
+footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 .nobreak{white-space:nowrap}
-.brand{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;justify-content:center;padding:10px 16px;background:#fff;border-bottom:3px solid var(--hong)}
-.brand .t{font-weight:700;color:var(--tim);font-size:14px}
+.brand{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;justify-content:center;padding:10px 16px;background:#fff;border-bottom:3px solid var(--cam)}
+.brand .t{font-weight:700;color:var(--blue);font-size:14px}
 .brand .t:first-child{flex:0 0 100%;text-align:center;font-size:13px}
 .brand a{display:inline-flex;align-items:center}
 .brand img{height:44px;width:auto;display:block}
@@ -95,7 +95,7 @@ footer em{display:block;margin-top:8px;color:var(--tim);font-style:italic}
 /* Trang đầu trên web: lưu ra màn hình chính */
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 [hidden]{display:none!important}
-.mhc-bar{display:none;align-items:center;justify-content:space-between;gap:10px;background:#fbeef9;border-bottom:1px solid #e9c9e4;padding:10px 16px;font-weight:700;color:var(--tim);font-size:14.5px}
+.mhc-bar{display:none;align-items:center;justify-content:space-between;gap:10px;background:#FFEFE5;border-bottom:1px solid #F8C4A6;padding:10px 16px;font-weight:700;color:var(--blue);font-size:14.5px}
 .mhc-bar img{width:34px;height:34px;border-radius:9px;flex:0 0 auto}
 .mhc-bar span{flex:1;min-width:0}
 .mhc-bar .btn{padding:8px 16px;font-size:14px;white-space:nowrap}
@@ -104,9 +104,9 @@ footer em{display:block;margin-top:8px;color:var(--tim);font-style:italic}
 .mhc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
 .mhc .card{margin:0;padding:16px}
 .mhc ol{margin:0;padding-left:20px}
-.mhc .k{font-weight:800;color:var(--hong)}
+.mhc .k{font-weight:800;color:var(--cam)}
 .mhc-head{display:flex;gap:14px;align-items:center}
-.mhc-head img{width:72px;height:72px;border-radius:18px;box-shadow:0 0 0 3px #ecc459,0 6px 16px rgba(0,0,0,.18);flex:0 0 auto}
+.mhc-head img{width:72px;height:72px;border-radius:18px;box-shadow:0 0 0 3px #F7C52A,0 6px 16px rgba(0,0,0,.18);flex:0 0 auto}
 .mhc-ok{display:none}
 @media(display-mode:standalone){.mhc-ok{display:block}.mhc-huongdan{display:none}}
 /* Flow hướng dẫn */
@@ -114,19 +114,19 @@ footer em{display:block;margin-top:8px;color:var(--tim);font-style:italic}
 .flow li{position:relative;border-radius:14px;padding:12px 12px 12px 12px;font-size:14.5px;line-height:1.45;border:1.5px solid;min-width:0}
 .flow li b{display:block;font-size:15px;margin-bottom:2px}
 .flow li .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;font-weight:800;font-size:14px;margin-bottom:6px;color:#fff}
-.flow .gv{background:#fbf3d6;border-color:#ecc459}.flow .gv .n{background:#c89a12}
-.flow .cl{background:#e6efee;border-color:#9cc0c1}.flow .cl .n{background:var(--reu)}
-.flow .lop{background:#fbeef9;border-color:#e9b8e2}.flow .lop .n{background:var(--hong)}
-.flow li:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--tim);font-size:18px}
+.flow .gv{background:#FEF6D9;border-color:#F7C52A}.flow .gv .n{background:#B8860B}
+.flow .cl{background:#EAF5E2;border-color:#A9D68C}.flow .cl .n{background:var(--xanh)}
+.flow .lop{background:#FFEFE5;border-color:#F8C4A6}.flow .lop .n{background:var(--cam)}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--blue);font-size:18px}
 .flow li:nth-child(3n)::after{content:none}
 @media(max-width:620px){.flow{grid-template-columns:1fr;gap:26px}.flow li:not(:last-child)::after,.flow li:nth-child(3n):not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-25px;transform:translateX(-50%)}}
 .flow-chu{display:flex;gap:14px;flex-wrap:wrap;font-size:13.5px;color:var(--mut);margin:8px 0 0}
 .flow-chu span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px;border:1.5px solid}
-.flow-chu .gv::before{background:#fbf3d6;border-color:#ecc459}.flow-chu .cl::before{background:#e6efee;border-color:#9cc0c1}.flow-chu .lop::before{background:#fbeef9;border-color:#e9b8e2}
+.flow-chu .gv::before{background:#FEF6D9;border-color:#F7C52A}.flow-chu .cl::before{background:#EAF5E2;border-color:#A9D68C}.flow-chu .lop::before{background:#FFEFE5;border-color:#F8C4A6}
 /* Trả kết quả */
 .kq-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
 .kq-list li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px}
-.kq-list .ten{flex:1 1 180px;min-width:0;font-weight:700;color:var(--tim);overflow-wrap:anywhere}
+.kq-list .ten{flex:1 1 180px;min-width:0;font-weight:700;color:var(--blue);overflow-wrap:anywhere}
 .kq-list .ten small{display:block;font-weight:400;color:var(--mut);font-size:12.5px}
 .kq-list .btn{padding:8px 16px;font-size:14px;text-decoration:none}
 .kq-rong{color:var(--mut);font-style:italic;margin:12px 0 0}
@@ -138,7 +138,7 @@ footer em{display:block;margin-top:8px;color:var(--tim);font-style:italic}
 <header>
   <div class="wrap">
     <div class="eyebrow">Skill Game-học · Vườn Game-học Vietwise</div>
-    <h1>Trợ lý Game-hoá cho Thầy Cô</h1>
+    <h1>Trợ lý Game-học cho Thầy Cô</h1>
     <p class="sub">Điền phiếu, gửi cho Claude kèm ảnh trang sách, nhận về một trò chơi để chiếu lên lớp. Không thu phí, không thi đua, không chấm điểm.</p>
     <nav role="tablist" aria-label="Các phần">
       <button role="tab" id="t-phieu" data-tab="phieu" aria-selected="true">1. Phiếu giao việc</button>
@@ -432,7 +432,7 @@ footer em{display:block;margin-top:8px;color:var(--tim);font-style:italic}
     <p class="lead" style="margin:12px 0 0;font-size:14.5px">Địa chỉ trang: <a href="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/">vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/</a>. Gửi địa chỉ này cho đồng nghiệp để cùng dùng.</p>
   </div>
   <div class="btns">
-    <a class="btn ghost" href="dist/Tro-ly-Game-hoa-Vietwise.zip" download>Tải cả gói về máy tính (.zip)</a>
+    <a class="btn ghost" href="dist/Tro-ly-Game-hoc-Vietwise.zip" download>Tải cả gói về máy tính (.zip)</a>
   </div>
 </section>
 

@@ -1,4 +1,4 @@
-# Đặc tả game — Trợ lý game hóa cho giáo viên
+# Đặc tả game — Trợ lý game-học cho giáo viên
 
 Phiên bản đặc tả: **1.0** (27/10/2026, thêm kiểu tương tác và bộ nhận diện) · Áp dụng cho `schema/game-spec.schema.json` phiên bản `"1.0"`.
 
@@ -266,12 +266,12 @@ Theo wiki "Bộ Màu Vườn Game-Học Vietwise". Chỉ dùng **6 màu** và tr
 
 | Màu | Mã | Vai trò trong trình chơi |
 | --- | --- | --- |
-| Blue | `#0018F9` | Giọng chính: tiêu đề, số, kiến thức, bước đang chọn. Chữ thân bài là Blue 72% |
-| Cam | `#F96726` | Cảm xúc, lời mời, tên riêng: câu gọi tên phẩm chất, hệ quả trên con đường, thẻ A |
-| Vàng | `#F9C12D` | Nút chính (chữ Blue), màu khi rê chuột lên mọi nút, bút dạ quang nửa dòng, thẻ D |
-| Xanh Vườn | `#4E9F2E` | Nhãn mục chữ hoa, viền tiêu điểm bàn phím, chế độ giáo viên, thẻ B |
+| Blue | `#1530D0` | Giọng chính: tiêu đề, số, kiến thức, bước đang chọn. Chữ thân bài là Blue 72% |
+| Cam | `#F26419` | Cảm xúc, lời mời, tên riêng: câu gọi tên phẩm chất, hệ quả trên con đường, thẻ A |
+| Vàng | `#F7C52A` | Nút chính (chữ Blue), màu khi rê chuột lên mọi nút, bút dạ quang nửa dòng, thẻ D |
+| Xanh Vườn | `#4CA51E` | Nhãn mục chữ hoa, viền tiêu điểm bàn phím, chế độ giáo viên, thẻ B |
 | Đỏ | `#DF0000` | Chỉ báo lỗi, dùng rất ít |
-| Kem | `#FFFEF3` | Nền trang, chữ trên nền đậm |
+| Kem | `#F9FAF7` | Nền trang, chữ trên nền đậm |
 
 - **Font:** Quicksand 500 cho tiêu đề, nút, nhãn và số. Nunito 400 cho thân bài. Không in đậm nặng, không in nghiêng.
 - **Thứ tự màu cho nhóm hoặc chặng:** Cam → Xanh Vườn → Blue → Vàng → Đỏ (Đỏ đứng cuối vì Đỏ còn mang nghĩa lỗi).

@@ -4,7 +4,7 @@ H = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(H + '/../..')
 SK = REPO + '/skill/game-hoc-vietwise'
 SP = tempfile.mkdtemp()
-OUT = SP + '/pkg/Tro-ly-Game-hoa-Vietwise'
+OUT = SP + '/pkg/Tro-ly-Game-hoc-Vietwise'
 os.makedirs(OUT + '/3-Game-mau', exist_ok=True)
 os.makedirs(OUT + '/4-Cai-Skill', exist_ok=True)
 
@@ -38,7 +38,7 @@ shutil.copy(H + '/mau/doc-truoc.html', OUT + '/1-DOC-TRUOC-README-VA-PHIEU-GIAO-
 subprocess.check_call(['python3', H + '/dung_trang_dau.py', OUT])
 
 # zip theo thứ tự
-final = sys.argv[1] if len(sys.argv) > 1 else REPO + '/dist/Tro-ly-Game-hoa-Vietwise.zip'
+final = sys.argv[1] if len(sys.argv) > 1 else REPO + '/dist/Tro-ly-Game-hoc-Vietwise.zip'
 os.makedirs(os.path.dirname(final), exist_ok=True)
 if os.path.exists(final): os.remove(final)
 names = []
