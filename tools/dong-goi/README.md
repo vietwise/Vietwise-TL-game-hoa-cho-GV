@@ -1,9 +1,9 @@
-# Đóng gói Trợ lý Game-hóa cho Thầy Cô
+# Đóng gói Trợ lý Game-học cho Thầy Cô
 
 Dựng lại toàn bộ gói giao cho Thầy Cô chỉ bằng một lệnh, từ đúng nội dung trong repo này.
 
 ```
-python3 tools/dong-goi/dong_goi.py            # ra dist/Tro-ly-Game-hoa-Vietwise.zip
+python3 tools/dong-goi/dong_goi.py            # ra dist/Tro-ly-Game-hoc-Vietwise.zip
 python3 tools/dong-goi/dong_goi.py /đường/dẫn/ra.zip
 python3 tools/dong-goi/dung_giao_viec.py      # chỉ dựng web/giao-viec.html
 ```

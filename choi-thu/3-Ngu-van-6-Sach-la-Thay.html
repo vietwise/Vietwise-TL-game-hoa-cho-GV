@@ -3,16 +3,16 @@
 <title>Game-học Vietwise</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500;700&display=swap">
 <style>
-:root{--blue:#0018F9;--cam:#F96726;--vang:#F9C12D;--bg:#FFFEF3;--card:#fff;--ink:#1b1b2b;--mut:#5b5b70;--line:#e6e2c8;--soft:#f4f1da;--xanh:#4E9F2E}
+:root{--blue:#1530D0;--cam:#F26419;--vang:#F7C52A;--bg:#F9FAF7;--card:#fff;--ink:#1b1b2b;--mut:#5b5b70;--line:#e6e2c8;--soft:#f4f1da;--xanh:#4CA51E}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue:#8a95ff;--bg:#14141f;--card:#1e1e2d;--ink:#f2f1e6;--mut:#b0b0c4;--line:#35354a;--soft:#272738}}
 :root[data-theme="dark"]{--blue:#8a95ff;--bg:#14141f;--card:#1e1e2d;--ink:#f2f1e6;--mut:#b0b0c4;--line:#35354a;--soft:#272738}
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:400 18px/1.6 Nunito,system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
 h1,h2,h3,.q{font-family:Quicksand,Nunito,sans-serif;font-weight:700}
 .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 16px;background:#fff;color:#444;font-size:14px;border-bottom:3px solid var(--cam)}
-.brand.bot{border-bottom:0;border-top:3px solid var(--cam);margin-top:auto;justify-content:center;text-align:center;font:700 15px/1.5 Quicksand,sans-serif;color:#0018F9;padding:12px 16px}
+.brand.bot{border-bottom:0;border-top:3px solid var(--cam);margin-top:auto;justify-content:center;text-align:center;font:700 15px/1.5 Quicksand,sans-serif;color:#1530D0;padding:12px 16px}
 .brand a{display:inline-flex;align-items:center}.brand img{height:var(--lh,44px);width:auto;display:block}
-.brand .t{font-family:Quicksand,sans-serif;font-weight:700;color:#0018F9}@media(max-width:560px){.brand{--lh:30px;gap:4px 8px;padding:6px 12px;font-size:12px}.brand .t{font-size:12.5px}.brand .t:first-child{flex:0 0 100%}.brand.bot{font-size:13px}}
+.brand .t{font-family:Quicksand,sans-serif;font-weight:700;color:#1530D0}@media(max-width:560px){.brand{--lh:30px;gap:4px 8px;padding:6px 12px;font-size:12px}.brand .t{font-size:12.5px}.brand .t:first-child{flex:0 0 100%}.brand.bot{font-size:13px}}
 main{width:100%;max-width:980px;margin:0 auto;padding:18px 16px 28px;flex:1}
 .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 .pill{background:var(--soft);border-radius:999px;padding:3px 14px;font:700 14px Quicksand;color:var(--mut)}
@@ -43,7 +43,7 @@ button:disabled{opacity:.4;cursor:default}
 .tm{font:700 20px Quicksand;color:var(--mut);min-width:64px;text-align:center}
 .ill{background:#fff;border-radius:14px;border:1px solid var(--line);margin:10px 0;overflow:hidden}.ill svg{width:100%;height:auto;max-height:260px;display:block}.mascot{width:96px;height:auto;float:right;margin:0 0 8px 12px}
 .err{padding:24px;text-align:center;color:#DF0000;font-weight:700}
-.say{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;align-items:center}.say button{min-height:44px;padding:8px 16px;border:2px solid #0018F9;background:#fff;border-radius:999px;font:700 16px Quicksand,sans-serif;color:#0018F9;cursor:pointer}.say small{flex:0 0 100%;color:#7a5a00}
+.say{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;align-items:center}.say button{min-height:44px;padding:8px 16px;border:2px solid #1530D0;background:#fff;border-radius:999px;font:700 16px Quicksand,sans-serif;color:#1530D0;cursor:pointer}.say small{flex:0 0 100%;color:#7a5a00}
 #lock{position:fixed;inset:0;background:#fff;color:#222;z-index:99;display:none;place-items:center;text-align:center;padding:24px;font-size:20px}
 </style></head><body>
 <div id="lock"><div><b>Trang này đã bị gỡ hoặc sửa phần ghi nguồn Vietwise.</b><br>Thầy Cô vui lòng dùng bản gốc từ Skill Game-học tại <a href="https://vietwise.edu.vn" target="_blank" rel="noopener">Vietwise.edu.vn</a>.</div></div>
@@ -130,12 +130,12 @@ bt.onclick=function(){if(hen){dung();return}bt.textContent='Dừng';hen=setInter
 function ve(){stage.textContent='';var P=el('div','panel');S[so][2](P);stage.appendChild(P);Array.prototype.forEach.call(bar.children,function(b,i){b.className=i<so?'done':i===so?'on':''});bp.disabled=so===0;bn.disabled=false;bn.textContent=so===S.length-1?'Kết thúc':'Tiếp →';reset()}
 var GEM={'hieu-ky':'Hiếu kỳ','thich-nghi':'Thích nghi','ben-chi':'Bền chí','an-lac':'An lạc'},fin=false,AC=null;
 function clap(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var c=AC,n=Math.floor(c.sampleRate*0.06),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);for(var k=0;k<90;k++){var s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2);s.buffer=b;f.type='bandpass';f.frequency.value=1200+Math.random()*1800;g.gain.value=0.25+Math.random()*0.35;s.connect(f);f.connect(g);g.connect(c.destination);s.start(c.currentTime+Math.random()*3.2)}}catch(e){}}
-function phao(){var cv=document.createElement('canvas');cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40';cv.width=innerWidth;cv.height=innerHeight;document.body.appendChild(cv);var x=cv.getContext('2d'),col=['#F96726','#F9C12D','#0018F9','#4E9F2E','#DF0000','#ff7eb6'],P=[],T=Date.now();for(var i=0;i<160;i++)P.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*0.6,vx:(Math.random()-.5)*3,vy:2+Math.random()*4,r:4+Math.random()*6,c:col[i%col.length],a:Math.random()*6,va:(Math.random()-.5)*.3});
+function phao(){var cv=document.createElement('canvas');cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40';cv.width=innerWidth;cv.height=innerHeight;document.body.appendChild(cv);var x=cv.getContext('2d'),col=['#F26419','#F7C52A','#1530D0','#4CA51E','#DF0000','#ff7eb6'],P=[],T=Date.now();for(var i=0;i<160;i++)P.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*0.6,vx:(Math.random()-.5)*3,vy:2+Math.random()*4,r:4+Math.random()*6,c:col[i%col.length],a:Math.random()*6,va:(Math.random()-.5)*.3});
 (function f(){var el_=Date.now()-T;x.clearRect(0,0,cv.width,cv.height);P.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.a+=p.va;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()});if(el_<6500)requestAnimationFrame(f);else cv.remove()})()}
 function ketThuc(){fin=true;dung();stage.textContent='';var P=el('div','panel');P.style.textAlign='center';var gem=GEM[G.chau_ngoc]||'Hiếu kỳ';
  if(NAO.indexOf('data:image')===0){var i=el('img');i.src=NAO;i.alt='Bé Não';i.style.cssText='width:170px;height:auto;margin:0 auto;display:block';P.appendChild(i)}else{P.appendChild(el('div',null,'🏅')).style.fontSize='72px'}
  P.appendChild(el('h2',null,'Huy hiệu '+gem));P.lastChild.style.fontSize='30px';
- var b=el('div','pill','+5 Châu Lộc 💎');b.style.cssText='display:inline-block;font-size:22px;background:#F9C12D;color:#222;padding:6px 22px';P.appendChild(b);
+ var b=el('div','pill','+5 Châu Lộc 💎');b.style.cssText='display:inline-block;font-size:22px;background:#F7C52A;color:#222;padding:6px 22px';P.appendChild(b);
  var m=el('p','q','Xin một tràn pháo tay tặng cả lớp. Chúc các bạn học vui!');m.style.fontSize='26px';m.style.color='var(--blue)';P.appendChild(m);
  var n=el('p',null,'Châu Lộc trong game là quà chung của cả lớp, không dùng để xếp hạng.');n.style.cssText='color:var(--mut);font-size:15px';P.appendChild(n);
  stage.appendChild(P);Array.prototype.forEach.call(bar.children,function(b2){b2.className='done'});bn.textContent='Chơi lại';bn.disabled=false;tm.textContent='';phao();clap()}

@@ -22,8 +22,8 @@ Trợ lý tự chọn cách viết theo lớp Thầy Cô nêu:
 Mỗi game có ba mức (Khởi động, Vững vàng, Thử thách) ghi trong ghi chú Thầy Cô. Quy tắc gốc nằm trong `references/` (nhom-lop, nhom-mon, doc-ngoai-ngu, quy-tac-vietwise); có 9 game mẫu trong `references/vi-du/`.
 
 ## Dùng (dễ như 1-2-3)
-1. **Giao việc cho Trợ lý Game-hóa**: nhắn cho Claude, ví dụ: "Tạo game ôn bài Khoa học tự nhiên lớp 8, bài mol và nồng độ", và gửi kèm **ảnh chụp trang sách** (bắt buộc, từ 1 đến 12 trang cho mỗi lần giao việc).
-2. **Trả kết quả**: Trợ lý Game-hóa tạo game và trả về ngay thành một trang chơi. Thầy Cô xem lại, nói muốn sửa gì thì Trợ lý sửa nội dung.
+1. **Giao việc cho Trợ lý Game-học**: nhắn cho Claude, ví dụ: "Tạo game ôn bài Khoa học tự nhiên lớp 8, bài mol và nồng độ", và gửi kèm **ảnh chụp trang sách** (bắt buộc, từ 1 đến 12 trang cho mỗi lần giao việc).
+2. **Trả kết quả**: Trợ lý Game-học tạo game và trả về ngay thành một trang chơi. Thầy Cô xem lại, nói muốn sửa gì thì Trợ lý sửa nội dung.
 3. **Chơi**: chiếu lên lớp. Phím mũi tên để sang bước, chạm vào thẻ để lật, nút "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú riêng.
 
 Tìm trang sách để chụp: trang tập huấn theo lớp tại https://taphuan.nxbgd.vn/tap-huan?grade=N (N từ 1 đến 12).

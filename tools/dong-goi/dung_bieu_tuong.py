@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 SPRITE = os.path.join(REPO, 'assets/sprites/nao/nao-ben-chi.webp')
-TIM, HONG, KEM, VANG = (138, 69, 154), (202, 65, 188), (245, 241, 232), (236, 196, 89)
+TIM, HONG, KEM, VANG = (21, 48, 208), (64, 92, 236), (249, 250, 247), (247, 197, 42)  # Blue logo -> Blue sáng, nền kem, viền vàng
 N = 1024  # vẽ to rồi thu nhỏ cho mịn
 
 
