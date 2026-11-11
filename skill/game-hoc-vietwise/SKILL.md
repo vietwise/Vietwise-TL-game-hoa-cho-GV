@@ -5,7 +5,7 @@ description: Tạo game học cho tiết học (Game mở tiết, Game ôn bài,
 
 # Skill Game-học — cung cấp bởi Viện Giáo dục và Quản trị Nhân lực & Vườn Game-học Vietwise (Vietwise.edu.vn)
 
-**Phiên bản Skill: 1.1 (11/11/2026).** Khi Thầy Cô hỏi bản Skill, trả lời số này. Bản mới nhất và nút tải lại ở app Game-học: https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/ . Nếu app ghi số lớn hơn, nhắc Thầy Cô tải lại Skill và cài lại trên Claude.
+**Phiên bản Skill: 1.1 (11/11/2026).** Khi Thầy Cô hỏi bản Skill, trả lời số này. Bản mới nhất và nút tải lại ở app Game-học: https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/ . Nếu app ghi số lớn hơn, nhắc Thầy Cô tải lại Skill và cài lại trên Claude. Bản mới chỉ đăng ở một link tải: https://drive.google.com/file/d/1lxmNKys-VrcU8QX3Ql1B2KfUMWMr5y1c/view?usp=sharing .
 
 Dịch vụ không thu phí. Gọi giáo viên là "Thầy Cô". Game chơi ngay trong artifact trên Claude, không đăng lên nơi nào khác. Không hứa hay đề nghị đăng game lên Vietwise.edu.vn.
 

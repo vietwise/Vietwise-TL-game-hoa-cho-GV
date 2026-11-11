@@ -153,8 +153,8 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
         <h1>Trợ lý Game-học cho Thầy Cô</h1>
         <p class="free"><b>MIỄN PHÍ VĨNH VIỄN</b> - tri ân Thầy Cô</p>
         <p class="sub">Điền phiếu, gửi cho Claude kèm ảnh trang sách, nhận về một trò chơi để chiếu lên lớp. Không thu phí, không thi đua, không chấm điểm.</p>
-        <p class="pb" id="pb"><span>Skill Game-học bản <b id="pb-nay">1.1</b> (11/11/2026)</span><a href="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/tai-ve/game-hoc-vietwise.zip" class="tai-skill" download>Tải Skill</a></p>
-        <div class="pb-moi" id="pb-moi" hidden><span>Có bản mới <span id="pb-so"></span>, tải lại skill rồi cài lại trên Claude.</span><a class="btn tai-skill" href="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/tai-ve/game-hoc-vietwise.zip" download>Tải lại Skill</a></div>
+        <p class="pb" id="pb"><span>Skill Game-học bản <b id="pb-nay">1.1</b> (11/11/2026)</span><a href="https://drive.google.com/file/d/1lxmNKys-VrcU8QX3Ql1B2KfUMWMr5y1c/view?usp=sharing" class="tai-skill" target="_blank" rel="noopener">Tải gói Skill (Google Drive)</a></p>
+        <div class="pb-moi" id="pb-moi" hidden><span>Có bản mới <span id="pb-so"></span>, tải lại skill rồi cài lại trên Claude.</span><a class="btn tai-skill" id="pb-tai" href="https://drive.google.com/file/d/1lxmNKys-VrcU8QX3Ql1B2KfUMWMr5y1c/view?usp=sharing" target="_blank" rel="noopener">Tải lại Skill</a></div>
       </div>
     </div>
     <nav role="tablist" aria-label="Các phần">
@@ -459,7 +459,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
     <p class="lead" style="margin:12px 0 0;font-size:14.5px">Địa chỉ trang: <a href="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/">vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/</a>. Gửi địa chỉ này cho đồng nghiệp để cùng dùng.</p>
   </div>
   <div class="btns">
-    <a class="btn ghost" href="dist/Tro-ly-Game-hoc-Vietwise.zip" download>Tải cả gói về máy tính (.zip)</a>
+    <a class="btn ghost" href="https://drive.google.com/file/d/1lxmNKys-VrcU8QX3Ql1B2KfUMWMr5y1c/view?usp=sharing" target="_blank" rel="noopener">Tải cả gói về máy tính (.zip, Google Drive)</a>
   </div>
 </section>
 
@@ -484,8 +484,8 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
     function bao(moi,ngay){$('pb-so').textContent=moi+(ngay?' ('+ngay+')':'');$('pb-moi').hidden=false}
     var moiNhat=PB;
     if(daTai&&lon(PB,daTai))bao(PB);
-    document.querySelectorAll('a[href$="game-hoc-vietwise.zip"]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(KEY,moiNhat)}catch(e){}})});
-    try{fetch('https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/phien-ban.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.so&&lon(j.so,PB)){moiNhat=j.so;bao(j.so,j.ngay)}}).catch(function(){})}catch(e){}
+    document.querySelectorAll('a.tai-skill, a[href$="game-hoc-vietwise.zip"]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(KEY,moiNhat)}catch(e){}})});
+    try{fetch('https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/phien-ban.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.so&&lon(j.so,PB)){moiNhat=j.so;if(j.tai&&/^https:\/\/drive\.google\.com\//.test(j.tai))$('pb-tai').href=j.tai;bao(j.so,j.ngay)}}).catch(function(){})}catch(e){}
   })();
 
   // Tabs

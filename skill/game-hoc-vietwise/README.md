@@ -21,7 +21,7 @@ Trợ lý tự chọn cách viết theo lớp Thầy Cô nêu:
 - **Đọc ngoại ngữ:** Anh, Hàn, Nhật, Trung, Pháp, Đức, Nga và các thứ tiếng khác. Lời kể tiếng Việt, văn bản ngoại ngữ là chứng cứ, giữ nguyên chữ viết và dấu. Game có nút 🔊 tự tìm giọng đọc tốt nhất trên máy cho từng thứ tiếng (máy chưa có giọng thì Thầy Cô đọc mẫu).
 Thầy Cô có thể chọn **4 level** (Level 1 cho học sinh cần thêm thời gian đến Level 4 cho học sinh giỏi; học sinh tự chọn level trong game) hoặc chỉ một level, và ghi **nội dung phụ** muốn lồng vào (ví dụ: ý chí tự do, quyền lựa chọn, lương tâm khi dùng kiến thức). Quy tắc gốc nằm trong `references/` (nhom-lop, nhom-mon, doc-ngoai-ngu, quy-tac-vietwise); có 10 game mẫu trong `references/vi-du/`.
 
-**Phiên bản Skill: 1.1 (11/11/2026).** Mở app Game-học (https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/) để xem bản mới nhất; nếu app ghi "Có bản mới", tải lại Skill và cài lại trên Claude. Trang game ghi số bản ở chế độ Thầy Cô và ở màn kết.
+**Phiên bản Skill: 1.1 (11/11/2026).** Mở app Game-học (https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/) để xem bản mới nhất; nếu app ghi "Có bản mới", tải lại Skill và cài lại trên Claude. Trang game ghi số bản ở chế độ Thầy Cô và ở màn kết. Bản mới chỉ đăng ở một link tải: https://drive.google.com/file/d/1lxmNKys-VrcU8QX3Ql1B2KfUMWMr5y1c/view?usp=sharing .
 
 ## Dùng (dễ như 1-2-3)
 1. **Giao việc cho Trợ lý Game-học**: nhắn cho Claude, ví dụ: "Tạo game ôn bài Khoa học tự nhiên lớp 8, bài mol và nồng độ", và gửi kèm **ảnh chụp trang sách** (bắt buộc, từ 1 đến 12 trang cho mỗi lần giao việc).
