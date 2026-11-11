@@ -217,7 +217,7 @@ def dung(goi):
              '<a class="nobreak" href="tai-ve/game-hoc-vietwise.zip" download><b>game-hoc-vietwise.zip</b></a> (bấm để tải về máy).')
     s = thay(s, 'Mỗi loại một game, nằm trong thư mục <b>3-Game-mau</b> của gói này. Bấm để mở trong tab mới (mở bằng trình duyệt, không cần mạng), rồi',
              'Mỗi loại một game. Bấm để mở trong tab mới, rồi')
-    s = thay(s, 'href="3-Game-mau/', 'href="choi-thu/', 3)
+    s = thay(s, 'href="3-Game-mau/', 'href="choi-thu/', 4)
     s = thay(s, '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>',
              '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>\n      <button role="tab" id="t-tra-ket-qua" data-tab="tra-ket-qua" aria-selected="false">4. Trả kết quả</button>')
     s = thay(s, "var tabs=['phieu','readme','tham-khao'];", "var tabs=['phieu','readme','tham-khao','tra-ket-qua'];")

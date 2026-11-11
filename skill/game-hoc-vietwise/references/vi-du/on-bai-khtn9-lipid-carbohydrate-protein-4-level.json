@@ -1,0 +1,142 @@
+{
+ "phien_ban": "1.0",
+ "loai": "on-bai",
+ "tieu_de": "Bữa tối trước đêm ôn thi",
+ "mon": "Khoa học tự nhiên",
+ "lop": "9",
+ "nhom_lop": "D",
+ "nhom_mon": "khoa-hoc",
+ "bai": "Lipid, carbohydrate (glucose, saccharose, tinh bột và cellulose), protein",
+ "thoi_luong_phut": 25,
+ "kien_thuc": [
+  "Chất béo (lipid) cho nhiều năng lượng nhất trên mỗi gam, giúp cơ thể hấp thụ vitamin A, D, E, K",
+  "Glucose (C6H12O6) vào máu nhanh; saccharose (C12H22O11, đường mía) thủy phân ra glucose và fructose",
+  "Tinh bột và cellulose đều tạo từ nhiều đơn vị glucose, (C6H10O5)n; người tiêu hóa được tinh bột, không tiêu hóa được cellulose",
+  "Protein tạo từ các amino acid, là chất xây dựng cơ thể; đông tụ khi đun nóng"
+ ],
+ "pham_chat": "trách nhiệm với chính mình",
+ "nhan_vat": [
+  {
+   "ten": "Minh"
+  }
+ ],
+ "loi_ke": "Còn ba tuần nữa là thi vào lớp 10. Tối nào Minh cũng học đến khuya, bỏ bữa tối, rồi mười giờ đêm mua một cốc trà sữa thật ngọt cho tỉnh. Được nửa tiếng thì Minh lại buồn ngủ, đói cồn cào và không nhớ nổi bài vừa đọc. Tối nay bà để sẵn trên bàn: cơm, trứng, rau luộc, chai dầu lạc, bên cạnh là cốc trà sữa Minh vừa mua. Không ai bắt Minh phải ăn gì. Vậy trong những món ấy, chất nào giúp một đêm học đi được đường dài?",
+ "du_kien": [
+  "Học 3 tiếng buổi tối",
+  "Cơm (tinh bột)",
+  "Trứng (protein)",
+  "Rau luộc (cellulose)",
+  "Dầu lạc (chất béo)",
+  "Trà sữa ngọt (saccharose)"
+ ],
+ "lua_chon": [
+  {
+   "ma": "A",
+   "noi_dung": "Uống trà sữa, vì đường vào máu nhanh nhất nên tỉnh nhanh nhất",
+   "gv_kien_thuc": "Đúng là glucose vào máu nhanh, saccharose cũng thủy phân nhanh ra glucose và fructose. Nhưng năng lượng đến nhanh thì cũng hết nhanh; bữa chỉ có đường thiếu protein và chất xơ. Đây là hiểu lầm \"càng ngọt càng tỉnh lâu\"."
+  },
+  {
+   "ma": "B",
+   "noi_dung": "Ăn một bữa có đủ cơm, trứng, rau và chút dầu, trà sữa để dành hoặc bỏ",
+   "gv_kien_thuc": "Tinh bột phải thủy phân dần thành glucose nên năng lượng đến từ từ; protein trong trứng là chất xây dựng cơ thể; cellulose trong rau người không tiêu hóa được nhưng là chất xơ giúp tiêu hóa; chất béo giúp hấp thụ vitamin A, D, E, K."
+  },
+  {
+   "ma": "C",
+   "noi_dung": "Chỉ ăn rau và trứng, bỏ cơm và dầu vì tinh bột với chất béo làm béo",
+   "gv_kien_thuc": "Hiểu lầm \"chất béo, tinh bột là xấu\". Bỏ hẳn tinh bột và chất béo là bỏ hai nguồn năng lượng chính; chất béo cho khoảng 9 kcal mỗi gam, tinh bột và protein khoảng 4 kcal mỗi gam. Vấn đề là lượng và cách ăn, không phải tên chất."
+  }
+ ],
+ "cach_chon": "Giơ thẻ màu A, B hoặc C",
+ "cau_hoi_goi_mo": [
+  "Món nào trên bàn có nhiều tinh bột, nhiều protein, nhiều chất béo, nhiều cellulose?",
+  "Vì sao uống nước ngọt thấy tỉnh nhanh mà lại mau đói?",
+  "Tinh bột và cellulose đều tạo từ glucose. Vậy vì sao cơm nuôi được người, còn cọng rau thì không?"
+ ],
+ "cau_mau_phan_bien": [
+  "Nếu Minh học buổi sáng chứ không học buổi đêm, bữa ăn nên đổi thế nào?",
+  "Bạn dựa vào kiến thức nào trong bài để nói một chất là \"tốt\" hay \"không tốt\"?",
+  "Có khi nào chính chất ấy lại có ích ở lượng này và có hại ở lượng khác không?"
+ ],
+ "so_do_chot": [
+  {
+   "kien_thuc": "Glucose, saccharose: vào máu nhanh",
+   "dung_vao": "Trà sữa làm tỉnh nhanh rồi mau hết (lựa chọn A)"
+  },
+  {
+   "kien_thuc": "Tinh bột thủy phân dần thành glucose",
+   "dung_vao": "Cơm cho năng lượng đều cả buổi học (lựa chọn B)"
+  },
+  {
+   "kien_thuc": "Cellulose: người không tiêu hóa được, là chất xơ",
+   "dung_vao": "Rau luộc vẫn cần trong bữa ăn"
+  },
+  {
+   "kien_thuc": "Protein, chất béo",
+   "dung_vao": "Trứng xây dựng cơ thể, dầu giúp hấp thụ vitamin (bác bỏ lựa chọn C)"
+  }
+ ],
+ "level": [
+  {
+   "so": 1,
+   "ten": "Làm quen",
+   "nhiem_vu": "Ghép mỗi món trên bàn của Minh với chất có nhiều nhất trong món đó: cơm, trứng, rau luộc, dầu lạc, trà sữa.",
+   "goi_y": [
+    "Bốn nhóm: tinh bột, protein, cellulose (chất xơ), chất béo",
+    "Trà sữa ngọt nhờ đường mía, tức saccharose"
+   ],
+   "gv_danh_cho": "Học sinh cần thêm thời gian, cần gợi ý từng bước. Gợi ý hiện sẵn.",
+   "gv_dap_an": "Cơm: tinh bột. Trứng: protein (lòng đỏ có cả chất béo). Rau luộc: cellulose. Dầu lạc: chất béo. Trà sữa: saccharose (và chất béo từ sữa, kem)."
+  },
+  {
+   "so": 2,
+   "ten": "Vững bước",
+   "nhiem_vu": "Giải thích cho Minh vì sao cốc trà sữa làm Minh tỉnh rất nhanh nhưng chỉ được một lúc, còn bát cơm thì no lâu hơn.",
+   "goi_y": [
+    "Saccharose thủy phân thành những chất nào?",
+    "Tinh bột phải qua bao nhiêu bước mới thành glucose?"
+   ],
+   "gv_danh_cho": "Học sinh nắm được bài, cần gợi ý khi hỏi.",
+   "gv_dap_an": "Saccharose thủy phân nhanh ra glucose và fructose, glucose vào máu ngay nên tỉnh nhanh và cũng hết nhanh. Tinh bột là chuỗi dài nhiều đơn vị glucose, phải thủy phân dần nên glucose đến từ từ."
+  },
+  {
+   "so": 3,
+   "ten": "Vận dụng",
+   "nhiem_vu": "Tinh bột và cellulose đều tạo từ các đơn vị glucose. Vì sao cơm nuôi được người còn cọng rau thì cơ thể người không lấy được năng lượng? Nếu vậy thì ăn rau để làm gì?",
+   "goi_y": [
+    "Cơ thể người có enzyme thủy phân được tinh bột, còn cellulose thì sao?"
+   ],
+   "gv_danh_cho": "Học sinh vững bài, thích lập luận. Gợi ý chỉ hiện khi xin.",
+   "gv_dap_an": "Hai chất cùng công thức (C6H10O5)n nhưng các đơn vị glucose liên kết khác nhau; người có enzyme thủy phân tinh bột, không có enzyme thủy phân cellulose. Cellulose là chất xơ, giúp ruột hoạt động. Trâu bò tiêu hóa được cellulose nhờ vi sinh vật trong dạ dày."
+  },
+  {
+   "so": 4,
+   "ten": "Sáng tạo",
+   "nhiem_vu": "Một quảng cáo viết: \"Nước ngọt tăng lực, năng lượng tức thì, học xuyên đêm không mệt.\" Dùng kiến thức hôm nay, chỉ ra câu nào có cơ sở, câu nào chưa. Rồi viết lại một nhãn thật thà cho sản phẩm ấy, và thiết kế bữa tối ôn thi của chính em từ những món nhà em thường có.",
+   "gv_danh_cho": "Học sinh giỏi, muốn thử thách mở. Không có gợi ý; nhiều đáp án đều được nếu có chứng cứ.",
+   "gv_dap_an": "\"Năng lượng tức thì\" có cơ sở (glucose, saccharose vào máu nhanh). \"Học xuyên đêm không mệt\" chưa có chứng cứ trong bài. Nhãn thật thà nêu rõ thành phần đường, lượng dùng. Bữa tối tốt có đủ tinh bột, protein, rau, một ít chất béo."
+  }
+ ],
+ "noi_dung_phu": {
+  "chu_de": "Ý chí tự do, quyền chọn về học, ăn thuận tự nhiên",
+  "ten_buoc": "Em tự chọn",
+  "loi_moi": "Không ai ăn hộ, học hộ được Minh. Biết về tinh bột, chất béo, protein rồi, chọn thế nào là việc của chính Minh, và của chính em.",
+  "cau_hoi": [
+   "Tuần này em tự chọn đổi một điều trong bữa ăn hoặc giờ học của mình. Đó là điều gì, và vì sao đó là lựa chọn của em chứ không phải vì ai bắt?",
+   "Khi biết đường vào máu nhanh, người ta có thể dùng điều đó để giúp bạn học tỉnh táo, hoặc để bán được nhiều nước ngọt. Lương tâm em nói gì khi dùng một kiến thức?",
+   "Với em, ăn thuận tự nhiên là thế nào: món ít qua chế biến, món theo mùa, ăn khi đói và dừng khi no, hay điều gì khác?"
+  ],
+  "gv_y_do": "Không có đáp án đúng. Tôn trọng mọi lựa chọn, không phán xét bữa ăn của gia đình học sinh (hoàn cảnh mỗi nhà khác nhau). Học sinh có thể viết riêng, không cần chia sẻ trước lớp."
+ },
+ "loi_chot": "Biết một chất có trong món gì, vào cơ thể ra sao, là có thêm quyền tự chọn. Em sẽ dùng quyền chọn ấy thế nào cho chính mình?",
+ "gv_goi_y_lua_chon_d": "Ăn bữa tối đủ chất lúc 7 giờ, đến khuya đói thì ăn một quả chuối hoặc khoai luộc thay trà sữa; hoặc đổi giờ học sang sáng sớm.",
+ "gv_hieu_lam": [
+  "Càng ngọt càng tỉnh lâu",
+  "Chất béo, tinh bột là xấu, nên bỏ hẳn",
+  "Rau không có năng lượng nên ăn hay không cũng được",
+  "Tinh bột và cellulose khác nhau hoàn toàn về thành phần"
+ ],
+ "gv_ghi_chu": "Game mẫu theo yêu cầu của Cô Thúy, lớp 9, 4 level, nội dung phụ \"ý chí tự do, quyền chọn về học, ăn thuận tự nhiên\". Bản mẫu này soạn KHÔNG có ảnh trang sách, chỉ dùng kiến thức phổ thông chắc chắn; khi dùng thật Cô gửi ảnh các trang bài lipid, carbohydrate, protein để Trợ lý bám đúng sách. Thời lượng 25 phút vì có thêm bước Chọn level và Em tự chọn; cần gọn thì bỏ bước Phản biện. Bốn level: cả lớp cùng tình huống, mỗi bạn tự chọn level, đổi lúc nào cũng được; Level 1 gợi ý hiện sẵn, Level 2 và 3 bấm \"Xin gợi ý\", Level 4 không gợi ý. Không gọi tên level theo học lực trước lớp. Số kcal là số làm tròn phổ thông. Đây là tình huống học tập, không thay lời khuyên của bác sĩ hoặc chuyên gia dinh dưỡng. Nhóm D: phong cách tham khảo. Chẩn đoán: nếu cả lớp chọn ngay B, cho thảo luận lựa chọn C và Level 4.",
+ "chau_ngoc": "an-lac",
+ "du_an_that": "Tối nay ghi lại bữa tối của em và xếp các món vào bốn nhóm: tinh bột, protein, chất béo, chất xơ. Mai kể cho bạn ngồi cạnh một điều em tự chọn đổi.",
+ "hinh_minh_hoa": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 240\"><rect width=\"600\" height=\"240\" fill=\"#FFF6D8\"/><rect y=\"176\" width=\"600\" height=\"64\" fill=\"#C98F55\"/><rect y=\"170\" width=\"600\" height=\"10\" fill=\"#B37A42\"/><rect x=\"430\" y=\"40\" width=\"130\" height=\"90\" rx=\"8\" fill=\"#DDF1FF\" stroke=\"#6aa8d6\" stroke-width=\"3\"/><circle cx=\"530\" cy=\"66\" r=\"14\" fill=\"#F7C52A\"/><path d=\"M430 130 L470 92 L500 118 L520 100 L560 130Z\" fill=\"#4CA51E\"/><g><ellipse cx=\"80\" cy=\"166\" rx=\"48\" ry=\"10\" fill=\"#e9e4d4\"/><path d=\"M36 140 Q80 196 124 140Z\" fill=\"#fff\" stroke=\"#9aa6b2\" stroke-width=\"3\"/><ellipse cx=\"80\" cy=\"140\" rx=\"44\" ry=\"12\" fill=\"#fffdf5\"/><circle cx=\"66\" cy=\"136\" r=\"4\" fill=\"#f4efe0\"/><circle cx=\"84\" cy=\"134\" r=\"4\" fill=\"#f4efe0\"/><circle cx=\"96\" cy=\"139\" r=\"4\" fill=\"#f4efe0\"/></g><g><ellipse cx=\"180\" cy=\"160\" rx=\"34\" ry=\"12\" fill=\"#fff\" stroke=\"#9aa6b2\" stroke-width=\"3\"/><ellipse cx=\"172\" cy=\"156\" rx=\"16\" ry=\"10\" fill=\"#fff\"/><circle cx=\"172\" cy=\"156\" r=\"6\" fill=\"#F7C52A\"/><rect x=\"190\" y=\"148\" width=\"18\" height=\"14\" rx=\"3\" fill=\"#f3ead2\" stroke=\"#d6c7a0\"/></g><g><ellipse cx=\"262\" cy=\"162\" rx=\"30\" ry=\"10\" fill=\"#fff\" stroke=\"#9aa6b2\" stroke-width=\"3\"/><path d=\"M240 156 Q250 128 262 154 Q270 126 284 156Z\" fill=\"#4CA51E\"/><path d=\"M250 158 Q262 138 274 158\" stroke=\"#2b5e17\" stroke-width=\"3\" fill=\"none\"/></g><g><rect x=\"318\" y=\"104\" width=\"30\" height=\"62\" rx=\"8\" fill=\"#FBE7A1\" stroke=\"#B8860B\" stroke-width=\"3\"/><rect x=\"326\" y=\"92\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#B8860B\"/><text x=\"333\" y=\"142\" font-family=\"Quicksand,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#7a5a00\" text-anchor=\"middle\">Dầu</text></g><g><path d=\"M372 92 L412 92 L406 168 L378 168Z\" fill=\"#fff\" stroke=\"#F26419\" stroke-width=\"3\"/><path d=\"M375 112 L409 112 L406 168 L378 168Z\" fill=\"#F7C9A8\"/><line x1=\"398\" y1=\"70\" x2=\"392\" y2=\"112\" stroke=\"#1530D0\" stroke-width=\"4\"/><text x=\"392\" y=\"146\" font-family=\"Quicksand,sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#DF0000\" text-anchor=\"middle\">?</text></g><g><circle cx=\"500\" cy=\"150\" r=\"20\" fill=\"#f2c9a0\"/><path d=\"M480 146 Q500 122 520 146 Q516 126 500 128 Q484 126 480 146Z\" fill=\"#3b2a20\"/><rect x=\"482\" y=\"170\" width=\"36\" height=\"20\" rx=\"8\" fill=\"#1530D0\"/><circle cx=\"493\" cy=\"152\" r=\"2.5\" fill=\"#222\"/><circle cx=\"507\" cy=\"152\" r=\"2.5\" fill=\"#222\"/><path d=\"M494 161 Q500 158 506 161\" stroke=\"#222\" stroke-width=\"2\" fill=\"none\"/><rect x=\"530\" y=\"160\" width=\"44\" height=\"12\" rx=\"2\" fill=\"#F26419\"/><rect x=\"534\" y=\"150\" width=\"40\" height=\"11\" rx=\"2\" fill=\"#4CA51E\"/></g></svg>"
+}

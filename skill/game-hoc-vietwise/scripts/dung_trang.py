@@ -51,6 +51,18 @@ def main():
         sys.exit('Bài ngoại ngữ cần trường ngoai_ngu. Xem references/doc-ngoai-ngu.md')
     if not (2 <= len(g['lua_chon']) <= 4):
         sys.exit('lua_chon cần 2 đến 4 mục')
+    lv = g.get('level')
+    if lv is not None:
+        if not isinstance(lv, list) or not (1 <= len(lv) <= 4):
+            sys.exit('level cần 1 đến 4 mục. Xem references/nhom-lop.md mục Bốn level')
+        so = [x.get('so') for x in lv if isinstance(x, dict)]
+        if len(so) != len(lv) or any(s not in (1, 2, 3, 4) for s in so) or len(set(so)) != len(so) or so != sorted(so):
+            sys.exit('Mỗi mục level cần so là 1, 2, 3 hoặc 4, không trùng, theo thứ tự tăng')
+        if any(not x.get('nhiem_vu') for x in lv):
+            sys.exit('Mỗi mục level cần nhiem_vu')
+    p = g.get('noi_dung_phu')
+    if p is not None and not (isinstance(p, dict) and (p.get('loi_moi') or p.get('cau_hoi'))):
+        sys.exit('noi_dung_phu cần loi_moi hoặc cau_hoi. Xem references/khung-game.md')
     import base64
     nao = ''
     f = os.path.join(os.path.dirname(GOC), 'nao', str(g.get('chau_ngoc', '')) + '.webp')
