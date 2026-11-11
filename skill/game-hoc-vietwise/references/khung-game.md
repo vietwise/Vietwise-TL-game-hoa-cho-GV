@@ -2,7 +2,7 @@
 
 ## Nguyên tắc chung
 1. Không thi đua, không điểm số, không đội, không xếp hạng, không "đúng/sai" bằng âm thanh. Học sinh được tò mò, được chọn, được lập luận bằng chứng cứ.
-2. Cả lớp chơi cùng lúc trên một màn hình chiếu. Học sinh không cần thiết bị riêng. Thầy Cô điều khiển.
+2. Cả lớp chơi cùng lúc trên một màn hình chiếu. Học sinh không có thiết bị riêng trong giờ học. Thầy Cô điều khiển. Học sinh "chọn" bằng giơ tay, thảo luận nhóm hoặc đứng về một phía; cấm câu "mỗi bạn bấm", "trên máy của em". Chữ lớn, ít chữ trên một màn để đọc được từ cuối lớp.
 3. Bốn trụ cột: một tình huống thật, một quyết định cần chọn, một phẩm chất đi kèm, một kết nối với bài học.
 4. Tách nội dung học sinh và nội dung Thầy Cô: trường bắt đầu bằng `gv_` chỉ hiện ở chế độ Thầy Cô. Đáp số, lời giải, hiểu lầm hay gặp luôn để trong `gv_`.
 5. Không bịa số liệu, trích dẫn, số trang. Chỉ dùng kiến thức có trong nội dung bài Thầy Cô gửi hoặc kiến thức phổ thông chắc chắn.

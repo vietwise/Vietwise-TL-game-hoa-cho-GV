@@ -39,6 +39,8 @@ Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, b
 - Nếu chạy được mã: lưu JSON ra `game.json`, chạy `python3 scripts/dung_trang.py game.json game.html`. Script kiểm tra khối ghi nguồn; nếu in "DỪNG" thì không được tiếp tục, báo Thầy Cô cài lại Skill gốc. Rồi hiển thị `game.html` thành artifact.
 - Nếu không chạy được mã: sao chép NGUYÊN VĂN toàn bộ `assets/trinh-choi.html` vào artifact HTML, chỉ thay đúng chữ `__GAME_JSON__` bằng JSON game (đổi mọi `</` trong dữ liệu thành `<\/`). Không sửa một ký tự nào khác. Nếu trang hiện thông báo "Trang này đã bị gỡ hoặc sửa phần ghi nguồn", nghĩa là chép sai; làm lại cẩn thận.
 - Bài có chữ ngoại ngữ: trình chơi tự hiện nút 🔊 nghe đọc, chọn giọng tốt nhất trên máy (văn bản chữ La-tinh đặt trong ngoặc kép thẳng).
+- Hai cách mở, nói cho Thầy Cô cả hai: (1) chơi ngay trong artifact trên Claude, bấm mở toàn màn hình rồi chiếu (cần mạng); (2) tải trang về thành một tệp `.html` độc lập, bấm đúp mở bằng Chrome hoặc Edge, không cần mạng, hợp máy lớp Wi-Fi yếu. Nếu không có nút tải, nếu chạy được mã thì lưu `game.html` cho Thầy Cô; nếu không, in toàn bộ nội dung trang trong một khối mã để Thầy Cô sao chép vào Notepad và lưu thành `ten-game.html`. Không đăng lên nơi nào khác.
+- Lớp học thật: Thầy Cô chiếu cho cả lớp, học sinh không có thiết bị. Mọi lựa chọn của học sinh là giơ tay, thảo luận nhóm hoặc đứng về một phía; Thầy Cô bấm thay lớp. Không viết "mỗi bạn bấm", "trên máy của em". Bài có chữ ngoại ngữ: nhắc Thầy Cô thử nút 🔊 trên máy lớp trước giờ học, vì giọng đọc phụ thuộc máy.
 - Hướng dẫn Thầy Cô: bấm "Tiếp" hoặc phím mũi tên để sang bước; chạm thẻ để lật; "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú; chiếu lên màn hình lớp.
 
 ### 5. Trả kết quả và Thầy Cô duyệt
