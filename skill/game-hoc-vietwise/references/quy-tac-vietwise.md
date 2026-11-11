@@ -13,7 +13,7 @@ Rút gọn từ bộ quy tắc game-học của Vietwise (Chuẩn Game-Học Tá
 ## 2. Dấu ấn Vietwise (mười dấu ấn), phần phù hợp lớp học
 | Dấu ấn | Trong game của Thầy Cô |
 |---|---|
-| Ba luật tác tạo | Toàn đồ (không xếp hạng), Phân đồ (đổi theo lớp, có ba mức), Phản hồi (có bài học, ôn lại sau) |
+| Ba luật tác tạo | Toàn đồ (không xếp hạng), Phân đồ (đổi theo lớp, có bốn level do học sinh tự chọn), Phản hồi (có bài học, ôn lại sau) |
 | SPARK (năm tiêu chí) | **S** kết nối tâm linh (biết ơn, tĩnh lặng) · **P** dự án có ý nghĩa, cùng vui · **A** thể hiện bản thân nghệ thuật · **R** xây quan hệ (với bản thân, bạn bè, người nhà) · **K** hiếu kỳ khám phá. Mỗi game có ít nhất một khoảnh khắc chạm được vài chữ (không cần đủ cả năm); chữ S chỉ dùng điều phổ quát, không tôn giáo |
 | Huy hiệu bốn phẩm chất | Hiếu kỳ, Thích nghi, Bền chí, An lạc: ghi bằng `chau_ngoc`; tự mở qua cách chơi, không ai phát, không xếp hạng |
 | Thật thà, không làm hộ | Chỉ gợi ý bằng ý nghĩa; đáp án để trong `gv_` |

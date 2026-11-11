@@ -52,6 +52,9 @@ input:focus,select:focus,textarea:focus{outline:3px solid #1530D033;border-color
 .btn.ghost{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .btn.ghost:hover{background:#EEF1FD}
 .ok{color:var(--xanh);font-weight:700}
+.pb{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:14px;color:var(--mut);margin:10px 0 0}.pb b{color:var(--blue)}.pb a{color:var(--blue);font-weight:700}
+.pb-moi{background:#FFF4CC;border:2px solid var(--vang);border-radius:12px;padding:10px 14px;margin:12px 0 0;font-weight:700;color:var(--ink);display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.pb-moi .btn{padding:8px 16px;font-size:14px;text-decoration:none}
+.lv-ds{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:6px;font-size:14px;color:var(--mut)}.lv-ds span b{color:var(--blue)}
 .err{color:#b3261e;font-weight:700;font-size:14px;margin-top:6px}
 .cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 .pill{display:inline-block;font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 10px;color:#fff}
@@ -96,6 +99,8 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
         <h1>Trợ lý Game-học cho Thầy Cô</h1>
         <p class="free"><b>MIỄN PHÍ VĨNH VIỄN</b> - tri ân Thầy Cô</p>
         <p class="sub">Điền phiếu, gửi cho Claude kèm ảnh trang sách, nhận về một trò chơi để chiếu lên lớp. Không thu phí, không thi đua, không chấm điểm.</p>
+        <p class="pb" id="pb"><span>Skill Game-học bản <b id="pb-nay">1.1</b> (11/11/2026)</span><a href="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/tai-ve/game-hoc-vietwise.zip" class="tai-skill" download>Tải Skill</a></p>
+        <div class="pb-moi" id="pb-moi" hidden><span>Có bản mới <span id="pb-so"></span>, tải lại skill rồi cài lại trên Claude.</span><a class="btn tai-skill" href="https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/tai-ve/game-hoc-vietwise.zip" download>Tải lại Skill</a></div>
       </div>
     </div>
     <nav role="tablist" aria-label="Các phần">
@@ -158,13 +163,22 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
         <input type="number" id="si" min="1" max="80" placeholder="Ví dụ: 40">
       </div>
       <div>
-        <label for="muc">Mức độ mong muốn</label>
+        <label for="muc">Level <small>(từ dễ đến khó)</small></label>
         <select id="muc">
-          <option value="">Để trợ lý chọn</option>
-          <option>Khởi động</option><option>Vững vàng</option><option>Thử thách</option>
+          <option value="">Không chia level</option>
+          <option value="4 level (Level 1 đến Level 4, học sinh tự chọn)">4 level trong một game</option>
+          <option value="chỉ Level 1 (học sinh cần thêm thời gian)">Chỉ Level 1 · Làm quen</option>
+          <option value="chỉ Level 2">Chỉ Level 2 · Vững bước</option>
+          <option value="chỉ Level 3">Chỉ Level 3 · Vận dụng</option>
+          <option value="chỉ Level 4 (học sinh giỏi)">Chỉ Level 4 · Sáng tạo</option>
         </select>
       </div>
     </div>
+
+    <div class="lv-ds"><span><b>Level 1</b> cho học sinh cần thêm thời gian, gợi ý sẵn</span><span><b>Level 2</b> nắm được bài, gợi ý khi hỏi</span><span><b>Level 3</b> vững bài, lập luận nhiều bước</span><span><b>Level 4</b> học sinh giỏi, thử thách mở</span></div>
+
+    <label for="phu">Nội dung phụ Thầy Cô muốn lồng vào <small>(không bắt buộc)</small></label>
+    <textarea id="phu" placeholder="Ví dụ: khuyến khích học sinh thực hành quyền lựa chọn, dùng ý chí tự do và lương tâm khi áp dụng kiến thức. Chủ đề: ý chí tự do, quyền chọn về học, ăn thuận tự nhiên."></textarea>
 
     <label for="nhanra">Điều Thầy Cô muốn học sinh nhận ra <small>(không bắt buộc)</small></label>
     <textarea id="nhanra" placeholder="Ví dụ: nước trong chưa chắc là nước sạch…"></textarea>
@@ -250,12 +264,13 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 <!-- ===== THAM KHẢO ===== -->
 <section class="panel" id="p-tham-khao" role="tabpanel" aria-labelledby="t-tham-khao">
   <div class="card">
-    <h2>Chơi thử 3 game mẫu</h2>
+    <h2>Chơi thử 4 game mẫu</h2>
     <p class="lead">Mỗi loại một game, nằm trong thư mục <b>3-Game-mau</b> của gói này. Bấm để mở trong tab mới (mở bằng trình duyệt, không cần mạng), rồi dùng phím mũi tên để sang bước, phím G để xem Chế độ Thầy Cô.</p>
     <div class="cols3">
       <div class="game card" style="margin:0"><span class="pill p1">Ôn bài · Khoa học tự nhiên 8</span><h3>Con số trên chai nước muối</h3><p>Lan pha nước muối rửa mũi cho em, nhãn chai ghi NaCl 0,9%. Con số đó nghĩa là gì, và vì sao pha sai thì nguy hiểm?</p><a class="btn" href="3-Game-mau/1-Khoa-hoc-tu-nhien-8-On-bai.html" target="_blank" rel="noopener">Chơi thử</a></div>
       <div class="game card" style="margin:0"><span class="pill p2">Ôn bài · Tiếng Anh 7</span><h3>Hộp sữa nói gì?</h3><p>Ba dòng chữ tiếng Anh trên hộp sữa. Đọc kỹ để biết giữ lạnh và dùng trong bao lâu. Có nút 🔊 nghe đọc.</p><a class="btn" href="3-Game-mau/2-Tieng-Anh-7-Doc-ngoai-ngu.html" target="_blank" rel="noopener">Chơi thử</a></div>
       <div class="game card" style="margin:0"><span class="pill p3">Sách là Thầy · Ngữ văn 6</span><h3>Trò đùa sau giờ ra chơi</h3><p>Học sinh đọc Dế Mèn phiêu lưu ký rồi dùng chi tiết trong sách để bảo vệ lựa chọn của mình.</p><a class="btn" href="3-Game-mau/3-Ngu-van-6-Sach-la-Thay.html" target="_blank" rel="noopener">Chơi thử</a></div>
+      <div class="game card" style="margin:0"><span class="pill p1">Ôn bài · KHTN 9 · 4 level</span><h3>Bữa tối trước đêm ôn thi</h3><p>Lipid, carbohydrate, protein qua bữa tối của Minh. Học sinh tự chọn Level 1 đến 4, kèm nội dung phụ: ý chí tự do, quyền chọn về học, ăn thuận tự nhiên.</p><a class="btn" href="3-Game-mau/4-Khoa-hoc-tu-nhien-9-Bon-level.html" target="_blank" rel="noopener">Chơi thử</a></div>
     </div>
   </div>
 
@@ -327,6 +342,19 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
+  // Phiên bản Skill: so với bản trên app (GitHub Pages) và bản Thầy Cô đã tải
+  (function(){
+    var PB='1.1',KEY='gamehoc-skill-da-tai';
+    function so(a){return String(a||'0').split('.').map(function(x){return parseInt(x,10)||0})}
+    function lon(a,b){a=so(a);b=so(b);for(var i=0;i<Math.max(a.length,b.length);i++){var x=a[i]||0,y=b[i]||0;if(x!==y)return x>y}return false}
+    var daTai=null;try{daTai=localStorage.getItem(KEY)}catch(e){}
+    function bao(moi,ngay){$('pb-so').textContent=moi+(ngay?' ('+ngay+')':'');$('pb-moi').hidden=false}
+    var moiNhat=PB;
+    if(daTai&&lon(PB,daTai))bao(PB);
+    document.querySelectorAll('a[href$="game-hoc-vietwise.zip"]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(KEY,moiNhat)}catch(e){}})});
+    try{fetch('https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/phien-ban.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.so&&lon(j.so,PB)){moiNhat=j.so;bao(j.so,j.ngay)}}).catch(function(){})}catch(e){}
+  })();
+
   // Tabs
   var tabs=['phieu','readme','tham-khao'];
   function show(name){
@@ -359,7 +387,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 
   function build(){
     var l=loai(), monSel=val('mon'), mon=monSel==='__khac'?val('mon-khac'):monSel, lp=val('lop'), bai=val('bai'),
-        si=val('si'), muc=val('muc'), nr=val('nhanra'), gc=val('ghichu'), anh=val('anh'), sach=val('sach');
+        si=val('si'), muc=val('muc'), phu=val('phu'), nr=val('nhanra'), gc=val('ghichu'), anh=val('anh'), sach=val('sach');
     $('mon-khac').hidden=monSel!=='__khac';
     $('sach-box').hidden=l!=='game Sách là Thầy';
     var th=$('taphuan');
@@ -370,7 +398,8 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
     var L=[head];
     if(l==='game Sách là Thầy'&&sach)L.push('Sách và phần đọc: '+sach+'.');
     if(si)L.push('Sĩ số lớp: '+si+' học sinh.');
-    if(muc)L.push('Mức mong muốn: '+muc+'.');
+    if(muc)L.push('Level: '+muc+'.');
+    if(phu)L.push('Nội dung phụ muốn lồng vào: '+phu);
     if(nr)L.push('Điều em muốn học sinh nhận ra: '+nr);
     if(gc)L.push('Ghi chú: '+gc);
     L.push(anh>=1&&anh<=12?'Em gửi kèm '+anh+' ảnh chụp trang sách.':'Em gửi kèm ảnh chụp trang sách (từ 1 đến 12 trang).');
@@ -379,7 +408,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
     $('out').textContent=empty&&!touched?'Điền phiếu ở trên, tin nhắn sẽ hiện ở đây.':txt;
     return {txt:txt,valid:!(errs.mon||errs.lop||errs.bai||errs.anh)};
   }
-  ['mon','mon-khac','lop','bai','si','muc','nhanra','ghichu','anh','sach'].forEach(function(id){
+  ['mon','mon-khac','lop','bai','si','muc','phu','nhanra','ghichu','anh','sach'].forEach(function(id){
     $(id).addEventListener('input',build);$(id).addEventListener('change',build);
   });
   document.querySelectorAll('input[name=loai]').forEach(function(r){r.addEventListener('change',build)});

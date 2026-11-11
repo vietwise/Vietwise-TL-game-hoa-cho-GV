@@ -33,8 +33,18 @@ Nên có: `thoi_luong_phut`, `kien_thuc` (mảng), `nhan_vat` ([{"ten"}]), `du_k
 | `chia_khoa` | mảng 3 đến 5 `{cau_hoi, trang, gv_goi_y}` | Câu chỉ người đã đọc mới trả lời được; không chấm |
 | `hinh_minh_hoa` | chuỗi SVG ≤ 3000 ký tự | Hình minh họa cảnh của lời kể, hiện ở bước Kể |
 | `viet_tiep` | chuỗi | Lời mời "Nếu em là tác giả..." |
+| `level` | mảng 1 đến 4 `{so, ten, nhiem_vu, goi_y[], gv_danh_cho, gv_dap_an}` | Chỉ khi Thầy Cô chọn level. `so` 1 đến 4; `ten` mặc định Làm quen, Vững bước, Vận dụng, Sáng tạo. Xem `nhom-lop.md` mục Bốn level. Trình chơi thêm bước "Chọn level" (mở tiết: sau Nói lý do; ôn bài: sau Chứng cứ; Sách là Thầy: sau Sách nói gì) |
+| `noi_dung_phu` | `{chu_de, ten_buoc, loi_moi, cau_hoi[], gv_y_do}` | Chỉ khi Thầy Cô ghi nội dung phụ. `ten_buoc` là tên bước học sinh thấy (mặc định "Ngẫm thêm"), đặt trước bước cuối. `cau_hoi` 2 đến 3 câu mở, không đáp án. `gv_y_do`: ý Thầy Cô và lưu ý tôn trọng |
 
-Không dùng `tuong_tac`, `boi_canh`, `sprite` (trình chơi nhẹ bỏ qua). Xem ví dụ trong `vi-du/` và bắt chước đúng cấu trúc.
+Không dùng `tuong_tac`, `boi_canh`, `sprite` (trình chơi nhẹ bỏ qua). Xem ví dụ trong `vi-du/` và bắt chước đúng cấu trúc. Game có 4 level và nội dung phụ: `vi-du/on-bai-khtn9-lipid-carbohydrate-protein-4-level.json`.
+
+## Nội dung phụ của Thầy Cô
+Thầy Cô có thể ghi thêm một chủ đề ngoài kiến thức (ví dụ "ý chí tự do, quyền chọn về học, ăn thuận tự nhiên"; "lương tâm khi dùng kiến thức"). Cách lồng:
+1. Lời kể có sẵn một khoảnh khắc nhân vật được tự chọn ("Không ai bắt Minh phải ăn gì"), không biến thành bài giảng.
+2. Bước `noi_dung_phu`: một lời mời ngắn và 2 đến 3 câu hỏi mở về lựa chọn của chính học sinh, cách dùng kiến thức có lương tâm. Không có đáp án đúng, không chấm.
+3. Câu chốt (`loi_chot`) nối kiến thức với quyền tự chọn.
+4. `gv_y_do`: nhắc tôn trọng mọi lựa chọn, không phán xét hoàn cảnh gia đình, học sinh được viết riêng không cần chia sẻ.
+Không viết điều chưa chắc đúng về sức khỏe, tôn giáo, tâm linh; đặt dưới dạng câu hỏi để học sinh tự nghĩ.
 
 ## Phẩm chất ngầm (không phát huy hiệu, không chấm)
 Phẩm chất CT GDPT 2018: yêu nước, nhân ái, chăm chỉ, trung thực, trách nhiệm. Bốn viên ngọc Vietwise nuôi ngầm: Hiếu kỳ, Thích nghi, Bền chí, An lạc. Chọn một phẩm chất bám tình huống, viết bằng lời học sinh hiểu.

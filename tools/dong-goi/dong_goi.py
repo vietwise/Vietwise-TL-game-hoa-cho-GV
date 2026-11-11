@@ -1,4 +1,4 @@
-import sys, os, base64, shutil, subprocess, zipfile, html
+import sys, os, base64, shutil, subprocess, zipfile, html, json
 import tempfile
 H = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(H + '/../..')
@@ -11,6 +11,16 @@ os.makedirs(OUT + '/4-Cai-Skill', exist_ok=True)
 def b64(p, mime):
     return 'data:%s;base64,%s' % (mime, base64.b64encode(open(p, 'rb').read()).decode())
 
+# Phiên bản Skill: một nguồn là tools/dong-goi/phien-ban.json; các chỗ ghi số phải khớp
+PB = json.load(open(H + '/phien-ban.json', encoding='utf-8'))
+for p, mau in [(SK + '/SKILL.md', '**Phiên bản Skill: %s (%s).**'), (SK + '/README.md', '**Phiên bản Skill: %s (%s).**'),
+               (SK + '/assets/trinh-choi.html', "var SKV='%s';"), (H + '/mau/doc-truoc.html', "var PB='%s'"),
+               (H + '/mau/doc-truoc.html', 'bản <b id="pb-nay">%s</b> (%s)')]:
+    can = mau % ((PB['so'], PB['ngay']) if mau.count('%s') == 2 else (PB['so'],))
+    if can not in open(p, encoding='utf-8').read():
+        sys.exit('dong_goi: %s chưa ghi đúng phiên bản (%s). Sửa cho khớp phien-ban.json.' % (os.path.relpath(p, REPO), can))
+shutil.copy(H + '/phien-ban.json', REPO + '/phien-ban.json')
+
 # 4: skill zip (để tải lên Claude)
 inner = OUT + '/4-Cai-Skill/game-hoc-vietwise.zip'
 subprocess.check_call(['zip', '-qr', inner, 'game-hoc-vietwise'], cwd=os.path.dirname(SK))
@@ -20,6 +30,7 @@ games = [
     ('1-Khoa-hoc-tu-nhien-8-On-bai.html', 'on-bai-khtn8-mol-nong-do.json'),
     ('2-Tieng-Anh-7-Doc-ngoai-ngu.html', 'on-bai-tienganh7-nhan-hop-sua.json'),
     ('3-Ngu-van-6-Sach-la-Thay.html', 'sach-la-thay-van6-de-men.json'),
+    ('4-Khoa-hoc-tu-nhien-9-Bon-level.html', 'on-bai-khtn9-lipid-carbohydrate-protein-4-level.json'),
 ]
 for out, js in games:
     co_giong = H + '/giong/' + js

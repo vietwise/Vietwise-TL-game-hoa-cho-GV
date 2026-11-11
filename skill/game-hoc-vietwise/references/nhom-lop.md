@@ -28,15 +28,22 @@ Phạm vi gốc của Vườn Game-học là 3 đến 12 tuổi. Nhóm D và E (
 
 **E (lớp 11 đến 12).** Tình huống nối với học tập và nghề nghiệp. Dự án thật gắn với đời sống. Thầy Cô đóng vai người hướng dẫn.
 
-## Ba mức (Khởi động, Vững vàng, Thử thách)
-Một game, cùng nội dung; Thầy Cô chọn mức bằng ghi chú. Chỉ đổi số lựa chọn, gợi ý và số câu hỏi gợi mở. Trong `gv_ghi_chu` ghi sẵn cách nâng hoặc hạ mức:
-- Khởi động: ít lựa chọn nhất của nhóm, gợi ý hiện luôn, câu mở ngắn.
-- Vững vàng: số lựa chọn chuẩn của nhóm, gợi ý khi học sinh hỏi.
-- Thử thách: thêm một lựa chọn gây tranh luận, không gợi ý, thêm câu "nếu đổi điều kiện thì...".
+## Bốn level (Level 1 đến Level 4)
+Thầy Cô chọn trên phiếu giao việc: "4 level" trong một game, hoặc chỉ một level cho cả lớp. Không chọn thì không chia level (vẫn ghi trong `gv_ghi_chu` cách làm dễ hơn hoặc khó hơn).
+Cả lớp cùng một tình huống, cùng lựa chọn A B C. Level chỉ đổi nhiệm vụ áp dụng kiến thức và lượng gợi ý. Học sinh tự chọn level, đổi lúc nào cũng được; level để chọn đường đi vừa sức, không để so ai hơn ai, không gắn Châu Lộc theo level.
+
+| Level | Tên hiện cho học sinh | Dành cho (chỉ ghi trong `gv_danh_cho`) | Nhiệm vụ | Gợi ý |
+|---|---|---|---|---|
+| 1 | Làm quen | Học sinh cần thêm thời gian, cần gợi ý từng bước | Nhận ra, gọi tên, ghép đôi trên vật cụ thể của tình huống | Hiện sẵn, 2 đến 3 gợi ý |
+| 2 | Vững bước | Học sinh nắm được bài | Giải thích một hiện tượng trong tình huống bằng kiến thức bài | Bấm "Xin gợi ý" |
+| 3 | Vận dụng | Học sinh vững bài, thích lập luận | So sánh, lập luận nhiều bước, "nếu đổi điều kiện thì..." | Một gợi ý, bấm mới hiện |
+| 4 | Sáng tạo | Học sinh giỏi, muốn thử thách mở | Phản biện một lời khẳng định ngoài đời, thiết kế hoặc viết sản phẩm của mình; nhiều đáp án đều được nếu có chứng cứ | Không gợi ý |
+
+Mọi level có `gv_dap_an` (gợi ý đáp án cho Thầy Cô). Nhóm A, B: viết nhiệm vụ rất ngắn, Level 4 vẫn là việc làm được trong 5 phút. Chỉ một level: điền một mục trong `level`; số lựa chọn và độ dài lời kể cũng theo level đó (Level 1 ít lựa chọn nhất của nhóm, Level 4 thêm một lựa chọn gây tranh luận).
 
 ## Tự kiểm sau khi viết (chẩn đoán)
 - Quá trẻ con: học sinh lướt qua nhân vật, ngại chơi trước bạn → giảm cute, đổi xưng hô.
 - Quá nghiêm túc: ngáp, đoạn chữ dài, ít tương tác → chia nhỏ, thêm lựa chọn, thêm dự án thật.
 - Quá dễ: gần như cả lớp chọn giống nhau ngay → thêm tình huống mới, thêm lựa chọn thật sự khó.
-- Quá khó: học sinh im lặng, xin gợi ý dồn dập → thêm ví dụ cụ thể, giảm chữ, hạ mức rồi nâng dần.
+- Quá khó: học sinh im lặng, xin gợi ý dồn dập → thêm ví dụ cụ thể, giảm chữ, hạ level rồi nâng dần.
 Ghi một dòng gợi ý chẩn đoán này vào `gv_ghi_chu` để Thầy Cô điều chỉnh trên lớp.
