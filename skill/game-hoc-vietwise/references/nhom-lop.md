@@ -30,7 +30,7 @@ Phạm vi gốc của Vườn Game-học là 3 đến 12 tuổi. Nhóm D và E (
 
 ## Bốn level (Level 1 đến Level 4)
 Thầy Cô chọn trên phiếu giao việc: "4 level" trong một game, hoặc chỉ một level cho cả lớp. Không chọn thì không chia level (vẫn ghi trong `gv_ghi_chu` cách làm dễ hơn hoặc khó hơn).
-Cả lớp cùng một tình huống, cùng lựa chọn A B C. Level chỉ đổi nhiệm vụ áp dụng kiến thức và lượng gợi ý. Học sinh tự chọn level, đổi lúc nào cũng được; level để chọn đường đi vừa sức, không để so ai hơn ai, không gắn Châu Lộc theo level.
+Cả lớp cùng một tình huống, cùng lựa chọn A B C. Level chỉ đổi nhiệm vụ áp dụng kiến thức và lượng gợi ý. Cả lớp chơi trên một màn hình chiếu: cả lớp hoặc từng nhóm tự chọn level (giơ tay, chia góc lớp), Thầy Cô bấm level đó, đổi lúc nào cũng được; level để chọn đường đi vừa sức, không để so ai hơn ai, không gắn Châu Lộc theo level.
 
 | Level | Tên hiện cho học sinh | Dành cho (chỉ ghi trong `gv_danh_cho`) | Nhiệm vụ | Gợi ý |
 |---|---|---|---|---|

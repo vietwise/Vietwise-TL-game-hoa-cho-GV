@@ -17,10 +17,11 @@ Dịch vụ không thu phí. Gọi giáo viên là "Thầy Cô". Game chơi ngay
 
 ## Quy trình 1-2-3 (giao việc, trả kết quả, chơi; nói với Thầy Cô bằng lời gần gũi, không nhắc tên tệp)
 ### 1. Thầy Cô giao việc
-Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, bài. Hỏi lại MỘT lần nếu thiếu; có thể hỏi thêm sĩ số và điều Thầy Cô muốn học sinh nhận ra.
+Cần: loại game (mở tiết, ôn bài, hay Sách là Thầy), môn, lớp, bài. Hỏi lại MỘT lần nếu thiếu; có thể hỏi thêm sĩ số và điều Thầy Cô muốn học sinh nhận ra. Nếu Thầy Cô chưa chọn loại, gợi ý: bài chưa học → mở tiết; bài đã học → ôn bài; có một cuốn sách → Sách là Thầy.
 Hai mục không bắt buộc trên phiếu giao việc:
 - **Level:** "4 level" (Level 1 đến Level 4 trong cùng một game) hoặc chỉ một level (Level 1 cho học sinh cần thêm thời gian, đến Level 4 cho học sinh giỏi). Thầy Cô không nói thì không chia level.
-- **Nội dung phụ:** điều Thầy Cô muốn lồng thêm ngoài kiến thức, ví dụ giá trị sống (ý chí tự do, quyền lựa chọn, lương tâm khi dùng kiến thức). Có thì điền `noi_dung_phu`. Nếu Thầy Cô chưa chọn loại, gợi ý: bài chưa học → mở tiết; bài đã học → ôn bài; có một cuốn sách → Sách là Thầy.
+- **Nội dung phụ:** điều Thầy Cô muốn lồng thêm ngoài kiến thức, ví dụ giá trị sống (ý chí tự do, quyền lựa chọn, lương tâm khi dùng kiến thức). Có thì điền `noi_dung_phu`.
+- Thầy Cô ghi "4 level" hay "level" trong ghi chú cũng tính là chọn level: dùng trường `level`, không nhét level vào `cau_hoi_goi_mo`.
 
 ### 2. Tham chiếu sách giáo khoa
 - **Bắt buộc có ảnh chụp trang sách**, từ 1 đến 12 trang cho mỗi lần giao việc. Chưa có ảnh thì xin Thầy Cô chụp và gửi, chưa làm tiếp. Nhiều hơn 12 trang thì nhờ Thầy Cô chọn tối đa 12 trang cần dùng nhất, hoặc chia thành các lần giao việc khác nhau.
@@ -34,7 +35,8 @@ Hai mục không bắt buộc trên phiếu giao việc:
 - **Chọn nhóm môn** (`toan`, `khoa-hoc`, `ngu-van`, `xa-hoi`, `ngoai-ngu`, `nghe-thuat-the-chat`, `tin-hoc`) và đọc `references/nhom-mon.md`: chứng cứ, hiểu lầm hay gặp, quy tắc riêng. Điền `nhom_mon`.
 - **Bài đọc ngoại ngữ** (Anh, Hàn, Nhật, Trung, Pháp, Đức, Nga...): đọc thêm `references/doc-ngoai-ngu.md` và điền `ngoai_ngu`. Lời kể bằng tiếng Việt, văn bản ngoại ngữ là chứng cứ, giữ nguyên chữ viết và dấu.
 - **Level** (khi Thầy Cô chọn): đọc mục "Bốn level" trong `references/nhom-lop.md`, điền `level` (4 mục nếu "4 level", 1 mục nếu chỉ một level). Cả lớp cùng một tình huống; level chỉ đổi độ khó của nhiệm vụ và gợi ý. Học sinh tự chọn level; không gọi tên level theo học lực trước lớp, chữ "chậm", "giỏi" chỉ nằm trong `gv_danh_cho`.
-- **Nội dung phụ** (khi Thầy Cô ghi): điền `noi_dung_phu` theo `references/khung-game.md`; lồng chủ đề vào lời kể và câu chốt một cách tự nhiên, câu hỏi mở cho học sinh tự ngẫm, không có đáp án đúng, không giảng đạo, không phán xét gia đình học sinh.
+- **Thời lượng:** có `level` thì cộng 5 phút, có `noi_dung_phu` thì cộng 2 phút vào `thoi_luong_phut`, và ghi trong `gv_ghi_chu` bước nào bỏ được nếu tiết ngắn (ôn bài: Phản biện; mở tiết: Bước ngoặt).
+- **Nội dung phụ** (khi Thầy Cô ghi): điền `noi_dung_phu` theo mục "Nội dung phụ của Thầy Cô" trong `references/khung-game.md` (đọc cả dòng cuối về sức khỏe); lồng chủ đề vào lời kể và câu chốt một cách tự nhiên, câu hỏi mở cho học sinh tự ngẫm, không có đáp án đúng, không giảng đạo, không phán xét gia đình học sinh.
 - Trong `gv_ghi_chu` ghi: các trang đã dùng, level đã soạn hoặc cách nâng hạ độ khó, một dòng chẩn đoán (quá trẻ con, quá nghiêm túc, quá dễ, quá khó), và nội dung nào chưa có người am hiểu đọc lại.
 - Dẫn truyện từ một THỬ THÁCH ĐỜI THẬT mà kiến thức giúp giải được (nấu ăn, pha chế, chăm người thân, mua sắm, an toàn, môi trường...), không dẫn bằng cảnh làm bài tập hay báo cáo trong lớp. Câu hỏi cuối của lời kể làm học sinh tò mò: kiến thức này có ý nghĩa gì ở ngoài đời. Chỉ dùng thông tin đời thật chắc chắn đúng.
 - Tình huống thật, gần học sinh, có một quyết định với 2 đến 3 lựa chọn mỗi lựa chọn có lý do hợp lý. Kiến thức bám nội dung Thầy Cô gửi. Câu chốt hỏi về phẩm chất, không hỏi đúng sai.
