@@ -166,6 +166,29 @@ Mặt trước thẻ do trình chơi tự vẽ bằng màu thương hiệu (mụ
 | `chu_de` | Thẻ chủ đề, ví dụ `truong-hoc`, `mua-ban`, `thien-nhien`, `gia-dinh` |
 | `tam` | `true` nếu là ảnh tạm, sẽ được thay |
 
+### 7.3B Bộ Bé Não màu nước (`assets/sprites/be-nao/`, 16/11/2026)
+
+38 ảnh màu nước nền trong (đã tách nền, rộng 320 đến 820 px), id trong manifest bắt đầu bằng `be-nao-` hoặc `huy-hieu-`. Trình chơi của Skill (`skill/game-hoc-vietwise/assets/trinh-choi.html`) dùng 23 ảnh trong số này, chép sẵn ở `skill/game-hoc-vietwise/assets/anh/`, nhúng vào trang khi chạy `dung_trang.py`:
+
+| Bước | Ảnh |
+| --- | --- |
+| Kể | `ke` (Bé Não cầm la bàn chỉ đường) |
+| Chọn | `chon`; mặt lưng thẻ `lung-the` |
+| Nói lý do | `ly-do` (giơ tay) |
+| Bước ngoặt | `buoc-ngoat` (ngạc nhiên) + `mui-ten` cạnh lời bước ngoặt |
+| Câu hỏi của hôm nay | `cau-hoi` (dấu hỏi đường mòn) |
+| Chứng cứ | `chung-cu` (kính lúp xem sách) |
+| Phản biện | `phan-bien` (hai bóng nói) |
+| Sáng tạo | `sang-tao` (giơ bóng đèn) + `bong-den` trước câu hỏi lựa chọn D |
+| Chốt kiến thức | `chot-kien-thuc` (ghép hình) |
+| Chìa khóa sách | `chia-khoa-sach` (sách khóa) + `chia-khoa` trước mỗi câu hỏi |
+| Sách nói gì | `sach-noi-gi` |
+| Viết tiếp | `viet-tiep` (bút lông) |
+| Chốt bài học | `chot-bai-hoc` (tay nâng mầm) |
+| Màn kết | `hh-hieu-ky`, `hh-thich-nghi`, `hh-ben-chi`, `hh-an-lac` theo `chau_ngoc`; `chau-loc` trong pill +5; `vo-tay` (cả lớp vỗ tay) |
+
+Trang Giao việc và Đọc trước dùng thêm `mo-cua`, `doc-sach`, `chup-sach`, `nghi-ngoi`, `but-giay`, `ban-do`, `da-buoc`, `hop-trong`, `trai-tim`, `bac-thang`, `suy-nghi`. Chưa dùng: `bon-bac`, `mo-qua`, `sach-noi-gi-2`, `ngan-trang` (hoa văn quá nhạt).
+
 ### 7.3A Bộ linh vật Bé Não (`assets/sprites/nao/`)
 
 16 sprite Bé Não do Vietwise cung cấp (27/10/2026), WebP nền trong, cao 900 px. Dùng làm nhân vật dẫn chuyện hoặc nhân vật đi kèm phẩm chất. Không dùng như huy hiệu phát cho học sinh.

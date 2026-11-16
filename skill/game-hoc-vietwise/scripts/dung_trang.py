@@ -19,6 +19,17 @@ THEO_LOAI = {
     'sach-la-thay': ['sach', 'chia_khoa', 'cau_mau_phan_bien', 'so_do_chot'],
 }
 
+def bo_anh():
+    """Bộ ảnh Bé Não (assets/anh/*.webp) nhúng vào trang dưới dạng JSON {tên: data URI}.
+    Thiếu thư mục thì trả về {} và trang vẫn chạy, chỉ không có ảnh."""
+    import base64, glob
+    d = os.path.join(os.path.dirname(GOC), 'anh')
+    o = {}
+    for f in sorted(glob.glob(os.path.join(d, '*.webp'))):
+        k = os.path.splitext(os.path.basename(f))[0]
+        o[k] = 'data:image/webp;base64,' + base64.b64encode(open(f, 'rb').read()).decode()
+    return json.dumps(o).replace('</', '<\\/')
+
 def main():
     if len(sys.argv) < 3:
         sys.exit('Dùng: python3 dung_trang.py game.json game.html')
@@ -51,12 +62,7 @@ def main():
         sys.exit('Bài ngoại ngữ cần trường ngoai_ngu. Xem references/doc-ngoai-ngu.md')
     if not (2 <= len(g['lua_chon']) <= 4):
         sys.exit('lua_chon cần 2 đến 4 mục')
-    import base64
-    nao = ''
-    f = os.path.join(os.path.dirname(GOC), 'nao', str(g.get('chau_ngoc', '')) + '.webp')
-    if g.get('chau_ngoc') in ('hieu-ky', 'thich-nghi', 'ben-chi', 'an-lac') and os.path.exists(f):
-        nao = 'data:image/webp;base64,' + base64.b64encode(open(f, 'rb').read()).decode()
-    t = t.replace("var NAO='__NAO__';", "var NAO='" + nao + "';")
+    t = t.replace('__ANH__', bo_anh())
     s = json.dumps(g, ensure_ascii=False).replace('</', '<\\/')
     open(sys.argv[2], 'w', encoding='utf-8').write(t.replace('__GAME_JSON__', s))
     print('Đã dựng', sys.argv[2], len(s), 'ký tự dữ liệu game')

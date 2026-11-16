@@ -71,6 +71,8 @@ details summary{cursor:pointer;font-weight:700;color:var(--blue)}
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--mut);font-size:14px;text-align:center}
 footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 .nobreak{white-space:nowrap}
+.anh-r{float:right;width:96px;height:auto;margin:0 0 8px 14px}.anh-ban{display:block;max-width:360px;width:100%;height:auto;margin:4px auto 12px}.loai-img{width:72px;height:auto;display:block;margin-bottom:6px}.trai-tim{width:56px;height:auto;display:block;margin:0 auto 6px}.card::after{content:"";display:block;clear:both}
+@media(max-width:620px){.anh-r{width:72px}}
 .free{display:inline-block;margin:10px 0 8px;padding:6px 14px;border-radius:999px;background:var(--vang);color:var(--blue);font-size:15px;font-weight:700;box-shadow:0 3px 0 #D9A90F}
 .free b{font-weight:800;letter-spacing:.03em}
 .hero-row{display:flex;align-items:center;gap:20px}
@@ -175,7 +177,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
     <label for="anh">Số ảnh trang sách sẽ gửi kèm <small>(từ 1 đến 12)</small> <span class="err" id="e-anh" hidden>Cần từ 1 đến 12 ảnh</span></label>
     <input type="number" id="anh" min="1" max="12" placeholder="Ví dụ: 3" style="max-width:160px">
 
-    <div class="warn"><b>Ảnh trang sách là bắt buộc.</b> Trợ lý chỉ dùng nội dung trong ảnh, không đoán nội dung sách. Chụp rõ chữ, đủ trang. Nhiều hơn 12 trang thì chọn 12 trang cần nhất, hoặc chia thành nhiều lần giao việc. <span id="taphuan"></span></div>
+    <div class="warn"><img class="anh-r" src="__ANH_chup-sach__" alt="Điện thoại chụp trang sách"><b>Ảnh trang sách là bắt buộc.</b> Trợ lý chỉ dùng nội dung trong ảnh, không đoán nội dung sách. Chụp rõ chữ, đủ trang. Nhiều hơn 12 trang thì chọn 12 trang cần nhất, hoặc chia thành nhiều lần giao việc. <span id="taphuan"></span></div>
   </div>
 
   <div class="card">
@@ -196,9 +198,9 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
     <h2>Skill Game-học dành cho Thầy Cô</h2>
     <p class="lead">Tạo một trò chơi cho tiết học trong vài phút, chơi ngay trên Claude, chiếu lên màn hình lớp. Dịch vụ không thu phí.</p>
     <div class="cols3">
-      <div><span class="pill p1">10 phút</span><h3>Game mở tiết</h3><p>Một tình huống thật, một quyết định, khơi tò mò cho bài sắp học. Không bao giờ hiện đáp án đúng.</p></div>
-      <div><span class="pill p2">15 phút</span><h3>Game ôn bài</h3><p>Học sinh chọn, nêu chứng cứ từ bài, phản biện, nghĩ ra lựa chọn tốt hơn.</p></div>
-      <div><span class="pill p3">20 phút</span><h3>Sách là Thầy</h3><p>Học sinh đọc một cuốn sách rồi dùng chi tiết trong sách để bảo vệ lựa chọn.</p></div>
+      <div><img class="loai-img" src="__ANH_mo-cua__" alt=""><span class="pill p1">10 phút</span><h3>Game mở tiết</h3><p>Một tình huống thật, một quyết định, khơi tò mò cho bài sắp học. Không bao giờ hiện đáp án đúng.</p></div>
+      <div><img class="loai-img" src="__ANH_chung-cu__" alt=""><span class="pill p2">15 phút</span><h3>Game ôn bài</h3><p>Học sinh chọn, nêu chứng cứ từ bài, phản biện, nghĩ ra lựa chọn tốt hơn.</p></div>
+      <div><img class="loai-img" src="__ANH_doc-sach__" alt=""><span class="pill p3">20 phút</span><h3>Sách là Thầy</h3><p>Học sinh đọc một cuốn sách rồi dùng chi tiết trong sách để bảo vệ lựa chọn.</p></div>
     </div>
     <p style="margin-top:14px">Không thi đua, không điểm số, không xếp hạng. Cả lớp chơi cùng lúc trên một màn hình, không cần thiết bị riêng.</p>
   </div>
@@ -215,6 +217,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 
   <div class="card">
     <h3>Dùng (dễ như 1-2-3)</h3>
+    <img class="anh-ban" src="__ANH_da-buoc__" alt="Bé Não chỉ ba hòn đá bước">
     <ol class="steps">
       <li><b>Giao việc:</b> điền Phiếu giao việc ở thẻ đầu tiên, dán vào chat với Claude và gửi kèm ảnh trang sách (1 đến 12 trang).</li>
       <li><b>Trả kết quả:</b> trợ lý tạo game và trả về một trang chơi. Thầy Cô xem lại, nói muốn sửa gì thì trợ lý sửa nội dung.</li>
@@ -250,7 +253,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 <!-- ===== THAM KHẢO ===== -->
 <section class="panel" id="p-tham-khao" role="tabpanel" aria-labelledby="t-tham-khao">
   <div class="card">
-    <h2>Chơi thử 3 game mẫu</h2>
+    <img class="anh-r" src="__ANH_ban-do__" alt="" style="width:150px"><h2>Chơi thử 3 game mẫu</h2>
     <p class="lead">Mỗi loại một game, nằm trong thư mục <b>3-Game-mau</b> của gói này. Bấm để mở trong tab mới (mở bằng trình duyệt, không cần mạng), rồi dùng phím mũi tên để sang bước, phím G để xem Chế độ Thầy Cô.</p>
     <div class="cols3">
       <div class="game card" style="margin:0"><span class="pill p1">Ôn bài · Khoa học tự nhiên 8</span><h3>Con số trên chai nước muối</h3><p>Lan pha nước muối rửa mũi cho em, nhãn chai ghi NaCl 0,9%. Con số đó nghĩa là gì, và vì sao pha sai thì nguy hiểm?</p><a class="btn" href="3-Game-mau/1-Khoa-hoc-tu-nhien-8-On-bai.html" target="_blank" rel="noopener">Chơi thử</a></div>
@@ -320,6 +323,7 @@ footer em{display:block;margin-top:8px;color:var(--blue);font-style:italic}
 <footer>
   <div class="wrap">
     Skill Game-học cung cấp bởi Viện Giáo dục và Quản trị Nhân lực &amp; Vườn Game-học Vietwise · <a href="https://vietwise.edu.vn" target="_blank" rel="noopener">Vietwise.edu.vn</a>
+    <img class="trai-tim" src="__ANH_trai-tim__" alt="">
     <em>Kính Tri ân Thầy Cô, những người truyền cảm hứng và giúp mài dũa những châu ngọc bên trong người học trò được tỏa sáng và hữu ích.</em>
   </div>
 </footer>

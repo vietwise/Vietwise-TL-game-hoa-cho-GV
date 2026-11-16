@@ -27,6 +27,9 @@ Máy chạy sau proxy (như phiên Claude trên mây): script tự dùng `HTTPS_
 4. Chạy `dong_goi.py`, giải nén ra thư mục sạch, mở từng tệp ở khổ 390 px: không cuộn ngang, không lỗi, khối logo không bị khóa.
 5. Cập nhật `dist/` và commit.
 
+## Ảnh Bé Não
+Bộ ảnh màu nước ở `assets/sprites/be-nao/` (danh sách và chỗ dùng trong `docs/game-spec.md` mục 7.3B). Trình chơi lấy bản chép ở `skill/game-hoc-vietwise/assets/anh/`, nhúng dạng data URI khi dựng (`dung_trang.py` và `dung_giao_viec.py`); trang Đọc trước và trang đầu dùng chỗ đánh dấu `__ANH_<tên>__`, được `anh_be_nao.py` điền khi đóng gói. Thêm ảnh mới: đặt webp nền trong vào `assets/sprites/be-nao/`, thêm dòng vào `assets/manifest.json`, nếu trình chơi cần thì chép thêm vào `assets/anh/` của Skill.
+
 ## Điều không được đổi
 - Khối ghi nguồn Vietwise (BRAND, FOOT) trong `trinh-choi.html`: đổi chữ là hỏng mã băm và trình chơi tự khóa; script dựng từ chối chạy. CSS ngoài khối khóa được sửa tự do (đã làm cho điện thoại).
 - Logo chỉ ở đầu trang, dòng tri ân chỉ ở cuối trang.

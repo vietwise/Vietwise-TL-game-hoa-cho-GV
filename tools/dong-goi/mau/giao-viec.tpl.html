@@ -12,7 +12,11 @@ h1,h2,h3,.qt{font-family:Quicksand,Nunito,sans-serif;font-weight:700;margin:0}
 __CSSBRAND__
 main{width:100%;max-width:900px;margin:0 auto;padding:18px 16px 30px;flex:1}
 .hero{display:flex;gap:16px;align-items:center;margin-bottom:12px}
-.hero img{width:120px;height:auto;flex:none}
+.hero img{width:120px;height:auto;flex:none}.hero .ban{width:100%;max-width:420px;height:auto;display:block;margin:0 0 6px}
+.drop{display:flex;gap:14px;align-items:center;text-align:left}.drop img{width:84px;height:auto;flex:none}.drop>div{flex:1}
+.lam{display:flex;gap:14px;align-items:center}.lam img{width:110px;height:auto;flex:none}
+.sua{display:flex;gap:14px;align-items:center}.sua img{width:96px;height:auto;flex:none}
+@media(max-width:620px){.drop{flex-direction:column;text-align:center}.lam img,.sua img{width:72px}}
 .hero h1{font-size:28px;color:var(--blue);line-height:1.2}
 .hero p{margin:6px 0 0;color:var(--mut)}
 .stepper{display:flex;gap:8px;margin:6px 0 16px}
@@ -69,14 +73,14 @@ __LOCKDIV__
 <div class="card"><span class="tag">Muốn xem trước?</span><p style="margin:0 0 10px">Bấm để xem một game ví dụ từ trang Khoa học tự nhiên 8, mở đầu bằng thử thách đời thật.</p><button class="btn s" id="btnEx" type="button">Xem game ví dụ (KHTN 8)</button></div>
 <div class="card"><h2>1. Thầy Cô dạy gì?</h2>
 <label class="f">Loại game</label><div class="types" id="types">
-<label class="type on"><input type="radio" name="loai" value="mo-tiet" checked><img data-spr="hk" alt=""><span><b>Game mở tiết</b><small>10 phút, bài chưa học</small></span></label>
-<label class="type"><input type="radio" name="loai" value="on-bai"><img data-spr="gt" alt=""><span><b>Game ôn bài</b><small>15 phút, dùng chứng cứ từ bài</small></span></label>
-<label class="type"><input type="radio" name="loai" value="sach-la-thay"><img data-spr="tn" alt=""><span><b>Sách là Thầy</b><small>20 phút, học sinh đọc sách</small></span></label></div>
+<label class="type on"><input type="radio" name="loai" value="mo-tiet" checked><img data-spr="mo-cua" alt=""><span><b>Game mở tiết</b><small>10 phút, bài chưa học</small></span></label>
+<label class="type"><input type="radio" name="loai" value="on-bai"><img data-spr="chung-cu" alt=""><span><b>Game ôn bài</b><small>15 phút, dùng chứng cứ từ bài</small></span></label>
+<label class="type"><input type="radio" name="loai" value="sach-la-thay"><img data-spr="doc-sach" alt=""><span><b>Sách là Thầy</b><small>20 phút, học sinh đọc sách</small></span></label></div>
 <div class="row"><div><label class="f" for="mon">Môn</label><input id="mon" placeholder="Ví dụ: Khoa học tự nhiên"></div><div><label class="f" for="lop">Lớp</label><select id="lop"></select></div><div><label class="f" for="bai">Bài</label><input id="bai" placeholder="Tên bài hoặc chủ đề"></div></div>
 <label class="f" for="ghichu">Điều Thầy Cô muốn thêm (không bắt buộc)</label>
 <textarea id="ghichu" placeholder="Ví dụ: lớp 38 em, các em hay quên đổi đơn vị, muốn có một phẩm chất như trung thực."></textarea></div>
 <div class="card"><h2>2. Ảnh chụp trang sách (bắt buộc)</h2>
-<div class="drop" id="drop"><b>Chạm để chọn ảnh chụp trang sách</b><br><span style="color:var(--mut)">Từ 1 đến <span id="maxn">12</span> trang cho mỗi việc giao. Có thể chụp ngay bằng điện thoại.</span><br><span class="cnt" id="cnt">Chưa có trang nào</span></div>
+<div class="drop" id="drop"><img data-spr="chup-sach" alt=""><div><b>Chạm để chọn ảnh chụp trang sách</b><br><span style="color:var(--mut)">Từ 1 đến <span id="maxn">12</span> trang cho mỗi việc giao. Có thể chụp ngay bằng điện thoại.</span><br><span class="cnt" id="cnt">Chưa có trang nào</span></div></div>
 <input id="file" type="file" accept="image/*" multiple hidden><div class="thumbs" id="thumbs"></div>
 <div class="bubble" style="background:transparent;padding:0;margin-top:10px;color:var(--mut);font-size:14px">Trợ lý chỉ dùng trang sách Thầy Cô gửi để tạo đúng bài. Ảnh không được lưu lại.</div></div>
 <div class="btns"><button class="btn" id="btnMake" type="button">Giao việc cho Trợ lý</button><button class="btn s" id="btnCopy" type="button">Sao chép phiếu giao việc</button></div>
@@ -84,14 +88,14 @@ __LOCKDIV__
 </section>
 
 <section id="sw" hidden>
-<div class="card"><h2>Trợ lý đang làm việc</h2><div class="ph" id="ph">
+<div class="card"><div class="lam"><img data-spr="nghi-ngoi" alt=""><h2>Trợ lý đang làm việc</h2></div><div class="ph" id="ph">
 <div><b>1</b>Đọc nội dung các trang sách</div><div><b>2</b>Soạn game: thử thách đời thật, lựa chọn, câu hỏi</div><div><b>3</b>Dựng trang chơi</div></div>
 <p style="color:var(--mut);margin:0">Thường mất khoảng một phút. Thầy Cô nghỉ một chút nhé.</p>
 <div class="btns"><button class="btn s" id="btnStop" type="button">Dừng</button></div></div>
 </section>
 
 <section id="s2" hidden><div class="card" id="result"></div>
-<div class="card"><h2>Thầy Cô muốn sửa gì không?</h2>
+<div class="card"><div class="sua"><img data-spr="but-giay" alt=""><h2>Thầy Cô muốn sửa gì không?</h2></div>
 <textarea id="edit" placeholder="Ví dụ: đổi tình huống sang chuyện nấu ăn; thêm một lựa chọn; câu hỏi dễ hơn cho lớp 8A."></textarea>
 <div class="btns"><button class="btn s" id="btnEdit" type="button">Nhờ Trợ lý sửa</button><button class="btn" id="btnPlay" type="button">Không cần sửa, chơi thôi</button></div><div id="msg2"></div></div></section>
 
@@ -106,23 +110,23 @@ __BLK__
 })();
 </script>
 <script>
-const SPR={vay:"__SPR_vay-tay__",hk:"__SPR_hieu-ky__",tn:"__SPR_thich-nghi__",bc:"__SPR_ben-chi__",al:"__SPR_an-lac__",gt:"__SPR_guong-than__",td:"__SPR_toan-do__"};
-const GEMSPR={'hieu-ky':'hk','thich-nghi':'tn','ben-chi':'bc','an-lac':'al'};
+const SPR=__SPR__;
+const GEMSPR={'hieu-ky':'hh-hieu-ky','thich-nghi':'hh-thich-nghi','ben-chi':'hh-ben-chi','an-lac':'hh-an-lac'};
 const EXAMPLE=__EXAMPLE__;
 const FEWSHOT=__FEWSHOT__;
 const QUOTES=[
- ["Mỗi tiết học là một cánh cửa Thầy Cô mở ra cho một em nhỏ.","vay"],
- ["Nghề giáo là nghề gieo hạt: hôm nay gieo, nhiều năm sau mới thấy hoa nở.","hk"],
- ["Điều các em nhớ lâu nhất thường không phải bài giảng, mà là ánh mắt tin tưởng của Thầy Cô.","gt"],
- ["Có những điều chỉ Thầy Cô làm được: nhìn thấy một viên ngọc trong một em chưa ai để ý.","bc"],
- ["Việc nặng, Trợ lý san sẻ cùng Thầy Cô. Thầy Cô cứ giữ lấy phần quý nhất của nghề: trái tim.","al"],
- ["Một tiết học vui hôm nay có thể là kỷ niệm đẹp của em đến cuối đời.","tn"],
- ["Cảm ơn Thầy Cô đã kiên nhẫn mài dũa từng viên ngọc bên trong mỗi người học trò.","td"]];
+ ["Mỗi tiết học là một cánh cửa Thầy Cô mở ra cho một em nhỏ.","mo-cua"],
+ ["Nghề giáo là nghề gieo hạt: hôm nay gieo, nhiều năm sau mới thấy hoa nở.","chot-bai-hoc"],
+ ["Điều các em nhớ lâu nhất thường không phải bài giảng, mà là ánh mắt tin tưởng của Thầy Cô.","suy-nghi"],
+ ["Có những điều chỉ Thầy Cô làm được: nhìn thấy một viên ngọc trong một em chưa ai để ý.","chau-loc"],
+ ["Việc nặng, Trợ lý san sẻ cùng Thầy Cô. Thầy Cô cứ giữ lấy phần quý nhất của nghề: trái tim.","trai-tim"],
+ ["Một tiết học vui hôm nay có thể là kỷ niệm đẹp của em đến cuối đời.","nghi-ngoi"],
+ ["Cảm ơn Thầy Cô đã kiên nhẫn mài dũa từng viên ngọc bên trong mỗi người học trò.","ly-do"]];
 const STAGEQ={s1:[0,1],w:[4,5],s2:[3,2],s3:[6,5]};
 const LOAI={"mo-tiet":"Game mở tiết (10 phút, kiến thức chưa học)","on-bai":"Game ôn bài (15 phút, dùng chứng cứ từ bài đã học)","sach-la-thay":"Sách là Thầy (20 phút, học sinh phải đọc sách mới chơi được)"};
 const $=id=>document.getElementById(id);
 document.querySelectorAll('[data-spr]').forEach(i=>i.src=SPR[i.dataset.spr]);
-$('heroImg').src=SPR.vay;
+$('heroImg').src=SPR['ly-do'];
 $('lop').innerHTML=Array.from({length:12},(_,i)=>`<option>${i+1}</option>`).join('');$('lop').value='8';
 let imgs=[],maxImg=12,ctl=null,sample=null,downloads=null,G=null,qi=0,rot=null;
 const loai=()=>document.querySelector('input[name=loai]:checked').value;
@@ -133,7 +137,7 @@ function stage(s){['s1','sw','s2','s3'].forEach(x=>$(x).hidden=x!==(s==='w'?'sw'
  clearInterval(rot);const l=STAGEQ[s];showQ(l[0]);if(s==='w'){let k=0;rot=setInterval(()=>{k++;showQ(l[k%l.length])},7000)}
  window.scrollTo({top:0,behavior:'smooth'})}
 stage('s1');
-function bubble(id,text,err){const d=$(id);d.innerHTML='';if(!text)return;const b=document.createElement('div');b.className='bubble'+(err?' err':'');const i=document.createElement('img');i.src=SPR.vay;i.alt='';const p=document.createElement('p');p.textContent=text;b.append(i,p);d.append(b)}
+function bubble(id,text,err){const d=$(id);d.innerHTML='';if(!text)return;const b=document.createElement('div');b.className='bubble'+(err?' err':'');const i=document.createElement('img');i.src=err?SPR['suy-nghi']:SPR['ke'];i.alt='';const p=document.createElement('p');p.textContent=text;b.append(i,p);d.append(b)}
 $('drop').onclick=()=>$('file').click();
 function shrink(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const m=1400,k=Math.min(1,m/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(u);b?res(b):rej()},'image/jpeg',.82)};im.onerror=()=>{URL.revokeObjectURL(u);rej()};im.src=u})}
 $('file').onchange=async e=>{for(const f of e.target.files){if(imgs.length>=maxImg){bubble('msg1','Mỗi việc giao tối đa '+maxImg+' trang. Thầy Cô chọn những trang cần dùng nhất, hoặc chia thành việc giao khác nhé.',1);break}try{const b=await shrink(f);imgs.push({blob:b,url:URL.createObjectURL(b)})}catch(_){bubble('msg1','Trợ lý chưa đọc được một ảnh. Thầy Cô thử ảnh khác nhé.',1)}}e.target.value='';draw()};
@@ -165,13 +169,13 @@ $('btnEdit').onclick=()=>{const v=$('edit').value.trim();if(!v){bubble('msg2','T
 $('btnStop').onclick=()=>ctl&&ctl.abort();
 function esc(s){return String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function result(g){const ch=(g.lua_chon||[]).map(x=>`<li><b>${esc(x.ma)}.</b> ${esc(x.noi_dung)}</li>`).join('');const nd=(g.cau_hoi_goi_mo||[]).map(x=>`<li>${esc(x)}</li>`).join('');
- const gem=SPR[GEMSPR[g.chau_ngoc]||'hk'];
+ const gem=SPR[GEMSPR[g.chau_ngoc]||'hh-hieu-ky'];
  $('result').innerHTML=`<span class="tag">Trợ lý trả kết quả</span><div style="display:flex;gap:14px;align-items:center"><img src="${gem}" alt="" style="width:84px"><div><h2 style="margin:0">${esc(g.tieu_de)}</h2><div style="color:var(--mut)">${esc(LOAI[g.loai]||g.loai)} · ${esc(g.mon)} ${esc(g.lop)} · ${esc(g.bai)}</div></div></div>
  <div class="k" style="margin-top:12px"><div><b>Lời kể</b><br>${esc(g.loi_ke)}</div><div><b>Các lựa chọn</b><ul style="margin:6px 0 0;padding-left:20px">${ch}</ul></div>${nd?`<div><b>Câu hỏi gợi mở</b><ul style="margin:6px 0 0;padding-left:20px">${nd}</ul></div>`:''}${g.loi_chot?`<div><b>Câu chốt</b><br>${esc(g.loi_chot)}</div>`:''}${g.gv_ghi_chu?`<div><b>Ghi chú riêng cho Thầy Cô</b><br>${esc(g.gv_ghi_chu)}</div>`:''}</div>
  <div class="btns"><button class="btn s" id="cJ" type="button">Sao chép dữ liệu game</button></div>`;
  $('cJ').onclick=e=>copy(JSON.stringify(g,null,2),e.target)}
-function playerHtml(g){let t=$('playerTpl').textContent.replace(/<\\\/script>/g,'<'+'/script>');const nao=SPR[GEMSPR[g.chau_ngoc]||'hk'];
- t=t.split("var NAO='__NAO__';").join("var NAO='"+nao+"';");t=t.split('__GAME_JSON__').join(JSON.stringify(g).replace(/</g,'\\u003c'));return t}
+function playerHtml(g){let t=$('playerTpl').textContent.replace(/<\\\/script>/g,'<'+'/script>');
+ t=t.split('__GAME_JSON__').join(JSON.stringify(g).replace(/</g,'\\u003c'));return t}
 function play(){$('frame').srcdoc=playerHtml(G);stage('s3')}
 $('btnPlay').onclick=play;
 $('btnBack').onclick=()=>stage('s2');
