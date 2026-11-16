@@ -11,6 +11,7 @@ Ra: index.html, choi-thu/*.html, tai-ve/game-hoc-vietwise.zip ở gốc repo.
 import os
 import shutil
 import sys
+from anh_be_nao import dien
 
 H = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(H + '/../..')
@@ -105,6 +106,7 @@ THE = '''
     </div>
   </div>
   <h3 style="margin-top:16px">Flow hướng dẫn: từ màn hình chính đến lớp học</h3>
+  <img class="anh-ban" src="__ANH_bac-thang__" alt="" style="max-width:420px">
 ''' + FLOW + '''
   <p class="mhc-ok ok" style="margin-top:12px">Thầy Cô đang mở trang từ màn hình chính. Đã lưu xong.</p>
   <div class="mhc-huongdan">
@@ -150,7 +152,7 @@ TAB = '''
       <div class="btns"><button class="btn" type="submit">Lưu game</button></div>
     </form>
     <ul class="kq-list" id="kq-list"></ul>
-    <p class="kq-rong" id="kq-rong">Chưa có game nào. Giao việc cho Claude ở thẻ 1, rồi dán link Claude trả về vào đây.</p>
+    <p class="kq-rong" id="kq-rong"><img src="__ANH_hop-trong__" alt="" style="width:120px;height:auto;display:block;margin:0 auto 6px">Chưa có game nào. Giao việc cho Claude ở thẻ 1, rồi dán link Claude trả về vào đây.</p>
     <p class="lead" style="font-size:14px;margin:14px 0 0">Link chỉ lưu trên máy này, không gửi đi đâu. Lần đầu mở, Claude có thể hỏi đăng nhập một lần trong Safari hoặc Chrome.</p>
   </div>
   <div class="card">
@@ -225,6 +227,7 @@ def dung(goi):
              'Thầy Cô xem lại, nói muốn sửa gì thì trợ lý sửa nội dung. Dán link game vào thẻ <a href="#tra-ket-qua">4. Trả kết quả</a> để lưu lại.</li>')
     s = thay(s, '\n</main>', TAB + THE + '\n</main>')
     s = thay(s, '</body>', JS + '</body>')
+    s = dien(s)
     open(REPO + '/index.html', 'w', encoding='utf-8').write(s)
 
     if os.path.isdir(REPO + '/choi-thu'):

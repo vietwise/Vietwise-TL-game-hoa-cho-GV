@@ -5,15 +5,14 @@
     {
       "id": "lung-the",
       "nhom": "card",
-      "tep": "cards/lung-the-tam.svg",
-      "mo_ta": "Lưng thẻ lựa chọn, dùng cho mọi game",
+      "tep": "cards/lung-the.webp",
+      "mo_ta": "Lưng thẻ lựa chọn: thẻ xanh dương viền hoa văn vàng và ngọc, dùng cho mọi game",
       "lua_tuoi": [
         "tat-ca"
       ],
       "chu_de": [
         "chung"
-      ],
-      "tam": true
+      ]
     },
     {
       "id": "hs-nam",
@@ -307,6 +306,500 @@
         "bo-nao"
       ],
       "tam": false
+    },
+    {
+      "id": "be-nao-ke",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/ke.webp",
+      "mo_ta": "Bé Não cầm la bàn, chỉ tay về phía trước, huy chương ngôi sao. Dẫn chuyện, mở đầu, bước Kể",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chon",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chon.webp",
+      "mo_ta": "Bé Não đứng trước bậc thang bốn màu, ngón tay chạm cằm nghĩ chọn bước tiếp. Bước Chọn",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-ly-do",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/ly-do.webp",
+      "mo_ta": "Bé Não giơ tay phát biểu, cười tươi. Bước Nói lý do, chào Thầy Cô",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-buoc-ngoat",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/buoc-ngoat.webp",
+      "mo_ta": "Bé Não tròn mắt ngạc nhiên, một tay giơ lên. Bước Bước ngoặt",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-mui-ten",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/mui-ten.webp",
+      "mo_ta": "Mũi tên xanh rẽ ngoặt lên màu cam. Biểu tượng bước ngoặt",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-cau-hoi",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/cau-hoi.webp",
+      "mo_ta": "Dấu hỏi lớn làm bằng con đường mòn xuyên đồng cỏ tới núi và mặt trời, ngôi sao nhỏ. Câu hỏi của hôm nay, câu hỏi treo",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chung-cu",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chung-cu.webp",
+      "mo_ta": "Bé Não cúi xem sách mở bằng kính lúp. Bước Chứng cứ, Game ôn bài",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-phan-bien",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/phan-bien.webp",
+      "mo_ta": "Hai bóng nói xanh và cam mặt cười đang tranh luận vui. Bước Phản biện",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-sang-tao",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/sang-tao.webp",
+      "mo_ta": "Bé Não giơ bóng đèn sáng, vẻ reo lên vì có ý tưởng. Bước Sáng tạo, lựa chọn D",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-bong-den",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/bong-den.webp",
+      "mo_ta": "Bóng đèn vàng sáng có mầm xanh mọc trên đỉnh. Ý tưởng mới",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chot-kien-thuc",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chot-kien-thuc.webp",
+      "mo_ta": "Bé Não ghép mảnh cuối vào bức ghép hình nhiều màu. Bước Chốt kiến thức",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chia-khoa-sach",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chia-khoa-sach.webp",
+      "mo_ta": "Cuốn sách xanh có ổ khóa cam và cành lá. Bước Chìa khóa sách",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chia-khoa",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chia-khoa.webp",
+      "mo_ta": "Chìa khóa vàng cán xanh. Biểu tượng câu hỏi chìa khóa",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-sach-noi-gi",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/sach-noi-gi.webp",
+      "mo_ta": "Sách mở có bóng nói vàng bay lên. Bước Sách nói gì",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-sach-noi-gi-2",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/sach-noi-gi-2.webp",
+      "mo_ta": "Sách mở đang lật trang có bóng nói cam, bản khác của Sách nói gì",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-viet-tiep",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/viet-tiep.webp",
+      "mo_ta": "Bút lông vũ xanh viết trên tờ giấy, vệt mực. Bước Viết tiếp",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chot-bai-hoc",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chot-bai-hoc.webp",
+      "mo_ta": "Hai bàn tay nâng mầm xanh trong đất. Bước Chốt bài học, phẩm chất",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-vo-tay",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/vo-tay.webp",
+      "mo_ta": "Sáu học sinh Việt Nam áo trắng quần xanh đứng vỗ tay cười, ảnh ngang. Màn kết, tràng pháo tay",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chau-loc",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chau-loc.webp",
+      "mo_ta": "Viên ngọc vàng cam lấp lánh. Châu Lộc",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "huy-hieu-hieu-ky",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/hh-hieu-ky.webp",
+      "mo_ta": "Huy hiệu tròn nền xanh lá: hạt nứt vỏ nảy mầm. Huy hiệu Hiếu kỳ",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "huy-hieu-thich-nghi",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/hh-thich-nghi.webp",
+      "mo_ta": "Huy hiệu tròn viền xanh dương: mầm xanh hai lá trên đất. Huy hiệu Thích nghi",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "huy-hieu-ben-chi",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/hh-ben-chi.webp",
+      "mo_ta": "Huy hiệu tròn viền cam: cây lớn tán rộng. Huy hiệu Bền chí",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "huy-hieu-an-lac",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/hh-an-lac.webp",
+      "mo_ta": "Huy hiệu tròn viền vàng: cây nở hoa hồng dưới nắng. Huy hiệu An lạc",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "lung-the-be-nao",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/lung-the.webp",
+      "mo_ta": "Mặt lưng thẻ xanh dương viền hoa văn vàng và ngọc",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-ngan-trang",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/ngan-trang.webp",
+      "mo_ta": "Hoa văn lá rất nhạt kéo ngang, dùng ngăn trang",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-mo-cua",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/mo-cua.webp",
+      "mo_ta": "Bé Não mở cánh cửa gỗ, ánh sáng tràn ra. Game mở tiết",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-doc-sach",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/doc-sach.webp",
+      "mo_ta": "Bé Não ngồi đọc sách trên chồng sách nhiều màu. Sách là Thầy",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-chup-sach",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/chup-sach.webp",
+      "mo_ta": "Hai tay cầm điện thoại chụp trang sách mở. Gửi ảnh trang sách",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-nghi-ngoi",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/nghi-ngoi.webp",
+      "mo_ta": "Bé Não ngồi thiền nhắm mắt mỉm cười. Nghỉ một chút, An lạc",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-mo-qua",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/mo-qua.webp",
+      "mo_ta": "Bé Não cầm hộp quà có mũi tên vòng quanh. Trả kết quả",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-but-giay",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/but-giay.webp",
+      "mo_ta": "Bé Não cầm bút chì và tờ giấy. Sửa game, viết",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-ban-do",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/ban-do.webp",
+      "mo_ta": "Bé Não ôm hộp quà bên bảng có bản đồ game, ảnh ngang. Trả kết quả, game mẫu",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-suy-nghi",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/suy-nghi.webp",
+      "mo_ta": "Bé Não ngón tay chạm cằm, bóng nghĩ trên đầu. Đang nghĩ, Nói lý do",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-da-buoc",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/da-buoc.webp",
+      "mo_ta": "Bé Não chỉ tay về ba hòn đá bước, ảnh ngang. Ba bước 1-2-3",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-hop-trong",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/hop-trong.webp",
+      "mo_ta": "Bé Não cầm hộp giấy trống. Chưa có gì, danh sách trống",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-trai-tim",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/trai-tim.webp",
+      "mo_ta": "Trái tim cam có mầm xanh mọc lên. Tri ân, yêu thương",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-bac-thang",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/bac-thang.webp",
+      "mo_ta": "Bốn cột bậc thang xanh lá, xanh dương, cam, vàng, trên cùng có mầm, ảnh ngang. Tiến bộ từng bước",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
+    },
+    {
+      "id": "be-nao-bon-bac",
+      "nhom": "sprite",
+      "tep": "sprites/be-nao/bon-bac.webp",
+      "mo_ta": "Bậc thang bốn bậc bốn màu. Các bước, các mức",
+      "lua_tuoi": [
+        "tat-ca"
+      ],
+      "chu_de": [
+        "be-nao",
+        "chung"
+      ]
     }
   ],
   "am_thanh": [

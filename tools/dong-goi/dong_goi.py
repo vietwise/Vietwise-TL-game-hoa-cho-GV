@@ -32,7 +32,9 @@ shutil.copy(SP + '/giaoviec.html', OUT + '/2-Giao-viec-mo-trong-Claude.html')
 
 # 1: README
 # 1: Đọc trước + phiếu giao việc (trang tĩnh trong mau/)
-shutil.copy(H + '/mau/doc-truoc.html', OUT + '/1-DOC-TRUOC-README-VA-PHIEU-GIAO-VIEC.html')
+sys.path.insert(0, H)
+from anh_be_nao import dien
+open(OUT + '/1-DOC-TRUOC-README-VA-PHIEU-GIAO-VIEC.html', 'w', encoding='utf-8').write(dien(open(H + '/mau/doc-truoc.html', encoding='utf-8').read()))
 
 # Trang đầu trên web (GitHub Pages): index.html, choi-thu/, tai-ve/ ở gốc repo
 subprocess.check_call(['python3', H + '/dung_trang_dau.py', OUT])
