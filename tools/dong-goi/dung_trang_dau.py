@@ -209,6 +209,10 @@ JS = r'''
 
 def dung(goi):
     s = open(H + '/mau/doc-truoc.html', encoding='utf-8').read()
+    def anh_tab(ten):
+        import base64
+        p = H + '/mau/anh/' + ten + '.webp'
+        return ('<img class="ti" src="data:image/webp;base64,%s" alt="">' % base64.b64encode(open(p, 'rb').read()).decode()) if os.path.exists(p) else ''
     s = thay(s, '<meta name="viewport" content="width=device-width, initial-scale=1">', HEAD)
     s = thay(s, '<title>Trợ lý Game-học: Phiếu giao việc cho Thầy Cô</title>', '<title>Trợ lý Game-học cho Thầy Cô</title>')
     s = thay(s, '</style>\n</head>', CSS + '</style>\n</head>')
@@ -219,7 +223,7 @@ def dung(goi):
              'Mỗi loại một game. Bấm để mở trong tab mới, rồi')
     s = thay(s, 'href="3-Game-mau/', 'href="choi-thu/', 4)
     s = thay(s, '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>',
-             '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>\n      <button role="tab" id="t-tra-ket-qua" data-tab="tra-ket-qua" aria-selected="false">4. Trả kết quả</button>')
+             '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>\n      <button role="tab" id="t-tra-ket-qua" data-tab="tra-ket-qua" aria-selected="false">' + anh_tab('the-tra-ket-qua') + '4. Trả kết quả</button>')
     s = thay(s, "var tabs=['phieu','readme','tham-khao'];", "var tabs=['phieu','readme','tham-khao','tra-ket-qua'];")
     s = thay(s, 'Thầy Cô xem lại, nói muốn sửa gì thì trợ lý sửa nội dung.</li>',
              'Thầy Cô xem lại, nói muốn sửa gì thì trợ lý sửa nội dung. Dán link game vào thẻ <a href="#tra-ket-qua">4. Trả kết quả</a> để lưu lại.</li>')
