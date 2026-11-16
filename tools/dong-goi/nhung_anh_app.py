@@ -22,7 +22,8 @@ def tach_nen(im):
     return im
 
 CO = {'loai-mo-tiet': 160, 'loai-on-bai': 160, 'loai-sach-la-thay': 160,
-      'the-phieu': 64, 'the-readme': 64, 'the-tra-ket-qua': 64, 'nen-dau-trang': 1400}
+      'loai-goi-y': 160, 'phieu-level': 320, 'phieu-noi-dung-phu': 96, 'phieu-chup-sach': 96, 'ban-moi': 96,
+      'trong-chua-co-game': 200, 'the-phieu': 64, 'the-readme': 64, 'the-tra-ket-qua': 64, 'nen-dau-trang': 1400}
 for arg in sys.argv[1:]:
     ten, f = arg.split('=', 1)
     assert ten in CO, ten

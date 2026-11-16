@@ -3,6 +3,7 @@ import os,sys
 H=os.path.dirname(os.path.abspath(__file__))
 REPO=os.path.abspath(H+'/../..')
 P=open(REPO+'/skill/game-hoc-vietwise/assets/trinh-choi.html').read()
+sys.path.insert(0,REPO+'/skill/game-hoc-vietwise/scripts');from dung_trang import nhung_anh;P=nhung_anh(P)
 css=re.search(r"\.brand\{.*?\n\.brand\.bot\{[^\n]*\n\.brand a\{[^\n]*\n\.brand \.t\{[^\n]*\n",P,re.S).group(0)+re.search(r"#lock\{[^\n]*\n",P).group(0)
 lockdiv=re.search(r'<div id="lock">.*?</div></div>\n',P,re.S).group(0)
 blk=re.search(r"// ===== KHỐI GHI NGUỒN.*?// ===== HẾT KHỐI KHÓA =====\n",P,re.S).group(0)

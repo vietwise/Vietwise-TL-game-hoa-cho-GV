@@ -45,7 +45,7 @@ Hai mục không bắt buộc trên phiếu giao việc:
 - Viết JSON theo khung. Không dùng `tuong_tac`, `boi_canh`, `sprite`.
 
 ### 4. Dựng trang chơi (artifact) để trả kết quả
-- Nếu chạy được mã: lưu JSON ra `game.json`, chạy `python3 scripts/dung_trang.py game.json game.html`. Script kiểm tra khối ghi nguồn; nếu in "DỪNG" thì không được tiếp tục, báo Thầy Cô cài lại Skill gốc. Rồi hiển thị `game.html` thành artifact.
+- Nếu chạy được mã: lưu JSON ra `game.json`, chạy `python3 scripts/dung_trang.py game.json game.html`. Script kiểm tra khối ghi nguồn; nếu in "DỪNG" thì không được tiếp tục, báo Thầy Cô cài lại Skill gốc. `game.html` có đủ ảnh minh họa (biểu tượng bước, Bé Não, Châu Lộc, cả lớp vỗ tay): đưa tệp này cho Thầy Cô tải về để chiếu. Nếu cần chép trang vào artifact bằng tay, dựng thêm bản nhẹ `python3 scripts/dung_trang.py --nhe game.json game-nhe.html` (không ảnh minh họa, chơi y hệt) và hiển thị bản nhẹ thành artifact; không tự gõ lại chuỗi ảnh base64.
 - Nếu không chạy được mã: sao chép NGUYÊN VĂN toàn bộ `assets/trinh-choi.html` vào artifact HTML, chỉ thay đúng chữ `__GAME_JSON__` bằng JSON game (đổi mọi `</` trong dữ liệu thành `<\/`). Không sửa một ký tự nào khác. Nếu trang hiện thông báo "Trang này đã bị gỡ hoặc sửa phần ghi nguồn", nghĩa là chép sai; làm lại cẩn thận.
 - Bài có chữ ngoại ngữ: trình chơi tự hiện nút 🔊 nghe đọc, chọn giọng tốt nhất trên máy (văn bản chữ La-tinh đặt trong ngoặc kép thẳng).
 - Hướng dẫn Thầy Cô: bấm "Tiếp" hoặc phím mũi tên để sang bước; chạm thẻ để lật; "Chế độ Thầy Cô" (phím G) hiện đáp án và ghi chú; chiếu lên màn hình lớp.

@@ -12,6 +12,15 @@ import os
 import shutil
 import sys
 
+
+def anh_rong():
+    import base64
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mau', 'anh', 'trong-chua-co-game.webp')
+    if not os.path.exists(p):
+        return ''
+    return ('<img src="data:image/webp;base64,%s" alt="" style="display:block;width:160px;height:auto;margin:0 0 8px">'
+            % base64.b64encode(open(p, 'rb').read()).decode())
+
 H = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(H + '/../..')
 URL = 'https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/'
@@ -150,7 +159,7 @@ TAB = '''
       <div class="btns"><button class="btn" type="submit">Lưu game</button></div>
     </form>
     <ul class="kq-list" id="kq-list"></ul>
-    <p class="kq-rong" id="kq-rong">Chưa có game nào. Giao việc cho Claude ở thẻ 1, rồi dán link Claude trả về vào đây.</p>
+    <p class="kq-rong" id="kq-rong">''' + anh_rong() + '''Chưa có game nào. Giao việc cho Claude ở thẻ 1, rồi dán link Claude trả về vào đây.</p>
     <p class="lead" style="font-size:14px;margin:14px 0 0">Link chỉ lưu trên máy này, không gửi đi đâu. Lần đầu mở, Claude có thể hỏi đăng nhập một lần trong Safari hoặc Chrome.</p>
   </div>
   <div class="card">

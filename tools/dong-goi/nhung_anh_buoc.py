@@ -1,9 +1,8 @@
 """Đưa ảnh biểu tượng bước vào trình chơi.
 Ảnh gốc (PNG nền trắng, Hong tạo) -> tách nền trắng, thu về 128 px, WebP -> skill/game-hoc-vietwise/assets/buoc/<ten>.webp
-rồi viết dòng `var BUOC={...};` trong assets/trinh-choi.html (ngoài khối khóa).
+(scripts/dung_trang.py nhúng ảnh vào từng game khi dựng; trinh-choi.html giữ var BUOC={}; var HINH={}; rỗng cho nhẹ).
 Dùng:  python3 tools/dong-goi/nhung_anh_buoc.py [ten=anh-goc.png ...]
-Không có tham số thì chỉ nhúng lại các .webp đã có.
-Ảnh Bé Não theo bước và viên Châu Lộc (tên trong HINH_TEN) vào assets/hinh/, nhúng vào `var HINH={...};`."""
+Ảnh Bé Não theo bước và viên Châu Lộc (tên trong HINH_TEN) vào assets/hinh/."""
 import sys, os, re, io, base64
 from PIL import Image
 H = os.path.dirname(os.path.abspath(__file__))
@@ -16,7 +15,9 @@ TEN = {'buoc-ke': 'Kể', 'buoc-chon': 'Chọn', 'buoc-chung-cu': 'Chứng cứ'
        'buoc-viet-tiep': 'Viết tiếp', 'buoc-level': 'Chọn level', 'buoc-ngam-them': 'Ngẫm thêm'}
 
 # ảnh khác trong trình chơi: tên -> cỡ tối đa (px)
-HINH_TEN = {'nao-gio-tay': 160, 'nao-bac-thang': 160, 'nao-ngac-nhien': 160, 'chau-loc': 72}
+HINH_TEN = {'nao-gio-tay': 160, 'nao-bac-thang': 160, 'nao-ngac-nhien': 160, 'nao-kinh-lup': 160, 'nao-suy-nghi': 160,
+            'nao-bong-den': 160, 'nao-ngam': 160, 'chau-loc': 72, 'level-1': 64, 'level-2': 64, 'level-3': 64, 'level-4': 64,
+            'lung-the': 360, 'ca-lop-vo-tay': 420}
 DH = SK + '/assets/hinh'
 
 def tach_nen(im):
@@ -39,23 +40,7 @@ for arg in sys.argv[1:]:
     co = HINH_TEN.get(ten, 128); thu = DH if ten in HINH_TEN else D
     im = Image.open(f); im.thumbnail((co * 2.5, co * 2.5))
     im = tach_nen(im); im = im.crop(im.getbbox()); im.thumbnail((co, co), Image.LANCZOS)
-    os.makedirs(thu, exist_ok=True); im.save(thu + '/' + ten + '.webp', 'WEBP', quality=82, method=6)
+    os.makedirs(thu, exist_ok=True); im.save(thu + '/' + ten + '.webp', 'WEBP', quality={'lung-the': 60, 'ca-lop-vo-tay': 55}.get(ten, 82), method=6)
     print(ten, im.size, os.path.getsize(thu + '/' + ten + '.webp'), 'byte')
 
-o = []
-for ten in sorted(TEN):
-    p = D + '/' + ten + '.webp'
-    if os.path.exists(p):
-        o.append("'%s':'data:image/webp;base64,%s'" % (TEN[ten], base64.b64encode(open(p, 'rb').read()).decode()))
-P = SK + '/assets/trinh-choi.html'
-t = open(P, encoding='utf-8').read()
-moi = 'var BUOC={' + ','.join(o) + '};'
-t, n = re.subn(r'var BUOC=\{.*?\};', lambda m: moi, t, count=1)
-assert n == 1, 'trinh-choi.html thiếu dòng var BUOC={...};'
-o = ["'%s':'data:image/webp;base64,%s'" % (ten, base64.b64encode(open(DH + '/' + ten + '.webp', 'rb').read()).decode())
-     for ten in sorted(HINH_TEN) if os.path.exists(DH + '/' + ten + '.webp')]
-moi = 'var HINH={' + ','.join(o) + '};'
-t, n = re.subn(r'var HINH=\{.*?\};', lambda m: moi, t, count=1)
-assert n == 1, 'trinh-choi.html thiếu dòng var HINH={...};'
-open(P, 'w', encoding='utf-8').write(t)
-print('Đã nhúng ảnh bước và', len(o), 'ảnh HINH vào trinh-choi.html')
+print('Ảnh nằm trong assets/buoc và assets/hinh; scripts/dung_trang.py nhúng khi dựng game.')
