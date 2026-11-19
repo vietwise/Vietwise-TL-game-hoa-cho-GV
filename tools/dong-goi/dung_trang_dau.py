@@ -50,6 +50,7 @@ HEAD = '''<meta name="viewport" content="width=device-width, initial-scale=1, vi
 <meta name="apple-mobile-web-app-status-bar-style" content="default">'''
 
 CSS = '''
+body:not([data-tab=readme]) #man-hinh-chinh{display:none}
 /* Trang đầu trên web: lưu ra màn hình chính */
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 [hidden]{display:none!important}
@@ -92,10 +93,10 @@ CSS = '''
 
 FLOW = '''<ol class="flow" aria-label="Các bước dùng app Game-học">
   <li class="gv"><span class="n">1</span><b>Lưu app</b>Mở trang này, chạm Chia sẻ (iPhone) hoặc ⋮ (Android), chọn Thêm vào màn hình chính.</li>
-  <li class="gv"><span class="n">2</span><b>Phiếu giao việc</b>Chạm biểu tượng Game-học, điền phiếu ở thẻ 1, bấm sao chép.</li>
+  <li class="gv"><span class="n">2</span><b>Phiếu giao việc</b>Chạm biểu tượng Game-học, điền phiếu ở thẻ Giao việc, bấm sao chép.</li>
   <li class="gv"><span class="n">3</span><b>Gửi cho Claude</b>Dán phiếu vào Claude (đã bật Skill), đính kèm ảnh trang sách.</li>
   <li class="cl"><span class="n">4</span><b>Claude trả kết quả</b>Trợ lý soạn game, trả về link trang chơi. Thầy Cô xem lại, nhờ sửa nếu cần.</li>
-  <li class="gv"><span class="n">5</span><b>Lưu link game</b>Dán link vào thẻ 4. Trả kết quả để giữ trên máy.</li>
+  <li class="gv"><span class="n">5</span><b>Lưu link game</b>Dán link vào thẻ Game của tôi để giữ trên máy.</li>
   <li class="lop"><span class="n">6</span><b>Chơi trên lớp</b>Chạm Mở game, chiếu lên màn hình. Phím mũi tên sang bước, phím G cho Thầy Cô.</li>
 </ol>
 <p class="flow-chu"><span class="gv">Việc của Thầy Cô</span><span class="cl">Việc của Claude</span><span class="lop">Cả lớp</span></p>'''
@@ -113,8 +114,6 @@ THE = '''
       <p class="lead" style="margin:0">Lưu trang này một lần, từ đó chạm biểu tượng <b>Trợ lý Game-học GV</b> là mở ngay, như một app.</p>
     </div>
   </div>
-  <h3 style="margin-top:16px">Flow hướng dẫn: từ màn hình chính đến lớp học</h3>
-''' + FLOW + '''
   <p class="mhc-ok ok" style="margin-top:12px">Thầy Cô đang mở trang từ màn hình chính. Đã lưu xong.</p>
   <div class="mhc-huongdan">
     <div class="btns" id="mhc-cai-wrap" hidden><button class="btn" type="button" id="mhc-cai">Cài app Game-học</button></div>
@@ -148,7 +147,7 @@ TAB = '''
 <!-- ===== TRẢ KẾT QUẢ ===== -->
 <section class="panel" id="p-tra-ket-qua" role="tabpanel" aria-labelledby="t-tra-ket-qua">
   <div class="card">
-    <h2>Trả kết quả: game của Thầy Cô</h2>
+    <h2>Game của tôi</h2>
     <p class="lead">Claude soạn xong sẽ trả về link trang chơi (dạng <b>claude.ai/…</b>). Dán link vào đây để lưu trên máy này. Lúc lên lớp, mở app Game-học, vào thẻ này, chạm <b>Mở game</b>.</p>
     <form id="kq-form" novalidate>
       <label for="kq-link">Link game Claude trả về</label>
@@ -159,13 +158,10 @@ TAB = '''
       <div class="btns"><button class="btn" type="submit">Lưu game</button></div>
     </form>
     <ul class="kq-list" id="kq-list"></ul>
-    <p class="kq-rong" id="kq-rong">''' + anh_rong() + '''Chưa có game nào. Giao việc cho Claude ở thẻ 1, rồi dán link Claude trả về vào đây.</p>
+    <p class="kq-rong" id="kq-rong">''' + anh_rong() + '''Chưa có game nào. Giao việc cho Claude ở thẻ Giao việc, rồi dán link Claude trả về vào đây.</p>
     <p class="lead" style="font-size:14px;margin:14px 0 0">Link chỉ lưu trên máy này, không gửi đi đâu. Lần đầu mở, Claude có thể hỏi đăng nhập một lần trong Safari hoặc Chrome.</p>
   </div>
-  <div class="card">
-    <h3>Flow hướng dẫn</h3>
-    ''' + FLOW + '''
-  </div>
+  
 </section>
 '''
 
@@ -173,7 +169,7 @@ JS = r'''
 <script>
 (function(){
   var bar=document.getElementById('mhc-bar'),the=document.getElementById('man-hinh-chinh');
-  document.getElementById('mhc-xem').addEventListener('click',function(){the.scrollIntoView({behavior:'smooth',block:'start'})});
+  document.getElementById('mhc-xem').addEventListener('click',function(){var r=document.getElementById('t-readme');if(r)r.click();setTimeout(function(){the.scrollIntoView({behavior:'smooth',block:'start'})},60)});
   var standalone=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
   if(standalone&&bar)bar.hidden=true;
   // Android Chrome: nút cài app khi trình duyệt cho phép
@@ -231,11 +227,12 @@ def dung(goi):
     s = thay(s, 'Mỗi loại một game, nằm trong thư mục <b>3-Game-mau</b> của gói này. Bấm để mở trong tab mới (mở bằng trình duyệt, không cần mạng), rồi',
              'Mỗi loại một game. Bấm để mở trong tab mới, rồi')
     s = thay(s, 'href="3-Game-mau/', 'href="choi-thu/', 4)
-    s = thay(s, '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>',
-             '<button role="tab" id="t-tham-khao" data-tab="tham-khao" aria-selected="false">3. Tham khảo</button>\n      <button role="tab" id="t-tra-ket-qua" data-tab="tra-ket-qua" aria-selected="false">' + anh_tab('the-tra-ket-qua') + '4. Trả kết quả</button>')
+    s = thay(s, '<span class="tl">Game mẫu</span></button>',
+             '<span class="tl">Game mẫu</span></button>\n      <button role="tab" id="t-tra-ket-qua" data-tab="tra-ket-qua" aria-selected="false">' + anh_tab('the-tra-ket-qua') + '<span class="tl">Game của tôi</span></button>')
     s = thay(s, "var tabs=['phieu','readme','tham-khao'];", "var tabs=['phieu','readme','tham-khao','tra-ket-qua'];")
-    s = thay(s, 'Thầy Cô xem lại, nói muốn sửa gì thì trợ lý sửa nội dung.</li>',
-             'Thầy Cô xem lại, nói muốn sửa gì thì trợ lý sửa nội dung. Dán link game vào thẻ <a href="#tra-ket-qua">4. Trả kết quả</a> để lưu lại.</li>')
+    s = thay(s, '<span>Lưu link game để lần sau mở lại.</span></li>',
+             '<span>Dán link game vào thẻ <a href="#tra-ket-qua" data-go="tra-ket-qua"><b>Game của tôi</b></a> để lưu, lần sau mở lại ngay.</span></li>')
+    s = thay(s, '          <li><span class="ic" aria-hidden="true">📽️</span>', '          <li><span class="ic" aria-hidden="true">📽️</span>')
     s = thay(s, '\n</main>', TAB + THE + '\n</main>')
     s = thay(s, '</body>', JS + '</body>')
     open(REPO + '/index.html', 'w', encoding='utf-8').write(s)
