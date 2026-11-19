@@ -11,7 +11,7 @@ H = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(H + '/../..')
 VIDU = REPO + '/skill/game-hoc-vietwise/references/vi-du/'
 RA = H + '/giong'
-GAME_MAU = ['on-bai-khtn8-mol-nong-do', 'on-bai-tienganh7-nhan-nuoc-ep', 'sach-la-thay-van6-de-men']
+GAME_MAU = ['on-bai-khtn8-mol-nong-do', 'on-bai-tienganh7-nhan-noni-enzyme', 'sach-la-thay-van6-de-men']
 VOICE = {'vi-VN': 'vi-VN-HoaiMyNeural', 'en-US': 'en-US-AriaNeural', 'zh-CN': 'zh-CN-XiaoxiaoNeural', 'ja-JP': 'ja-JP-NanamiNeural',
          'ko-KR': 'ko-KR-SunHiNeural', 'ru-RU': 'ru-RU-SvetlanaNeural', 'fr-FR': 'fr-FR-DeniseNeural', 'de-DE': 'de-DE-KatjaNeural',
          'es-ES': 'es-ES-ElviraNeural', 'it-IT': 'it-IT-ElsaNeural'}
