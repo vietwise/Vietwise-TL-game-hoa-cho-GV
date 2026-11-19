@@ -43,8 +43,8 @@ HEAD = '''<meta name="viewport" content="width=device-width, initial-scale=1, vi
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="apple-mobile-web-app-title" content="Trợ lý Game-học GV">
-<meta name="application-name" content="Trợ lý Game-học GV">
+<meta name="apple-mobile-web-app-title" content="Trợ lý Game-học">
+<meta name="application-name" content="Trợ lý Game-học">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">'''
@@ -108,10 +108,10 @@ THE = '''
 <!-- ===== ĐẶT RA MÀN HÌNH CHÍNH ===== -->
 <section class="card" id="man-hinh-chinh" aria-labelledby="h-mhc">
   <div class="mhc-head">
-    <img src="icon-512.png" alt="Biểu tượng Game-học: chú Não đeo huy chương Bền chí" width="72" height="72">
+    <img src="icon-512.png" alt="Biểu tượng Trợ lý Game-học: cuốn sách mở có mầm xanh" width="72" height="72">
     <div>
       <h2 id="h-mhc">Đặt ra màn hình chính điện thoại</h2>
-      <p class="lead" style="margin:0">Lưu trang này một lần, từ đó chạm biểu tượng <b>Trợ lý Game-học GV</b> là mở ngay, như một app.</p>
+      <p class="lead" style="margin:0">Lưu trang này một lần, từ đó chạm biểu tượng <b>Trợ lý Game-học</b> là mở ngay, như một app.</p>
     </div>
   </div>
   <p class="mhc-ok ok" style="margin-top:12px">Thầy Cô đang mở trang từ màn hình chính. Đã lưu xong.</p>
@@ -123,7 +123,7 @@ THE = '''
         <ol>
           <li>Mở trang này bằng <b>Safari</b> (không mở trong Zalo, Messenger hay app Claude).</li>
           <li>Chạm nút <span class="k">Chia sẻ</span> (ô vuông có mũi tên lên).</li>
-          <li>Chọn <span class="k">Thêm vào MH chính</span>. Kiểm tra tên là <b>Trợ lý Game-học GV</b>, hình là chú Não đeo huy chương Bền chí, rồi chạm <b>Thêm</b>.</li>
+          <li>Chọn <span class="k">Thêm vào MH chính</span>. Kiểm tra tên là <b>Trợ lý Game-học</b>, hình là cuốn sách mở có mầm xanh, rồi chạm <b>Thêm</b>.</li>
         </ol>
       </div>
       <div class="card">
