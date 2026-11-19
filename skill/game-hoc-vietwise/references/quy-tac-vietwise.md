@@ -13,7 +13,7 @@ Rút gọn từ bộ quy tắc game-học của Vietwise (Chuẩn Game-Học Tá
 ## 2. Dấu ấn Vietwise (mười dấu ấn), phần phù hợp lớp học
 | Dấu ấn | Trong game của Thầy Cô |
 |---|---|
-| Ba luật tác tạo | Toàn đồ (không xếp hạng), Phân đồ (đổi theo lớp, có ba mức), Phản hồi (có bài học, ôn lại sau) |
+| Ba luật tác tạo | Toàn đồ (không xếp hạng), Phân đồ (đổi theo lớp, có bốn level do học sinh tự chọn), Phản hồi (có bài học, ôn lại sau) |
 | SPARK (năm tiêu chí) | **S** kết nối tâm linh (biết ơn, tĩnh lặng) · **P** dự án có ý nghĩa, cùng vui · **A** thể hiện bản thân nghệ thuật · **R** xây quan hệ (với bản thân, bạn bè, người nhà) · **K** hiếu kỳ khám phá. Mỗi game có ít nhất một khoảnh khắc chạm được vài chữ (không cần đủ cả năm); chữ S chỉ dùng điều phổ quát, không tôn giáo |
 | Huy hiệu bốn phẩm chất | Hiếu kỳ, Thích nghi, Bền chí, An lạc: ghi bằng `chau_ngoc`; tự mở qua cách chơi, không ai phát, không xếp hạng |
 | Thật thà, không làm hộ | Chỉ gợi ý bằng ý nghĩa; đáp án để trong `gv_` |
@@ -29,7 +29,7 @@ Các dấu ấn nặng (Quặng mỏ Châu ngọc của từng bé, Hành trình
 - Ghi rõ chỗ lấy từ ảnh sách, chỗ là kiến thức phổ thông.
 
 ## 4. Chữ và âm
-- Chữ học sinh thấy ngay: tối đa 2 câu ngắn, khoảng 25 từ mỗi khối. Phần dài để cho Thầy Cô (`gv_`) hoặc cho câu hỏi gợi mở.
+- Chữ học sinh thấy ngay: tối đa 2 câu ngắn, khoảng 25 từ mỗi khối. Riêng lời kể (`loi_ke`, Thầy Cô đọc to): nhóm A 2 đến 3 câu, nhóm B đến E 4 đến 6 câu, không quá 80 từ, câu cuối là câu hỏi tò mò rõ ràng về ý nghĩa ngoài đời (không kết bằng câu mơ hồ). Phần dài để cho Thầy Cô (`gv_`) hoặc cho câu hỏi gợi mở.
 - Nhịp tiếng Việt tự nhiên ("từ hai tiếng"): tránh từ một tiếng cụt ở cuối câu hay chỗ nhấn (xa → xa lạ). Tên riêng và thuật ngữ quen giữ nguyên.
 - Gợi ý không trừ gì: gợi tình huống dùng hoặc loại trừ, không nhắc nguyên văn đáp án.
 - Đáp án và lựa chọn "tốt hơn" không được luôn nằm cùng một chữ cái. Đảo vị trí A, B, C xen kẽ giữa các game.

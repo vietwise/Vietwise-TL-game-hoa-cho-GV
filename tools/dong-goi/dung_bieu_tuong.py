@@ -1,35 +1,22 @@
-"""Dựng biểu tượng màn hình chính (icon-192/512, apple-touch-icon, favicon-64) từ ảnh Não đeo huy chương Bền chí.
-Chạy: python3 tools/dong-goi/dung_bieu_tuong.py   (ra ở thư mục gốc repo)"""
+"""Dựng biểu tượng màn hình chính từ logo "Trợ lý Game-học cho Thầy Cô" (Hong chốt 19/11/2026).
+Nguồn: tools/dong-goi/mau/logo-app.png (vuông, nền kem).
+Ra ở gốc repo: icon-512, icon-192, apple-touch-icon (cả logo), icon-maskable-512 (logo thu nhỏ trong vùng an toàn),
+favicon-64 (chỉ hình cuốn sách và mầm, vì chữ quá nhỏ sẽ không đọc được).
+Chạy: python3 tools/dong-goi/dung_bieu_tuong.py"""
 import os
-from PIL import Image, ImageDraw
+from PIL import Image
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-SPRITE = os.path.join(REPO, 'assets/sprites/nao/nao-ben-chi.webp')
-TIM, HONG, KEM, VANG = (21, 48, 208), (64, 92, 236), (249, 250, 247), (247, 197, 42)  # Blue logo -> Blue sáng, nền kem, viền vàng
-N = 1024  # vẽ to rồi thu nhỏ cho mịn
-
-
-def nen():
-    im = Image.new('RGB', (N, N))
-    px = im.load()
-    for y in range(N):
-        for x in range(N):
-            t = (x + y) / (2 * N - 2)  # chéo 160°, như trang Trường Thọ
-            px[x, y] = tuple(round(a + (b - a) * t) for a, b in zip(TIM, HONG))
-    d = ImageDraw.Draw(im)
-    r = int(N * 0.40)
-    c = N // 2
-    d.ellipse((c - r - 14, c - r - 14, c + r + 14, c + r + 14), fill=VANG)
-    d.ellipse((c - r, c - r, c + r, c + r), fill=KEM)
-    s = Image.open(SPRITE).convert('RGBA')
-    h = int(N * 0.70)
-    w = round(s.width * h / s.height)
-    s = s.resize((w, h), Image.LANCZOS)
-    im.paste(s, ((N - w) // 2, (N - h) // 2 + int(N * 0.01)), s)
-    return im
-
-
-big = nen()
-for ten, kt in [('icon-512.png', 512), ('icon-192.png', 192), ('apple-touch-icon.png', 180), ('favicon-64.png', 64)]:
-    big.resize((kt, kt), Image.LANCZOS).save(os.path.join(REPO, ten), optimize=True)
-    print('ra', ten)
+H = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(H + '/../..')
+KEM = (249, 250, 247)
+logo = Image.open(H + '/mau/logo-app.png').convert('RGB')
+w, h = logo.size
+s = min(w, h); logo = logo.crop(((w - s) // 2, (h - s) // 2, (w + s) // 2, (h + s) // 2))
+for ten, kt in [('icon-512.png', 512), ('icon-192.png', 192), ('apple-touch-icon.png', 180)]:
+    logo.resize((kt, kt), Image.LANCZOS).save(os.path.join(REPO, ten), optimize=True); print('ra', ten)
+m = Image.new('RGB', (512, 512), KEM); k = int(512 * 0.78)
+m.paste(logo.resize((k, k), Image.LANCZOS), ((512 - k) // 2, (512 - k) // 2)); m.save(REPO + '/icon-maskable-512.png', optimize=True); print('ra icon-maskable-512.png')
+# favicon: phần hình (sách + mầm) ở nửa trên logo
+b = logo.crop((int(s * 0.17), int(s * 0.02), int(s * 0.83), int(s * 0.50)))
+f = Image.new('RGB', (b.width, b.width), KEM); f.paste(b, (0, (b.width - b.height) // 2))
+f.resize((64, 64), Image.LANCZOS).save(REPO + '/favicon-64.png', optimize=True); print('ra favicon-64.png')

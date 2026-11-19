@@ -11,7 +11,7 @@ H = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(H + '/../..')
 VIDU = REPO + '/skill/game-hoc-vietwise/references/vi-du/'
 RA = H + '/giong'
-GAME_MAU = ['on-bai-khtn8-mol-nong-do', 'on-bai-tienganh7-nhan-hop-sua', 'sach-la-thay-van6-de-men']
+GAME_MAU = ['on-bai-khtn8-mol-nong-do', 'on-bai-tienganh7-nhan-noni-enzyme', 'sach-la-thay-van6-de-men']
 VOICE = {'vi-VN': 'vi-VN-HoaiMyNeural', 'en-US': 'en-US-AriaNeural', 'zh-CN': 'zh-CN-XiaoxiaoNeural', 'ja-JP': 'ja-JP-NanamiNeural',
          'ko-KR': 'ko-KR-SunHiNeural', 'ru-RU': 'ru-RU-SvetlanaNeural', 'fr-FR': 'fr-FR-DeniseNeural', 'de-DE': 'de-DE-KatjaNeural',
          'es-ES': 'es-ES-ElviraNeural', 'it-IT': 'it-IT-ElsaNeural'}
@@ -87,7 +87,8 @@ def gia(t, dst):
 def main():
     che_do_gia = '--gia' in sys.argv
     os.makedirs(RA + '/cache', exist_ok=True)
-    for ten in GAME_MAU:
+    chi = [a for a in sys.argv[1:] if not a.startswith('--')]
+    for ten in (chi or GAME_MAU):
         g = json.load(open(VIDU + ten + '.json', encoding='utf-8'))
         g.pop('giong', None)
         giong = {}

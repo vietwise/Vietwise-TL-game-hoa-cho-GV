@@ -1,7 +1,7 @@
 {
  "phien_ban": "1.0",
  "loai": "on-bai",
- "tieu_de": "Hộp sữa nói gì?",
+ "tieu_de": "Chai nước noni enzyme nói gì?",
  "mon": "Tiếng Anh",
  "lop": "7",
  "nhom_lop": "C",
@@ -25,27 +25,27 @@
   }
  ],
  "chau_ngoc": "ben-chi",
- "loi_ke": "Bác của Linh ở nước ngoài gửi về một hộp sữa tươi có nhãn tiếng Anh. Linh mở hộp vào ngày 5 tháng 11 và rót cho cả nhà. Trên nhãn có ba dòng chữ: \"Best before: 12 Dec 2026.\" \"Keep refrigerated after opening.\" \"Use within 3 days of opening.\" Linh phải quyết định bảo quản sữa còn lại.",
+ "loi_ke": "Bác của Linh ở nước ngoài gửi về một chai nước noni enzyme có nhãn tiếng Anh. Linh mở chai vào ngày 5 tháng 11 và rót cho cả nhà. Trên nhãn có ba dòng chữ: \"Best before: 12 Dec 2026.\" \"Refrigerate after opening.\" \"Consume within 3 days of opening.\" Linh phải quyết định bảo quản phần nước noni enzyme còn lại.",
  "du_kien": [
-  "Mở hộp: ngày 5 tháng 11",
+  "Mở chai: ngày 5 tháng 11",
   "Nhãn: ba dòng tiếng Anh",
-  "Còn nửa hộp"
+  "Còn nửa chai"
  ],
  "lua_chon": [
   {
    "ma": "A",
    "noi_dung": "Để vào tủ lạnh và dùng hết trước ngày 8 tháng 11",
-   "gv_kien_thuc": "Đọc đủ hai dòng: refrigerated và within 3 days of opening."
+   "gv_kien_thuc": "Đọc đủ hai dòng: Refrigerate after opening và within 3 days of opening."
   },
   {
    "ma": "B",
    "noi_dung": "Để trong tủ bếp, dùng đến ngày 12 tháng 12",
-   "gv_cai_gia": "Nhầm Best before (hộp chưa mở) với hạn dùng sau khi mở; bỏ qua Keep refrigerated."
+   "gv_cai_gia": "Nhầm Best before (chai chưa mở) với hạn dùng sau khi mở; bỏ qua Refrigerate after opening."
   },
   {
    "ma": "C",
    "noi_dung": "Để vào tủ lạnh và dùng đến ngày 12 tháng 12",
-   "gv_cai_gia": "Nhìn thấy refrigerated nhưng bỏ qua within 3 days of opening."
+   "gv_cai_gia": "Nhìn thấy Refrigerate nhưng bỏ qua within 3 days of opening."
   }
  ],
  "cach_chon": "Giơ 1, 2 hoặc 3 ngón tay",
@@ -55,29 +55,29 @@
   "Em từng đọc nhãn nước ngoài chưa?"
  ],
  "cau_mau_phan_bien": [
-  "Câu nào trên nhãn nói về hộp chưa mở, câu nào về hộp đã mở?",
+  "Câu nào trên nhãn nói về chai chưa mở, câu nào về chai đã mở?",
   "Em có đồng ý rằng đọc kỹ cả ba dòng mới an toàn không? Vì sao?"
  ],
  "so_do_chot": [
   {
-   "kien_thuc": "Keep refrigerated after opening: sau khi mở phải giữ lạnh",
+   "kien_thuc": "Refrigerate after opening: sau khi mở phải để tủ lạnh",
    "dung_vao": "Bác bỏ lựa chọn B"
   },
   {
-   "kien_thuc": "Use within 3 days of opening: dùng trong 3 ngày từ lúc mở",
+   "kien_thuc": "Consume within 3 days of opening: dùng hết trong 3 ngày từ lúc mở",
    "dung_vao": "Bác bỏ lựa chọn C"
   },
   {
    "kien_thuc": "Best before: chất lượng tốt nhất đến ngày đó, nếu chưa mở",
-   "dung_vao": "Ngày 12 tháng 12 không phải hạn của hộp đã mở"
+   "dung_vao": "Ngày 12 tháng 12 không phải hạn của chai đã mở"
   }
  ],
- "gv_goi_y_lua_chon_d": "Học sinh có thể viết lại ba dòng nhãn bằng tiếng Việt để dán lên hộp, hoặc viết một nhãn tiếng Anh cho sản phẩm khác.",
+ "gv_goi_y_lua_chon_d": "Học sinh có thể viết lại ba dòng nhãn bằng tiếng Việt để dán lên chai, hoặc viết một nhãn tiếng Anh cho sản phẩm khác.",
  "gv_hieu_lam": [
   "Dịch từng từ rồi bỏ qua ý cả câu",
   "Cho rằng ngày trên nhãn luôn là hạn dùng sau khi mở"
  ],
  "loi_chot": "Đọc kỹ và cẩn thận giúp cả nhà an toàn.",
  "du_an_that": "Tìm một nhãn tiếng Anh ở nhà và đọc hiểu một dòng hướng dẫn cho người nhà.",
- "gv_ghi_chu": "Nhãn là văn bản mô phỏng điển hình do Trợ lý viết, không phải nhãn của một sản phẩm cụ thể. Nếu Thầy Cô có ảnh nhãn thật hoặc đoạn đọc trong sách, nên thay vào. Nghĩa: Best before = tốt nhất trước ngày (hộp chưa mở). Keep refrigerated after opening = giữ lạnh sau khi mở. Use within 3 days of opening = dùng trong 3 ngày kể từ khi mở. Đáp số A: mở ngày 5, hết hạn ngày 8. Phiên âm: không cần."
+ "gv_ghi_chu": "Nhãn là văn bản mô phỏng điển hình do Trợ lý viết, không phải nhãn của một sản phẩm cụ thể. Nếu Thầy Cô có ảnh nhãn thật hoặc đoạn đọc trong sách, nên thay vào. Nghĩa: Best before = tốt nhất trước ngày (chai chưa mở). Refrigerate after opening = để tủ lạnh sau khi mở. Consume within 3 days of opening = dùng hết trong 3 ngày kể từ khi mở. Đáp số A: mở ngày 5, hết hạn ngày 8. Phiên âm: không cần."
 }
