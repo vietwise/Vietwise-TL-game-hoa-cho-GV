@@ -20,29 +20,29 @@
    "ten": "Minh"
   }
  ],
- "loi_ke": "Còn ba tuần nữa là thi vào lớp 10. Tối nào Minh cũng học đến khuya, bỏ bữa tối, rồi mười giờ đêm mua một cốc trà sữa thật ngọt cho tỉnh. Được nửa tiếng thì Minh lại buồn ngủ, đói cồn cào và không nhớ nổi bài vừa đọc. Tối nay bà để sẵn trên bàn: cơm, trứng, rau luộc, chai dầu lạc, bên cạnh là cốc trà sữa Minh vừa mua. Không ai bắt Minh phải ăn gì. Vậy trong những món ấy, chất nào giúp một đêm học đi được đường dài?",
+ "loi_ke": "Còn ba tuần nữa là thi vào lớp 10. Tối nào Minh cũng học đến khuya, bỏ bữa tối, rồi mười giờ đêm mua một cốc trà chanh thật ngọt cho tỉnh. Được nửa tiếng thì Minh lại buồn ngủ, đói cồn cào và không nhớ nổi bài vừa đọc. Tối nay bà để sẵn trên bàn: cơm, đậu phụ, rau luộc, chai dầu lạc, bên cạnh là cốc trà chanh Minh vừa mua. Không ai bắt Minh phải ăn gì. Vậy trong những món ấy, chất nào giúp một đêm học đi được đường dài?",
  "du_kien": [
   "Học 3 tiếng buổi tối",
   "Cơm (tinh bột)",
-  "Trứng (protein)",
+  "Đậu phụ (protein)",
   "Rau luộc (cellulose)",
   "Dầu lạc (chất béo)",
-  "Trà sữa ngọt (saccharose)"
+  "Trà chanh đường (saccharose)"
  ],
  "lua_chon": [
   {
    "ma": "A",
-   "noi_dung": "Uống trà sữa, vì đường vào máu nhanh nhất nên tỉnh nhanh nhất",
+   "noi_dung": "Uống trà chanh, vì đường vào máu nhanh nhất nên tỉnh nhanh nhất",
    "gv_kien_thuc": "Đúng là glucose vào máu nhanh, saccharose cũng thủy phân nhanh ra glucose và fructose. Nhưng năng lượng đến nhanh thì cũng hết nhanh; bữa chỉ có đường thiếu protein và chất xơ. Đây là hiểu lầm \"càng ngọt càng tỉnh lâu\"."
   },
   {
    "ma": "B",
-   "noi_dung": "Ăn một bữa có đủ cơm, trứng, rau và chút dầu, trà sữa để dành hoặc bỏ",
-   "gv_kien_thuc": "Tinh bột phải thủy phân dần thành glucose nên năng lượng đến từ từ; protein trong trứng là chất xây dựng cơ thể; cellulose trong rau người không tiêu hóa được nhưng là chất xơ giúp tiêu hóa; chất béo giúp hấp thụ vitamin A, D, E, K."
+   "noi_dung": "Ăn một bữa có đủ cơm, đậu phụ, rau và chút dầu, trà chanh để dành hoặc bỏ",
+   "gv_kien_thuc": "Tinh bột phải thủy phân dần thành glucose nên năng lượng đến từ từ; protein trong đậu phụ là chất xây dựng cơ thể; cellulose trong rau người không tiêu hóa được nhưng là chất xơ giúp tiêu hóa; chất béo giúp hấp thụ vitamin A, D, E, K."
   },
   {
    "ma": "C",
-   "noi_dung": "Chỉ ăn rau và trứng, bỏ cơm và dầu vì tinh bột với chất béo làm béo",
+   "noi_dung": "Chỉ ăn rau và đậu phụ, bỏ cơm và dầu vì tinh bột với chất béo làm béo",
    "gv_kien_thuc": "Hiểu lầm \"chất béo, tinh bột là xấu\". Bỏ hẳn tinh bột và chất béo là bỏ hai nguồn năng lượng chính; chất béo cho khoảng 9 kcal mỗi gam, tinh bột và protein khoảng 4 kcal mỗi gam. Vấn đề là lượng và cách ăn, không phải tên chất."
   }
  ],
@@ -60,7 +60,7 @@
  "so_do_chot": [
   {
    "kien_thuc": "Glucose, saccharose: vào máu nhanh",
-   "dung_vao": "Trà sữa làm tỉnh nhanh rồi mau hết (lựa chọn A)"
+   "dung_vao": "Trà chanh làm tỉnh nhanh rồi mau hết (lựa chọn A)"
   },
   {
    "kien_thuc": "Tinh bột thủy phân dần thành glucose",
@@ -72,25 +72,25 @@
   },
   {
    "kien_thuc": "Protein, chất béo",
-   "dung_vao": "Trứng xây dựng cơ thể, dầu giúp hấp thụ vitamin (bác bỏ lựa chọn C)"
+   "dung_vao": "Đậu phụ xây dựng cơ thể, dầu giúp hấp thụ vitamin (bác bỏ lựa chọn C)"
   }
  ],
  "level": [
   {
    "so": 1,
    "ten": "Làm quen",
-   "nhiem_vu": "Ghép mỗi món trên bàn của Minh với chất có nhiều nhất trong món đó: cơm, trứng, rau luộc, dầu lạc, trà sữa.",
+   "nhiem_vu": "Ghép mỗi món trên bàn của Minh với chất có nhiều nhất trong món đó: cơm, đậu phụ, rau luộc, dầu lạc, trà chanh.",
    "goi_y": [
     "Bốn nhóm: tinh bột, protein, cellulose (chất xơ), chất béo",
-    "Trà sữa ngọt nhờ đường mía, tức saccharose"
+    "Trà chanh ngọt nhờ đường mía, tức saccharose"
    ],
    "gv_danh_cho": "Học sinh cần thêm thời gian, cần gợi ý từng bước. Gợi ý hiện sẵn.",
-   "gv_dap_an": "Cơm: tinh bột. Trứng: protein (lòng đỏ có cả chất béo). Rau luộc: cellulose. Dầu lạc: chất béo. Trà sữa: saccharose (và chất béo từ sữa, kem)."
+   "gv_dap_an": "Cơm: tinh bột. Đậu phụ: protein (có thêm một ít chất béo). Rau luộc: cellulose. Dầu lạc: chất béo. Trà chanh: saccharose (đường mía pha vào)."
   },
   {
    "so": 2,
    "ten": "Vững bước",
-   "nhiem_vu": "Giải thích cho Minh vì sao cốc trà sữa làm Minh tỉnh rất nhanh nhưng chỉ được một lúc, còn bát cơm thì no lâu hơn.",
+   "nhiem_vu": "Giải thích cho Minh vì sao cốc trà chanh làm Minh tỉnh rất nhanh nhưng chỉ được một lúc, còn bát cơm thì no lâu hơn.",
    "goi_y": [
     "Saccharose thủy phân thành những chất nào?",
     "Tinh bột phải qua bao nhiêu bước mới thành glucose?"
@@ -128,7 +128,7 @@
   "gv_y_do": "Không có đáp án đúng. Tôn trọng mọi lựa chọn, không phán xét bữa ăn của gia đình học sinh (hoàn cảnh mỗi nhà khác nhau). Học sinh có thể viết riêng, không cần chia sẻ trước lớp."
  },
  "loi_chot": "Biết một chất có trong món gì, vào cơ thể ra sao, là có thêm quyền tự chọn. Em sẽ dùng quyền chọn ấy thế nào cho chính mình?",
- "gv_goi_y_lua_chon_d": "Ăn bữa tối đủ chất lúc 7 giờ, đến khuya đói thì ăn một quả chuối hoặc khoai luộc thay trà sữa; hoặc đổi giờ học sang sáng sớm.",
+ "gv_goi_y_lua_chon_d": "Ăn bữa tối đủ chất lúc 7 giờ, đến khuya đói thì ăn một quả chuối hoặc khoai luộc thay trà chanh; hoặc đổi giờ học sang sáng sớm.",
  "gv_hieu_lam": [
   "Càng ngọt càng tỉnh lâu",
   "Chất béo, tinh bột là xấu, nên bỏ hẳn",

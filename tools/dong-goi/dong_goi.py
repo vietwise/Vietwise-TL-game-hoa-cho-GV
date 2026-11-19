@@ -28,7 +28,7 @@ subprocess.check_call(['zip', '-qr', inner, 'game-hoc-vietwise'], cwd=os.path.di
 # 3: game mẫu
 games = [
     ('1-Khoa-hoc-tu-nhien-8-On-bai.html', 'on-bai-khtn8-mol-nong-do.json'),
-    ('2-Tieng-Anh-7-Doc-ngoai-ngu.html', 'on-bai-tienganh7-nhan-hop-sua.json'),
+    ('2-Tieng-Anh-7-Doc-ngoai-ngu.html', 'on-bai-tienganh7-nhan-nuoc-ep.json'),
     ('3-Ngu-van-6-Sach-la-Thay.html', 'sach-la-thay-van6-de-men.json'),
     ('4-Khoa-hoc-tu-nhien-9-Bon-level.html', 'on-bai-khtn9-lipid-carbohydrate-protein-4-level.json'),
 ]
