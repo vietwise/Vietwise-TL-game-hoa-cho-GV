@@ -186,7 +186,10 @@ body:not([data-tab=readme]) #man-hinh-chinh{display:none}
 .gn h2{margin:0 0 4px}
 .gn .loi{font-size:15.5px;margin:0 0 12px;color:var(--ink)}
 .gn-so{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.gn-so div{background:#fff;border-radius:14px;padding:10px 12px;border:1px solid var(--line)}
+.gn-so div{background:#fff;border-radius:14px;padding:10px 12px;border:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.gn-so .ic{grid-row:span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:21px;line-height:1}
+.gn-so .c1{background:#E8ECFF}.gn-so .c2{background:#FFEFE5}.gn-so .c3{background:#FEF6D9}.gn-so .c4{background:#EAF5E2}.gn-so .c5{background:#E8ECFF}.gn-so .c6{background:#EAF5E2}
+.gn .tri{font-size:17px;font-weight:700;color:var(--cam);margin:2px 0 6px;line-height:1.45}
 .gn-so b{display:block;font-size:28px;line-height:1.1;color:var(--blue);font-weight:800}
 .gn-so span{font-size:13.5px;color:var(--mut)}
 .gn h3{margin:16px 0 8px;font-size:15.5px}
@@ -480,16 +483,17 @@ body:not([data-tab=readme]) #man-hinh-chinh{display:none}
 <section class="panel" id="p-tra-ket-qua" role="tabpanel" aria-labelledby="t-tra-ket-qua">
   <div class="card gn" id="ghi-nhan" aria-labelledby="h-gn">
     <h2 id="h-gn">🌱 Hành trình Game-học của Thầy Cô</h2>
+    <p class="tri">Thầy Cô đang biến việc học thành thú vị và gieo sự hiếu kỳ cho học trò, được tìm kiếm châu ngọc trong từng bài học!</p>
     <p class="loi" id="gn-loi"></p>
     <div class="gn-so">
-      <div><b id="gn-tong">0</b><span>game đã tạo</span></div>
-      <div><b id="gn-ngay">0</b><span>ngày soạn game</span></div>
-      <div><b id="gn-tbngay">0</b><span>game mỗi ngày soạn</span></div>
-      <div><b id="gn-thang">0</b><span>game tháng này</span></div>
-      <div><b id="gn-tbthang">0</b><span>game mỗi tháng</span></div>
-      <div><b id="gn-dong">0</b><span>ngày đồng hành</span></div>
+      <div><span class="ic c1" aria-hidden="true">🎮</span><b id="gn-tong">0</b><span>game đã tạo</span></div>
+      <div><span class="ic c2" aria-hidden="true">✏️</span><b id="gn-ngay">0</b><span>ngày soạn game</span></div>
+      <div><span class="ic c3" aria-hidden="true">⚡</span><b id="gn-tbngay">0</b><span>game mỗi ngày soạn</span></div>
+      <div><span class="ic c4" aria-hidden="true">🗓️</span><b id="gn-thang">0</b><span>game tháng này</span></div>
+      <div><span class="ic c5" aria-hidden="true">📈</span><b id="gn-tbthang">0</b><span>game mỗi tháng</span></div>
+      <div><span class="ic c6" aria-hidden="true">🌱</span><b id="gn-dong">0</b><span>ngày đồng hành</span></div>
     </div>
-    <h3>📅 Game tạo trong 6 tháng gần đây</h3>
+    <h3>📊 Game tạo trong 6 tháng gần đây</h3>
     <div class="gn-cot" id="gn-cot" role="img"></div>
     <h3>💎 Châu ngọc Thầy Cô đã nhận</h3>
     <div class="gn-ngoc" id="gn-ngoc"></div>
