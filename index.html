@@ -182,6 +182,24 @@ body:not([data-tab=readme]) #man-hinh-chinh{display:none}
 .tep-chon input[type=file]{position:absolute;width:1px;height:1px;opacity:0}
 .kq-list .loai{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;margin-right:6px;background:#EAF5E2;color:#2F6B12}
 .kq-list .loai.lk{background:#E8ECFF;color:var(--blue)}
+.gn{background:linear-gradient(135deg,#FEF6D9,#FFEFE5);border:1.5px solid #F7C52A}
+.gn h2{margin:0 0 4px}
+.gn .loi{font-size:15.5px;margin:0 0 12px;color:var(--ink)}
+.gn-so{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.gn-so div{background:#fff;border-radius:14px;padding:10px 12px;border:1px solid var(--line)}
+.gn-so b{display:block;font-size:28px;line-height:1.1;color:var(--blue);font-weight:800}
+.gn-so span{font-size:13.5px;color:var(--mut)}
+.gn h3{margin:16px 0 8px;font-size:15.5px}
+.gn-cot{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:end;height:120px;padding:0 2px}
+.gn-cot div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
+.gn-cot i{display:block;width:70%;max-width:40px;background:var(--cam);border-radius:6px 6px 0 0;min-height:3px}
+.gn-cot .nay i{background:var(--blue)}
+.gn-cot em{font-style:normal;font-weight:700;font-size:13px;color:var(--ink);margin-bottom:3px}
+.gn-cot small{font-size:12px;color:var(--mut);margin-top:4px;white-space:nowrap}
+.gn-ngoc{display:flex;flex-wrap:wrap;gap:8px}
+.gn-ngoc span{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 12px;font-size:13.5px;font-weight:700;background:#fff;border:1.5px dashed #C9CCC3;color:#8A8A8A}
+.gn-ngoc span.co{border:1.5px solid #F7C52A;background:#FFF8DD;color:var(--ink)}
+.gn .tiep{font-size:14px;color:var(--mut);margin:10px 0 0}
 #xem-game{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column}
 #xem-game[hidden]{display:none!important}
 #xem-game .thanh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 12px;padding-top:calc(8px + env(safe-area-inset-top,0px));background:#1530D0;color:#fff;font-weight:700}
@@ -460,6 +478,23 @@ body:not([data-tab=readme]) #man-hinh-chinh{display:none}
 
 <!-- ===== GAME CỦA TÔI ===== -->
 <section class="panel" id="p-tra-ket-qua" role="tabpanel" aria-labelledby="t-tra-ket-qua">
+  <div class="card gn" id="ghi-nhan" aria-labelledby="h-gn">
+    <h2 id="h-gn">🌱 Hành trình Game-học của Thầy Cô</h2>
+    <p class="loi" id="gn-loi"></p>
+    <div class="gn-so">
+      <div><b id="gn-tong">0</b><span>game đã tạo</span></div>
+      <div><b id="gn-ngay">0</b><span>ngày soạn game</span></div>
+      <div><b id="gn-tbngay">0</b><span>game mỗi ngày soạn</span></div>
+      <div><b id="gn-thang">0</b><span>game tháng này</span></div>
+      <div><b id="gn-tbthang">0</b><span>game mỗi tháng</span></div>
+      <div><b id="gn-dong">0</b><span>ngày đồng hành</span></div>
+    </div>
+    <h3>📅 Game tạo trong 6 tháng gần đây</h3>
+    <div class="gn-cot" id="gn-cot" role="img"></div>
+    <h3>💎 Châu ngọc Thầy Cô đã nhận</h3>
+    <div class="gn-ngoc" id="gn-ngoc"></div>
+    <p class="tiep" id="gn-tiep"></p>
+  </div>
   <div class="card">
     <h2>Game của tôi</h2>
     <p class="lead">Claude soạn xong sẽ trả về trang game. Thầy Cô lưu game theo một trong hai cách dưới đây (làm cả hai càng chắc). Lúc lên lớp, mở app, vào thẻ này, chạm <b>Mở game</b>.</p>
@@ -694,7 +729,35 @@ body:not([data-tab=readme]) #man-hinh-chinh{display:none}
   function dong(ten,loai,phu){var li=document.createElement('li');var t=document.createElement('span');t.className='ten';
     var l=document.createElement('span');l.className='loai'+(loai==='Link'?' lk':'');l.textContent=loai;t.appendChild(l);t.appendChild(document.createTextNode(ten));
     var sm=document.createElement('small');sm.textContent=phu;t.appendChild(sm);li.appendChild(t);return li}
+  var NGOC=[[1,'🔍 Hiếu kỳ'],[5,'🌿 Thích nghi'],[10,'⛰️ Bền chí'],[20,'🪷 An lạc'],[50,'🌟 Người gieo hạt'],[100,'💎 Châu ngọc lớp học']];
+  function ngayCua(g){var m=/^(\d{2})\/(\d{2})\/(\d{4})$/.exec(g.ngay||'');return m?new Date(+m[3],m[2]-1,+m[1]):null}
+  function ghiNhan(){
+    var tat=tep.concat(ds),d=tat.map(ngayCua).filter(Boolean),n=tat.length,ngay={},thang={};
+    d.forEach(function(x){ngay[x.toDateString()]=1;var k=x.getFullYear()+'-'+x.getMonth();thang[k]=(thang[k]||0)+1});
+    var soNgay=Object.keys(ngay).length,nay=new Date(),kNay=nay.getFullYear()+'-'+nay.getMonth();
+    var dau=d.length?new Date(Math.min.apply(null,d)):null;
+    var dong=dau?Math.floor((new Date(nay.getFullYear(),nay.getMonth(),nay.getDate())-dau)/864e5)+1:0;
+    var soThang=dau?(nay.getFullYear()-dau.getFullYear())*12+nay.getMonth()-dau.getMonth()+1:0;
+    function so(x){return(Math.round(x*10)/10).toString().replace('.',',')}
+    function dat(id,v){document.getElementById(id).textContent=v}
+    dat('gn-tong',n);dat('gn-ngay',soNgay);dat('gn-tbngay',soNgay?so(n/soNgay):0);dat('gn-thang',thang[kNay]||0);dat('gn-tbthang',soThang?so(n/soThang):0);dat('gn-dong',dong);
+    var loi=n===0?'Mỗi game Thầy Cô soạn là một hạt giống tò mò gieo vào lớp học. Lưu game đầu tiên để bắt đầu hành trình nhé.'
+      :n<5?'Cảm ơn Thầy Cô đã gieo những hạt giống đầu tiên. Học trò sẽ nhớ những tiết học có câu chuyện thật.'
+      :n<20?'Thầy Cô đang giữ nhịp rất đều. Mỗi game là một lần học trò được tự chọn, tự nghĩ và tự tìm chứng cứ.'
+      :'Kính tri ân Thầy Cô. Hành trình của Thầy Cô đang giúp những châu ngọc bên trong học trò được tỏa sáng.';
+    dat('gn-loi',loi);
+    var cot=document.getElementById('gn-cot');cot.innerHTML='';var mang=[],lon=1;
+    for(var i=5;i>=0;i--){var t=new Date(nay.getFullYear(),nay.getMonth()-i,1),k=t.getFullYear()+'-'+t.getMonth();mang.push([t,thang[k]||0,i===0]);lon=Math.max(lon,thang[k]||0)}
+    var mo=[];mang.forEach(function(m){var o=document.createElement('div');if(m[2])o.className='nay';
+      var em=document.createElement('em');em.textContent=m[1];var b=document.createElement('i');b.style.height=Math.max(3,Math.round(m[1]/lon*80))+'px';
+      var sm=document.createElement('small');sm.textContent='Th'+(m[0].getMonth()+1);o.appendChild(em);o.appendChild(b);o.appendChild(sm);cot.appendChild(o);mo.push('tháng '+(m[0].getMonth()+1)+': '+m[1]+' game')});
+    cot.setAttribute('aria-label','Số game theo tháng, '+mo.join(', '));
+    var ng=document.getElementById('gn-ngoc');ng.innerHTML='';var tiep=null;
+    NGOC.forEach(function(x){var sp=document.createElement('span');sp.textContent=x[1]+' · '+x[0]+' game';if(n>=x[0])sp.className='co';else if(!tiep)tiep=x;ng.appendChild(sp)});
+    dat('gn-tiep',tiep?'Còn '+(tiep[0]-n)+' game nữa để nhận viên '+tiep[1].replace(/^\S+\s/,'')+'.':'Thầy Cô đã nhận đủ châu ngọc. Cảm ơn Thầy Cô!');
+  }
   function ve(){
+    ghiNhan();
     list.innerHTML='';rong.hidden=(ds.length+tep.length)>0;
     tep.forEach(function(g){
       var li=dong(g.ten,'Tệp',g.ngay+' · mở được khi không có mạng');
