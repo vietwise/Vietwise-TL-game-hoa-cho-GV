@@ -295,6 +295,92 @@ JS = r'''
 </script>
 '''
 
+# ===== ĐĂNG KÝ THẦY CÔ + SỐ LIỆU SỬ DỤNG (gửi về Sổ Thầy Cô, app "Quản lý Game-học" ở quan-ly/) =====
+# Địa chỉ Apps Script lấy từ trường "so_thay_co" trong phien-ban.json. Chưa có trường đó thì
+# app không hiện phiếu và không gửi gì.
+DK_CSS = """
+body:not([data-tab=readme]) #dang-ky{display:none}
+body:not([data-tab=phieu]) #dk-moi{display:none}
+#dk-moi{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#EAF6E3;border:1px solid #BFE0AC;border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:14.5px}
+#dk-moi span{flex:1}#dk-moi .x{border:0;background:none;font-size:20px;color:var(--mut);cursor:pointer;padding:0 4px}
+#dang-ky .dk-o{margin-top:12px}#dang-ky label{display:block;font-weight:700;margin-bottom:4px}
+#dang-ky input[type=email],#dang-ky input[type=tel]{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+#dang-ky .dk-dy{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin-top:14px}
+#dang-ky .dk-dy input{margin-top:5px;width:18px;height:18px;flex:0 0 auto}
+"""
+
+DK = """
+<!-- ===== ĐĂNG KÝ THẦY CÔ ===== -->
+<section class="card" id="dang-ky" aria-labelledby="h-dk" hidden>
+  <h2 id="h-dk">Thầy Cô đăng ký dùng Trợ lý Game-học</h2>
+  <p class="lead" style="margin:0">Đăng ký để Vườn Game-học biết Thầy Cô đang dùng, báo khi có bản mới và hỗ trợ khi cần. Vẫn <b>miễn phí vĩnh viễn</b>, không đăng ký vẫn dùng được.</p>
+  <p class="ok" id="dk-xong" hidden></p>
+  <form id="dk-form" novalidate>
+    <div class="row">
+      <div class="dk-o"><label for="dk-ten">Họ tên <span class="err" id="dk-e-ten" hidden>Thầy Cô cho em biết tên nhé</span></label><input type="text" id="dk-ten" maxlength="80" autocomplete="name"></div>
+      <div class="dk-o"><label for="dk-truong">Trường</label><input type="text" id="dk-truong" maxlength="120"></div>
+    </div>
+    <div class="row">
+      <div class="dk-o"><label for="dk-tinh">Tỉnh, thành</label><input type="text" id="dk-tinh" maxlength="40"></div>
+      <div class="dk-o"><label for="dk-cap">Cấp dạy</label><select id="dk-cap"><option value="">Chọn cấp</option><option>Tiểu học</option><option>THCS</option><option>THPT</option><option>Khác</option></select></div>
+    </div>
+    <div class="dk-o"><label for="dk-mon">Môn dạy <small>(nhiều môn thì cách nhau dấu phẩy)</small></label><input type="text" id="dk-mon" maxlength="60"></div>
+    <div class="dk-o"><label for="dk-lh">Zalo hoặc email <small>(không bắt buộc, để Vườn Game-học hỗ trợ)</small></label><input type="text" id="dk-lh" maxlength="80" inputmode="email"></div>
+    <label class="dk-dy"><input type="checkbox" id="dk-dy"><span>Tôi đồng ý cho Vietwise lưu các thông tin trên để hỗ trợ và báo tin về Trợ lý Game-học. Vietwise không chia sẻ cho ai khác. <span class="err" id="dk-e-dy" hidden>Thầy Cô đánh dấu ô này để gửi nhé</span></span></label>
+    <div class="btns"><button class="btn" type="submit" id="dk-gui">Gửi đăng ký</button></div>
+    <p class="err" id="dk-loi" hidden></p>
+  </form>
+  <p class="nho" style="margin-top:12px">App cũng gửi về Vườn Game-học vài con số để biết app có giúp được Thầy Cô không: số lần mở app, số game đã lưu, phiên bản app, loại máy. Không gửi nội dung game, ảnh sách hay tên học sinh. <label style="display:inline;font-weight:400"><input type="checkbox" id="dk-sd" checked> Cho phép gửi các con số này</label></p>
+</section>
+"""
+
+DK_MOI = """<div id="dk-moi" hidden><span>🌱 Thầy Cô đăng ký để nhận tin bản mới và được hỗ trợ.</span><a class="btn" href="#dang-ky" id="dk-moi-di">Đăng ký</a><button class="x" type="button" id="dk-moi-x" aria-label="Ẩn">×</button></div>
+"""
+
+DK_JS = r"""
+<script>
+/* Đăng ký Thầy Cô và số liệu sử dụng: gửi về Sổ Thầy Cô (Google Apps Script của Vietwise) */
+(function(){
+  var K={may:'gamehoc-ma-may',dk:'gamehoc-da-dang-ky',an:'gamehoc-an-moi-dk',sd:'gamehoc-gui-so-lieu',luc:'gamehoc-gui-luc'};
+  function doc(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function ghi(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function $(id){return document.getElementById(id)}
+  function maMay(){var m=doc(K.may);if(m&&/^[A-Za-z0-9_-]{8,40}$/.test(m))return m;var a=new Uint8Array(12);(window.crypto||{getRandomValues:function(x){for(var i=0;i<x.length;i++)x[i]=Math.random()*256|0;return x}}).getRandomValues(a);
+    m=btoa(String.fromCharCode.apply(null,a)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');ghi(K.may,m);return m}
+  function thietBi(){var u=navigator.userAgent||'';return /iPhone|iPod/.test(u)?'iPhone':/iPad/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1)?'iPad':/Android/.test(u)?'Android':/Windows/.test(u)?'Windows':/Macintosh/.test(u)?'Mac':'Khác'}
+  function phienBan(){return doc('gamehoc-skill-da-tai')||''}
+  function gui(url,o){return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o)}).then(function(r){return r.json()})
+    .catch(function(){return fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o)}).then(function(){return{ok:true,mu:true}})})}
+  function soGame(cb){var n=0;try{n=(JSON.parse(doc('gamehoc-ket-qua')||'[]')||[]).length}catch(e){}
+    try{var rq=indexedDB.open('gamehoc-tep',1);rq.onupgradeneeded=function(){try{rq.result.createObjectStore('tep',{keyPath:'id'})}catch(e){}};
+      rq.onsuccess=function(){try{var d=rq.result,c=d.transaction('tep','readonly').objectStore('tep').count();c.onsuccess=function(){cb(n+c.result);d.close()};c.onerror=function(){cb(n)}}catch(e){cb(n)}};rq.onerror=function(){cb(n)}}catch(e){cb(n)}}
+  function daXong(){var t=doc(K.dk);if(!t)return;$('dk-xong').textContent='Thầy Cô đã đăng ký ngày '+t+'. Cảm ơn Thầy Cô! Muốn sửa thông tin thì điền lại và gửi.';$('dk-xong').hidden=false;$('dk-moi').hidden=true}
+  function bat(url){
+    $('dang-ky').hidden=false;$('dk-sd').checked=doc(K.sd)!=='0';daXong();
+    if(!doc(K.dk)&&!doc(K.an))$('dk-moi').hidden=false;
+    $('dk-moi-x').addEventListener('click',function(){ghi(K.an,'1');$('dk-moi').hidden=true});
+    $('dk-moi-di').addEventListener('click',function(e){e.preventDefault();var b=document.querySelector('[data-tab=readme]');if(b)b.click();setTimeout(function(){$('dang-ky').scrollIntoView({behavior:'smooth'})},60)});
+    $('dk-ten').addEventListener('input',function(){$('dk-e-ten').hidden=true});$('dk-dy').addEventListener('change',function(){$('dk-e-dy').hidden=true});
+    $('dk-sd').addEventListener('change',function(){ghi(K.sd,this.checked?'1':'0')});
+    $('dk-form').addEventListener('submit',function(e){e.preventDefault();
+      var ten=$('dk-ten').value.trim(),dy=$('dk-dy').checked;$('dk-e-ten').hidden=!!ten;$('dk-e-dy').hidden=dy;$('dk-loi').hidden=true;if(!ten||!dy)return;
+      var b=$('dk-gui');b.disabled=true;b.textContent='Đang gửi…';
+      gui(url,{viec:'dang_ky',ma_may:maMay(),ho_ten:ten,truong:$('dk-truong').value.trim(),tinh:$('dk-tinh').value.trim(),mon:$('dk-mon').value.trim(),cap:$('dk-cap').value,lien_he:$('dk-lh').value.trim(),dong_y:true})
+        .then(function(j){b.disabled=false;b.textContent='Gửi đăng ký';
+          if(j&&j.ok){var d=new Date();ghi(K.dk,('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear());daXong();$('dk-xong').scrollIntoView({behavior:'smooth',block:'center'})}
+          else{$('dk-loi').textContent='Chưa gửi được. Thầy Cô kiểm tra lại họ tên và ô đồng ý rồi thử lại nhé.';$('dk-loi').hidden=false}})
+        .catch(function(){b.disabled=false;b.textContent='Gửi đăng ký';$('dk-loi').textContent='Chưa gửi được vì mất mạng. Thầy Cô thử lại khi có mạng nhé.';$('dk-loi').hidden=false});
+    });
+    baoDung(url);
+  }
+  function baoDung(url){if(doc(K.sd)==='0')return;var t=+doc(K.luc)||0;if(Date.now()-t<30*60*1000)return;
+    soGame(function(n){gui(url,{viec:'su_dung',ma_may:maMay(),so_game_luu:n,phien_ban:phienBan(),thiet_bi:thietBi()}).then(function(j){if(j&&j.ok)ghi(K.luc,String(Date.now()))},function(){})})}
+  try{fetch('https://vietwise.github.io/Vietwise-TL-game-hoa-cho-GV/phien-ban.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null})
+    .then(function(j){var u=j&&j.so_thay_co;if(u&&/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(u))bat(u)}).catch(function(){})}catch(e){}
+})();
+</script>
+"""
+
 
 def dung(goi):
     s = open(H + '/mau/doc-truoc.html', encoding='utf-8').read()
@@ -304,7 +390,7 @@ def dung(goi):
         return ('<img class="ti" src="data:image/webp;base64,%s" alt="">' % base64.b64encode(open(p, 'rb').read()).decode()) if os.path.exists(p) else ''
     s = thay(s, '<meta name="viewport" content="width=device-width, initial-scale=1">', HEAD)
     s = thay(s, '<title>Trợ lý Game-học: Phiếu giao việc cho Thầy Cô</title>', '<title>Trợ lý Game-học cho Thầy Cô</title>')
-    s = thay(s, '</style>\n</head>', CSS + '</style>\n</head>')
+    s = thay(s, '</style>\n</head>', CSS + DK_CSS + '</style>\n</head>')
     s = thay(s, '\n<header>', '\n' + BAR + '<header>')
     s = thay(s, '<span class="nobreak"><b>4-Cai-Skill/game-hoc-vietwise.zip</b></span> trong gói này.',
              '<a class="nobreak" href="tai-ve/game-hoc-vietwise.zip" download><b>game-hoc-vietwise.zip</b></a> (bấm để tải về máy).')
@@ -317,8 +403,9 @@ def dung(goi):
     s = thay(s, '<span>Lưu link game để lần sau mở lại.</span></li>',
              '<span>Lưu game: trong Claude bấm <b>Tải xuống</b> để có tệp .html (hoặc bấm Chia sẻ để lấy link), rồi đưa vào thẻ <a href="#tra-ket-qua" data-go="tra-ket-qua"><b>Game của tôi</b></a>. Lần sau mở lại ngay, không cần mạng.</span></li>')
     s = thay(s, '          <li><span class="ic" aria-hidden="true">📽️</span>', '          <li><span class="ic" aria-hidden="true">📽️</span>')
-    s = thay(s, '\n</main>', TAB + THE + '\n</main>')
-    s = thay(s, '</body>', JS + '</body>')
+    s = thay(s, '<section class="panel on" id="p-phieu" role="tabpanel" aria-labelledby="t-phieu">\n', '<section class="panel on" id="p-phieu" role="tabpanel" aria-labelledby="t-phieu">\n' + DK_MOI)
+    s = thay(s, '\n</main>', TAB + DK + THE + '\n</main>')
+    s = thay(s, '</body>', JS + DK_JS + '</body>')
     open(REPO + '/index.html', 'w', encoding='utf-8').write(s)
 
     if os.path.isdir(REPO + '/choi-thu'):
