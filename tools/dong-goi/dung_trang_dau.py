@@ -89,6 +89,18 @@ body:not([data-tab=readme]) #man-hinh-chinh{display:none}
 .kq-list .ten small{display:block;font-weight:400;color:var(--mut);font-size:12.5px}
 .kq-list .btn{padding:8px 16px;font-size:14px;text-decoration:none}
 .kq-rong{color:var(--mut);font-style:italic;margin:12px 0 0}
+.luu-cach{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0 4px}
+.luu-cach div{background:#FEF6D9;border:1.5px solid #F7C52A;border-radius:14px;padding:12px;font-size:14.5px;line-height:1.45}
+.luu-cach strong{display:block;color:var(--blue);font-size:15px;margin-bottom:2px}
+.tep-chon{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.tep-chon input[type=file]{position:absolute;width:1px;height:1px;opacity:0}
+.kq-list .loai{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;margin-right:6px;background:#EAF5E2;color:#2F6B12}
+.kq-list .loai.lk{background:#E8ECFF;color:var(--blue)}
+#xem-game{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column}
+#xem-game[hidden]{display:none!important}
+#xem-game .thanh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 12px;padding-top:calc(8px + env(safe-area-inset-top,0px));background:#1530D0;color:#fff;font-weight:700}
+#xem-game .thanh span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#xem-game iframe{flex:1;width:100%;border:0;background:#fff}
 '''
 
 FLOW = '''<ol class="flow" aria-label="Các bước dùng app Game-học">
@@ -96,7 +108,7 @@ FLOW = '''<ol class="flow" aria-label="Các bước dùng app Game-học">
   <li class="gv"><span class="n">2</span><b>Phiếu giao việc</b>Chạm biểu tượng Game-học, điền phiếu ở thẻ Giao việc, bấm sao chép.</li>
   <li class="gv"><span class="n">3</span><b>Gửi cho Claude</b>Dán phiếu vào Claude (đã bật Skill), đính kèm ảnh trang sách.</li>
   <li class="cl"><span class="n">4</span><b>Claude trả kết quả</b>Trợ lý soạn game, trả về link trang chơi. Thầy Cô xem lại, nhờ sửa nếu cần.</li>
-  <li class="gv"><span class="n">5</span><b>Lưu link game</b>Dán link vào thẻ Game của tôi để giữ trên máy.</li>
+  <li class="gv"><span class="n">5</span><b>Lưu game</b>Tải tệp game .html từ Claude (hoặc lấy link), đưa vào thẻ Game của tôi để giữ trên máy.</li>
   <li class="lop"><span class="n">6</span><b>Chơi trên lớp</b>Chạm Mở game, chiếu lên màn hình. Phím mũi tên sang bước, phím G cho Thầy Cô.</li>
 </ol>
 <p class="flow-chu"><span class="gv">Việc của Thầy Cô</span><span class="cl">Việc của Claude</span><span class="lop">Cả lớp</span></p>'''
@@ -144,25 +156,48 @@ THE = '''
 '''
 
 TAB = '''
-<!-- ===== TRẢ KẾT QUẢ ===== -->
+<!-- ===== GAME CỦA TÔI ===== -->
 <section class="panel" id="p-tra-ket-qua" role="tabpanel" aria-labelledby="t-tra-ket-qua">
   <div class="card">
     <h2>Game của tôi</h2>
-    <p class="lead">Claude soạn xong sẽ trả về link trang chơi (dạng <b>claude.ai/…</b>). Dán link vào đây để lưu trên máy này. Lúc lên lớp, mở app Game-học, vào thẻ này, chạm <b>Mở game</b>.</p>
+    <p class="lead">Claude soạn xong sẽ trả về trang game. Thầy Cô lưu game theo một trong hai cách dưới đây (làm cả hai càng chắc). Lúc lên lớp, mở app, vào thẻ này, chạm <b>Mở game</b>.</p>
+    <div class="luu-cach">
+      <div><strong>📥 Cách 1: Lưu tệp game (nên dùng)</strong>Trong Claude, chạm vào game, bấm nút <b>Tải xuống</b> (biểu tượng ⤓ hoặc ⋯ rồi Download). Máy lưu một tệp <b>.html</b>. Quay lại đây, bấm <b>Chọn tệp game</b>. Game nằm luôn trong app, mở được cả khi không có mạng.</div>
+      <div><strong>🔗 Cách 2: Lưu link game</strong>Trong Claude, bấm <b>Chia sẻ</b> (Publish/Share) để có link công khai, bấm sao chép, rồi dán link vào ô bên dưới. Mở bằng link thì cần có mạng.</div>
+    </div>
+
+    <h3 style="margin-top:16px">📥 Lưu tệp game</h3>
+    <div class="tep-chon">
+      <label class="btn" for="tep-game" style="cursor:pointer">Chọn tệp game (.html)</label>
+      <input type="file" id="tep-game" accept=".html,.htm,text/html" multiple>
+      <small style="color:var(--mut)">Tệp thường nằm trong thư mục Tải về (Downloads) hoặc app Tệp trên iPhone.</small>
+    </div>
+    <div class="err" id="tep-err" aria-live="polite"></div>
+
+    <h3 style="margin-top:16px">🔗 Lưu link game</h3>
     <form id="kq-form" novalidate>
       <label for="kq-link">Link game Claude trả về</label>
       <input type="text" id="kq-link" inputmode="url" autocomplete="off" placeholder="https://claude.ai/…">
       <label for="kq-ten">Tên game <small>(không bắt buộc, ví dụ: KHTN 8, bài Nồng độ dung dịch)</small></label>
       <input type="text" id="kq-ten" autocomplete="off">
       <div class="err" id="kq-err" aria-live="polite"></div>
-      <div class="btns"><button class="btn" type="submit">Lưu game</button></div>
+      <div class="btns"><button class="btn" type="submit">Lưu link</button></div>
     </form>
+
+    <h3 style="margin-top:18px">🎮 Danh sách game đã lưu</h3>
     <ul class="kq-list" id="kq-list"></ul>
-    <p class="kq-rong" id="kq-rong">''' + anh_rong() + '''Chưa có game nào. Giao việc cho Claude ở thẻ Giao việc, rồi dán link Claude trả về vào đây.</p>
-    <p class="lead" style="font-size:14px;margin:14px 0 0">Link chỉ lưu trên máy này, không gửi đi đâu. Lần đầu mở, Claude có thể hỏi đăng nhập một lần trong Safari hoặc Chrome.</p>
+    <p class="kq-rong" id="kq-rong">''' + anh_rong() + '''Chưa có game nào. Giao việc cho Claude ở thẻ Giao việc, rồi lưu game Claude trả về vào đây.</p>
+    <p class="lead" style="font-size:14px;margin:14px 0 0">Game và link chỉ lưu trên máy này, không gửi đi đâu. Đổi máy hoặc xoá dữ liệu trình duyệt thì danh sách mất, nên Thầy Cô giữ thêm tệp .html trong thư mục Tải về hoặc Google Drive của mình.</p>
+    <details class="them" style="margin-top:10px"><summary>Lỡ quên lưu? Tìm lại game trong Claude</summary>
+      <ul>
+        <li>Mở Claude, xem danh sách <b>cuộc trò chuyện</b> (biểu tượng ☰). Mở lại cuộc trò chuyện đã giao việc, game vẫn nằm ở đó.</li>
+        <li>Trên máy tính, mục <b>Artifacts</b> ở thanh bên trái của claude.ai liệt kê mọi trang Claude đã tạo.</li>
+        <li>Mở được game rồi thì tải tệp hoặc lấy link như hai cách bên trên.</li>
+      </ul>
+    </details>
   </div>
-  
 </section>
+<div id="xem-game" hidden role="dialog" aria-modal="true" aria-label="Đang chơi game"><div class="thanh"><span id="xem-ten"></span><button class="btn" type="button" id="xem-dong" style="padding:6px 14px;font-size:14px">✕ Đóng</button></div><iframe id="xem-khung" title="Game" allow="autoplay; fullscreen"></iframe></div>
 '''
 
 JS = r'''
@@ -179,34 +214,83 @@ JS = r'''
     if(!hoan)return;hoan.prompt();hoan.userChoice.then(function(){hoan=null;wrap.hidden=true});
   });
   window.addEventListener('appinstalled',function(){wrap.hidden=true;if(bar)bar.hidden=true});
-  // Trả kết quả: danh sách link game lưu trên máy
+  // Game của tôi: link (localStorage) và tệp game (IndexedDB) lưu trên máy
   var KEY='gamehoc-ket-qua',ds=[];
   try{ds=JSON.parse(localStorage.getItem(KEY)||'[]')||[]}catch(e){ds=[]}
   function luu(){try{localStorage.setItem(KEY,JSON.stringify(ds))}catch(e){}}
+  var tep=[],db=null;
+  function moDb(cb){
+    if(db)return cb(db);
+    try{var rq=indexedDB.open('gamehoc-tep',1);
+      rq.onupgradeneeded=function(){rq.result.createObjectStore('game',{keyPath:'id'})};
+      rq.onsuccess=function(){db=rq.result;cb(db)};rq.onerror=function(){cb(null)};
+    }catch(e){cb(null)}
+  }
+  function giaoDich(kieu,lam,xong){moDb(function(d){if(!d){xong&&xong(null);return}
+    try{var tx=d.transaction('game',kieu),st=tx.objectStore('game'),kq=lam(st);
+      tx.oncomplete=function(){xong&&xong(kq&&kq.result!==undefined?kq.result:true)};tx.onerror=function(){xong&&xong(null)};
+    }catch(e){xong&&xong(null)}})}
+  function napTep(cb){giaoDich('readonly',function(st){return st.getAll()},function(r){tep=(r||[]).map(function(g){return{id:g.id,ten:g.ten,ngay:g.ngay,co:g.co}});tep.sort(function(x,y){return y.id-x.id});cb&&cb()})}
+  function homNay(){var d=new Date();return('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear()}
   var list=document.getElementById('kq-list'),rong=document.getElementById('kq-rong');
+  var hop=document.getElementById('xem-game'),khung=document.getElementById('xem-khung'),urlXem=null;
+  function dongXem(){hop.hidden=true;khung.removeAttribute('src');if(urlXem){URL.revokeObjectURL(urlXem);urlXem=null}document.body.style.overflow=''}
+  document.getElementById('xem-dong').addEventListener('click',dongXem);
+  function moTep(g){giaoDich('readonly',function(st){return st.get(g.id)},function(r){
+    if(!r||!r.html){alert('Không mở được tệp này. Thầy Cô chọn lại tệp game nhé.');return}
+    urlXem=URL.createObjectURL(new Blob([r.html],{type:'text/html'}));
+    document.getElementById('xem-ten').textContent=r.ten;khung.src=urlXem;hop.hidden=false;document.body.style.overflow='hidden';
+    setTimeout(function(){try{khung.focus()}catch(e){}},300);
+  })}
+  function taiTep(g){giaoDich('readonly',function(st){return st.get(g.id)},function(r){if(!r)return;
+    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([r.html],{type:'text/html'}));a.download=(r.ten||'game').replace(/[\\/:*?"<>|]+/g,' ').trim()+'.html';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500)})}
+  function nut(chu,ghost,fn){var x=document.createElement('button');x.type='button';x.className='btn'+(ghost?' ghost':'');x.textContent=chu;x.addEventListener('click',fn);return x}
+  function dong(ten,loai,phu){var li=document.createElement('li');var t=document.createElement('span');t.className='ten';
+    var l=document.createElement('span');l.className='loai'+(loai==='Link'?' lk':'');l.textContent=loai;t.appendChild(l);t.appendChild(document.createTextNode(ten));
+    var sm=document.createElement('small');sm.textContent=phu;t.appendChild(sm);li.appendChild(t);return li}
   function ve(){
-    list.innerHTML='';rong.hidden=ds.length>0;
+    list.innerHTML='';rong.hidden=(ds.length+tep.length)>0;
+    tep.forEach(function(g){
+      var li=dong(g.ten,'Tệp',g.ngay+' · mở được khi không có mạng');
+      li.appendChild(nut('Mở game',false,function(){moTep(g)}));
+      li.appendChild(nut('Tải về',true,function(){taiTep(g)}));
+      li.appendChild(nut('Xoá',true,function(){if(confirm('Xoá "'+g.ten+'" khỏi app?')){giaoDich('readwrite',function(st){return st.delete(g.id)},function(){napTep(ve)})}}));
+      list.appendChild(li);
+    });
     ds.forEach(function(g,i){
-      var li=document.createElement('li');
-      var t=document.createElement('span');t.className='ten';t.textContent=g.ten||'Game '+(i+1);
-      var sm=document.createElement('small');sm.textContent=g.ngay+' · '+g.url.replace(/^https?:\/\//,'');t.appendChild(sm);
-      var a=document.createElement('a');a.className='btn';a.href=g.url;a.target='_blank';a.rel='noopener';a.textContent='Mở game';
-      var x=document.createElement('button');x.type='button';x.className='btn ghost';x.textContent='Xoá';
-      x.addEventListener('click',function(){if(confirm('Xoá "'+(g.ten||'game này')+'" khỏi danh sách?')){ds.splice(i,1);luu();ve()}});
-      li.appendChild(t);li.appendChild(a);li.appendChild(x);list.appendChild(li);
+      var li=dong(g.ten||'Game '+(i+1),'Link',g.ngay+' · '+g.url.replace(/^https?:\/\//,''));
+      var a=document.createElement('a');a.className='btn';a.href=g.url;a.target='_blank';a.rel='noopener';a.textContent='Mở game';li.appendChild(a);
+      li.appendChild(nut('Xoá',true,function(){if(confirm('Xoá "'+(g.ten||'game này')+'" khỏi danh sách?')){ds.splice(i,1);luu();ve()}}));
+      list.appendChild(li);
     });
   }
+  function tenTuHtml(h,tenTep){var j=h.match(/"tieu_de"\s*:\s*"((?:[^"\\]|\\.){1,200})"/);if(j){try{return JSON.parse('"'+j[1]+'"')}catch(e){}}
+    var m=h.match(/<title[^>]*>([^<]{1,160})<\/title>/i);var t=m?m[1].replace(/\s+/g,' ').trim():'';if(/^Game-học Vietwise$/i.test(t))t='';
+    t=t.replace(/&amp;/g,'&').replace(/&#39;|&apos;/g,"'").replace(/&quot;/g,'"');return t||tenTep.replace(/\.html?$/i,'')}
+  document.getElementById('tep-game').addEventListener('change',function(e){
+    var fs=[].slice.call(e.target.files||[]),err=document.getElementById('tep-err');err.textContent='';
+    if(!fs.length)return;
+    var con=fs.length;
+    fs.forEach(function(f,k){
+      if(!/\.html?$/i.test(f.name)&&f.type!=='text/html'){err.textContent='Tệp "'+f.name+'" không phải trang game (.html).';if(--con===0)napTep(ve);return}
+      var rd=new FileReader();
+      rd.onload=function(){var h=String(rd.result||'');
+        var g={id:Date.now()+k,ten:tenTuHtml(h,f.name),ngay:homNay(),html:h};
+        giaoDich('readwrite',function(st){return st.put(g)},function(ok){if(!ok)err.textContent='Máy chưa cho lưu tệp trong app (có thể đang ở chế độ ẩn danh). Thầy Cô giữ tệp trong thư mục Tải về nhé.';if(--con===0){napTep(ve);document.getElementById('tep-game').value=''}})};
+      rd.onerror=function(){err.textContent='Không đọc được tệp "'+f.name+'".';if(--con===0)napTep(ve)};
+      rd.readAsText(f);
+    });
+  });
   document.getElementById('kq-form').addEventListener('submit',function(e){
     e.preventDefault();
     var v=document.getElementById('kq-link').value.trim(),err=document.getElementById('kq-err');
     var m=v.match(/https:\/\/[^\s"'<>]+/);
     if(!m){err.textContent='Link chưa đúng. Link game bắt đầu bằng https:// (thường là https://claude.ai/…).';return}
     err.textContent='';
-    var d=new Date(),ngay=('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();
-    ds.unshift({url:m[0],ten:document.getElementById('kq-ten').value.trim(),ngay:ngay});luu();ve();
+    ds.unshift({url:m[0],ten:document.getElementById('kq-ten').value.trim(),ngay:homNay()});luu();ve();
     document.getElementById('kq-link').value='';document.getElementById('kq-ten').value='';
   });
-  ve();
+  ve();napTep(ve);
 })();
 </script>
 '''
@@ -231,7 +315,7 @@ def dung(goi):
              '<span class="tl">Game mẫu</span></button>\n      <button role="tab" id="t-tra-ket-qua" data-tab="tra-ket-qua" aria-selected="false">' + anh_tab('the-tra-ket-qua') + '<span class="tl">Game của tôi</span></button>')
     s = thay(s, "var tabs=['phieu','readme','tham-khao'];", "var tabs=['phieu','readme','tham-khao','tra-ket-qua'];")
     s = thay(s, '<span>Lưu link game để lần sau mở lại.</span></li>',
-             '<span>Dán link game vào thẻ <a href="#tra-ket-qua" data-go="tra-ket-qua"><b>Game của tôi</b></a> để lưu, lần sau mở lại ngay.</span></li>')
+             '<span>Lưu game: trong Claude bấm <b>Tải xuống</b> để có tệp .html (hoặc bấm Chia sẻ để lấy link), rồi đưa vào thẻ <a href="#tra-ket-qua" data-go="tra-ket-qua"><b>Game của tôi</b></a>. Lần sau mở lại ngay, không cần mạng.</span></li>')
     s = thay(s, '          <li><span class="ic" aria-hidden="true">📽️</span>', '          <li><span class="ic" aria-hidden="true">📽️</span>')
     s = thay(s, '\n</main>', TAB + THE + '\n</main>')
     s = thay(s, '</body>', JS + '</body>')
