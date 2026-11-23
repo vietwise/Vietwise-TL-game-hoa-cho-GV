@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quản lý Game-học</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1530D0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="../favicon-64.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<style>
+:root{--kem:#F9FAF7;--cam:#E85A12;--blue:#1530D0;--xanh:#3E8E16;--vang:#F7C52A;--xam:#8A8A8A;--ink:#1E2235;--mut:#5A5D66;--line:#E0E3DA;--card:#FFFFFF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--kem);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--blue);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header img{width:40px;height:40px;border-radius:10px;border:2px solid var(--vang)}
+header h1{font-size:19px;margin:0;flex:1}
+header small{opacity:.85}
+nav{display:flex;gap:4px;padding:0 20px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto}
+nav button{border:0;background:none;padding:12px 14px;font:inherit;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button[aria-selected=true]{color:var(--blue);border-bottom-color:var(--cam);font-weight:600}
+main{max-width:1200px;margin:0 auto;padding:20px}
+.panel{display:none}.panel.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.so{font-size:30px;font-weight:700;line-height:1.1}
+.nhan{color:var(--mut);font-size:13px}
+.c-blue .so{color:var(--blue)}.c-cam .so{color:var(--cam)}.c-xanh .so{color:var(--xanh)}.c-xam .so{color:var(--xam)}
+.c-vang{border-top:4px solid var(--vang)}
+h2{font-size:17px;margin:22px 0 10px}
+.hai{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.hai{grid-template-columns:1fr}}
+.bar{display:grid;grid-template-columns:120px 1fr 36px;align-items:center;gap:8px;margin:5px 0;font-size:14px}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--blue)}
+.bar.mon i{background:var(--xanh)}
+.loc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+input,select,textarea{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+input[type=search]{flex:1;min-width:200px}
+.btn{font:inherit;border:0;border-radius:8px;padding:9px 14px;background:var(--cam);color:#fff;cursor:pointer;font-weight:600}
+.btn.ghost{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+.bang{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#F1F3EC;cursor:pointer;white-space:nowrap;position:sticky;top:0}
+tbody tr{cursor:pointer}tbody tr:hover{background:#FFF8E1}
+.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:600;white-space:nowrap}
+.t-Mới{background:#FDE7DA;color:#A33E0A}.t-Đã-liên-hệ{background:#E1E7FB;color:var(--blue)}.t-Đang-dùng-tốt{background:#E3F2DA;color:#2E6B10}.t-Cần-hỗ-trợ{background:#FFF1C2;color:#7A5A00}.t-Tạm-dừng{background:#EEE;color:#555}
+.ok{color:var(--xanh)}.cu{color:var(--cam)}.mo{color:var(--xam)}
+.ghi{color:var(--mut);font-size:13px}
+.thongbao{padding:10px 14px;border-radius:10px;margin-bottom:14px;background:#FFF8E1;border:1px solid var(--vang)}
+.thongbao.loi{background:#FDECEC;border-color:#E3A0A0}
+dialog{border:0;border-radius:14px;padding:0;max-width:520px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(20,25,50,.45)}
+.dl{padding:18px 20px}
+.dl h3{margin:0 0 4px}
+.dl dl{display:grid;grid-template-columns:130px 1fr;gap:4px 10px;margin:12px 0;font-size:14px}
+.dl dt{color:var(--mut)}.dl dd{margin:0}
+.dl label{display:block;margin:10px 0 4px;font-weight:600;font-size:14px}
+.dl textarea,.dl select{width:100%}
+.hang{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.cd label{display:block;font-weight:600;margin:12px 0 4px}
+.cd input{width:100%;max-width:620px}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
+</style>
+</head>
+<body>
+<header>
+  <img src="../icon-192.png" alt="">
+  <h1>Quản lý Game-học<br><small>Sổ Thầy Cô dùng Trợ lý Game-học · Vietwise</small></h1>
+  <span id="luc" class="ghi" style="color:#fff"></span>
+  <button class="btn" id="tai-lai" type="button">Tải lại</button>
+</header>
+<nav role="tablist">
+  <button role="tab" data-tab="tong" aria-selected="true">Tổng quan</button>
+  <button role="tab" data-tab="thayco" aria-selected="false">Thầy Cô</button>
+  <button role="tab" data-tab="cai" aria-selected="false">Cài đặt</button>
+</nav>
+<main>
+  <div id="bao" class="thongbao" hidden></div>
+
+  <section class="panel on" id="p-tong">
+    <div class="grid">
+      <div class="card c-blue c-vang"><div class="so" id="s-dk">0</div><div class="nhan">Thầy Cô đã đăng ký</div></div>
+      <div class="card c-cam c-vang"><div class="so" id="s-moi">0</div><div class="nhan">Đăng ký mới 7 ngày qua</div></div>
+      <div class="card c-xanh c-vang"><div class="so" id="s-dung">0</div><div class="nhan">Mở app trong 7 ngày qua</div></div>
+      <div class="card c-xam c-vang"><div class="so" id="s-lau">0</div><div class="nhan">Lâu không mở (trên 30 ngày)</div></div>
+      <div class="card c-blue c-vang"><div class="so" id="s-game">0</div><div class="nhan">Game đã lưu trong app</div></div>
+      <div class="card c-xam c-vang"><div class="so" id="s-an">0</div><div class="nhan">Máy dùng app chưa đăng ký</div></div>
+    </div>
+    <div class="hai">
+      <div><h2>Theo tỉnh, thành</h2><div class="card" id="b-tinh"></div></div>
+      <div><h2>Theo môn dạy</h2><div class="card" id="b-mon"></div></div>
+    </div>
+    <h2>Cần chị để ý</h2>
+    <div class="card" id="de-y"></div>
+  </section>
+
+  <section class="panel" id="p-thayco">
+    <div class="loc">
+      <input type="search" id="tim" placeholder="Tìm tên, trường, liên hệ…">
+      <select id="l-tinh"><option value="">Mọi tỉnh</option></select>
+      <select id="l-mon"><option value="">Mọi môn</option></select>
+      <select id="l-tt"><option value="">Mọi trạng thái</option></select>
+      <select id="l-dung"><option value="">Mọi mức dùng</option><option value="7">Mở trong 7 ngày</option><option value="30">Lâu không mở</option><option value="0">Chưa mở lần nào</option></select>
+      <button class="btn ghost" id="xuat" type="button">Xuất Excel (CSV)</button>
+    </div>
+    <p class="ghi" id="dem"></p>
+    <div class="bang"><table>
+      <thead><tr>
+        <th data-k="ho_ten">Họ tên</th><th data-k="truong">Trường</th><th data-k="tinh">Tỉnh</th><th data-k="mon">Môn</th>
+        <th data-k="ngay_dang_ky">Đăng ký</th><th data-k="lan_cuoi">Mở gần nhất</th><th data-k="so_ngay_dung">Ngày dùng</th><th data-k="so_game_luu">Game lưu</th><th data-k="trang_thai">Trạng thái</th>
+      </tr></thead>
+      <tbody id="ds"></tbody>
+    </table></div>
+  </section>
+
+  <section class="panel cd" id="p-cai">
+    <div class="card">
+      <h2 style="margin-top:0">Nối với Sổ Thầy Cô (Google Sheet)</h2>
+      <p class="ghi">Dán địa chỉ ứng dụng web Apps Script (đuôi /exec) và mã quản lý chị đặt trong Thuộc tính tập lệnh. Hai thông tin này chỉ lưu trên máy này.</p>
+      <label for="c-url">Địa chỉ Apps Script</label>
+      <input id="c-url" placeholder="https://script.google.com/macros/s/…/exec">
+      <label for="c-ma">Mã quản lý</label>
+      <input id="c-ma" type="password" autocomplete="off">
+      <div class="hang" style="justify-content:flex-start">
+        <button class="btn" id="c-luu" type="button">Lưu và tải danh sách</button>
+        <button class="btn ghost" id="c-mau" type="button">Xem thử bằng dữ liệu mẫu</button>
+        <button class="btn ghost" id="c-xoa" type="button">Xoá dữ liệu trên máy này</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h2 style="margin-top:0">Cài thành app trên máy tính</h2>
+      <p>Mở trang này bằng Chrome hoặc Edge, bấm biểu tượng <b>Cài đặt app</b> ở cuối thanh địa chỉ (hoặc menu ⋮ → <b>Truyền và lưu</b> / <b>Ứng dụng</b> → <b>Cài đặt trang này dưới dạng ứng dụng</b>). App "Quản lý Game-học" sẽ có biểu tượng trên Desktop và menu Start, mở thành cửa sổ riêng.</p>
+    </div>
+  </section>
+</main>
+
+<dialog id="hop"><div class="dl">
+  <h3 id="h-ten"></h3><div class="ghi" id="h-truong"></div>
+  <dl id="h-tt"></dl>
+  <div id="h-lh" class="hang" style="justify-content:flex-start"></div>
+  <label for="h-trang">Trạng thái</label>
+  <select id="h-trang"></select>
+  <label for="h-ghi">Ghi chú của chị</label>
+  <textarea id="h-ghi" rows="3" maxlength="500"></textarea>
+  <div class="ghi" id="h-bao"></div>
+  <div class="hang"><button class="btn ghost" id="h-dong" type="button">Đóng</button><button class="btn" id="h-luu" type="button">Lưu</button></div>
+</div></dialog>
+
+<footer>MIỄN PHÍ VĨNH VIỄN - tri ân Thầy Cô · Vietwise</footer>
+
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var TRANG_THAI=['Mới','Đã liên hệ','Đang dùng tốt','Cần hỗ trợ','Tạm dừng'];
+var K={url:'qlgh-url',ma:'qlgh-ma',dl:'qlgh-dulieu'};
+function doc(k){try{return localStorage.getItem(k)||''}catch(e){return''}}
+function ghi(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
+var D={dang_ky:[],su_dung:[],luc:''},mau=false,ds=[],sapK='ngay_dang_ky',sapNguoc=true,dangMo=null;
+
+// ---- ngày ----
+function ngay(s){if(!s)return null;var m=String(s).match(/(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);if(m)return new Date(+m[1],m[2]-1,+m[3],+(m[4]||0),+(m[5]||0));
+  m=String(s).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/);if(m)return new Date(+m[3],m[2]-1,+m[1],+(m[4]||0),+(m[5]||0));return null}
+function soNgay(s){var d=ngay(s);return d?Math.max(0,Math.floor((Date.now()-d)/864e5)):null}
+function vn(s){var d=ngay(s);if(!d)return'';return('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear()}
+
+// ---- gộp đăng ký với sử dụng ----
+function gop(){
+  var sd={};(D.su_dung||[]).forEach(function(r){sd[r.ma_may]=r});
+  ds=(D.dang_ky||[]).map(function(r){var u=sd[r.ma_may]||{};return{
+    ma_may:r.ma_may,ho_ten:r.ho_ten||'',truong:r.truong||'',tinh:r.tinh||'',mon:r.mon||'',cap:r.cap||'',lien_he:r.lien_he||'',
+    ngay_dang_ky:r.ngay_dang_ky||'',trang_thai:r.trang_thai||'Mới',ghi_chu:r.ghi_chu||'',
+    lan_dau:u.lan_dau||'',lan_cuoi:u.lan_cuoi||'',so_lan_mo:+u.so_lan_mo||0,so_ngay_dung:+u.so_ngay_dung||0,so_game_luu:+u.so_game_luu||0,phien_ban:u.phien_ban||'',thiet_bi:u.thiet_bi||''}});
+  var co={};ds.forEach(function(r){co[r.ma_may]=1});
+  return (D.su_dung||[]).filter(function(r){return!co[r.ma_may]});
+}
+
+function el(tag,cls,txt){var x=document.createElement(tag);if(cls)x.className=cls;if(txt!=null)x.textContent=txt;return x}
+
+function veThanh(id,dem,cls){var b=$(id);b.textContent='';var arr=Object.keys(dem).map(function(k){return[k,dem[k]]}).sort(function(a,b){return b[1]-a[1]}).slice(0,10);
+  if(!arr.length){b.appendChild(el('div','ghi','Chưa có dữ liệu'));return}
+  var max=arr[0][1];arr.forEach(function(a){var h=el('div','bar'+(cls?' '+cls:''));h.appendChild(el('span','',a[0]));var w=el('span');var i=el('i');i.style.width=Math.max(4,a[1]/max*100)+'%';w.appendChild(i);h.appendChild(w);h.appendChild(el('b','',a[1]));b.appendChild(h)})}
+
+function veTong(){
+  var an=gop();
+  $('s-dk').textContent=ds.length;
+  $('s-moi').textContent=ds.filter(function(r){var n=soNgay(r.ngay_dang_ky);return n!=null&&n<7}).length;
+  var tatCa=(D.su_dung||[]);
+  $('s-dung').textContent=tatCa.filter(function(r){var n=soNgay(r.lan_cuoi);return n!=null&&n<7}).length;
+  $('s-lau').textContent=ds.filter(function(r){var n=soNgay(r.lan_cuoi);return n!=null&&n>30}).length;
+  $('s-game').textContent=tatCa.reduce(function(t,r){return t+(+r.so_game_luu||0)},0);
+  $('s-an').textContent=an.length;
+  var dt={},dm={};ds.forEach(function(r){var t=r.tinh||'(chưa ghi)';dt[t]=(dt[t]||0)+1;(r.mon||'(chưa ghi)').split(/[,;]/).forEach(function(m){m=m.trim();if(m)dm[m]=(dm[m]||0)+1})});
+  veThanh('b-tinh',dt);veThanh('b-mon',dm,'mon');
+  var y=$('de-y');y.textContent='';
+  var moi=ds.filter(function(r){return r.trang_thai==='Mới'}).length,
+      ho=ds.filter(function(r){return r.trang_thai==='Cần hỗ trợ'}).length,
+      chua=ds.filter(function(r){return!r.lan_cuoi}).length,
+      lau=+$('s-lau').textContent;
+  [[moi,'Thầy Cô mới chưa liên hệ','Mới'],[ho,'Thầy Cô cần hỗ trợ','Cần hỗ trợ'],[chua,'Thầy Cô đăng ký nhưng chưa thấy mở app',''],[lau,'Thầy Cô lâu không mở app, có thể hỏi thăm','']].forEach(function(a,i){
+    if(!a[0])return;var p=el('p');var l=el('a','',a[0]+' '+a[1]);l.href='#';l.addEventListener('click',function(e){e.preventDefault();locVe(i)});p.appendChild(l);y.appendChild(p)});
+  if(!y.childNodes.length)y.appendChild(el('div','ghi','Không có gì cần để ý. Chúc chị một ngày nhẹ nhàng.'));
+}
+function locVe(i){$('tim').value='';$('l-tinh').value='';$('l-mon').value='';$('l-tt').value=i===0?'Mới':i===1?'Cần hỗ trợ':'';$('l-dung').value=i===2?'0':i===3?'30':'';hien('thayco');veDs()}
+
+function napLoc(){
+  function dien(id,vals,dau){var s=$(id),cu=s.value;s.length=1;vals.forEach(function(v){var o=el('option','',v);o.value=v;s.appendChild(o)});s.value=cu}
+  var t={},m={};ds.forEach(function(r){if(r.tinh)t[r.tinh]=1;(r.mon||'').split(/[,;]/).forEach(function(x){x=x.trim();if(x)m[x]=1})});
+  dien('l-tinh',Object.keys(t).sort());dien('l-mon',Object.keys(m).sort());dien('l-tt',TRANG_THAI);
+}
+
+function locDs(){
+  var q=$('tim').value.trim().toLowerCase(),t=$('l-tinh').value,m=$('l-mon').value,tt=$('l-tt').value,du=$('l-dung').value;
+  return ds.filter(function(r){
+    if(q&&(r.ho_ten+' '+r.truong+' '+r.lien_he+' '+r.ghi_chu).toLowerCase().indexOf(q)<0)return false;
+    if(t&&r.tinh!==t)return false;
+    if(m&&(r.mon||'').split(/[,;]/).map(function(x){return x.trim()}).indexOf(m)<0)return false;
+    if(tt&&r.trang_thai!==tt)return false;
+    var n=soNgay(r.lan_cuoi);
+    if(du==='7'&&!(n!=null&&n<7))return false;
+    if(du==='30'&&!(n!=null&&n>30))return false;
+    if(du==='0'&&r.lan_cuoi)return false;
+    return true}).sort(function(a,b){var x=a[sapK],y=b[sapK];
+      if(/ngay|lan_/.test(sapK)){x=(ngay(x)||0)-0;y=(ngay(y)||0)-0}
+      var c=typeof x==='number'?x-y:String(x).localeCompare(String(y),'vi');return sapNguoc?-c:c});
+}
+
+function veDs(){
+  var arr=locDs(),tb=$('ds');tb.textContent='';
+  $('dem').textContent='Đang xem '+arr.length+' / '+ds.length+' Thầy Cô';
+  arr.forEach(function(r){var tr=el('tr');
+    [r.ho_ten,r.truong,r.tinh,r.mon,vn(r.ngay_dang_ky)].forEach(function(v){tr.appendChild(el('td','',v))});
+    var n=soNgay(r.lan_cuoi),td=el('td',n==null?'mo':n<7?'ok':n>30?'cu':'',r.lan_cuoi?vn(r.lan_cuoi)+' ('+(n===0?'hôm nay':n+' ngày')+')':'chưa mở');tr.appendChild(td);
+    tr.appendChild(el('td','',r.so_ngay_dung));tr.appendChild(el('td','',r.so_game_luu));
+    var tt=el('td');tt.appendChild(el('span','tag t-'+r.trang_thai.replace(/ /g,'-'),r.trang_thai));if(r.ghi_chu)tt.appendChild(el('div','ghi',r.ghi_chu));tr.appendChild(tt);
+    tr.addEventListener('click',function(){moHop(r)});tb.appendChild(tr)});
+  if(!arr.length){var tr=el('tr'),td=el('td','ghi',ds.length?'Không có Thầy Cô nào khớp bộ lọc.':'Chưa có Thầy Cô đăng ký. Vào Cài đặt để nối Sổ Thầy Cô, hoặc xem thử bằng dữ liệu mẫu.');td.colSpan=9;tr.appendChild(td);tb.appendChild(tr)}
+}
+
+// ---- hộp chi tiết ----
+function moHop(r){dangMo=r;$('h-ten').textContent=r.ho_ten;$('h-truong').textContent=[r.truong,r.tinh].filter(Boolean).join(' · ');
+  var dl=$('h-tt');dl.textContent='';
+  [['Môn',r.mon],['Cấp',r.cap],['Liên hệ',r.lien_he],['Đăng ký',r.ngay_dang_ky],['Mở lần đầu',r.lan_dau],['Mở gần nhất',r.lan_cuoi],['Số lần mở',r.so_lan_mo],['Số ngày dùng',r.so_ngay_dung],['Game đã lưu',r.so_game_luu],['Phiên bản app',r.phien_ban],['Thiết bị',r.thiet_bi]].forEach(function(a){if(a[1]===''||a[1]==null)return;dl.appendChild(el('dt','',a[0]));dl.appendChild(el('dd','',a[1]))});
+  var lh=$('h-lh');lh.textContent='';var so=String(r.lien_he).replace(/[^\d]/g,'');
+  if(/^0\d{9}$|^84\d{9}$/.test(so)){var a=el('a','btn ghost','Mở Zalo');a.href='https://zalo.me/'+so;a.target='_blank';a.rel='noopener';lh.appendChild(a)}
+  var em=String(r.lien_he).match(/[^\s@]+@[^\s@]+\.[^\s@]+/);if(em){var b=el('a','btn ghost','Soạn email');b.href='mailto:'+em[0];lh.appendChild(b)}
+  var s=$('h-trang');s.textContent='';TRANG_THAI.forEach(function(t){var o=el('option','',t);o.value=t;s.appendChild(o)});s.value=r.trang_thai;
+  $('h-ghi').value=r.ghi_chu;$('h-bao').textContent=mau?'Đang xem dữ liệu mẫu: lưu chỉ đổi trên máy này.':'';
+  $('hop').showModal()}
+$('h-dong').addEventListener('click',function(){$('hop').close()});
+$('h-luu').addEventListener('click',function(){
+  var r=dangMo,tt=$('h-trang').value,gc=$('h-ghi').value.trim().slice(0,500);
+  function xong(){(D.dang_ky||[]).forEach(function(x){if(x.ma_may===r.ma_may){x.trang_thai=tt;x.ghi_chu=gc}});luuMay();ve();$('hop').close()}
+  if(mau){xong();return}
+  var btn=$('h-luu');btn.disabled=true;$('h-bao').textContent='Đang lưu vào Sổ Thầy Cô…';
+  fetch(doc(K.url),{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({viec:'ghi_chu',ma:doc(K.ma),ma_may:r.ma_may,trang_thai:tt,ghi_chu:gc})})
+    .then(function(x){return x.json()}).then(function(j){btn.disabled=false;if(j&&j.ok)xong();else $('h-bao').textContent='Chưa lưu được: '+((j&&j.loi)||'lỗi lạ')})
+    .catch(function(){btn.disabled=false;$('h-bao').textContent='Chưa lưu được. Kiểm tra mạng rồi thử lại.'});
+});
+
+// ---- tải dữ liệu ----
+function bao(t,loi){var b=$('bao');b.hidden=!t;b.textContent=t||'';b.className='thongbao'+(loi?' loi':'')}
+function luuMay(){if(!mau)ghi(K.dl,JSON.stringify(D))}
+function ve(){gop();napLoc();veTong();veDs();$('luc').textContent=mau?'Dữ liệu mẫu':D.luc?'Cập nhật '+new Date(D.luc).toLocaleString('vi-VN'):''}
+function taiLai(){
+  var u=doc(K.url),m=doc(K.ma);
+  if(!u||!m){bao('Chưa nối Sổ Thầy Cô. Vào thẻ Cài đặt để dán địa chỉ Apps Script và mã quản lý.');hien('cai');return}
+  mau=false;bao('Đang tải danh sách…');
+  fetch(u+(u.indexOf('?')<0?'?':'&')+'viec=danh_sach&ma='+encodeURIComponent(m),{cache:'no-store'})
+    .then(function(x){return x.json()}).then(function(j){
+      if(!j||!j.ok){bao('Sổ Thầy Cô từ chối: '+((j&&j.loi)||'lỗi lạ')+'. Kiểm tra mã quản lý trong Cài đặt.',true);return}
+      D={dang_ky:j.dang_ky||[],su_dung:j.su_dung||[],luc:j.luc||new Date().toISOString()};luuMay();bao('');ve()})
+    .catch(function(){bao('Không tải được (mất mạng hoặc địa chỉ sai). Đang hiện bản lưu gần nhất trên máy.',true)});
+}
+$('tai-lai').addEventListener('click',taiLai);
+$('c-luu').addEventListener('click',function(){var u=$('c-url').value.trim(),m=$('c-ma').value;
+  if(!/^https:\/\/script\.google(usercontent)?\.com\//.test(u)){bao('Địa chỉ phải bắt đầu bằng https://script.google.com/',true);return}
+  ghi(K.url,u);ghi(K.ma,m);hien('tong');taiLai()});
+$('c-xoa').addEventListener('click',function(){ghi(K.url,null);ghi(K.ma,null);ghi(K.dl,null);$('c-url').value='';$('c-ma').value='';D={dang_ky:[],su_dung:[],luc:''};mau=false;ve();bao('Đã xoá địa chỉ, mã và bản lưu trên máy này.')});
+$('c-mau').addEventListener('click',function(){mau=true;D=duLieuMau();bao('Đang xem dữ liệu mẫu (tên giả). Bấm Tải lại để về dữ liệu thật.');ve();hien('tong')});
+
+// ---- CSV ----
+$('xuat').addEventListener('click',function(){
+  var cot=[['ho_ten','Họ tên'],['truong','Trường'],['tinh','Tỉnh'],['mon','Môn'],['cap','Cấp'],['lien_he','Liên hệ'],['ngay_dang_ky','Ngày đăng ký'],['lan_dau','Mở lần đầu'],['lan_cuoi','Mở gần nhất'],['so_lan_mo','Số lần mở'],['so_ngay_dung','Số ngày dùng'],['so_game_luu','Game đã lưu'],['phien_ban','Phiên bản'],['trang_thai','Trạng thái'],['ghi_chu','Ghi chú']];
+  function o(v){v=String(v==null?'':v);if(/^[=+\-@]/.test(v))v="'"+v;return'"'+v.replace(/"/g,'""')+'"'}
+  var s='﻿'+cot.map(function(c){return o(c[1])}).join(',')+'\r\n'+locDs().map(function(r){return cot.map(function(c){return o(r[c[0]])}).join(',')}).join('\r\n');
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:'text/csv;charset=utf-8'}));
+  var d=new Date();a.download='so-thay-co-game-hoc-'+d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2)+'.csv';document.body.appendChild(a);a.click();a.remove()});
+
+// ---- tab, sắp xếp ----
+function hien(t){document.querySelectorAll('nav button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.tab===t)});document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',p.id==='p-'+t)})}
+document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){hien(b.dataset.tab)})});
+document.querySelectorAll('th[data-k]').forEach(function(th){th.addEventListener('click',function(){var k=th.dataset.k;if(sapK===k)sapNguoc=!sapNguoc;else{sapK=k;sapNguoc=/ngay|lan_|so_/.test(k)}veDs()})});
+['tim','l-tinh','l-mon','l-tt','l-dung'].forEach(function(id){$(id).addEventListener('input',veDs)});
+
+function duLieuMau(){
+  var ten=['Nguyễn Thị Lan','Trần Văn Minh','Lê Thu Hà','Phạm Quốc Bảo','Hoàng Mai Anh','Vũ Đức Thành','Đỗ Ngọc Linh','Bùi Thanh Tâm','Ngô Hải Yến','Đặng Minh Khoa','Phan Thị Hoa','Lý Gia Huy'];
+  var tinh=['Hà Nội','TP Hồ Chí Minh','Đà Nẵng','Nghệ An','Cần Thơ','Hà Nội','Thanh Hóa','TP Hồ Chí Minh','Huế','Hải Phòng','Nghệ An','Đắk Lắk'];
+  var mon=['Khoa học tự nhiên','Ngữ văn','Tiếng Anh','Toán','Lịch sử và Địa lí','Khoa học tự nhiên','Ngữ văn','Tin học','Tiếng Anh','Toán, Tin học','Ngữ văn','Công nghệ'];
+  var tt=['Mới','Đã liên hệ','Đang dùng tốt','Mới','Cần hỗ trợ','Đang dùng tốt','Đã liên hệ','Mới','Đang dùng tốt','Tạm dừng','Mới','Đã liên hệ'];
+  var lui=[1,9,20,3,14,40,6,2,25,60,0,12],mo=[0,2,1,null,10,38,3,null,0,50,0,35];
+  function d(n){var x=new Date(Date.now()-n*864e5);return x.getFullYear()+'-'+('0'+(x.getMonth()+1)).slice(-2)+'-'+('0'+x.getDate()).slice(-2)+' 08:30'}
+  var dk=[],sd=[];
+  ten.forEach(function(t,i){var ma='mau'+(1000+i)+'abcd';dk.push({ma_may:ma,ngay_dang_ky:d(lui[i]),ho_ten:t,truong:'Trường THCS mẫu số '+(i+1),tinh:tinh[i],mon:mon[i],cap:'THCS',lien_he:i%3===0?'09'+(12345670+i):i%3===1?'thayco'+i+'@vidu.vn':'',dong_y:'có',cap_nhat:d(lui[i]),trang_thai:tt[i],ghi_chu:i===4?'Hỏi cách lưu game trên iPhone':''});
+    if(mo[i]!=null)sd.push({ma_may:ma,lan_dau:d(lui[i]),lan_cuoi:d(mo[i]),so_lan_mo:3+i*4,so_ngay_dung:1+i*2,so_game_luu:i%4===3?0:i+1,phien_ban:'1.2',thiet_bi:i%2?'iPhone':'Android',ngay_cuoi_dem:''})});
+  sd.push({ma_may:'anon0001xyz',lan_dau:d(5),lan_cuoi:d(1),so_lan_mo:4,so_ngay_dung:2,so_game_luu:1,phien_ban:'1.2',thiet_bi:'Windows'});
+  return{dang_ky:dk,su_dung:sd,luc:new Date().toISOString()}}
+
+// ---- mở app ----
+$('c-url').value=doc(K.url);$('c-ma').value=doc(K.ma);
+try{var cu=JSON.parse(doc(K.dl)||'null');if(cu&&cu.dang_ky)D=cu}catch(e){}
+ve();if(doc(K.url))taiLai();else{bao('Chào chị! Dán địa chỉ Apps Script và mã quản lý để nối Sổ Thầy Cô, hoặc bấm "Xem thử bằng dữ liệu mẫu".');hien('cai')}
+})();
+</script>
+</body>
+</html>
