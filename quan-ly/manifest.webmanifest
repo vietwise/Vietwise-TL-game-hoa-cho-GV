@@ -2,7 +2,7 @@
  "name": "Quản lý Game-học",
  "short_name": "QL Game-học",
  "description": "Sổ Thầy Cô dùng Trợ lý Game-học của Vietwise",
- "start_url": "./",
+ "start_url": "./?app=quan-ly-game-hoc",
  "scope": "./",
  "display": "standalone",
  "background_color": "#F9FAF7",
@@ -10,20 +10,21 @@
  "lang": "vi",
  "icons": [
   {
-   "src": "icon-192.png",
+   "src": "logo-vang-192.png",
    "sizes": "192x192",
    "type": "image/png"
   },
   {
-   "src": "icon-512.png",
+   "src": "logo-vang-512.png",
    "sizes": "512x512",
    "type": "image/png"
   },
   {
-   "src": "icon-maskable-512.png",
+   "src": "logo-vang-maskable-512.png",
    "sizes": "512x512",
    "type": "image/png",
    "purpose": "maskable"
   }
- ]
+ ],
+ "id": "./?app=quan-ly-game-hoc"
 }
