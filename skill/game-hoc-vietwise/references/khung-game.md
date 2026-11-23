@@ -40,7 +40,7 @@ Không dùng `tuong_tac`, `boi_canh`, `sprite` (trình chơi nhẹ bỏ qua). Xe
 
 ## Nội dung phụ của Thầy Cô
 Thầy Cô có thể ghi thêm một chủ đề ngoài kiến thức (ví dụ "ý chí tự do, quyền chọn về học, ăn thuận tự nhiên"; "lương tâm khi dùng kiến thức"). Cách lồng:
-1. Lời kể có sẵn một khoảnh khắc nhân vật được tự chọn ("Không ai bắt Minh phải ăn gì"), không biến thành bài giảng.
+1. Lời kể có sẵn một khoảnh khắc nhân vật được tự chọn ("Minh có toàn quyền chọn ăn gì"), không biến thành bài giảng.
 2. Bước `noi_dung_phu`: một lời mời ngắn và 2 đến 3 câu hỏi mở về lựa chọn của chính học sinh, cách dùng kiến thức có lương tâm. Không có đáp án đúng, không chấm.
 3. Câu chốt (`loi_chot`) nối kiến thức với quyền tự chọn.
 4. `gv_y_do`: nhắc tôn trọng mọi lựa chọn, không phán xét hoàn cảnh gia đình, học sinh được viết riêng không cần chia sẻ.
