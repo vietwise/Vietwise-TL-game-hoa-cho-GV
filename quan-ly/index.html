@@ -20,6 +20,9 @@ header{background:var(--blue);color:#fff;padding:12px 20px;display:flex;align-it
 header img{width:40px;height:40px;border-radius:10px;border:2px solid var(--vang)}
 header h1{font-size:19px;margin:0;flex:1}
 header small{opacity:.85}
+header h1{min-width:0}
+#luc{color:#fff;opacity:.85;font-size:13px}
+@media(max-width:600px){header{padding:10px 16px;gap:8px 10px}header img{width:36px;height:36px}header h1{font-size:17px}header small{display:block;font-size:12px;font-weight:400}#luc{order:3;flex-basis:100%;font-size:12px}#tai-lai{padding:8px 12px}}
 nav{display:flex;gap:4px;padding:0 20px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto}
 nav button{border:0;background:none;padding:12px 14px;font:inherit;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
 nav button[aria-selected=true]{color:var(--blue);border-bottom-color:var(--cam);font-weight:600}
@@ -72,7 +75,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
 <header>
   <img src="logo-vang-192.png" alt="">
   <h1>Quản lý Game-học<br><small>Sổ Thầy Cô dùng Trợ lý Game-học · Vietwise</small></h1>
-  <span id="luc" class="ghi" style="color:#fff"></span>
+  <span id="luc"></span>
   <button class="btn" id="tai-lai" type="button">Tải lại</button>
 </header>
 <nav role="tablist">
