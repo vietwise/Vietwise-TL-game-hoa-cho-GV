@@ -12,7 +12,7 @@ App riêng của Vietwise để xem Thầy Cô nào đăng ký và dùng app **T
 
 ## Cài một lần
 1. Làm theo phần chú thích đầu tệp `apps-script.gs` (tạo Sheet, dán mã, đặt `MA_QUAN_LY`, triển khai ứng dụng web).
-2. Thêm vào `phien-ban.json` ở gốc repo: `"so_thay_co": "<URL ứng dụng web, đuôi /exec>"`. Chưa có dòng này thì app Thầy Cô không hiện phiếu và không gửi gì.
+2. Thêm vào `tools/dong-goi/phien-ban.json` (dong_goi.py chép ra gốc repo; đã thêm 24/11/2026): `"so_thay_co": "<URL ứng dụng web, đuôi /exec>"`. Chưa có dòng này thì app Thầy Cô không hiện phiếu và không gửi gì.
 3. Mở app quản lý, thẻ **Cài đặt**, dán URL và mã quản lý.
 
 ## Kiểm thử đã chạy
