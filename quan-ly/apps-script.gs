@@ -1,3 +1,4 @@
+/** @OnlyCurrentDoc */
 /**
  * Sổ Thầy Cô — nhận phiếu đăng ký và số liệu sử dụng từ app "Trợ lý Game-học",
  * trả danh sách cho app quản lý "Quản lý Game-học" của Vietwise.
@@ -10,6 +11,8 @@
  * 4. Triển khai > Tùy chọn triển khai mới > Loại: Ứng dụng web.
  *    Thực thi với tư cách: Tôi. Người có quyền truy cập: Bất kỳ ai. Bấm Triển khai, cấp quyền.
  * 5. Chép "URL ứng dụng web" (đuôi /exec) dán vào app quản lý, mục Cài đặt.
+ * Dòng @OnlyCurrentDoc ở đầu tệp giới hạn quyền chỉ trong Sheet này (Google không chặn
+ * như khi xin quyền mọi bảng tính). Đừng xoá dòng đó.
  * Sửa mã sau này: Triển khai > Quản lý bản triển khai > bút chì > Phiên bản mới (giữ nguyên URL).
  */
 
